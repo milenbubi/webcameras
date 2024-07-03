@@ -1,16 +1,17 @@
-import { IconButton } from "@mui/material";
 import { useEffect, useState } from "react";
+import { IconButton, SxProps,Theme } from "@mui/material";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 import { goFullScreen } from "./Utils/fullscreen";
 
 interface IProps {
   fsElementId: string;
+  sx?: SxProps<Theme>;
 }
 
 
 
-function FSButton({ fsElementId }: IProps) {
+function FSButton({ fsElementId ,sx}: IProps) {
   const [fsOff, setFsOff] = useState(true);
 
 
@@ -29,7 +30,13 @@ function FSButton({ fsElementId }: IProps) {
 
   return (
     <IconButton
-      sx={{ color: "yellow", position: "absolute", bottom: 0, right: 0 }}
+      sx={{
+        color: "yellow",
+        position: "absolute",
+        bottom: 0,
+        right: 0,
+        ...sx
+      }}
       onClick={() => goFullScreen(fsElementId)}
     >
       {fsOff ? <FullscreenIcon sx={{ fontSize: 50 }} /> : <FullscreenExitIcon sx={{ fontSize: 50 }} />}

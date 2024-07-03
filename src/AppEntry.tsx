@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Box, CardMedia, Stack } from "@mui/material";
+import Title from "./Title";
 import FSButton from "./FSButton";
 
 
@@ -41,44 +42,72 @@ function AppEntry() {
 
 
   return (
-    <Stack gap={3} bgcolor="teal" minHeight="100%" p={2} alignItems="center" sx={{ overflowY: "auto" }}>
+    <Stack gap={5} bgcolor="teal" minHeight="100%" p={2} pt={5} alignItems="center" sx={{ overflowY: "auto" }}>
 
-      <Box id="aaad" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display={isFs ? "flex" : "block"}>
+
+      <Box id="cklt" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display={isFs ? "flex" : "block"}>
         <CardMedia
           ref={Kulata}
-          sx={{ objectFit: "contain", maxWidth: isFs ? "100" : 700, maxHeight: "100%" }}
+          sx={{ objectFit: "contain", maxWidth: isFs ? "100%" : 700, maxHeight: "100%" }}
           component="img"
         />
-        <FSButton fsElementId="aaad" />
+        <Title value="OMV - 2 км преди границата" />
+        <FSButton fsElementId="cklt" />
       </Box>
 
 
-      <Stack gap={3} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap" >
-
+      <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap" >
         <Box
-          id="aaarrr" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          id="mkrd" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
           sx={{ maxWidth: 700 }}
         >
           <iframe
             src="https://www.youtube.com/embed/oUJnhPJF1_0?rel=0&autoplay=1&mute=1&controls=0"
             style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
-          <FSButton fsElementId="aaarrr" />
+          <Title value="Маказа - посока Кърджали" />
+          <FSButton fsElementId="mkrd" />
         </Box>
 
         <Box
-          id="eee" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          id="mgkp" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
           sx={{ maxWidth: 700 }}
         >
           <iframe
             src="https://www.youtube.com/embed/THHnRR3kRjE?rel=0&autoplay=1&mute=1&controls=0"
             style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
-          <FSButton fsElementId="eee" />
+          <Title value="Маказа - посока ГКПП" />
+          <FSButton fsElementId="mgkp" />
         </Box>
       </Stack>
 
 
+      <Stack gap={3} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap">
+        <Box
+          id="kblg" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          sx={{ maxWidth: 720 }}
+        >
+          <iframe
+            src="https://weather-webcam.eu/cams/gradina2.html"
+            style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9.15" }}
+          />
+          <Title value="Калотина - посока България" sx={{ top: -18 }} />
+          <FSButton fsElementId="kblg" sx={{ right: 9, bottom: 8 }} />
+        </Box>
+
+        <Box
+          id="ksrb" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          sx={{ maxWidth: 720 }}
+        >
+          <iframe
+            src="https://weather-webcam.eu/cams/gradina1.html"
+            style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9.15" }}
+          />
+          <Title value="Калотина - посока Сърбия" sx={{ top: -18 }} />
+          <FSButton fsElementId="ksrb" sx={{ right: 9, bottom: 8 }} />
+        </Box>
+      </Stack>
 
 
     </Stack>
