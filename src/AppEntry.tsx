@@ -1,115 +1,78 @@
-import { useEffect, useRef, useState } from "react";
-import { Box, CardMedia, Stack } from "@mui/material";
-import Title from "./Title";
-import FSButton from "./FSButton";
+import { useEffect, useState } from "react";
+import { Button, Stack, colors } from "@mui/material";
+import Hungary from "./Hungary";
+import Bulgaria from "./Bulgaria";
+
+type Country = "Bulgaria" | "Hungary";
 
 
 
 function AppEntry() {
-  const Kulata = useRef<HTMLImageElement>(null)
-  const [isFs, setIsFs] = useState(false);
-
-
   useEffect(() => {
     const ZWH = document.querySelector("div[style]");
     ZWH?.setAttribute("style", "display: none!important")
   }, []);
 
 
-  useEffect(() => {
-    const fullscreenchanged = () => {
-      setIsFs(!!document.fullscreenElement);
-    };
+  const [country, setCountry] = useState<Country>(() => {
+    const target = localStorage.getItem("country");
 
-    fullscreenchanged();
-    document.addEventListener("fullscreenchange", fullscreenchanged);
+    if (target === "Bulgaria" || target === "Hungary") {
+      return target;
+    }
+    else {
+      return "Bulgaria";
+    }
+  });
 
-    return () => { document.removeEventListener("fullscreenchange", fullscreenchanged); };
-  }, []);
 
-
-  useEffect(() => {  // Kulata camera
-    const refreshCam = () => {
-      const src = "https://cdn.uab.org/images/cctv/images/cctv/cctv_114/cctv.jpg?" + Date.now();
-      Kulata.current?.setAttribute("src", src);
-    };
-
-    refreshCam();
-    const interval = setInterval(refreshCam, 30000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const handleChange = (target: Country) => {
+    setCountry(target);
+    localStorage.setItem("country", target);
+  };
 
 
   return (
-    <Stack gap={5} bgcolor="teal" minHeight="100%" p={2} pt={5} alignItems="center" sx={{ overflowY: "auto" }}>
-
-
-      <Box id="cklt" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display={isFs ? "flex" : "block"}>
-        <CardMedia
-          ref={Kulata}
-          sx={{ objectFit: "contain", maxWidth: isFs ? "100%" : 700, maxHeight: "100%" }}
-          component="img"
+    <Stack gap={5} bgcolor="teal" minHeight="100%" p={2} alignItems="center" sx={{ overflowY: "auto" }}>
+      <Stack direction="row" gap={4} sx={{ pt: { xs: 0, md: 2 } }}>
+        <Button
+          sx={{
+            width: { xs: 140, sm: 180 },
+            color: "#ffffff",
+            fontWeight: 800,
+            fontSize: { xs: 14, sm: 20 },
+            backgroundColor: colors.blue[900],
+            "&:hover": {
+              backgroundColor: colors.blue[800]
+            },
+            opacity: country === "Bulgaria" ? 1 : 0.5
+          }}
+          children="България"
+          variant="contained"
+          onClick={() => handleChange("Bulgaria")}
         />
-        <Title value="OMV - 2 км преди границата" />
-        <FSButton fsElementId="cklt" />
-      </Box>
 
+        <Button
+          sx={{
+            width: { xs: 140, sm: 180 },
+            color: "#ffffff",
+            fontWeight: 800,
+            fontSize: { xs: 14, sm: 20 },
+            backgroundColor: colors.blue[900],
+            "&:hover": {
+              backgroundColor: colors.blue[800]
+            },
+            opacity: country === "Hungary" ? 1 : 0.5
+          }}
 
-      <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap" >
-        <Box
-          id="mkrd" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
-          sx={{ maxWidth: 700 }}
-        >
-          <iframe
-            src="https://www.youtube.com/embed/oUJnhPJF1_0?rel=0&autoplay=1&mute=1&controls=0"
-            style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
-          />
-          <Title value="Маказа - посока Кърджали" />
-          <FSButton fsElementId="mkrd" />
-        </Box>
-
-        <Box
-          id="mgkp" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
-          sx={{ maxWidth: 700 }}
-        >
-          <iframe
-            src="https://www.youtube.com/embed/THHnRR3kRjE?rel=0&autoplay=1&mute=1&controls=0"
-            style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
-          />
-          <Title value="Маказа - посока ГКПП" />
-          <FSButton fsElementId="mgkp" />
-        </Box>
+          children="Унгария"
+          variant="contained"
+          onClick={() => handleChange("Hungary")}
+        />
       </Stack>
 
-
-      <Stack gap={3} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap">
-        <Box
-          id="kblg" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
-          sx={{ maxWidth: 720 }}
-        >
-          <iframe
-            src="https://weather-webcam.eu/cams/gradina2.html"
-            style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9.15" }}
-          />
-          <Title value="Калотина - посока България" sx={{ top: -18 }} />
-          <FSButton fsElementId="kblg" sx={{ right: 9, bottom: 8 }} />
-        </Box>
-
-        <Box
-          id="ksrb" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
-          sx={{ maxWidth: 720 }}
-        >
-          <iframe
-            src="https://weather-webcam.eu/cams/gradina1.html"
-            style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9.15" }}
-          />
-          <Title value="Калотина - посока Сърбия" sx={{ top: -18 }} />
-          <FSButton fsElementId="ksrb" sx={{ right: 9, bottom: 8 }} />
-        </Box>
-      </Stack>
-
-
+      {country === "Bulgaria" && <Bulgaria />}
+      {country === "Hungary" && <Hungary />}
     </Stack>
   );
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { IconButton, SxProps,Theme } from "@mui/material";
+import { IconButton, SxProps, Theme } from "@mui/material";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 import { goFullScreen } from "./Utils/fullscreen";
@@ -11,8 +11,9 @@ interface IProps {
 
 
 
-function FSButton({ fsElementId ,sx}: IProps) {
+function FSButton({ fsElementId, sx }: IProps) {
   const [fsOff, setFsOff] = useState(true);
+  const [opacity, setOpacity] = useState(0);
 
 
   useEffect(() => {
@@ -21,10 +22,17 @@ function FSButton({ fsElementId ,sx}: IProps) {
       else setFsOff(true);
     };
 
+    const timeout = setTimeout(() => {  // Do not show button immediately
+      setOpacity(1);
+    }, 800);
+
     fullscreenchanged();  // Proceed button status if user plays with window size
     document.addEventListener("fullscreenchange", fullscreenchanged);
 
-    return () => { document.removeEventListener("fullscreenchange", fullscreenchanged); };
+    return () => {
+      clearTimeout(timeout);
+      document.removeEventListener("fullscreenchange", fullscreenchanged);
+    };
   }, []);
 
 
@@ -35,6 +43,7 @@ function FSButton({ fsElementId ,sx}: IProps) {
         position: "absolute",
         bottom: 0,
         right: 0,
+        opacity,
         ...sx
       }}
       onClick={() => goFullScreen(fsElementId)}
