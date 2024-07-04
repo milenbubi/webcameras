@@ -18,7 +18,7 @@ function Hungary() {
           sx={{ maxWidth: 700 }}
         >
           <iframe
-            src="https://live.uzivokamere.com/horgos1/"
+            src="https://live.uzivokamere.com/horgos1"
             style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
           <Title value="Хоргош - към Сърбия 1" />
@@ -30,7 +30,7 @@ function Hungary() {
           sx={{ maxWidth: 700 }}
         >
           <iframe
-            src="https://live.uzivokamere.com/amss_horgos1/"
+            src="https://live.uzivokamere.com/amss_horgos1"
             style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
           <Title value="Хоргош - към Сърбия 2" />
@@ -46,10 +46,10 @@ function Hungary() {
           sx={{ maxWidth: 700 }}
         >
           <iframe
-            src="https://live.uzivokamere.com/horgos2/"
+            src="https://live.uzivokamere.com/horgos2"
             style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
-          <Title value="Хоргош - към Сърбия 1" />
+          <Title value="Хоргош - към Унгария 1" />
           <FSButton fsElementId="hkh1" />
         </Box>
 
@@ -58,11 +58,39 @@ function Hungary() {
           sx={{ maxWidth: 700 }}
         >
           <iframe
-            src="https://live.uzivokamere.com/amss_horgos2/"
+            src="https://live.uzivokamere.com/amss_horgos2"
             style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
-          <Title value="Хоргош - към Сърбия 2" />
+          <Title value="Хоргош - към Унгария 2" />
           <FSButton fsElementId="hkh2" />
+        </Box>
+      </Stack>
+
+
+      {/* Келебия */}
+      <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap" >
+        <Box
+          id="ksrb" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          sx={{ maxWidth: 700 }}
+        >
+          <iframe
+            src="https://live.uzivokamere.com/kelebija1"
+            style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
+          />
+          <Title value="Келебия - към Сърбия" />
+          <FSButton fsElementId="ksrb" />
+        </Box>
+
+        <Box
+          id="khun" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          sx={{ maxWidth: 700 }}
+        >
+          <iframe
+            src="https://live.uzivokamere.com/kelebija2/"
+            style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
+          />
+          <Title value="Келебия - към Унгария" />
+          <FSButton fsElementId="khun" />
         </Box>
       </Stack>
 

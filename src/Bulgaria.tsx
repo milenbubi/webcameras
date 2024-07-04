@@ -80,29 +80,29 @@ function Bulgaria() {
 
 
       {/* Калотина */}
-      <Stack gap={3} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap">
+      <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap" >
         <Box
           id="kblg" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
-          sx={{ maxWidth: 720 }}
+          sx={{ maxWidth: 700 }}
         >
           <iframe
-            src="https://weather-webcam.eu/cams/gradina2.html"
-            style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9.16" }}
+            src="https://live.uzivokamere.com/amss_gradina2"
+            style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
-          <Title value="Калотина - посока България" sx={{ top: -18 }} />
-          <FSButton fsElementId="kblg" sx={{ right: 9, bottom: 8 }} />
+          <Title value="Калотина - посока България" />
+          <FSButton fsElementId="kblg" />
         </Box>
 
         <Box
           id="ksrb" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
-          sx={{ maxWidth: 720 }}
+          sx={{ maxWidth: 700 }}
         >
           <iframe
-            src="https://weather-webcam.eu/cams/gradina1.html"
-            style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9.16" }}
+            src="https://live.uzivokamere.com/amss_gradina1"
+            style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
-          <Title value="Калотина - посока Сърбия" sx={{ top: -18 }} />
-          <FSButton fsElementId="ksrb" sx={{ right: 9, bottom: 8 }} />
+          <Title value="Калотина - посока Сърбия" />
+          <FSButton fsElementId="ksrb" />
         </Box>
       </Stack>
 
