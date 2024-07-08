@@ -1,4 +1,4 @@
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, CardMedia, Button } from "@mui/material";
 import Title from "./Title";
 import FSButton from "./FSButton";
 
@@ -93,6 +93,25 @@ function Hungary() {
           <FSButton fsElementId="khun" />
         </Box>
       </Stack>
+
+
+      {/* Линк към BorderAlarm */}
+      <Button
+        sx={{ p: 0 }}
+        onClick={() => {
+          const newWindow = window.open("https://borderalarm.com/", '_blank', 'noopener,noreferrer')
+
+          if (newWindow) {
+            newWindow.opener = null;
+          }
+        }}>
+        <CardMedia
+          component="img"
+          src="/borderAlarm.png"
+          sx={{ width: 200, borderRadius: 1 }}
+          onError={e => { e.currentTarget.style.display = "none"; }}
+        />
+      </Button>
 
 
     </Stack>
