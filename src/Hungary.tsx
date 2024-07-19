@@ -12,7 +12,7 @@ function Hungary() {
 
 
       {/* Хоргош - към Сърбия */}
-      <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap" >
+      <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap">
         <Box
           id="hks1" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
           sx={{ maxWidth: 700 }}
@@ -40,7 +40,7 @@ function Hungary() {
 
 
       {/* Хоргош - към Унгария */}
-      <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap" >
+      <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap">
         <Box
           id="hkh1" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
           sx={{ maxWidth: 700 }}
@@ -68,7 +68,7 @@ function Hungary() {
 
 
       {/* Келебия */}
-      <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap" >
+      <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap">
         <Box
           id="ksrb" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
           sx={{ maxWidth: 700 }}

@@ -2,12 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import { Box, CardMedia, Stack } from "@mui/material";
 import Title from "./Title";
 import FSButton from "./FSButton";
+import ChangeCamButton from "./ChangeCamButton";
 
 
 
 function Bulgaria() {
-  const Kulata = useRef<HTMLImageElement>(null)
   const [isFs, setIsFs] = useState(false);
+  const Kulata = useRef<HTMLImageElement>(null)
+  const [streamKalotinaToBG, setStreamKalotinaToBG] = useState(1);
+  const [streamKalotinaToSRB, setStreamKalotinaToSRB] = useState(2);
 
 
   useEffect(() => {
@@ -52,7 +55,7 @@ function Bulgaria() {
 
 
       {/* Маказа */}
-      <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap" >
+      <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap">
         <Box
           id="mkrd" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
           sx={{ maxWidth: 700 }}
@@ -80,16 +83,17 @@ function Bulgaria() {
 
 
       {/* Калотина */}
-      <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap" >
+      <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap">
         <Box
           id="kblg" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
           sx={{ maxWidth: 700 }}
         >
           <iframe
-            src="https://live.uzivokamere.com/amss_gradina2"
+            src={`https://live.uzivokamere.com/${streamKalotinaToBG === 1 ? "amss" : ""}gradina2`}
             style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
           <Title value="Калотина - посока България" />
+          <ChangeCamButton streamIndex={streamKalotinaToBG} onClick={setStreamKalotinaToBG} />
           <FSButton fsElementId="kblg" />
         </Box>
 
@@ -98,10 +102,11 @@ function Bulgaria() {
           sx={{ maxWidth: 700 }}
         >
           <iframe
-            src="https://live.uzivokamere.com/amss_gradina1"
+            src={`https://live.uzivokamere.com/${streamKalotinaToSRB === 1 ? "amss" : ""}gradina1`}
             style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
           <Title value="Калотина - посока Сърбия" />
+          <ChangeCamButton streamIndex={streamKalotinaToSRB} onClick={setStreamKalotinaToSRB} />
           <FSButton fsElementId="ksrb" />
         </Box>
       </Stack>
