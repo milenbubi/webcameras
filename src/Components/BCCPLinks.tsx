@@ -11,12 +11,13 @@ function BCCPLinks() {
       <Button
         sx={{ p: 0 }}
         onClick={() => {
-          const newWindow = window.open("https://borderalarm.com/", '_blank', 'noopener,noreferrer')
+          const newWindow = window.open("https://borderalarm.com/", "_blank", "noopener,noreferrer");
 
           if (newWindow) {
             newWindow.opener = null;
           }
-        }}>
+        }}
+      >
         <CardMedia
           component="img"
           src="/borderAlarm.png"
@@ -30,12 +31,13 @@ function BCCPLinks() {
       <Button
         sx={{ p: 0 }}
         onClick={() => {
-          const newWindow = window.open("https://uzivokamere.com/granicni-prelazi/", '_blank', 'noopener,noreferrer')
+          const newWindow = window.open("https://uzivokamere.com/granicni-prelazi/", "_blank", "noopener,noreferrer");
 
           if (newWindow) {
             newWindow.opener = null;
           }
-        }}>
+        }}
+      >
         <CardMedia
           component="img"
           src="/uzivoKamere.png"

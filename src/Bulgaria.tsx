@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Box, CardMedia, Stack } from "@mui/material";
-import Title from "./Title";
-import FSButton from "./FSButton";
-import ChangeCamButton from "./ChangeCamButton";
+import Title from "./Components/Title";
+import FSButton from "./Components/FSButton";
+import ChangeCamButton from "./Components/ChangeCamButton";
 
 
 

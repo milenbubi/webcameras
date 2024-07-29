@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { IconButton, SxProps, Theme } from "@mui/material";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
-import { goFullScreen } from "./Utils/fullscreen";
+import { goFullScreen } from "../Utils/fullscreen";
 
 interface IProps {
   fsElementId: string;

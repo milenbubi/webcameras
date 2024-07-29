@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Box, Stack } from "@mui/material";
-import Title from "./Title";
-import FSButton from "./FSButton";
-import BCCPLinks from "./BCCPLinks";
-import ChangeCamButton from "./ChangeCamButton";
+import Title from "./Components/Title";
+import FSButton from "./Components/FSButton";
+import ChangeCamButton from "./Components/ChangeCamButton";
 
 
 
@@ -100,9 +99,6 @@ function Hungary() {
           <FSButton fsElementId="khun" />
         </Box>
       </Stack>
-
-
-      <BCCPLinks />
 
 
     </Stack>

@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Button, Stack, colors } from "@mui/material";
 import Hungary from "./Hungary";
 import Bulgaria from "./Bulgaria";
+import Author from "./Components/Author";
+import BCCPLinks from "./Components/BCCPLinks";
 
 type Country = "Bulgaria" | "Hungary";
 
@@ -33,7 +35,7 @@ function AppEntry() {
 
 
   return (
-    <Stack gap={4} bgcolor="teal" minHeight="100%" p={2} alignItems="center" sx={{ overflowY: "auto" }}>
+    <Stack gap={4} bgcolor="teal" minHeight="100%" p={2} alignItems="center" sx={{ overflowY: "auto", position: "relative" }}>
       <Stack direction="row" gap={4} sx={{ pt: { xs: 0, md: 2 } }}>
         <Button
           sx={{
@@ -73,6 +75,9 @@ function AppEntry() {
 
       {country === "Bulgaria" && <Bulgaria />}
       {country === "Hungary" && <Hungary />}
+
+      <Author />
+      <BCCPLinks />
     </Stack>
   );
 }
