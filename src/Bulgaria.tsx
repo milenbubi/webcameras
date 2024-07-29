@@ -10,7 +10,7 @@ function Bulgaria() {
   const [isFs, setIsFs] = useState(false);
   const Kulata = useRef<HTMLImageElement>(null)
   const [streamKalotinaToBG, setStreamKalotinaToBG] = useState(1);
-  const [streamKalotinaToSRB, setStreamKalotinaToSRB] = useState(2);
+  const [streamKalotinaToSRB, setStreamKalotinaToSRB] = useState(1);
 
 
   useEffect(() => {
@@ -39,7 +39,7 @@ function Bulgaria() {
 
 
   return (
-    <Stack gap={5} pt={3} width="100%" alignItems="center" >
+    <Stack gap={5} pt={3} width="100%" alignItems="center">
 
 
       {/* Кулата  */}
@@ -89,7 +89,7 @@ function Bulgaria() {
           sx={{ maxWidth: 700 }}
         >
           <iframe
-            src={`https://live.uzivokamere.com/${streamKalotinaToBG === 1 ? "amss" : ""}gradina2`}
+            src={`https://live.uzivokamere.com/${streamKalotinaToBG === 1 ? "amss_" : ""}gradina2`}
             style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
           <Title value="Калотина - посока България" />
@@ -102,7 +102,7 @@ function Bulgaria() {
           sx={{ maxWidth: 700 }}
         >
           <iframe
-            src={`https://live.uzivokamere.com/${streamKalotinaToSRB === 1 ? "amss" : ""}gradina1`}
+            src={`https://live.uzivokamere.com/${streamKalotinaToSRB === 1 ? "amss_" : ""}gradina1`}
             style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
           <Title value="Калотина - посока Сърбия" />

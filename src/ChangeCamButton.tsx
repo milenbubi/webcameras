@@ -17,14 +17,14 @@ function ChangeCamButton({ onClick, streamIndex, sx }: IProps) {
   return (
     <IconButton
       sx={{
-        color: "#d1d16f",
+        color: "yellow",
         position: "absolute",
         width: 66,
         height: 66,
         top: 0,
         right: 1,
         fontSize: 36,
-        fontWeight: 1000,
+        fontWeight: 600,
         fontFamily: "arial",
         ...sx
       }}

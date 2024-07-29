@@ -1,68 +1,75 @@
-import { Box, Stack, CardMedia, Button } from "@mui/material";
+import { useState } from "react";
+import { Box, Stack } from "@mui/material";
 import Title from "./Title";
 import FSButton from "./FSButton";
-
-// https://uzivokamere.com/granicni-prelaz-horgos-madjarska-srbija/
+import BCCPLinks from "./BCCPLinks";
+import ChangeCamButton from "./ChangeCamButton";
 
 
 
 function Hungary() {
+  const [streamHorgosToHUNG, setStreamHorgosToHUNG] = useState(1);
+  const [streamHorgosToSRB, setStreamHorgosToSRB] = useState(1);
+
+
   return (
     <Stack gap={5} pt={3} width="100%" alignItems="center">
 
 
-      {/* Хоргош - към Сърбия */}
+      {/* Хоргош */}
       <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap">
         <Box
-          id="hks1" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          id="hth" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
           sx={{ maxWidth: 700 }}
         >
           <iframe
-            src="https://live.uzivokamere.com/horgos1"
+            src={`https://live.uzivokamere.com/${streamHorgosToHUNG === 1 ? "amss_" : ""}horgos2`}
             style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
-          <Title value="Хоргош - към Сърбия 1" />
-          <FSButton fsElementId="hks1" />
+          <Title value="Хоргош - към Унгария" />
+          <ChangeCamButton streamIndex={streamHorgosToHUNG} sx={{ top: 20 }} onClick={setStreamHorgosToHUNG} />
+          <FSButton fsElementId="hth" />
         </Box>
 
         <Box
-          id="hks2" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          id="hts" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
           sx={{ maxWidth: 700 }}
         >
           <iframe
-            src="https://live.uzivokamere.com/amss_horgos1"
+            src={`https://live.uzivokamere.com/${streamHorgosToSRB === 1 ? "amss_" : ""}horgos1`}
             style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
-          <Title value="Хоргош - към Сърбия 2" />
-          <FSButton fsElementId="hks2" />
+          <Title value="Хоргош - към Сърбия" />
+          <ChangeCamButton streamIndex={streamHorgosToSRB} sx={{ top: 20 }} onClick={setStreamHorgosToSRB} />
+          <FSButton fsElementId="hts" />
         </Box>
       </Stack>
 
 
-      {/* Хоргош - към Унгария */}
+      {/* Тала */}
       <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap">
         <Box
-          id="hkh1" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          id="tth" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
           sx={{ maxWidth: 700 }}
         >
           <iframe
-            src="https://live.uzivokamere.com/horgos2"
+            src="https://live.uzivokamere.com/djala1"
             style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
-          <Title value="Хоргош - към Унгария 1" />
-          <FSButton fsElementId="hkh1" />
+          <Title value="Ђала - към Унгария" />
+          <FSButton fsElementId="tth" />
         </Box>
 
         <Box
-          id="hkh2" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          id="tts" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
           sx={{ maxWidth: 700 }}
         >
           <iframe
-            src="https://live.uzivokamere.com/amss_horgos2"
+            src="https://live.uzivokamere.com/djala2"
             style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
-          <Title value="Хоргош - към Унгария 2" />
-          <FSButton fsElementId="hkh2" />
+          <Title value="Ђала - към Сърбия" />
+          <FSButton fsElementId="tts" />
         </Box>
       </Stack>
 
@@ -95,23 +102,7 @@ function Hungary() {
       </Stack>
 
 
-      {/* Линк към BorderAlarm */}
-      <Button
-        sx={{ p: 0 }}
-        onClick={() => {
-          const newWindow = window.open("https://borderalarm.com/", '_blank', 'noopener,noreferrer')
-
-          if (newWindow) {
-            newWindow.opener = null;
-          }
-        }}>
-        <CardMedia
-          component="img"
-          src="/borderAlarm.png"
-          sx={{ width: 200, borderRadius: 1 }}
-          onError={e => { e.currentTarget.style.display = "none"; }}
-        />
-      </Button>
+      <BCCPLinks />
 
 
     </Stack>

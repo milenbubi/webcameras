@@ -7,7 +7,7 @@ interface IProps {
 }
 
 
-function Title({ value,sx }: IProps) {
+function Title({ value, sx }: IProps) {
   return (
     <Typography
       sx={{
@@ -15,7 +15,8 @@ function Title({ value,sx }: IProps) {
         fontWeight: 500,
         position: "absolute",
         left: 30,
-        top: -26,
+        top: -28,
+        fontSize: 18,
         ...sx
       }}
     >

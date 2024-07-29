@@ -33,7 +33,7 @@ function AppEntry() {
 
 
   return (
-    <Stack gap={5} bgcolor="teal" minHeight="100%" p={2} alignItems="center" sx={{ overflowY: "auto" }}>
+    <Stack gap={4} bgcolor="teal" minHeight="100%" p={2} alignItems="center" sx={{ overflowY: "auto" }}>
       <Stack direction="row" gap={4} sx={{ pt: { xs: 0, md: 2 } }}>
         <Button
           sx={{
