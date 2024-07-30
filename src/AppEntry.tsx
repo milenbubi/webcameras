@@ -12,7 +12,7 @@ type Country = "Bulgaria" | "Hungary";
 function AppEntry() {
   useEffect(() => {
     const ZWH = document.querySelector("div[style]");
-    ZWH?.setAttribute("style", "display: none!important")
+    ZWH?.setAttribute("style", "display: none!important");
   }, []);
 
 
