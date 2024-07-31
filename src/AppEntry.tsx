@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, Stack, colors } from "@mui/material";
 import Hungary from "./Hungary";
 import Bulgaria from "./Bulgaria";
@@ -10,12 +10,6 @@ type Country = "Bulgaria" | "Hungary";
 
 
 function AppEntry() {
-  useEffect(() => {
-    const ZWH = document.querySelector("div[style]");
-    ZWH?.setAttribute("style", "display: none!important");
-  }, []);
-
-
   const [country, setCountry] = useState<Country>(() => {
     const target = localStorage.getItem("country");
 
