@@ -37,7 +37,7 @@ function Bulgaria() {
           sx={{ objectFit: "contain", maxHeight: "100%" }}
           component="img"
         />
-        <Title value={`Кулата - ${streamKulata === 1 ? "800" : "OMV, 2500"}м преди ГКПП`} />
+        <Title value={`Кулата - ${streamKulata === 1 ? "800" : "OMV, 2500"}м преди Гърция`} />
         <ChangeCamButton streamIndex={streamKulata} onClick={setStreamKulata} />
         <FSButton fsElementId="cklt" />
       </Box>
