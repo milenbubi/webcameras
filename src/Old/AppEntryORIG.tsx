@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Button, Stack, colors } from "@mui/material";
-import Horgos from "./Horgos";
-import Bulgaria from "./Bulgaria";
-import Author from "./Components/Author";
-import BCCPLinks from "./Components/BCCPLinks";
+import Horgos from "../BCCP/Horgos";
+import Bulgaria from "../BCCP/Bulgaria";
+import Author from "../Components/Author";
+import BCCPLinks from "../Components/BCCPLinks";
 
 type Country = "Bulgaria" | "Hungary";
 

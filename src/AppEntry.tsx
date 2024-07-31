@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Button, Stack, colors } from "@mui/material";
-import Djala from "./Djala";
-import Horgos from "./Horgos";
-import Kelebia from "./Kelebia";
-import Bulgaria from "./Bulgaria";
+import Djala from "./BCCP/Djala";
+import Horgos from "./BCCP/Horgos";
+import Kelebia from "./BCCP/Kelebia";
+import Bulgaria from "./BCCP/Bulgaria";
 import Author from "./Components/Author";
 import BCCPLinks from "./Components/BCCPLinks";
 

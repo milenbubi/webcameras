@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Box, Stack } from "@mui/material";
-import Title from "./Components/Title";
-import FSButton from "./Components/FSButton";
-import ChangeCamButton from "./Components/ChangeCamButton";
+import Title from "../Components/Title";
+import FSButton from "../Components/FSButton";
+import ChangeCamButton from "../Components/ChangeCamButton";
 
 
 

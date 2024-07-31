@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Box, Stack } from "@mui/material";
-import Title from "./Components/Title";
-import FSButton from "./Components/FSButton";
-import ChangeCamButton from "./Components/ChangeCamButton";
+import { Stack } from "@mui/material";
+import Title from "../Components/Title";
+import Centered from "../Utils/Centered";
+import FSButton from "../Components/FSButton";
+import ChangeCamButton from "../Components/ChangeCamButton";
 
 
 
@@ -14,11 +15,9 @@ function Horgos() {
   return (  // Хоргош
     <Stack gap={5} pt={3} width="100%" alignItems="center">
 
-      <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap">
-        <Box
-          id="hth" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex"
-          sx={{ maxWidth: 700 }}
-        >
+
+      <Centered gap={5} maxHeight="100%" width="100%" flexWrap="wrap">
+        <Centered id="hth" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
           <iframe
             src={`https://live.uzivokamere.com/${streamToHUNG === 1 ? "amss_" : ""}horgos2`}
             style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
@@ -26,12 +25,10 @@ function Horgos() {
           <Title value="Хоргош - към Унгария" />
           <ChangeCamButton streamIndex={streamToHUNG} sx={{ top: 20 }} onClick={setStreamToHUNG} />
           <FSButton fsElementId="hth" />
-        </Box>
+        </Centered>
 
-        <Box
-          id="hts" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex"
-          sx={{ maxWidth: 700 }}
-        >
+
+        <Centered id="hts" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
           <iframe
             src={`https://live.uzivokamere.com/${streamToSRB === 1 ? "amss_" : ""}horgos1`}
             style={{ border: "none", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
@@ -39,8 +36,9 @@ function Horgos() {
           <Title value="Хоргош - към Сърбия" />
           <ChangeCamButton streamIndex={streamToSRB} sx={{ top: 20 }} onClick={setStreamToSRB} />
           <FSButton fsElementId="hts" />
-        </Box>
-      </Stack>
+        </Centered>
+      </Centered>
+
 
     </Stack>
   );
