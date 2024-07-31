@@ -7,27 +7,15 @@ import ChangeCamButton from "./Components/ChangeCamButton";
 
 
 function Bulgaria() {
-  const [isFs, setIsFs] = useState(false);
   const Kulata = useRef<HTMLImageElement>(null)
+  const [streamKulata, setStreamKulata] = useState(1);
   const [streamKalotinaToBG, setStreamKalotinaToBG] = useState(1);
   const [streamKalotinaToSRB, setStreamKalotinaToSRB] = useState(1);
 
 
-  useEffect(() => {
-    const fullscreenchanged = () => {
-      setIsFs(!!document.fullscreenElement);
-    };
-
-    fullscreenchanged();
-    document.addEventListener("fullscreenchange", fullscreenchanged);
-
-    return () => { document.removeEventListener("fullscreenchange", fullscreenchanged); };
-  }, []);
-
-
   useEffect(() => {  // Kulata camera
     const refreshCam = () => {
-      const src = "https://cdn.uab.org/images/cctv/images/cctv/cctv_114/cctv.jpg?" + Date.now();
+      const src = `https://cdn.uab.org/images/cctv/images/cctv/cctv_${streamKulata === 1 ? "01" : 114}/cctv.jpg?${Date.now()}`;
       Kulata.current?.setAttribute("src", src);
     };
 
@@ -35,21 +23,22 @@ function Bulgaria() {
     const interval = setInterval(refreshCam, 30000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [streamKulata]);
 
 
   return (
     <Stack gap={5} pt={3} width="100%" alignItems="center">
 
 
-      {/* Кулата  */}
-      <Box id="cklt" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display={isFs ? "flex" : "block"}>
+      {/* Кулата */}
+      <Box id="cklt" maxHeight="100%" maxWidth={700} position="relative" justifyContent="center" alignItems="center" display="flex">
         <CardMedia
           ref={Kulata}
-          sx={{ objectFit: "contain", maxWidth: isFs ? "100%" : 700, maxHeight: "100%" }}
+          sx={{ objectFit: "contain", maxHeight: "100%" }}
           component="img"
         />
-        <Title value="OMV - 2 км преди границата" />
+        <Title value={`Кулата - ${streamKulata === 1 ? "800" : "OMV, 2500"}м преди ГКПП`} />
+        <ChangeCamButton streamIndex={streamKulata} onClick={setStreamKulata} />
         <FSButton fsElementId="cklt" />
       </Box>
 
@@ -57,7 +46,7 @@ function Bulgaria() {
       {/* Маказа */}
       <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap">
         <Box
-          id="mkrd" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          id="mkrd" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex"
           sx={{ maxWidth: 700 }}
         >
           <iframe
@@ -69,7 +58,7 @@ function Bulgaria() {
         </Box>
 
         <Box
-          id="mgkp" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          id="mgkp" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex"
           sx={{ maxWidth: 700 }}
         >
           <iframe
@@ -85,7 +74,7 @@ function Bulgaria() {
       {/* Калотина */}
       <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap">
         <Box
-          id="kblg" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          id="kblg" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex"
           sx={{ maxWidth: 700 }}
         >
           <iframe
@@ -98,7 +87,7 @@ function Bulgaria() {
         </Box>
 
         <Box
-          id="ksrb" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          id="ksrb" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex"
           sx={{ maxWidth: 700 }}
         >
           <iframe

@@ -18,7 +18,7 @@ function Hungary() {
       {/* Хоргош */}
       <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap">
         <Box
-          id="hth" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          id="hth" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex"
           sx={{ maxWidth: 700 }}
         >
           <iframe
@@ -31,7 +31,7 @@ function Hungary() {
         </Box>
 
         <Box
-          id="hts" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          id="hts" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex"
           sx={{ maxWidth: 700 }}
         >
           <iframe
@@ -48,7 +48,7 @@ function Hungary() {
       {/* Тала */}
       <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap">
         <Box
-          id="tth" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          id="tth" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex"
           sx={{ maxWidth: 700 }}
         >
           <iframe
@@ -60,7 +60,7 @@ function Hungary() {
         </Box>
 
         <Box
-          id="tts" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          id="tts" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex"
           sx={{ maxWidth: 700 }}
         >
           <iframe
@@ -76,7 +76,7 @@ function Hungary() {
       {/* Келебия */}
       <Stack gap={5} maxHeight="100%" width="100%" justifyContent="center" alignItems="center" flexDirection="row" flexWrap="wrap">
         <Box
-          id="ksrb" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          id="ksrb" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex"
           sx={{ maxWidth: 700 }}
         >
           <iframe
@@ -88,7 +88,7 @@ function Hungary() {
         </Box>
 
         <Box
-          id="khun" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex" flexDirection="column"
+          id="khun" width="100%" maxHeight="100%" position="relative" justifyContent="center" alignItems="center" display="flex"
           sx={{ maxWidth: 700 }}
         >
           <iframe
