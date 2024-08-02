@@ -4,7 +4,7 @@ import { Stack, CardMedia, Button } from "@mui/material";
 
 function BCCPLinks() {
   return (
-    <Stack direction="row" gap={4} sx={{ pt: { xs: 0, md: 2 } }}>
+    <Stack direction="row" justifyContent="center" gap={4} sx={{ width: 1 }}>
 
 
       {/* Линк към BorderAlarm */}

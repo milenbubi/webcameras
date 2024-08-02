@@ -6,6 +6,8 @@ import Kelebia from "./BCCP/Kelebia";
 import Bulgaria from "./BCCP/Bulgaria";
 import Author from "./Components/Author";
 import BCCPLinks from "./Components/BCCPLinks";
+import NoStreamTitle from "./Components/NoStreamTitle";
+import StreamModeSwitch from "./Components/StreamModeSwitch";
 
 type Place = "Bulgaria" | "Horgos" | "Djala" | "Kelebia";
 
@@ -24,6 +26,8 @@ const Buttons: IBccpData[] = [
 
 
 function AppEntry() {
+  const [isStreaming, setIsStreaming] = useState(localStorage.getItem("streaming") === "on");
+
   const [bccp, setBccp] = useState<Place>(() => {
     const target = localStorage.getItem("place");
 
@@ -37,9 +41,15 @@ function AppEntry() {
   });
 
 
-  const handleChange = (target: Place) => {
+  const handleChangeBCCP = (target: Place) => {
     setBccp(target);
     localStorage.setItem("place", target);
+  };
+
+
+  const handleChangeOnOff = (isOn: boolean) => {
+    setIsStreaming(isOn);
+    localStorage.setItem("streaming", isOn ? "on" : "off");
   };
 
 
@@ -52,12 +62,13 @@ function AppEntry() {
             key={place}
             children={label}
             variant="contained"
-            onClick={() => handleChange(place)}
+            onClick={() => handleChangeBCCP(place)}
             sx={{
               width: { xs: 140, sm: 160 },
               color: "#ffffff",
               fontWeight: 800,
               fontSize: { xs: 14, sm: 20 },
+              letterSpacing: "3px",
               opacity: place === bccp ? 1 : 0.5,
               backgroundColor: colors.blue[900],
               "&:hover": {
@@ -68,14 +79,25 @@ function AppEntry() {
         ))}
       </Stack>
 
-      {bccp === "Bulgaria" && <Bulgaria />}
-      {bccp === "Horgos" && <Horgos />}
-      {bccp === "Djala" && <Djala />}
-      {bccp === "Kelebia" && <Kelebia />}
+      {
+        isStreaming ? (
+          <>
+            {bccp === "Bulgaria" && <Bulgaria />}
+            {bccp === "Horgos" && <Horgos />}
+            {bccp === "Djala" && <Djala />}
+            {bccp === "Kelebia" && <Kelebia />}
+          </>
+        ) : <NoStreamTitle />
+      }
 
-      <Author />
-      <BCCPLinks />
+      <Stack sx={{ width: 1, mt: -1 }} gap={2}>
+        <Stack direction="row" justifyContent="space-between" sx={{ width: 1, px: 1 }}>
+          <Author />
+          <StreamModeSwitch isStreaming={isStreaming} onChange={handleChangeOnOff} />
+        </Stack>
 
+        <BCCPLinks />
+      </Stack>
     </Stack>
   );
 }

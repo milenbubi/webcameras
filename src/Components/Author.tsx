@@ -4,12 +4,7 @@ import { Button, Typography } from "@mui/material";
 function Author() {
   return (
     <Button
-      sx={{
-        p: 0,
-        position: "absolute",
-        right: 10,
-        bottom: 50
-      }}
+      sx={{ p: 0 }}
       onClick={() => {
         const newWindow = window.open("https://www.facebook.com/milenbubi", "_blank", "noopener,noreferrer");
 
@@ -18,6 +13,7 @@ function Author() {
         }
       }}
     >
+
       <Typography
         sx={{
           color: "lightblue",
@@ -28,6 +24,7 @@ function Author() {
       >
         {"АВТОР"}
       </Typography>
+
     </Button>
   );
 }
