@@ -10,7 +10,15 @@ interface IProps {
 function StreamModeSwitch({ isStreaming, onChange }: IProps) {
   return (
     <Button
-      sx={{ p: 0 }}
+      sx={{
+        p: 0,
+        animation: isStreaming ? "none" : "pulse 2s linear infinite",
+        "@keyframes pulse": {
+          "0%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.2)" },
+          "100%": { transform: "scale(1)" },
+        }
+      }}
       onClick={() => {
         onChange(!isStreaming);
       }}
