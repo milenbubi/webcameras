@@ -41,7 +41,7 @@ function FSButton({ fsElementId, sx }: IProps) {
       sx={{
         color: "yellow",
         position: "absolute",
-        bottom: 0,
+        bottom: 20,
         right: 0,
         opacity,
         ...sx
