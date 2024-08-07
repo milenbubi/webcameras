@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { IconButton, SxProps, Theme } from "@mui/material";
-import FullscreenIcon from "@mui/icons-material/Fullscreen";
-import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
+import Iconify from "../Utils/Iconify";
 import { goFullScreen } from "../Utils/fullscreen";
 
 interface IProps {
@@ -13,7 +12,6 @@ interface IProps {
 
 function FSButton({ fsElementId, sx }: IProps) {
   const [fsOff, setFsOff] = useState(true);
-  const [opacity, setOpacity] = useState(0);
 
 
   useEffect(() => {
@@ -22,15 +20,11 @@ function FSButton({ fsElementId, sx }: IProps) {
       else setFsOff(true);
     };
 
-    const timeout = setTimeout(() => {  // Do not show button immediately
-      setOpacity(1);
-    }, 800);
 
     fullscreenchanged();  // Proceed button status if user plays with window size
     document.addEventListener("fullscreenchange", fullscreenchanged);
 
     return () => {
-      clearTimeout(timeout);
       document.removeEventListener("fullscreenchange", fullscreenchanged);
     };
   }, []);
@@ -41,14 +35,16 @@ function FSButton({ fsElementId, sx }: IProps) {
       sx={{
         color: "yellow",
         position: "absolute",
-        bottom: 20,
-        right: 0,
-        opacity,
+        bottom: 27,
+        right: 7,
         ...sx
       }}
       onClick={() => goFullScreen(fsElementId)}
     >
-      {fsOff ? <FullscreenIcon sx={{ fontSize: 50 }} /> : <FullscreenExitIcon sx={{ fontSize: 50 }} />}
+      <Iconify
+        width={36}
+        icon={fsOff ? "mingcute:fullscreen-fill" : "mingcute:fullscreen-exit-fill"}
+      />
     </IconButton>
   );
 }
