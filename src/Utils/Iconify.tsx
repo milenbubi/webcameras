@@ -12,9 +12,12 @@ function Iconify({ icon, width = 20, sx, ...other }: IProps) {
   return (
     <Box
       component={Icon}
-      className="component-iconify"
       icon={icon}
-      sx={{ width, height: width, ...sx }}
+      sx={{
+        width,
+        height: width,
+        ...sx
+      }}
       {...other}
     />
   );
