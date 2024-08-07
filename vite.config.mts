@@ -1,9 +1,11 @@
 import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 
 
 
 export default defineConfig(({ command, mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+
   return {
     plugins: [
       react()
@@ -28,7 +30,34 @@ export default defineConfig(({ command, mode }) => {
         output: {
           minifyInternalExports: true,
           inlineDynamicImports: false,
-          entryFileNames: "vendor/[hash].js"
+          assetFileNames: "vendor/e/[hash].[ext]",
+          entryFileNames: "vendor/h/[hash].js",
+
+          chunkFileNames: ({ exports: data = [], name }) => {
+            if (Array.isArray(data) && data.length) {
+              return "vendor/" + data
+                .slice(0, 8)
+                .join("")
+                .toLowerCase()
+                + "/[hash].js";
+            }
+            else {
+              return "vendor/" + (name?.[3] || "$") + "/[hash].js";
+            }
+          },
+
+          manualChunks: id => {
+            if (id?.includes("node_modules")) {
+              const moduleName = id
+                .split("node_modules/")[1]
+                ?.split("/")[0];
+
+              return moduleName;
+            }
+            else {
+              return id;
+            }
+          }
         }
       }
     }
