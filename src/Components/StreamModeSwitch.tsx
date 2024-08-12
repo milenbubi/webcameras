@@ -3,16 +3,17 @@ import { Button, CardMedia, } from "@mui/material";
 interface IProps {
   isStreaming: boolean;
   onChange: (isOn: boolean) => void;
+  doNotPulse?: boolean;
 }
 
 
 
-function StreamModeSwitch({ isStreaming, onChange }: IProps) {
+function StreamModeSwitch({ isStreaming, onChange, doNotPulse }: IProps) {
   return (
     <Button
       sx={{
         p: 0,
-        animation: isStreaming ? "none" : "pulse 2s linear infinite",
+        animation: (isStreaming || doNotPulse) ? "none" : "pulse 2s linear infinite",
         "@keyframes pulse": {
           "0%": { transform: "scale(1)" },
           "50%": { transform: "scale(1.2)" },

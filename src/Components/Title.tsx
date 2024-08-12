@@ -14,8 +14,8 @@ function Title({ value, sx }: IProps) {
         color: "#ffffff",
         fontWeight: 500,
         position: "absolute",
-        left: 30,
-        top: -28,
+        left: 61,
+        top: -30,
         fontSize: 18,
         ...sx
       }}
