@@ -14,17 +14,17 @@ function Bulgaria() {
   const [streamKalotinaToSRB, setStreamKalotinaToSRB] = useState(1);
 
 
-  useEffect(() => {  // Kulata camera
-    const refreshCam = () => {
-      const src = `https://cdn.uab.org/images/cctv/images/cctv/cctv_${streamKulata === 1 ? "01" : 114}/cctv.jpg?${Date.now()}`;
-      Kulata.current?.setAttribute("src", src);
-    };
+  // useEffect(() => {  // Kulata camera
+  //   const refreshCam = () => {
+  //     const src = `https://cdn.uab.org/images/cctv/images/cctv/cctv_${streamKulata === 1 ? "01" : 114}/cctv.jpg?${Date.now()}`;
+  //     Kulata.current?.setAttribute("src", src);
+  //   };
 
-    refreshCam();
-    const interval = setInterval(refreshCam, 30000);
+  //   refreshCam();
+  //   const interval = setInterval(refreshCam, 30000);
 
-    return () => clearInterval(interval);
-  }, [streamKulata]);
+  //   return () => clearInterval(interval);
+  // }, [streamKulata]);
 
 
   return (
@@ -32,7 +32,7 @@ function Bulgaria() {
 
 
       {/* Кулата */}
-      <Centered id="cklt" maxHeight="100%" maxWidth={700} position="relative">
+      {/* <Centered id="cklt" maxHeight="100%" maxWidth={700} position="relative">
         <CardMedia
           ref={Kulata}
           sx={{ objectFit: "contain", maxHeight: "100%" }}
@@ -41,11 +41,11 @@ function Bulgaria() {
         <Title value={`Кулата - ${streamKulata === 1 ? "800" : "OMV, 2500"}м преди Гърция`} />
         <ChangeCamButton streamIndex={streamKulata} onClick={setStreamKulata} />
         <FSButton fsElementId="cklt" />
-      </Centered>
+      </Centered> */}
 
 
       {/* Маказа */}
-      <Centered gap={5} maxHeight="100%" width="100%" flexWrap="wrap">
+      {/* <Centered gap={5} maxHeight="100%" width="100%" flexWrap="wrap">
         <Centered id="mkrd" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
           <iframe
             src="https://www.youtube.com/embed/oUJnhPJF1_0?rel=0&autoplay=1&mute=1&controls=0"
@@ -63,7 +63,7 @@ function Bulgaria() {
           <Title value="Маказа - посока ГКПП" />
           <FSButton fsElementId="mgkp" />
         </Centered>
-      </Centered>
+      </Centered> */}
 
 
       {/* Калотина */}
