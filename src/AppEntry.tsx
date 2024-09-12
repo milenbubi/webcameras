@@ -26,7 +26,7 @@ const Buttons: IBccpData[] = [
 
 
 function AppEntry() {
-  const [isStreaming, setIsStreaming] = useState(localStorage.getItem("streaming") === "on");
+  const [isStreaming, setIsStreaming] = useState(localStorage.getItem("streaming") !== "off");
 
   const [bccp, setBccp] = useState<Place>(() => {
     const target = localStorage.getItem("place");
