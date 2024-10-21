@@ -36,7 +36,6 @@ function Bulgaria() {
       <Centered gap={5} maxHeight="100%" width="100%" flexWrap="wrap">
         <Centered id="mkrd" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
           <iframe loading="lazy"
-            // src={isOn2 ? "https://www.youtube.com/embed/oUJnhPJF1_0?rel=0&autoplay=1&mute=1&controls=0" : undefined}
             src={isOn2 ? `https://www.youtube.com/embed/73VhS77uoVs?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}` : undefined}
             style={{ border: isOn2 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
@@ -48,7 +47,7 @@ function Bulgaria() {
 
         <Centered id="mgkp" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
           <iframe
-            src={isOn3 ? "https://www.youtube.com/embed/THHnRR3kRjE?autoplay=1&mute=1&controls=0" : undefined}
+            src={isOn3 ? `https://www.youtube.com/embed/N-3MpZBd6QE?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}` : undefined}
             style={{ border: isOn3 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
           <LSSwitcher isOn={isOn3} switchIsOn={switchIsOn3} />
