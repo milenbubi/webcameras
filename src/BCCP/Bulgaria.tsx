@@ -1,7 +1,8 @@
-import { Stack } from "@mui/material";
 import { useState } from "react";
+import { Stack } from "@mui/material";
 import Title from "../Components/Title";
 import Centered from "../Utils/Centered";
+import { useIsMobile } from "../Utils/theme";
 import FSButton from "../Components/FSButton";
 import KulataCams from "../Components/KulataCams";
 import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
@@ -10,6 +11,7 @@ import ChangeCamButton from "../Components/ChangeCamButton";
 
 
 function Bulgaria() {
+  const isMobile = useIsMobile();
   const [streamKalotinaToBG, setStreamKalotinaToBG] = useState(1);
   const [streamKalotinaToSRB, setStreamKalotinaToSRB] = useState(1);
   const { isBooleanLSOn: isOn2, switchBooleanLS: switchIsOn2 } = useBooleanLS("mkrd");
@@ -33,8 +35,9 @@ function Bulgaria() {
       {/* Маказа */}
       <Centered gap={5} maxHeight="100%" width="100%" flexWrap="wrap">
         <Centered id="mkrd" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
-          <iframe
-            src={isOn2 ? "https://www.youtube.com/embed/oUJnhPJF1_0?rel=0&autoplay=1&mute=1&controls=0" : undefined}
+          <iframe loading="lazy"
+            // src={isOn2 ? "https://www.youtube.com/embed/oUJnhPJF1_0?rel=0&autoplay=1&mute=1&controls=0" : undefined}
+            src={isOn2 ? `https://www.youtube.com/embed/73VhS77uoVs?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}` : undefined}
             style={{ border: isOn2 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
           <LSSwitcher isOn={isOn2} switchIsOn={switchIsOn2} />
@@ -42,9 +45,10 @@ function Bulgaria() {
           {isOn2 && <FSButton fsElementId="mkrd" />}
         </Centered>
 
+
         <Centered id="mgkp" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
           <iframe
-            src={isOn3 ? "https://www.youtube.com/embed/THHnRR3kRjE?rel=0&autoplay=1&mute=1&controls=0" : undefined}
+            src={isOn3 ? "https://www.youtube.com/embed/THHnRR3kRjE?autoplay=1&mute=1&controls=0" : undefined}
             style={{ border: isOn3 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
           />
           <LSSwitcher isOn={isOn3} switchIsOn={switchIsOn3} />
