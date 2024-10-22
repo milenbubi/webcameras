@@ -67,6 +67,7 @@ function AppEntry() {
               width: { xs: 140, sm: 160 },
               color: "#ffffff",
               fontWeight: 800,
+              fontFamily: "Arial",
               fontSize: { xs: 14, sm: 20 },
               letterSpacing: "3px",
               opacity: place === bccp ? 1 : 0.5,

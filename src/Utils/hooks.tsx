@@ -36,7 +36,7 @@ export function useBooleanLS(key: string) {
 
 function LSSwitcher({ isOn, switchIsOn }: IProps) {
   return (
-    <Box sx={{ position: "absolute", left: -15, top: -37 }}>
+    <Box sx={{ position: "absolute", left: -15, top: -38 }}>
       <Box sx={{ transform: "scale(0.5)" }}>
         <StreamModeSwitch isStreaming={isOn !== false} onChange={switchIsOn} doNotPulse />
       </Box>
