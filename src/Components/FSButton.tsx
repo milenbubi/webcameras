@@ -35,7 +35,7 @@ function FSButton({ fsElementId, sx }: IProps) {
       sx={{
         color: "yellow",
         position: "absolute",
-        bottom: 27,
+        bottom: 7,
         right: 7,
         ...sx
       }}
