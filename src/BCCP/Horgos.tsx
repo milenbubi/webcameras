@@ -14,7 +14,7 @@ function Horgos() {
   const { isBooleanLSOn: isOn2, switchBooleanLS: switchIsOn2 } = useBooleanLS("hts");
 
   return (  // Хоргош
-    <Centered gap={5} pt={3} width="100%" flexWrap="wrap">
+    <Centered gap={6} pt={3} width="100%" flexWrap="wrap">
 
 
       <Centered id="hth" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>

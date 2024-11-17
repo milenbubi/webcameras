@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import * as ReactDOM from "react-dom/client";
 import { CssBaseline, GlobalStyles } from "@mui/material";
+// import ".@/Styles1/Scrollbar.scss";
 import AppEntry from "./AppEntry";
 import globalStyles from "./Styles/StylesGlobal";
 

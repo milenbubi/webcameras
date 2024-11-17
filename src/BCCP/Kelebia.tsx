@@ -11,13 +11,13 @@ function Kelebia() {
 
 
   return (  // Келебия
-    <Centered gap={5} pt={3} width="100%" flexWrap="wrap">
+    <Centered gap={6} pt={3} width="100%" flexWrap="wrap">
 
 
       <Centered id="khun" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
         <iframe
-          src={isOn1 ?"https://live.uzivokamere.com/kelebija2/": undefined}
-          style={{  border: isOn1 ? "none" : "2px solid white",width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
+          src={isOn1 ? "https://live.uzivokamere.com/kelebija2/" : undefined}
+          style={{ border: isOn1 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
         />
         <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
         <Title value="Келебия - към Унгария" />
@@ -29,7 +29,7 @@ function Kelebia() {
 
       <Centered id="ksrb" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
         <iframe
-          src={isOn2 ?"https://live.uzivokamere.com/kelebija1": undefined}
+          src={isOn2 ? "https://live.uzivokamere.com/kelebija1" : undefined}
           style={{ border: isOn2 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
         />
         <LSSwitcher isOn={isOn2} switchIsOn={switchIsOn2} />

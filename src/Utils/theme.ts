@@ -1,6 +1,5 @@
 import { useMemo } from "react";
-import { useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme, useMediaQuery } from "@mui/material";
 
 
 
@@ -22,4 +21,14 @@ export function useIsMobile() {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return isMobile;
+}
+
+
+
+export function useAdminScrollbar() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const className = isMobile ? "" : "adminscrollbar";
+
+  return className;
 }

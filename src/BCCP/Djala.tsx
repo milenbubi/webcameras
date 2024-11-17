@@ -11,7 +11,7 @@ function Djala() {
 
 
   return (  // Ђала
-    <Centered gap={5} pt={3} width="100%" flexWrap="wrap">
+    <Centered gap={6} pt={3} width="100%" flexWrap="wrap">
 
 
       <Centered id="tth" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>

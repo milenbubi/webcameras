@@ -54,7 +54,7 @@ function AppEntry() {
 
 
   return (
-    <Stack gap={4} bgcolor="teal" minHeight="100%" py={2} alignItems="center" sx={{ overflowY: "auto", position: "relative", px: { xs: 1, sm: 2 } }}>
+    <Stack gap={4} bgcolor="teal" height={1} py={2} alignItems="center" sx={{ overflowY: "auto", position: "relative", px: { xs: 1, sm: 2 } }}>
 
       <Stack direction="row" flexWrap="wrap" justifyContent="center" gap={3} sx={{ pt: { xs: 0, md: 2 } }}>
         {Buttons.map(({ place, label }) => (

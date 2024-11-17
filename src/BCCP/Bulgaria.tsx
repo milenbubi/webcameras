@@ -20,12 +20,12 @@ function Bulgaria() {
   const { isBooleanLSOn: isOn5, switchBooleanLS: switchIsOn5 } = useBooleanLS("ksrb");
 
 
-  return (
-    <Stack gap={5} pt={3} width="100%" alignItems="center">
+  return (  // България
+    <Stack gap={6} pt={3} width="100%" alignItems="center">
 
 
       {/* Кулата */}
-      <Centered gap={5} maxHeight="100%" width="100%" flexWrap="wrap">
+      <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
         <Centered id="cklt" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
           <KulataCams />
         </Centered>
@@ -33,7 +33,7 @@ function Bulgaria() {
 
 
       {/* Маказа */}
-      <Centered gap={5} maxHeight="100%" width="100%" flexWrap="wrap">
+      <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
         <Centered id="mkrd" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
           <iframe loading="lazy"
             src={isOn2 ? `https://www.youtube.com/embed/73VhS77uoVs?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}` : undefined}
@@ -58,7 +58,7 @@ function Bulgaria() {
 
 
       {/* Калотина */}
-      <Centered gap={5} maxHeight="100%" width="100%" flexWrap="wrap">
+      <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
         <Centered id="kblg" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
           <iframe
             src={isOn4 ? `https://live.uzivokamere.com/${streamKalotinaToBG === 1 ? "amss_" : ""}gradina2` : undefined}
