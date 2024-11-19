@@ -6,10 +6,34 @@ import Centered from "../Utils/Centered";
 import ChangeCamButton from "./ChangeCamButton";
 import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
 
+const getSource = (streamKulata: number) => {
+  switch (streamKulata) {
+    case 1: return "01";
+    case 2: return "02";
+    case 3: return "114";
+    default: return "01";
+  };
+};
+
+
+const getCamLabel = (streamKulata: number) => {
+  let distance: string;
+
+  switch (streamKulata) {
+    case 1: distance = "800"; break;
+    case 2: distance = "800"; break;
+    case 3: distance = "OMV, 2500"; break;
+    default: distance = "n/A ";
+  };
+
+  return `Кулата - ${distance}м преди Гърция`;
+};
+
 
 
 function KulataCams() {
   const Kulata = useRef<HTMLImageElement>(null);
+  const [camLabel, setCamLabel] = useState("");
   const [streamKulata, setStreamKulata] = useState(1);
   const { isBooleanLSOn: isOn1, switchBooleanLS: switchIsOn1 } = useBooleanLS("cklt");
 
@@ -20,8 +44,9 @@ function KulataCams() {
         return;
       }
 
-      const src = `https://cdn.uab.org/images/cctv/images/cctv/cctv_${streamKulata === 1 ? "01" : 114}/cctv.jpg?${Date.now()}`;
+      const src = `https://cdn.uab.org/images/cctv/images/cctv/cctv_${getSource(streamKulata)}/cctv.jpg?${Date.now()}`;
       Kulata.current?.setAttribute("src", src);
+      setCamLabel(getCamLabel(streamKulata));
     };
 
     refreshCam();
@@ -40,12 +65,12 @@ function KulataCams() {
       {isOn1 && (
         <Centered sx={{ position: "absolute", inset: 1 }}>
           <CardMedia ref={Kulata} sx={{ width: "100%", height: "100%", objectFit: "contain" }} component="img" />
-          <ChangeCamButton streamIndex={streamKulata} onClick={setStreamKulata} />
+          <ChangeCamButton streamIndex={streamKulata} onClick={setStreamKulata} indexCount={3} />
           <FSButton fsElementId="cklt" />
         </Centered>
       )}
       <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
-      <Title value={`Кулата - ${streamKulata === 1 ? "800" : "OMV, 2500"}м преди Гърция`} />
+      <Title value={camLabel} />
     </Fragment>
   );
 }
