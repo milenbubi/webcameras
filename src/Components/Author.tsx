@@ -1,15 +1,23 @@
 import { Button, Typography } from "@mui/material";
 
 
+
 function Author() {
   return (
     <Button
-      sx={{ p: 0 }}
       onClick={() => {
-        const newWindow = window.open("https://www.facebook.com/milenbubi", "_blank", "noopener,noreferrer");
+        const fbUserId = "100000461091188";
+        const isMobile = window.navigator.maxTouchPoints > 0;
 
-        if (newWindow) {
-          newWindow.opener = null;
+        if (isMobile) {
+          window.location.href = `fb://profile?id=${fbUserId}`;
+        }
+        else {
+          const newWindow = window.open(`https://www.facebook.com/${fbUserId}`, "_blank", "noopener,noreferrer");
+
+          if (newWindow) {
+            newWindow.opener = null;
+          }
         }
       }}
     >
