@@ -1,27 +1,24 @@
 import { useEffect, useState } from "react";
 import { IconButton, SxProps, Theme } from "@mui/material";
-import Iconify from "../Utils/Iconify";
 import { goFullScreen } from "../Utils/fullscreen";
 
 interface IProps {
   fsElementId: string;
   sx?: SxProps<Theme>;
+  size?: number;
 }
 
 
 
-function FSButton({ fsElementId, sx }: IProps) {
-  const [fsOff, setFsOff] = useState(true);
+function FSButton({ fsElementId, sx, size = 36 }: IProps) {
+  const [fsOn, setFsOn] = useState(false);
 
 
   useEffect(() => {
     const fullscreenchanged = () => {
-      if (document.fullscreenElement) setFsOff(false);
-      else setFsOff(true);
+      setFsOn(!!document.fullscreenElement);
     };
 
-
-    fullscreenchanged();  // Proceed button status if user plays with window size
     document.addEventListener("fullscreenchange", fullscreenchanged);
 
     return () => {
@@ -41,10 +38,18 @@ function FSButton({ fsElementId, sx }: IProps) {
       }}
       onClick={() => goFullScreen(fsElementId)}
     >
-      <Iconify
-        width={36}
-        icon={fsOff ? "mingcute:fullscreen-fill" : "mingcute:fullscreen-exit-fill"}
-      />
+      <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24">
+        <g>
+          <path
+            fill="currentColor"
+            d={fsOn ?
+              "M17.5 6.5H20a1.5 1.5 0 0 1 0 3h-3A2.5 2.5 0 0 1 14.5 7V4a1.5 1.5 0 0 1 3 0zM4 6.5h2.5V4a1.5 1.5 0 1 1 3 0v3A2.5 2.5 0 0 1 7 9.5H4a1.5 1.5 0 1 1 0-3m0 11h2.5V20a1.5 1.5 0 0 0 3 0v-3A2.5 2.5 0 0 0 7 14.5H4a1.5 1.5 0 0 0 0 3m16 0h-2.5V20a1.5 1.5 0 0 1-3 0v-3a2.5 2.5 0 0 1 2.5-2.5h3a1.5 1.5 0 0 1 0 3"
+              :
+              "M18.5 5.5H16a1.5 1.5 0 0 1 0-3h3A2.5 2.5 0 0 1 21.5 5v3a1.5 1.5 0 0 1-3 0zM8 5.5H5.5V8a1.5 1.5 0 1 1-3 0V5A2.5 2.5 0 0 1 5 2.5h3a1.5 1.5 0 1 1 0 3m0 13H5.5V16a1.5 1.5 0 0 0-3 0v3A2.5 2.5 0 0 0 5 21.5h3a1.5 1.5 0 0 0 0-3m8 0h2.5V16a1.5 1.5 0 0 1 3 0v3a2.5 2.5 0 0 1-2.5 2.5h-3a1.5 1.5 0 0 1 0-3"
+            }
+          />
+        </g>
+      </svg>
     </IconButton>
   );
 }
