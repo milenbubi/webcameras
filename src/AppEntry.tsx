@@ -28,6 +28,7 @@ const Buttons: IBccpData[] = [
 function AppEntry() {
   const [isStreaming, setIsStreaming] = useState(localStorage.getItem("streaming") !== "off");
 
+
   const [bccp, setBccp] = useState<Place>(() => {
     const target = localStorage.getItem("place");
 
@@ -70,7 +71,7 @@ function AppEntry() {
               fontFamily: "Arial",
               fontSize: { xs: 14, sm: 20 },
               letterSpacing: "3px",
-              opacity: place === bccp ? 1 : 0.5,
+              opacity: place === bccp ? 1 : 0.6,
               backgroundColor: colors.blue[900],
               "&:hover": {
                 backgroundColor: colors.blue[800]

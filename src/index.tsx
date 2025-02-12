@@ -6,7 +6,7 @@ import globalStyles from "./Styles/StylesGlobal";
 
 
 
-function CasinoPortalApp() {
+function WebCamerasApp() {
   useEffect(() => {  // Remove any search params 
     if (window.location.search) {
       window.history.pushState({}, document.title, window.location.origin);
@@ -27,4 +27,4 @@ function CasinoPortalApp() {
 
 const container = document.getElementById("Root");
 const root = ReactDOM.createRoot(container!);
-root.render(<CasinoPortalApp />);
+root.render(<WebCamerasApp />);
