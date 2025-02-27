@@ -1,26 +1,43 @@
+import { useCallback } from "react";
 import { Button, Typography } from "@mui/material";
 
 
 
 function Author() {
+  const openAuthorProfile = useCallback(() => {
+    const fbUserId = "100000461091188";
+    const isMobile = window.navigator.maxTouchPoints > 0;
+
+    const openNewTab = () => {
+      const newWindow = window.open(`https://www.facebook.com/${fbUserId}`, "_blank", "noopener,noreferrer");
+
+      if (newWindow) {
+        newWindow.opener = null;
+      }
+    };
+
+    if (!isMobile) {
+      openNewTab();
+      return;
+    }
+
+    setTimeout(function () {
+      const now = Date.now();
+
+      setTimeout(function () {  // SOF 13044805
+        if (Date.now() - now < 27) {
+          openNewTab();
+        }
+      }, 25);
+    }, 1500);
+
+
+    window.location.href = `fb://profile?id=${fbUserId}`;
+  }, []);
+
+
   return (
-    <Button
-      onClick={() => {
-        const fbUserId = "100000461091188";
-        const isMobile = window.navigator.maxTouchPoints > 0;
-
-        if (isMobile) {
-          window.location.href = `fb://profile?id=${fbUserId}`;
-        }
-        else {
-          const newWindow = window.open(`https://www.facebook.com/${fbUserId}`, "_blank", "noopener,noreferrer");
-
-          if (newWindow) {
-            newWindow.opener = null;
-          }
-        }
-      }}
-    >
+    <Button onClick={openAuthorProfile}>
 
       <Typography
         sx={{
