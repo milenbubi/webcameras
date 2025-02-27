@@ -21,14 +21,12 @@ function Author() {
       return;
     }
 
-    setTimeout(function () {
-      const now = Date.now();
+    const now = Date.now();
 
-      setTimeout(function () {  // SOF 13044805
-        if (Date.now() - now < 27) {
-          openNewTab();
-        }
-      }, 25);
+    setTimeout(function () {  // SOF 13044805
+      if (Date.now() - now < 1502) {
+        openNewTab();
+      }
     }, 1500);
 
 
