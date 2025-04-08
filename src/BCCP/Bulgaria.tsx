@@ -61,14 +61,15 @@ function Bulgaria() {
       <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
         <Centered id="kblg" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
           <iframe
-            src={isOn4 ? `https://live.uzivokamere.com/${streamKalotinaToBG === 1 ? "amss_" : ""}gradina2` : undefined}
-            style={{ border: isOn4 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
+            // src={isOn4 ? `https://live.uzivokamere.com/${streamKalotinaToBG === 1 ? "amss_" : ""}gradina2` : undefined}
+            src={isOn4 ? "https://weather-webcam.eu/cams/gradina2.html" : undefined}
+            style={{ border: isOn4 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9.16" }}
           />
 
           <LSSwitcher isOn={isOn4} switchIsOn={switchIsOn4} />
           <Title value="Калотина - посока България" />
           {isOn4 && (<>
-            <ChangeCamButton streamIndex={streamKalotinaToBG} onClick={setStreamKalotinaToBG} />
+            {/* <ChangeCamButton streamIndex={streamKalotinaToBG} onClick={setStreamKalotinaToBG} /> */}
             <FSButton fsElementId="kblg" />
           </>)}
         </Centered>
@@ -76,13 +77,14 @@ function Bulgaria() {
 
         <Centered id="ksrb" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
           <iframe
-            src={isOn5 ? `https://live.uzivokamere.com/${streamKalotinaToSRB === 1 ? "amss_" : ""}gradina1` : undefined}
-            style={{ border: isOn5 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
+            // src={isOn5 ? `https://live.uzivokamere.com/${streamKalotinaToSRB === 1 ? "amss_" : ""}gradina1` : undefined}
+            src={isOn5 ? "https://weather-webcam.eu/cams/gradina1.html" : undefined}
+            style={{ border: isOn5 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9.16" }}
           />
           <LSSwitcher isOn={isOn5} switchIsOn={switchIsOn5} />
           <Title value="Калотина - посока Сърбия" />
           {isOn5 && (<>
-            <ChangeCamButton streamIndex={streamKalotinaToSRB} onClick={setStreamKalotinaToSRB} />
+            {/* <ChangeCamButton streamIndex={streamKalotinaToSRB} onClick={setStreamKalotinaToSRB} /> */}
             <FSButton fsElementId="ksrb" />
           </>)}
         </Centered>
