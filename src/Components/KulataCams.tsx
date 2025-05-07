@@ -20,7 +20,7 @@ const getCamLabel = (streamKulata: number) => {
   let distance: string;
 
   switch (streamKulata) {
-    case 1: distance = "800"; break;
+    case 1: distance = "700"; break;
     case 2: distance = "800"; break;
     case 3: distance = "OMV, 2500"; break;
     default: distance = "n/A ";
@@ -34,7 +34,7 @@ const getCamLabel = (streamKulata: number) => {
 function KulataCams() {
   const Kulata = useRef<HTMLImageElement>(null);
   const [camLabel, setCamLabel] = useState("");
-  const [streamKulata, setStreamKulata] = useState(1);
+  const [streamKulata, setStreamKulata] = useState(2);
   const { isBooleanLSOn: isOn1, switchBooleanLS: switchIsOn1 } = useBooleanLS("cklt");
 
 
