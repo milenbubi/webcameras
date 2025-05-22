@@ -1,7 +1,7 @@
 {
   "name": "web-cameras",
   "author": "PCC",
-  "version": "6.1",
+  "version": "7.0",
   "private": true,
   "type": "module",
   "scripts": {
