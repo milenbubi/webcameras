@@ -6,7 +6,7 @@ import { Button, Typography } from "@mui/material";
 function Author() {
   const openAuthorProfile = useCallback(() => {
     const fbUserId = "100000461091188";
-    const isMobile = window.navigator.maxTouchPoints > 0;
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB10|IEMobile|Opera\s?Mini|Mobile\s?Safari|Windows\s?Phone|MeeGo|SymbianOS|PlayBook/i.test(navigator.userAgent);
 
     const openNewTab = () => {
       const newWindow = window.open(`https://www.facebook.com/${fbUserId}`, "_blank", "noopener,noreferrer");
@@ -23,14 +23,13 @@ function Author() {
 
     const now = Date.now();
 
-    setTimeout(function () {  // SOF 13044805
-      if (Date.now() - now < 1502) {
+    window.location.href = `fb://profile/${fbUserId}`;
+
+    setTimeout(() => {
+      if (Date.now() - now < 1600) {
         openNewTab();
       }
     }, 1500);
-
-
-    window.location.href = `fb://profile?id=${fbUserId}`;
   }, []);
 
 

@@ -65,11 +65,11 @@ function AppEntry() {
             variant="contained"
             onClick={() => handleChangeBCCP(place)}
             sx={{
-              width: { xs: 140, sm: 160 },
+              width: { xs: 140, sm: 150, md: 160 },
               color: "#ffffff",
               fontWeight: 800,
               fontFamily: "Arial",
-              fontSize: { xs: 14, sm: 20 },
+              fontSize: { xs: 14, md: 20 },
               letterSpacing: "3px",
               opacity: place === bccp ? 1 : 0.6,
               backgroundColor: colors.blue[900],
