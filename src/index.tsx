@@ -3,12 +3,10 @@ import * as ReactDOM from "react-dom/client";
 import { CssBaseline, GlobalStyles } from "@mui/material";
 import AppEntry from "./AppEntry";
 import globalStyles from "./Styles/StylesGlobal";
-import useGoogleAnalytics from "./Utils/googleAnalytics";
 
 
 
 function WebCamerasApp() {
-  useGoogleAnalytics();
 
 
   useEffect(() => {  // Remove any search params 
