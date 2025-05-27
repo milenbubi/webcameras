@@ -5,9 +5,9 @@ import "./Styles/Scrollbar.scss";
 import AppEntry from "./AppEntry";
 import globalStyles from "./Styles/StylesGlobal";
 
+
+
 function WebCamerasApp() {
-
-
   useEffect(() => {  // Remove any search params 
     if (window.location.search) {
       window.history.pushState({}, document.title, window.location.origin);

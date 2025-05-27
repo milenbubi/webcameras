@@ -2,7 +2,7 @@
 <html lang="bg">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="canonical" href="https://chan180.net">
   <meta property="og:locale" content="bg_BG">
@@ -19,10 +19,84 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "chan180.net",
+        "inLanguage": "bg",
         "url": "https://chan180.net",
-        "logo": "https://chan180.net/shots/logo.jpg"
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://chan180.net/shots/logo.jpg",
+          "description": "Лого на chan180.net – уеб платформа за наблюдение на гранични пунктове"
+        }
       }
     </script>
+
+
+  <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Уеб камери на живо от границата – Калотина, Кулата, Маказа, Сърбия, Унгария",
+        "url": "https://chan180.net",
+        "description": "Гледай на живо уеб камери от граничните пунктове на България, Гърция, Сърбия и Унгария. Следи трафика, задръстванията, опашките и условията на граничните пунктове в реално време.",
+        "inLanguage": "bg",
+        "publisher": {
+          "@type": "Organization",
+          "name": "chan180.net",
+          "description": "chan180.net е платформа за наблюдение в реално време на трафик и опашки по гранични пунктове в Югоизточна Европа.",
+          "url": "https://chan180.net",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://chan180.net/shots/logo.jpg",
+            "description": "Лого на chan180.net – уеб платформа за наблюдение на гранични пунктове"
+          }
+        },
+        "hasPart": [
+          {
+            "@type": "BroadcastEvent",
+            "name": "Камера ГКПП Калотина",
+            "description": "Виж опашките и движението на граничен пункт Калотина в реално време.",
+            "isLiveBroadcast": true,
+            "url": "https://chan180.net?place=Bulgaria"
+          },
+          {
+            "@type": "BroadcastEvent",
+            "name": "Камери преди ГКПП Кулата",
+            "description": "Следи трафика на живо между България и Гърция преди граничен пункт Кулата.",
+            "isLiveBroadcast": true,
+            "url": "https://chan180.net?place=Bulgaria"
+          },
+          {
+            "@type": "BroadcastEvent",
+            "name": "Камера ГКПП Маказа",
+            "description": "Виж какво се случва сега на граничен пункт Маказа в реално време.",
+            "isLiveBroadcast": true,
+            "url": "https://chan180.net?place=Bulgaria"
+          },
+          {
+            "@type": "BroadcastEvent",
+            "name": "Камера ГКПП Хоргош",
+            "description": "Проследи условията и чакането на сръбско-унгарската граница през граничен пункт Хоргош.",
+            "isLiveBroadcast": true,
+            "url": "https://chan180.net?place=Horgos"
+          },
+          {
+            "@type": "BroadcastEvent",
+            "name": "Камера ГКПП Келебия – трафик на живо",
+            "description": "Гледай в реално време трафика и опашките на граничен пункт Келебия.",
+            "isLiveBroadcast": true,
+            "url": "https://chan180.net?place=Kelebia"
+          },
+          {
+            "@type": "BroadcastEvent",
+            "name": "Камера ГКПП Джала – трафик на живо",
+            "description": "Гледай трафика и актуалните условия на граничен пункт Джала на сръбско-унгарската граница.",
+            "isLiveBroadcast": true,
+            "url": "https://chan180.net?place=Djala"
+          }
+        ]
+      }
+      </script>
+
+
 
   <meta name="google-site-verification" content="55y60oFX8PgaxrBC8jAsSFfn6Sd449BN3zD8oiSR4Ao">
   <meta name="msvalidate.01" content="4782F76573771DCB5BC03E444DD002AC">
@@ -40,16 +114,11 @@
     content="Наблюдавай на живо камерите от ГКПП. 24/7 видео поток от ключови граници в Югоизточна Европа.">
   <meta name="twitter:image" content="https://chan180.net/shots/logo.jpg">
 
-  <title>Web камери от гранични пунктове</title>
+  <title>Уеб камери от гранични пунктове</title>
 </head>
 
 
 <body>
-  <h1 style="position: absolute; left: -9999px">
-    Гледай на живо камери от ГКПП в България и Югоизточна Европа. Получавай
-    информация в реално време от най-важните гранични пунктове.
-  </h1>
-
   <div id="Root"></div>
   <noscript>
     <div style="padding: 1rem; text-align: center">
