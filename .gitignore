@@ -4,20 +4,9 @@
 /dist
 /tmp
 /out-tsc
-# Only exists if Bazel was run
-/bazel-out
 
 # Dependencies
 /node_modules
-
-# Cordova
-/www
-/plugins
-/platforms
-
-# Electron
-/dist.electron
-/electron.main.js
 
 # IDEs and editors
 .idea/*
