@@ -26,8 +26,7 @@ export function useIsMobile() {
 
 
 export function useAdminScrollbar() {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useIsMobile();
   const className = isMobile ? "" : "adminscrollbar";
 
   return className;

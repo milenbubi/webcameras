@@ -6,6 +6,7 @@ import Kelebia from "./BCCP/Kelebia";
 import Bulgaria from "./BCCP/Bulgaria";
 import Author from "./Components/Author";
 import BCCPLinks from "./Components/BCCPLinks";
+import { useAdminScrollbar } from "./Utils/theme";
 import NoStreamTitle from "./Components/NoStreamTitle";
 import StreamModeSwitch from "./Components/StreamModeSwitch";
 
@@ -27,7 +28,7 @@ const Buttons: IBccpData[] = [
 
 function AppEntry() {
   const [isStreaming, setIsStreaming] = useState(localStorage.getItem("streaming") !== "off");
-
+  const adminscrollbar = useAdminScrollbar();
 
   const [bccp, setBccp] = useState<Place>(() => {
     const target = localStorage.getItem("place");
@@ -55,7 +56,7 @@ function AppEntry() {
 
 
   return (
-    <Stack gap={4} bgcolor="teal" height={1} py={2} alignItems="center" sx={{ overflowY: "auto", position: "relative", px: { xs: 1, sm: 2 } }}>
+    <Stack className={adminscrollbar} sx={{ gap: 4, height: 1, py: 2, alignItems: "center", overflowY: "auto", position: "relative", px: { xs: 1, sm: 2 } }}>
 
       <Stack direction="row" flexWrap="wrap" justifyContent="center" gap={3} sx={{ pt: { xs: 0, md: 2 } }}>
         {Buttons.map(({ place, label }) => (
