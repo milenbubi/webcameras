@@ -26,7 +26,7 @@ function StreamModeSwitch({ isStreaming, onChange, doNotPulse }: IProps) {
     >
 
       <CardMedia
-        src={isStreaming ? "/on.png" : "/off.png"}
+        src={isStreaming ? "/images/on.png" : "/images/off.png"}
         component="img"
         sx={{ width: 80 }}
         onError={e => { e.currentTarget.style.display = "none"; }}

@@ -20,7 +20,7 @@ function BCCPLinks() {
       >
         <CardMedia
           component="img"
-          src="/borderAlarm.png"
+          src="/images/borderAlarm.png"
           sx={{ width: { xs: 150, sm: 200 }, borderRadius: 1 }}
           onError={e => { e.currentTarget.style.display = "none"; }}
         />
@@ -40,7 +40,7 @@ function BCCPLinks() {
       >
         <CardMedia
           component="img"
-          src="/uzivoKamere.png"
+          src="/images/uzivoKamere.png"
           sx={{ width: { xs: 150, sm: 200 }, borderRadius: 1 }}
           onError={e => { e.currentTarget.style.display = "none"; }}
         />
