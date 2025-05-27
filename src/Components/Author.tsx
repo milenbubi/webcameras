@@ -1,12 +1,12 @@
 import { useCallback } from "react";
 import { Button, Typography } from "@mui/material";
+import { isMobile } from "../Utils/mobile";
 
 
 
 function Author() {
   const openAuthorProfile = useCallback(() => {
     const fbUserId = "100000461091188";
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB10|IEMobile|Opera\s?Mini|Mobile\s?Safari|Windows\s?Phone|MeeGo|SymbianOS|PlayBook/i.test(navigator.userAgent);
 
     const openNewTab = () => {
       const newWindow = window.open(`https://www.facebook.com/${fbUserId}`, "_blank", "noopener,noreferrer");
@@ -16,7 +16,7 @@ function Author() {
       }
     };
 
-    if (!isMobile) {
+    if (!isMobile()) {
       openNewTab();
       return;
     }
