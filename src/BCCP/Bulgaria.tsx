@@ -26,19 +26,19 @@ function Bulgaria() {
 
       {/* Кулата */}
       <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
-        <Centered id="cklt" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
-          <KulataCams />
-        </Centered>
+        <KulataCams />
       </Centered>
 
 
       {/* Маказа */}
       <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
-        <Centered id="mkrd" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
-          <iframe
-            src={isOn2 ? `https://www.youtube.com/embed/pnr0lhrqRAc?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}` : undefined}
-            style={{ border: isOn2 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
-          />
+        <Centered id="mkrd" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700, aspectRatio: "16/9", border: isOn2 ? "none" : "2px solid white" }}>
+          {isOn2 && (
+            <iframe
+              src={`https://www.youtube.com/embed/pnr0lhrqRAc?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}`}
+              style={{ width: "100%", height: "100%", border: "none"}}
+            />
+          )}
           <LSSwitcher isOn={isOn2} switchIsOn={switchIsOn2} />
           <Title value="Маказа - посока Кърджали" />
           {isOn2 && <FSButton fsElementId="mkrd" />}

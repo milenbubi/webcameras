@@ -16,7 +16,6 @@ function Horgos() {
   return (  // Хоргош
     <Centered gap={6} pt={3} width="100%" flexWrap="wrap">
 
-
       <Centered id="hth" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
         <iframe
           src={isOn1 ? `https://live.uzivokamere.com/${streamToHUNG === 1 ? "amss_" : ""}horgos2` : undefined}
@@ -30,7 +29,6 @@ function Horgos() {
         </>)}
       </Centered>
 
-
       <Centered id="hts" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
         <iframe
           src={isOn2 ? `https://live.uzivokamere.com/${streamToSRB === 1 ? "amss_" : ""}horgos1` : undefined}
@@ -43,7 +41,6 @@ function Horgos() {
           <FSButton fsElementId="hts" />
         </>)}
       </Centered>
-
 
     </Centered>
   );

@@ -1,5 +1,5 @@
 import { CardMedia } from "@mui/material";
-import { Fragment, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Title from "./Title";
 import FSButton from "./FSButton";
 import Centered from "../Utils/Centered";
@@ -23,7 +23,7 @@ const getCamLabel = (streamKulata: number) => {
     case 1: distance = "700"; break;
     case 2: distance = "800"; break;
     case 3: distance = "OMV, 2500"; break;
-    default: distance = "n/A ";
+    default: distance = "... ";
   };
 
   return `Кулата - ${distance}м преди Гърция`;
@@ -57,21 +57,20 @@ function KulataCams() {
 
 
   return (
-    <Fragment>
-      <iframe
-        src={undefined}
-        style={{ border: "2px solid white", width: "100%", aspectRatio: "16/9", opacity: isOn1 ? 0 : 1 }}
-      />
+    <Centered id="cklt" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700, aspectRatio: "16/9", border: isOn1 ? "none" : "2px solid white" }}>
+
       {isOn1 && (
-        <Centered sx={{ position: "absolute", inset: 1 }}>
+        <>
           <CardMedia ref={Kulata} sx={{ width: "100%", height: "100%", objectFit: "contain" }} component="img" />
           <ChangeCamButton streamIndex={streamKulata} onClick={setStreamKulata} indexCount={3} />
           <FSButton fsElementId="cklt" />
-        </Centered>
+        </>
       )}
+
       <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
       <Title value={camLabel} />
-    </Fragment>
+
+    </Centered>
   );
 }
 

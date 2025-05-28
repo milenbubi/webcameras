@@ -13,7 +13,6 @@ function Kelebia() {
   return (  // Келебия
     <Centered gap={6} pt={3} width="100%" flexWrap="wrap">
 
-
       <Centered id="khun" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
         <iframe
           src={isOn1 ? "https://live.uzivokamere.com/kelebija2/" : undefined}
@@ -21,11 +20,8 @@ function Kelebia() {
         />
         <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
         <Title value="Келебия - към Унгария" />
-        {isOn1 && (<>
-          <FSButton fsElementId="khun" />
-        </>)}
+        {isOn1 && <FSButton fsElementId="khun" />}
       </Centered>
-
 
       <Centered id="ksrb" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
         <iframe
@@ -34,11 +30,8 @@ function Kelebia() {
         />
         <LSSwitcher isOn={isOn2} switchIsOn={switchIsOn2} />
         <Title value="Келебия - към Сърбия" />
-        {isOn2 && (<>
-          <FSButton fsElementId="ksrb" />
-        </>)}
+        {isOn2 && <FSButton fsElementId="ksrb" />}
       </Centered>
-
 
     </Centered>
   );

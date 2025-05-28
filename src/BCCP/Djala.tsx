@@ -13,7 +13,6 @@ function Djala() {
   return (  // Ђала
     <Centered gap={6} pt={3} width="100%" flexWrap="wrap">
 
-
       <Centered id="tth" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
         <iframe
           src={isOn1 ? "https://live.uzivokamere.com/djala1" : undefined}
@@ -21,11 +20,8 @@ function Djala() {
         />
         <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
         <Title value="Ђала - към Унгария" />
-        {isOn1 && (<>
-          <FSButton fsElementId="tth" />
-        </>)}
+        {isOn1 && <FSButton fsElementId="tth" />}
       </Centered>
-
 
       <Centered id="tts" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
         <iframe
@@ -34,11 +30,8 @@ function Djala() {
         />
         <LSSwitcher isOn={isOn2} switchIsOn={switchIsOn2} />
         <Title value="Ђала - към Сърбия" />
-        {isOn2 && (<>
-          <FSButton fsElementId="tts" />
-        </>)}
+        {isOn2 && <FSButton fsElementId="tts" />}
       </Centered>
-
 
     </Centered>
   );
