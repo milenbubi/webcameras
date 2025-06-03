@@ -14,9 +14,43 @@ interface IProps {
 function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8" }: IProps) {
   const hlsRef = useRef<Hls | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const fullUrl = useMemo(() => url + "/" + m3u8File, [url]);
+  const fullUrl = useMemo(() => url + "/" + m3u8File, [url, m3u8File]);
   const [isCameraOffline, setIsCameraOffline] = useState(false);
 
+
+  const startStream = () => {
+    if (videoRef.current) {
+      hlsRef.current = new Hls({
+        maxBufferLength: 30,
+        liveSyncDurationCount: 4
+      });
+
+      hlsRef.current.attachMedia(videoRef.current);
+      hlsRef.current.loadSource(fullUrl);
+
+      hlsRef.current.on(Hls.Events.MANIFEST_PARSED, () => {
+        if (videoRef.current) {
+          videoRef.current.muted = true;
+          videoRef.current.play().catch(() => { });
+        }
+      });
+
+      hlsRef.current.on(Hls.Events.ERROR, function (event, data) {
+        if (data.fatal) {  // Спираме и не правим повторни опити
+          hlsRef.current?.destroy();
+          setIsCameraOffline(true);
+        }
+      });
+    }
+  };
+
+
+  const stopStream = () => {
+    if (hlsRef.current) {
+      hlsRef.current.destroy();
+      hlsRef.current = null;
+    }
+  };
 
 
   useEffect(() => {  // Handle load errors on mobile
@@ -34,6 +68,26 @@ function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8" }: IProps) {
 
     return () => {
       videoEl.removeEventListener("error", onVideoError);
+    };
+  }, []);
+
+
+  useEffect(() => {  // Destroy HLS on losing tab focus
+    const handleVisibility = () => {
+      if (document.visibilityState === "hidden") {
+        stopStream();
+        alert("📴 HLS destroyed on tab blur");
+      }
+      else if (document.visibilityState === "visible") {
+        startStream();
+        setTimeout(() => {
+        });
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibility);
     };
   }, []);
 
@@ -56,38 +110,10 @@ function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8" }: IProps) {
 
     // Ако не може, ползваме hls.js (Chrome, Firefox и др.)
     if (Hls.isSupported()) {
-      const hls = new Hls({
-        maxBufferLength: 30,
-        liveSyncDurationCount: 4
-      });
-
-      hlsRef.current = hls;
-
-      hls.attachMedia(videoRef.current);
-      hls.loadSource(fullUrl);
-
-      hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        if (videoRef.current) {
-          videoRef.current.muted = true;
-          videoRef.current.play().catch(() => { });
-        }
-      });
-
-      hls.on(Hls.Events.ERROR, function (event, data) {
-        if (data.fatal) {  // Спираме и не правим повторни опити
-          // console.warn('📛 Fatal HLS error:', data);
-          hls.destroy();
-          setIsCameraOffline(true);
-        }
-      });
+      startStream()
     }
 
-    return () => {
-      if (hlsRef.current) {
-        hlsRef.current.destroy();
-        hlsRef.current = null;
-      }
-    };
+    return stopStream;
   }, [fullUrl, isActive]);
 
 
