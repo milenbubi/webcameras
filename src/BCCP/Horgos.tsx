@@ -2,6 +2,7 @@ import { useState } from "react";
 import Title from "../Components/Title";
 import Centered from "../Utils/Centered";
 import FSButton from "../Components/FSButton";
+import CameraBlobPlayer from "./CameraBlobPlayer";
 import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
 import ChangeCamButton from "../Components/ChangeCamButton";
 
@@ -16,10 +17,10 @@ function Horgos() {
   return (  // Хоргош
     <Centered gap={6} pt={3} width="100%" flexWrap="wrap">
 
-      <Centered id="hth" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
-        <iframe
-          src={isOn1 ? `https://live.uzivokamere.com/${streamToHUNG === 1 ? "amss_" : ""}horgos2` : undefined}
-          style={{ border: isOn1 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
+      <Centered id="hth" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
+        <CameraBlobPlayer
+          url={`https://live.uzivokamere.com/${streamToHUNG === 1 ? "amss_" : ""}horgos2`}
+          isActive={isOn1}
         />
         <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
         <Title value="Хоргош - към Унгария" />
@@ -29,10 +30,10 @@ function Horgos() {
         </>)}
       </Centered>
 
-      <Centered id="hts" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
-        <iframe
-          src={isOn2 ? `https://live.uzivokamere.com/${streamToSRB === 1 ? "amss_" : ""}horgos1` : undefined}
-          style={{ border: isOn2 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
+      <Centered id="hts" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
+        <CameraBlobPlayer
+          url={`https://live.uzivokamere.com/${streamToSRB === 1 ? "amss_" : ""}horgos1`}
+          isActive={isOn2}
         />
         <LSSwitcher isOn={isOn2} switchIsOn={switchIsOn2} />
         <Title value="Хоргош - към Сърбия" />

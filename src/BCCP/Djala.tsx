@@ -1,6 +1,7 @@
 import Title from "../Components/Title";
 import Centered from "../Utils/Centered";
 import FSButton from "../Components/FSButton";
+import CameraBlobPlayer from "./CameraBlobPlayer";
 import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
 
 
@@ -13,21 +14,15 @@ function Djala() {
   return (  // Ђала
     <Centered gap={6} pt={3} width="100%" flexWrap="wrap">
 
-      <Centered id="tth" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
-        <iframe
-          src={isOn1 ? "https://live.uzivokamere.com/djala1" : undefined}
-          style={{ border: isOn1 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
-        />
+      <Centered id="tth" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
+        <CameraBlobPlayer url="https://live.uzivokamere.com/djala1" isActive={isOn1} />
         <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
         <Title value="Ђала - към Унгария" />
         {isOn1 && <FSButton fsElementId="tth" />}
       </Centered>
 
-      <Centered id="tts" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
-        <iframe
-          src={isOn2 ? "https://live.uzivokamere.com/djala2" : undefined}
-          style={{ border: isOn2 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
-        />
+      <Centered id="tts" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
+        <CameraBlobPlayer url="https://live.uzivokamere.com/djala2" isActive={isOn2} />
         <LSSwitcher isOn={isOn2} switchIsOn={switchIsOn2} />
         <Title value="Ђала - към Сърбия" />
         {isOn2 && <FSButton fsElementId="tts" />}

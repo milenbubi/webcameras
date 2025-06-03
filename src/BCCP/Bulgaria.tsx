@@ -5,6 +5,7 @@ import Centered from "../Utils/Centered";
 import { useIsMobile } from "../Utils/theme";
 import FSButton from "../Components/FSButton";
 import KulataCams from "../Components/KulataCams";
+import CameraBlobPlayer from "./CameraBlobPlayer";
 import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
 import ChangeCamButton from "../Components/ChangeCamButton";
 
@@ -32,20 +33,18 @@ function Bulgaria() {
 
       {/* Маказа */}
       <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
-        <Centered id="mkrd" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700, aspectRatio: "16/9", border: isOn2 ? "none" : "2px solid white" }}>
-          {isOn2 && (
-            <iframe
-              src={`https://www.youtube.com/embed/pnr0lhrqRAc?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}`}
-              style={{ width: "100%", height: "100%", border: "none"}}
-            />
-          )}
+        <Centered id="mkrd" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
+          <iframe
+            src={isOn2 ? `https://www.youtube.com/embed/pnr0lhrqRAc?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}` : undefined}
+            style={{ border: isOn2 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
+          />
           <LSSwitcher isOn={isOn2} switchIsOn={switchIsOn2} />
           <Title value="Маказа - посока Кърджали" />
           {isOn2 && <FSButton fsElementId="mkrd" />}
         </Centered>
 
 
-        <Centered id="mgkp" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
+        <Centered id="mgkp" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
           <iframe
             src={isOn3 ? `https://www.youtube.com/embed/YXN19ZEpIkc?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}` : undefined}
             style={{ border: isOn3 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
@@ -59,13 +58,11 @@ function Bulgaria() {
 
       {/* Калотина */}
       <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
-        <Centered id="kblg" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
-          <iframe
-            src={isOn4 ? `https://live.uzivokamere.com/${streamKalotinaToBG === 1 ? "amss_" : ""}gradina2` : undefined}
-            // src={isOn4 ? "https://weather-webcam.eu/cams/gradina2.html" : undefined}
-            style={{ border: isOn4 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
+        <Centered id="kblg" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
+          <CameraBlobPlayer
+            url={`https://live.uzivokamere.com/${streamKalotinaToBG === 1 ? "amss_" : ""}gradina2`}
+            isActive={isOn4}
           />
-
           <LSSwitcher isOn={isOn4} switchIsOn={switchIsOn4} />
           <Title value="Калотина - посока България" />
           {isOn4 && (<>
@@ -75,11 +72,10 @@ function Bulgaria() {
         </Centered>
 
 
-        <Centered id="ksrb" width="100%" maxHeight="100%" position="relative" sx={{ maxWidth: 700 }}>
-          <iframe
-            src={isOn5 ? `https://live.uzivokamere.com/${streamKalotinaToSRB === 1 ? "amss_" : ""}gradina1` : undefined}
-            // src={isOn5 ? "https://weather-webcam.eu/cams/gradina1.html" : undefined}
-            style={{ border: isOn5 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
+        <Centered id="ksrb" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
+          <CameraBlobPlayer
+            url={`https://live.uzivokamere.com/${streamKalotinaToSRB === 1 ? "amss_" : ""}gradina1`}
+            isActive={isOn5}
           />
           <LSSwitcher isOn={isOn5} switchIsOn={switchIsOn5} />
           <Title value="Калотина - посока Сърбия" />
