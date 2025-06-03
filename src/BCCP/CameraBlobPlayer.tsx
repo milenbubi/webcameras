@@ -76,12 +76,9 @@ function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8" }: IProps) {
     const handleVisibility = () => {
       if (document.visibilityState === "hidden") {
         stopStream();
-        alert("📴 HLS destroyed on tab blur");
       }
       else if (document.visibilityState === "visible") {
         startStream();
-        setTimeout(() => {
-        });
       }
     };
 
