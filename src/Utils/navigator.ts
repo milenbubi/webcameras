@@ -24,3 +24,23 @@ export function isMobile(): boolean {
 
   return classicMobileRegex.test(ua) || tabletRegex.test(ua) || isIpad;
 }
+
+
+
+/**
+ * Detects whether the browser is Mobile Safari (iOS or iPadOS),
+ * including modern iPads that pretend to be desktop.
+ *
+ * @returns {boolean} True if the browser is Mobile Safari.
+ */
+export const isSafari = (() => {
+  const ua = navigator.userAgent;
+  const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
+  const isIOS = /iPad|iPhone|iPod/.test(ua);
+  const isMac = /Macintosh/.test(ua);
+  
+  const isSafariDesktop = isMac && isSafari;
+  const isSafariIOS = isIOS && !ua.includes("CriOS") && !ua.includes("FxiOS");
+
+  return isSafariDesktop || isSafariIOS;
+})();

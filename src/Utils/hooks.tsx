@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { Box } from "@mui/material";
+import { useCallback, useState } from "react";
 import StreamModeSwitch from "../Components/StreamModeSwitch";
 
 interface IProps {
@@ -10,7 +10,7 @@ interface IProps {
 
 
 export function useBooleanLS(key: string) {
-  const [isBooleanLSOn, setIsBooleanLSOn] = useState<boolean>(() => {
+  const [isBooleanLSOn, setIsBooleanLSOn] = useState(() => {
     const target = localStorage.getItem(key);
 
     switch (target) {
@@ -20,13 +20,13 @@ export function useBooleanLS(key: string) {
   });
 
 
-  const switchBooleanLS = () => {
+  const switchBooleanLS = useCallback(() => {
     const target = localStorage.getItem(key);
     const newValue = target === "false" ? "true" : "false";
 
     setIsBooleanLSOn(newValue !== "false");
     localStorage.setItem(key, newValue);
-  };
+  }, []);
 
 
   return { isBooleanLSOn, switchBooleanLS };
