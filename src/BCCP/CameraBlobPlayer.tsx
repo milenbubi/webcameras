@@ -129,6 +129,7 @@ function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8" }: IProps) {
       <video
         ref={videoRef}
         controls
+        controlsList="nofullscreen"
         autoPlay
         style={{
           width: "100%", maxHeight: "100%",

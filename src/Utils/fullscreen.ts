@@ -1,6 +1,3 @@
-
-
-
 function goFullScreen(elementId: string) {
   if (!document.fullscreenEnabled) {
     return;
@@ -17,9 +14,6 @@ function goFullScreen(elementId: string) {
       .catch(() => { });
   }
 }
-
-
-
 
 
 
