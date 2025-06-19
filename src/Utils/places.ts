@@ -1,4 +1,6 @@
-export type Place = "Bulgaria" | "Horgos" | "Djala" | "Kelebia";
+export type Place = "News" | "Bulgaria" | "Horgos" | "Djala" | "Kelebia";
+export const NEWS_ACTIVE = true;
+
 
 export interface IPlaceButton {
   place: Place;
@@ -19,11 +21,12 @@ export function getPlaceFromUrlOrLS(): Place {
 
   const place = rawPlace.trim().toLowerCase();
 
-  const placeMap: Record<string, Place> = {
+  const placeMap: Record<string, Place | null> = {
+    news: NEWS_ACTIVE ? "News" : null,
     bulgaria: "Bulgaria",
     horgos: "Horgos",
     djala: "Djala",
-    kelebia: "Kelebia",
+    kelebia: "Kelebia"
   };
 
   const defaultPlace: Place = "Bulgaria";

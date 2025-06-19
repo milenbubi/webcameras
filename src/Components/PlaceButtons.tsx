@@ -1,5 +1,8 @@
 import { Button, Stack, colors } from "@mui/material";
-import { IPlaceButton, Place } from "../Utils/places";
+import Centered from "../Utils/Centered";
+import { IPlaceButton, NEWS_ACTIVE, Place } from "../Utils/places";
+
+const NewsButton: IPlaceButton = { place: "News", label: "News" };
 
 const Buttons: IPlaceButton[] = [
   { place: "Bulgaria", label: "България" },
@@ -23,7 +26,39 @@ function PlaceButtons({ bccp, onChangeBccp }: IProps) {
 
 
   return (
-    <Stack direction="row" flexWrap="wrap" justifyContent="center" gap={3} sx={{ pt: { xs: 0, md: 2 } }}>
+    <Stack
+      sx={{
+        flexDirection: "row", flexWrap: "wrap", justifyContent: "center", gap: 3,
+        pt: { xs: 0, md: 2 },
+        "& button": {
+          pb: "4px",
+          width: { xs: 140, sm: 150, md: 160 },
+          color: "#ffffff",
+          fontWeight: 800,
+          fontFamily: "Arial",
+          fontSize: { xs: 14, md: 20 },
+          letterSpacing: "3px"
+        }
+      }}
+    >
+
+      {NEWS_ACTIVE && (
+        <Centered sx={{ width: 1 }}>
+          <Button
+            children={NewsButton.label}
+            variant="contained"
+            onClick={() => handleChangeBCCP(NewsButton.place)}
+            sx={{
+              opacity: NewsButton.place === bccp ? 1 : 0.6,
+              backgroundColor: colors.green[900],
+              "&:hover": {
+                backgroundColor: colors.green[800]
+              }
+            }}
+          />
+        </Centered>
+      )}
+
       {Buttons.map(({ place, label }) => (
         <Button
           key={place}
@@ -31,12 +66,6 @@ function PlaceButtons({ bccp, onChangeBccp }: IProps) {
           variant="contained"
           onClick={() => handleChangeBCCP(place)}
           sx={{
-            width: { xs: 140, sm: 150, md: 160 },
-            color: "#ffffff",
-            fontWeight: 800,
-            fontFamily: "Arial",
-            fontSize: { xs: 14, md: 20 },
-            letterSpacing: "3px",
             opacity: place === bccp ? 1 : 0.6,
             backgroundColor: colors.blue[900],
             "&:hover": {
@@ -45,6 +74,7 @@ function PlaceButtons({ bccp, onChangeBccp }: IProps) {
           }}
         />
       ))}
+
     </Stack>
   );
 }

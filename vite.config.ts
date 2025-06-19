@@ -9,6 +9,14 @@ export default defineConfig(({ command, mode }) => {
       react()
     ],
 
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: "modern-compiler"  // Using the modern Sass API
+        }
+      }
+    },
+
     build: {
       outDir: "./dist",
       minify: "terser",

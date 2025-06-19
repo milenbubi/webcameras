@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Stack } from "@mui/material";
+import News from "./BCCP/News";
 import Djala from "./BCCP/Djala";
 import Horgos from "./BCCP/Horgos";
 import Kelebia from "./BCCP/Kelebia";
@@ -8,8 +9,8 @@ import Bottom from "./Components/Bottom";
 import HiddenH1 from "./Components/HiddenH1";
 import { useAdminScrollbar } from "./Utils/theme";
 import PlaceButtons from "./Components/PlaceButtons";
-import { getPlaceFromUrlOrLS } from "./Utils/places";
 import NoStreamTitle from "./Components/NoStreamTitle";
+import { getPlaceFromUrlOrLS, NEWS_ACTIVE } from "./Utils/places";
 
 
 
@@ -32,17 +33,20 @@ function AppEntry() {
       {
         isStreaming ? (
           <>
+            {NEWS_ACTIVE && bccp === "News" && <News />}
             {bccp === "Bulgaria" && <Bulgaria />}
             {bccp === "Horgos" && <Horgos />}
             {bccp === "Djala" && <Djala />}
             {bccp === "Kelebia" && <Kelebia />}
           </>
-        ) : <NoStreamTitle />
+        )
+          :
+          <NoStreamTitle />
       }
 
       <Bottom isStreaming={isStreaming} changeMasterStreaming={setIsStreaming} />
 
-    </Stack >
+    </Stack>
   );
 }
 
