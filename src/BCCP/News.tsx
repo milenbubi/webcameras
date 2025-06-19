@@ -2,6 +2,7 @@ import { Stack } from "@mui/material";
 import Title from "../Components/Title";
 import Centered from "../Utils/Centered";
 import FSButton from "../Components/FSButton";
+import CameraBlobPlayer from "./CameraBlobPlayer";
 import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
 
 
@@ -22,14 +23,14 @@ function News() {
       <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
         {/* Евроком */}
         <Centered id="ecns" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <iframe
-            src={isOn6 ? `https://www.youtube.com/embed/_i0I0hs4g7M?autoplay=1&mute=0controls=0` : ""}
-            style={{ border: isOn6 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
-            allow="autoplay; encrypted-media"
+          <CameraBlobPlayer
+            url="https://live.ecomservice.bg/hls"
+            m3u8File="stream.m3u8"
+            isActive={isOn6}
           />
           <LSSwitcher isOn={isOn6} switchIsOn={switchisOn6} />
           <Title value="Евроком" />
-          {isOn6 && <FSButton fsElementId="ecns" sx={{ right: 0, bottom: 0, p: 0 }} />}
+          {isOn6 && <FSButton fsElementId="ecns" />}
         </Centered>
 
         {/* Deutsche Welle */}
