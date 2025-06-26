@@ -21,17 +21,18 @@ function News() {
 
 
       <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
-        {/* Евроком */}
+        {/* Tagesschau */}
         <Centered id="ecns" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
           <CameraBlobPlayer
-            url="https://live.ecomservice.bg/hls"
-            m3u8File="stream.m3u8"
+            url="https://tagesschau.akamaized.net/hls/live/2020115/tagesschau/tagesschau_1"
+            m3u8File="master.m3u8"
             isActive={isOn6}
           />
           <LSSwitcher isOn={isOn6} switchIsOn={switchisOn6} />
-          <Title value="Евроком" />
+          <Title value="Tagesschau" />
           {isOn6 && <FSButton fsElementId="ecns" />}
         </Centered>
+
 
         {/* Deutsche Welle */}
         <Centered id="dwns" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
