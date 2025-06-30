@@ -1,5 +1,5 @@
 export type Place = "News" | "Bulgaria" | "Horgos" | "Djala" | "Kelebia";
-export const NEWS_ACTIVE = true;
+export const NEWS_ACTIVE = false;
 
 
 export interface IPlaceButton {
