@@ -15,6 +15,7 @@ function Bulgaria() {
   const isMobile = useIsMobile();
   const [streamKalotinaToBG, setStreamKalotinaToBG] = useState(1);
   const [streamKalotinaToSRB, setStreamKalotinaToSRB] = useState(1);
+  const { isBooleanLSOn: isOn6, switchBooleanLS: switchIsOn6 } = useBooleanLS("ahtp");
   const { isBooleanLSOn: isOn2, switchBooleanLS: switchIsOn2 } = useBooleanLS("mkrd");
   const { isBooleanLSOn: isOn3, switchBooleanLS: switchIsOn3 } = useBooleanLS("mgkp");
   const { isBooleanLSOn: isOn4, switchBooleanLS: switchIsOn4 } = useBooleanLS("kblg");
@@ -25,8 +26,22 @@ function Bulgaria() {
     <Stack gap={6} pt={3} width="100%" alignItems="center">
 
 
-      {/* Кулата */}
       <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
+        {/* Ахтопол */}
+        <Centered id="ahtp" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
+          <CameraBlobPlayer
+            url="https://lon.rtsp.me/6l4N0ls092_5iE7DCSSdsQ/1752907381/hls"
+            // url="https://lon.rtsp.me/TqdllT4CgoiA9wPd8VIujQ/1752908070/hls"
+            m3u8File="niSBszZ2.m3u8"
+            isActive={isOn6}
+          />
+          <LSSwitcher isOn={isOn6} switchIsOn={switchIsOn6} />
+          <Title value="Ахтопол - пристанищен кей" />
+          {isOn6 && <FSButton fsElementId="ahtp" />}
+        </Centered>
+
+
+        {/* Кулата */}
         <KulataCams />
       </Centered>
 
