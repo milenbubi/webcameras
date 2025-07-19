@@ -10,11 +10,12 @@ interface IProps {
   url: string;
   isActive: boolean;
   m3u8File?: string;
+  forceHls?: boolean;  // TODO remove this prop after mare
 }
 
 
 
-function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8" }: IProps) {
+function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8", forceHls }: IProps) {
   const hlsRef = useRef<Hls | null>(null);
   const isVisible = useDocumentVisibility();
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -29,7 +30,7 @@ function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8" }: IProps) {
 
     // Ако браузърът може да пусне .m3u8 нативно (Safari)
     // TODO remove after mare
-    if (isSafari && videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
+    if (!forceHls && videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
       videoRef.current.src = fullUrl;
       videoRef.current.load();
       videoRef.current.muted = true;

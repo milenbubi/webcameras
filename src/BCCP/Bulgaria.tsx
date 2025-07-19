@@ -34,6 +34,7 @@ function Bulgaria() {
             // url="https://lon.rtsp.me/TqdllT4CgoiA9wPd8VIujQ/1752908070/hls"
             m3u8File="niSBszZ2.m3u8"
             isActive={isOn6}
+            forceHls
           />
           <LSSwitcher isOn={isOn6} switchIsOn={switchIsOn6} />
           <Title value="Ахтопол - пристанищен кей" />
