@@ -28,7 +28,8 @@ function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8" }: IProps) {
     }
 
     // Ако браузърът може да пусне .m3u8 нативно (Safari)
-    if (videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
+    // TODO remove after mare
+    if (isSafari && videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
       videoRef.current.src = fullUrl;
       videoRef.current.load();
       videoRef.current.muted = true;
