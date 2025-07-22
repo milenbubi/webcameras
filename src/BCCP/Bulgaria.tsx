@@ -31,10 +31,8 @@ function Bulgaria() {
         <Centered id="ahtp" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
           <CameraBlobPlayer
             url="https://lon.rtsp.me/6l4N0ls092_5iE7DCSSdsQ/1752907381/hls"
-            // url="https://lon.rtsp.me/TqdllT4CgoiA9wPd8VIujQ/1752908070/hls"
             m3u8File="niSBszZ2.m3u8"
             isActive={isOn6}
-            forceHls
           />
           <LSSwitcher isOn={isOn6} switchIsOn={switchIsOn6} />
           <Title value="Ахтопол - пристанищен кей" />

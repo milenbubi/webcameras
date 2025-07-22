@@ -10,12 +10,11 @@ interface IProps {
   url: string;
   isActive: boolean;
   m3u8File?: string;
-  forceHls?: boolean;  // TODO remove this prop after mare
 }
 
 
 
-function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8", forceHls }: IProps) {
+function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8" }: IProps) {
   const hlsRef = useRef<Hls | null>(null);
   const isVisible = useDocumentVisibility();
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -24,13 +23,13 @@ function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8", forceHls }: 
 
 
   const startStream = useCallback(() => {
+
     if (!isActive || !videoRef.current) {
       return;
     }
 
-    // Ако браузърът може да пусне .m3u8 нативно (Safari)
-    // TODO remove after mare
-    if (!forceHls && videoRef.current.canPlayType('application/vnd.apple.mpegurl')) {
+
+    if (isSafari  /* videoRef.current.canPlayType("application/vnd.apple.mpegurl") */) {
       videoRef.current.src = fullUrl;
       videoRef.current.load();
       videoRef.current.muted = true;
@@ -60,6 +59,11 @@ function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8", forceHls }: 
           stopStream();
         }
       });
+    }
+    else {
+      console.warn("HLS not supported in this browser");
+      stopStream();
+      setIsCameraOffline(true);
     }
   }, [isActive, fullUrl]);
 
