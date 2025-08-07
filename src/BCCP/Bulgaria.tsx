@@ -62,7 +62,8 @@ function Bulgaria() {
       <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
         <Centered id="kblg" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
           <CameraBlobPlayer
-            url={`https://live.uzivokamere.com/${streamKalotinaToBG === 1 ? "amss_" : ""}gradina2`}
+            // url={`https://live.uzivokamere.com/${streamKalotinaToBG === 1 ? "amss_" : ""}gradina2/index.m3u8`}
+            url={streamKalotinaToBG === 1 ? "https://live.uzivokamere.com/amss_gradina2/index.m3u8" : "https://kamere.mup.gov.rs:4443/Gradina/gradina2.m3u8"}  // backup
             isActive={isOn4}
           />
           <LSSwitcher isOn={isOn4} switchIsOn={switchIsOn4} />
@@ -76,7 +77,8 @@ function Bulgaria() {
 
         <Centered id="ksrb" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
           <CameraBlobPlayer
-            url={`https://live.uzivokamere.com/${streamKalotinaToSRB === 1 ? "amss_" : ""}gradina1`}
+            // url={`https://live.uzivokamere.com/${streamKalotinaToSRB === 1 ? "amss_" : ""}gradina1/index.m3u8`}
+            url={streamKalotinaToSRB === 1 ? "https://live.uzivokamere.com/amss_gradina1/index.m3u8" : "https://kamere.mup.gov.rs:4443/Gradina/gradina1.m3u8"}  // backup
             isActive={isOn5}
           />
           <LSSwitcher isOn={isOn5} switchIsOn={switchIsOn5} />

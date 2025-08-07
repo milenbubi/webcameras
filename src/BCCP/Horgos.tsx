@@ -19,7 +19,8 @@ function Horgos() {
 
       <Centered id="hth" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
         <CameraBlobPlayer
-          url={`https://live.uzivokamere.com/${streamToHUNG === 1 ? "amss_" : ""}horgos2`}
+          // url={`https://live.uzivokamere.com/${streamToHUNG === 1 ? "amss_" : ""}horgos2/index.m3u8`}
+          url={streamToHUNG === 1 ? "https://live.uzivokamere.com/amss_horgos2/index.m3u8" : "https://kamere.mup.gov.rs:4443/Horgos/horgos2.m3u8"}  // backup
           isActive={isOn1}
         />
         <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
@@ -32,7 +33,8 @@ function Horgos() {
 
       <Centered id="hts" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
         <CameraBlobPlayer
-          url={`https://live.uzivokamere.com/${streamToSRB === 1 ? "amss_" : ""}horgos1`}
+          // url={`https://live.uzivokamere.com/${streamToSRB === 1 ? "amss_" : ""}horgos1/index.m3u8`}
+          url={streamToSRB === 1 ? "https://live.uzivokamere.com/amss_horgos1/index.m3u8" : "https://kamere.mup.gov.rs:4443/Horgos/horgos1.m3u8"}  // backup
           isActive={isOn2}
         />
         <LSSwitcher isOn={isOn2} switchIsOn={switchIsOn2} />

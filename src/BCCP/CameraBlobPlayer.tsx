@@ -1,6 +1,6 @@
 import Hls from "hls.js";
 import { Box } from "@mui/material";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Centered from "../Utils/Centered";
 import { isSafari } from "../Utils/navigator";
 import { useDidUpdateEffect } from "../Utils/reactHooks";
@@ -9,17 +9,15 @@ import { useDocumentVisibility } from "../Utils/documentVisibility";
 interface IProps {
   url: string;
   isActive: boolean;
-  m3u8File?: string;
 }
 
 
 
-function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8" }: IProps) {
+function CameraBlobPlayer({ url, isActive }: IProps) {
   const hlsRef = useRef<Hls | null>(null);
   const isVisible = useDocumentVisibility();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isCameraOffline, setIsCameraOffline] = useState(false);
-  const fullUrl = useMemo(() => url + "/" + m3u8File, [url, m3u8File]);
 
 
   const startStream = useCallback(() => {
@@ -30,7 +28,7 @@ function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8" }: IProps) {
 
 
     if (isSafari  /* videoRef.current.canPlayType("application/vnd.apple.mpegurl") */) {
-      videoRef.current.src = fullUrl;
+      videoRef.current.src = url;
       videoRef.current.load();
       videoRef.current.muted = true;
       videoRef.current.play().catch(() => { });
@@ -44,7 +42,7 @@ function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8" }: IProps) {
       });
 
       hlsRef.current.attachMedia(videoRef.current);
-      hlsRef.current.loadSource(fullUrl);
+      hlsRef.current.loadSource(url);
 
       hlsRef.current.on(Hls.Events.MANIFEST_PARSED, () => {
         if (videoRef.current) {
@@ -65,7 +63,7 @@ function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8" }: IProps) {
       stopStream();
       setIsCameraOffline(true);
     }
-  }, [isActive, fullUrl]);
+  }, [isActive, url]);
 
 
   const stopStream = useCallback(() => {
@@ -118,7 +116,7 @@ function CameraBlobPlayer({ url, isActive, m3u8File = "index.m3u8" }: IProps) {
     startStream();
 
     return stopStream;
-  }, [fullUrl, isActive]);
+  }, [url, isActive]);
 
 
   if (!isActive) {
