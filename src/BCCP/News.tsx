@@ -24,8 +24,7 @@ function News() {
         {/* Tagesschau */}
         <Centered id="ecns" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
           <CameraBlobPlayer
-            url="https://tagesschau.akamaized.net/hls/live/2020115/tagesschau/tagesschau_1"
-            m3u8File="master.m3u8"
+            url="https://tagesschau.akamaized.net/hls/live/2020115/tagesschau/tagesschau_1/master.m3u8"
             isActive={isOn6}
           />
           <LSSwitcher isOn={isOn6} switchIsOn={switchisOn6} />
