@@ -6,6 +6,7 @@ import { useIsMobile } from "../Utils/theme";
 import FSButton from "../Components/FSButton";
 import KulataCams from "../Components/KulataCams";
 import CameraBlobPlayer from "./CameraBlobPlayer";
+import CameraIframePlayer from "./CameraIframePlayer";
 import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
 import ChangeCamButton from "../Components/ChangeCamButton";
 
@@ -34,10 +35,9 @@ function Bulgaria() {
       {/* Маказа */}
       <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
         <Centered id="mkrd" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <iframe
-            src={isOn2 ? `https://www.youtube.com/embed/pnr0lhrqRAc?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}` : ""}
-            style={{ border: isOn2 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
-            allow="autoplay; encrypted-media"
+          <CameraIframePlayer
+            isActive={isOn2}
+            url={`https://www.youtube.com/embed/pnr0lhrqRAc?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}`}
           />
           <LSSwitcher isOn={isOn2} switchIsOn={switchIsOn2} />
           <Title value="Маказа - посока Кърджали" />
@@ -46,10 +46,9 @@ function Bulgaria() {
 
 
         <Centered id="mgkp" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <iframe
-            src={isOn3 ? `https://www.youtube.com/embed/YXN19ZEpIkc?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}` : ""}
-            style={{ border: isOn3 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
-            allow="autoplay; encrypted-media"
+          <CameraIframePlayer
+            isActive={isOn3}
+            url={`https://www.youtube.com/embed/YXN19ZEpIkc?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}`}
           />
           <LSSwitcher isOn={isOn3} switchIsOn={switchIsOn3} />
           <Title value="Маказа - посока ГКПП" />

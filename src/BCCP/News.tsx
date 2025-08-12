@@ -3,6 +3,7 @@ import Title from "../Components/Title";
 import Centered from "../Utils/Centered";
 import FSButton from "../Components/FSButton";
 import CameraBlobPlayer from "./CameraBlobPlayer";
+import CameraIframePlayer from "./CameraIframePlayer";
 import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
 
 
@@ -32,13 +33,11 @@ function News() {
           {isOn6 && <FSButton fsElementId="ecns" />}
         </Centered>
 
-
         {/* Deutsche Welle */}
         <Centered id="dwns" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <iframe
-            src={isOn5 ? `https://www.youtube.com/embed/LuKwFajn37U?autoplay=1&mute=0` : ""}
-            style={{ border: isOn5 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
-            allow="autoplay; encrypted-media"
+          <CameraIframePlayer
+            isActive={isOn5}
+            url={"https://www.youtube.com/embed/LuKwFajn37U?autoplay=1&mute=0"}
           />
           <LSSwitcher isOn={isOn5} switchIsOn={switchisOn5} />
           <Title value="Deutsche Welle" />
@@ -50,10 +49,9 @@ function News() {
       <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
         {/* Euronews */}
         <Centered id="euns" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <iframe
-            src={isOn1 ? `https://www.youtube.com/embed/pykpO5kQJ98?autoplay=1&mute=0` : ""}
-            style={{ border: isOn1 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
-            allow="autoplay; encrypted-media"
+          <CameraIframePlayer
+            isActive={isOn1}
+            url={"https://www.youtube.com/embed/pykpO5kQJ98?autoplay=1&mute=0"}
           />
           <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
           <Title value="Euronews" />
@@ -62,10 +60,9 @@ function News() {
 
         {/* Sky News */}
         <Centered id="skns" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <iframe
-            src={isOn2 ? `https://www.youtube.com/embed/YDvsBbKfLPA?autoplay=1&mute=0` : ""}
-            style={{ border: isOn2 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
-            allow="autoplay; encrypted-media"
+          <CameraIframePlayer
+            isActive={isOn2}
+            url={"https://www.youtube.com/embed/YDvsBbKfLPA?autoplay=1&mute=0"}
           />
           <LSSwitcher isOn={isOn2} switchIsOn={switchisOn2} />
           <Title value="Sky News" />
@@ -77,10 +74,9 @@ function News() {
       <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
         {/* Bloomberg Business News */}
         <Centered id="blbn" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <iframe
-            src={isOn3 ? `https://www.youtube.com/embed/iEpJwprxDdk?autoplay=1&mute=0` : ""}
-            style={{ border: isOn3 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
-            allow="autoplay; encrypted-media"
+          <CameraIframePlayer
+            isActive={isOn3}
+            url={"https://www.youtube.com/embed/iEpJwprxDdk?autoplay=1&mute=0"}
           />
           <LSSwitcher isOn={isOn3} switchIsOn={switchisOn3} />
           <Title value="Bloomberg Business News" />
@@ -89,10 +85,9 @@ function News() {
 
         {/* FRANCE 24 */}
         <Centered id="frns" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <iframe
-            src={isOn4 ? `https://www.youtube.com/embed/Ap-UM1O9RBU?autoplay=1&mute=0` : ""}
-            style={{ border: isOn4 ? "none" : "2px solid white", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
-            allow="autoplay; encrypted-media"
+          <CameraIframePlayer
+            isActive={isOn4}
+            url={"https://www.youtube.com/embed/Ap-UM1O9RBU?autoplay=1&mute=0"}
           />
           <LSSwitcher isOn={isOn4} switchIsOn={switchisOn4} />
           <Title value="FRANCE 24" />
