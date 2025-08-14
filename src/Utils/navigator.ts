@@ -17,10 +17,9 @@ export function isMobile(): boolean {
   const tabletRegex = /Tablet|Kindle|Silk|Tab|Xoom|SCH-I800|GT-P1000/i;
 
   // Special detection for iPads with desktop userAgent
-  const isIpad = ua.includes("iPad") || (
-    ua.includes("Macintosh") &&
-    ("ontouchend" in document || navigator.maxTouchPoints > 1)
-  );
+  const isIpad = (ua.includes("iPad") ||
+    (ua.includes("Macintosh") && navigator.maxTouchPoints > 1)) &&
+    !ua.includes("EdgiOS") && !ua.includes("FxiOS");
 
   return classicMobileRegex.test(ua) || tabletRegex.test(ua) || isIpad;
 }
@@ -36,11 +35,11 @@ export function isMobile(): boolean {
 export const isSafari = (() => {
   const ua = navigator.userAgent;
   const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
-  const isIOS = /iPad|iPhone|iPod/.test(ua);
+  const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.maxTouchPoints > 1 && /Macintosh/.test(ua));
   const isMac = /Macintosh/.test(ua);
-  
+
   const isSafariDesktop = isMac && isSafari;
-  const isSafariIOS = isIOS && !ua.includes("CriOS") && !ua.includes("FxiOS");
+  const isSafariIOS = isIOS && !ua.includes("CriOS") && !ua.includes("FxiOS") && !ua.includes("EdgiOS");
 
   return isSafariDesktop || isSafariIOS;
 })();
