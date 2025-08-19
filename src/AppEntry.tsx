@@ -6,6 +6,7 @@ import Horgos from "./BCCP/Horgos";
 import Kelebia from "./BCCP/Kelebia";
 import Bulgaria from "./BCCP/Bulgaria";
 import Bottom from "./Components/Bottom";
+import { useStats } from "./Utils/stats";
 import HiddenH1 from "./Components/HiddenH1";
 import { useAdminScrollbar } from "./Utils/theme";
 import PlaceButtons from "./Components/PlaceButtons";
@@ -18,6 +19,7 @@ function AppEntry() {
   const adminscrollbar = useAdminScrollbar();
   const [bccp, setBccp] = useState(getPlaceFromUrlOrLS);
   const [isStreaming, setIsStreaming] = useState(localStorage.getItem("streaming") !== "off");
+  useStats(bccp);
 
 
   return (
