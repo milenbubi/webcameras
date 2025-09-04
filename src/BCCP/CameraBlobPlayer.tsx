@@ -21,11 +21,9 @@ function CameraBlobPlayer({ url, isActive }: IProps) {
 
 
   const startStream = useCallback(() => {
-
     if (!isActive || !videoRef.current) {
       return;
     }
-
 
     if (isSafari  /* videoRef.current.canPlayType("application/vnd.apple.mpegurl") */) {
       videoRef.current.src = url;
@@ -34,7 +32,6 @@ function CameraBlobPlayer({ url, isActive }: IProps) {
       videoRef.current.play().catch(() => { });
       return;
     }
-
     else if (Hls.isSupported()) {
       hlsRef.current = new Hls({
         maxBufferLength: 30,
@@ -52,7 +49,7 @@ function CameraBlobPlayer({ url, isActive }: IProps) {
       });
 
       hlsRef.current.on(Hls.Events.ERROR, function (event, data) {
-        if (data.fatal) {  // Спираме и не правим повторни опити
+        if (data.fatal) {  // Stop and do not retry
           setIsCameraOffline(true);
           stopStream();
         }
@@ -70,10 +67,10 @@ function CameraBlobPlayer({ url, isActive }: IProps) {
     if (isSafari && videoRef.current) {
       videoRef.current.pause();
       videoRef.current.removeAttribute("src");
-      videoRef.current.load();  // flush-ва буфера
+      videoRef.current.load();  // Flushes the buffer
     }
 
-    if (hlsRef.current) {  // HLS стрийминг 
+    if (hlsRef.current) {  // HLS streaming 
       hlsRef.current.off(Hls.Events.MANIFEST_PARSED);
       hlsRef.current.off(Hls.Events.ERROR);
       hlsRef.current.destroy();
@@ -150,12 +147,11 @@ function CameraBlobPlayer({ url, isActive }: IProps) {
             color: "#ffffff",
             fontSize: { xs: 17, sm: 19 },
             fontWeight: 600,
-            padding: "2rem",
-            backgroundColor: "#000"
-          }}>
-
-          Камерата е временно недостъпна
-        </Centered>
+            padding: 2,
+            backgroundColor: "#000000"
+          }}
+          children={"Камерата е временно недостъпна"}
+        />
       )}
     </>
   );
