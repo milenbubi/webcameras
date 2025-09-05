@@ -1,7 +1,7 @@
 import Title from "../Components/Title";
 import Centered from "../Utils/Centered";
 import FSButton from "../Components/FSButton";
-import CameraBlobPlayer from "./CameraBlobPlayer";
+import BlobPlayer from "../Components/players/BlobPlayer";
 import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
 
 
@@ -15,7 +15,7 @@ function Djala() {
     <Centered gap={6} pt={3} width="100%" flexWrap="wrap">
 
       <Centered id="tth" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-        <CameraBlobPlayer
+        <BlobPlayer
           // url="https://live.uzivokamere.com/djala1" 
           url="https://kamere.mup.gov.rs:4443/Djala/djala1.m3u8"  // backup
           isActive={isOn1}
@@ -26,7 +26,7 @@ function Djala() {
       </Centered>
 
       <Centered id="tts" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-        <CameraBlobPlayer
+        <BlobPlayer
           // url="https://live.uzivokamere.com/djala2" 
           url="https://kamere.mup.gov.rs:4443/Djala/djala2.m3u8"  // backup
           isActive={isOn2}

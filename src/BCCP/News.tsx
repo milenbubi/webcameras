@@ -2,9 +2,9 @@ import { Stack } from "@mui/material";
 import Title from "../Components/Title";
 import Centered from "../Utils/Centered";
 import FSButton from "../Components/FSButton";
-import CameraBlobPlayer from "./CameraBlobPlayer";
-import CameraIframePlayer from "./CameraIframePlayer";
+import BlobPlayer from "../Components/players/BlobPlayer";
 import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
+import IframePlayer from "../Components/players/IframePlayer";
 
 
 
@@ -24,7 +24,7 @@ function News() {
       <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
         {/* Tagesschau */}
         <Centered id="ecns" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <CameraBlobPlayer
+          <BlobPlayer
             url="https://tagesschau.akamaized.net/hls/live/2020115/tagesschau/tagesschau_1/master.m3u8"
             isActive={isOn6}
           />
@@ -35,7 +35,7 @@ function News() {
 
         {/* Deutsche Welle */}
         <Centered id="dwns" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <CameraIframePlayer
+          <IframePlayer
             isActive={isOn5}
             url={"https://www.youtube.com/embed/LuKwFajn37U?autoplay=1&mute=0"}
           />
@@ -49,7 +49,7 @@ function News() {
       <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
         {/* Euronews */}
         <Centered id="euns" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <CameraIframePlayer
+          <IframePlayer
             isActive={isOn1}
             url={"https://www.youtube.com/embed/pykpO5kQJ98?autoplay=1&mute=0"}
           />
@@ -60,7 +60,7 @@ function News() {
 
         {/* Sky News */}
         <Centered id="skns" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <CameraIframePlayer
+          <IframePlayer
             isActive={isOn2}
             url={"https://www.youtube.com/embed/YDvsBbKfLPA?autoplay=1&mute=0"}
           />
@@ -74,7 +74,7 @@ function News() {
       <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
         {/* Bloomberg Business News */}
         <Centered id="blbn" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <CameraIframePlayer
+          <IframePlayer
             isActive={isOn3}
             url={"https://www.youtube.com/embed/iEpJwprxDdk?autoplay=1&mute=0"}
           />
@@ -85,7 +85,7 @@ function News() {
 
         {/* FRANCE 24 */}
         <Centered id="frns" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <CameraIframePlayer
+          <IframePlayer
             isActive={isOn4}
             url={"https://www.youtube.com/embed/Ap-UM1O9RBU?autoplay=1&mute=0"}
           />

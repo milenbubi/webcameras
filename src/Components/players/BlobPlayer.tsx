@@ -1,10 +1,11 @@
 import Hls from "hls.js";
-import { Box } from "@mui/material";
 import { useCallback, useEffect, useRef, useState } from "react";
-import Centered from "../Utils/Centered";
-import { isSafari } from "../Utils/navigator";
-import { useDidUpdateEffect } from "../Utils/reactHooks";
-import { useDocumentVisibility } from "../Utils/documentVisibility";
+import { playersCSS } from "./styles";
+import PlayerWrapper from "./PlayerWrapper";
+import Centered from "../../Utils/Centered";
+import { isSafari } from "../../Utils/navigator";
+import { useDidUpdateEffect } from "../../Utils/reactHooks";
+import { useDocumentVisibility } from "../../Utils/documentVisibility";
 
 interface IProps {
   url: string;
@@ -13,7 +14,7 @@ interface IProps {
 
 
 
-function CameraBlobPlayer({ url, isActive }: IProps) {
+function BlobPlayer({ url, isActive }: IProps) {
   const hlsRef = useRef<Hls | null>(null);
   const isVisible = useDocumentVisibility();
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -116,26 +117,15 @@ function CameraBlobPlayer({ url, isActive }: IProps) {
   }, [url, isActive]);
 
 
-  if (!isActive) {
-    return (
-      <Box
-        sx={{ border: "2px solid #ffffff", width: "100%", maxHeight: "100%", aspectRatio: "16/9" }}
-      />
-    );
-  }
-
-
   return (
-    <>
+    <PlayerWrapper isActive={isActive}>
       <video
         ref={videoRef}
         controls
         controlsList="nofullscreen"
         autoPlay
         style={{
-          width: "100%", maxHeight: "100%",
-          aspectRatio: "16/9",
-          backgroundColor: "#000000",
+          ...playersCSS,
           display: isCameraOffline ? "none" : "initial"
         }}
       />
@@ -143,20 +133,19 @@ function CameraBlobPlayer({ url, isActive }: IProps) {
       {isCameraOffline && (
         <Centered
           sx={{
-            width: "100%", maxHeight: "100%", aspectRatio: "16/9",
+            ...playersCSS,
             color: "#ffffff",
             fontSize: { xs: 17, sm: 19 },
             fontWeight: 600,
-            padding: 2,
-            backgroundColor: "#000000"
+            padding: 2
           }}
           children={"Камерата е временно недостъпна"}
         />
       )}
-    </>
+    </PlayerWrapper>
   );
 }
 
 
 
-export default CameraBlobPlayer;
+export default BlobPlayer;

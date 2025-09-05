@@ -5,10 +5,10 @@ import Centered from "../Utils/Centered";
 import { useIsMobile } from "../Utils/theme";
 import FSButton from "../Components/FSButton";
 import KulataCams from "../Components/KulataCams";
-import CameraBlobPlayer from "./CameraBlobPlayer";
-import CameraIframePlayer from "./CameraIframePlayer";
+import BlobPlayer from "../Components/players/BlobPlayer";
 import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
 import ChangeCamButton from "../Components/ChangeCamButton";
+import IframePlayer from "../Components/players/IframePlayer";
 
 
 
@@ -35,7 +35,7 @@ function Bulgaria() {
       {/* Маказа */}
       <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
         <Centered id="mkrd" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <CameraIframePlayer
+          <IframePlayer
             isActive={isOn2}
             url={`https://www.youtube.com/embed/pnr0lhrqRAc?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}`}
           />
@@ -46,7 +46,7 @@ function Bulgaria() {
 
 
         <Centered id="mgkp" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <CameraIframePlayer
+          <IframePlayer
             isActive={isOn3}
             url={`https://www.youtube.com/embed/YXN19ZEpIkc?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}`}
           />
@@ -60,7 +60,7 @@ function Bulgaria() {
       {/* Калотина */}
       <Centered gap={6} maxHeight="100%" width="100%" flexWrap="wrap">
         <Centered id="kblg" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <CameraBlobPlayer
+          <BlobPlayer
             // url={`https://live.uzivokamere.com/${streamKalotinaToBG === 1 ? "amss_" : ""}gradina2/index.m3u8`}
             url={streamKalotinaToBG === 2 ? "https://live.uzivokamere.com/amss_gradina2/index.m3u8" : "https://kamere.mup.gov.rs:4443/Gradina/gradina2.m3u8"}  // backup
             isActive={isOn4}
@@ -75,7 +75,7 @@ function Bulgaria() {
 
 
         <Centered id="ksrb" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-          <CameraBlobPlayer
+          <BlobPlayer
             // url={`https://live.uzivokamere.com/${streamKalotinaToSRB === 1 ? "amss_" : ""}gradina1/index.m3u8`}
             url={streamKalotinaToSRB === 2 ? "https://live.uzivokamere.com/amss_gradina1/index.m3u8" : "https://kamere.mup.gov.rs:4443/Gradina/gradina1.m3u8"}  // backup
             isActive={isOn5}

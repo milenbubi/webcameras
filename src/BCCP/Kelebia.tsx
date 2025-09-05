@@ -1,7 +1,7 @@
 import Title from "../Components/Title";
 import Centered from "../Utils/Centered";
 import FSButton from "../Components/FSButton";
-import CameraBlobPlayer from "./CameraBlobPlayer";
+import BlobPlayer from "../Components/players/BlobPlayer";
 import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
 
 
@@ -15,7 +15,7 @@ function Kelebia() {
     <Centered gap={6} pt={3} width="100%" flexWrap="wrap">
 
       <Centered id="khun" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-        <CameraBlobPlayer
+        <BlobPlayer
           // url="https://live.uzivokamere.com/kelebija2/index.m3u8"
           url="https://kamere.mup.gov.rs:4443/Kelebija/kelebija2.m3u8"  //backup
           isActive={isOn1}
@@ -26,7 +26,7 @@ function Kelebia() {
       </Centered>
 
       <Centered id="ksrb" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-        <CameraBlobPlayer
+        <BlobPlayer
           // url="https://live.uzivokamere.com/kelebija1/index.m3u8"
           url="https://kamere.mup.gov.rs:4443/Kelebija/kelebija1.m3u8"  //backup        
           isActive={isOn2}

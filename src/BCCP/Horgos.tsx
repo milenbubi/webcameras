@@ -2,7 +2,7 @@ import { useState } from "react";
 import Title from "../Components/Title";
 import Centered from "../Utils/Centered";
 import FSButton from "../Components/FSButton";
-import CameraBlobPlayer from "./CameraBlobPlayer";
+import BlobPlayer from "../Components/players/BlobPlayer";
 import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
 import ChangeCamButton from "../Components/ChangeCamButton";
 
@@ -18,7 +18,7 @@ function Horgos() {
     <Centered gap={6} pt={3} width="100%" flexWrap="wrap">
 
       <Centered id="hth" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-        <CameraBlobPlayer
+        <BlobPlayer
           // url={`https://live.uzivokamere.com/${streamToHUNG === 1 ? "amss_" : ""}horgos2/index.m3u8`}
           url={streamToHUNG === 1 ? "https://live.uzivokamere.com/amss_horgos2/index.m3u8" : "https://kamere.mup.gov.rs:4443/Horgos/horgos2.m3u8"}  // backup
           isActive={isOn1}
@@ -32,7 +32,7 @@ function Horgos() {
       </Centered>
 
       <Centered id="hts" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-        <CameraBlobPlayer
+        <BlobPlayer
           // url={`https://live.uzivokamere.com/${streamToSRB === 1 ? "amss_" : ""}horgos1/index.m3u8`}
           url={streamToSRB === 1 ? "https://live.uzivokamere.com/amss_horgos1/index.m3u8" : "https://kamere.mup.gov.rs:4443/Horgos/horgos1.m3u8"}  // backup
           isActive={isOn2}
