@@ -34,13 +34,13 @@ function AppEntry() {
 
       {
         isStreaming ? (
-          <>
+          <Stack gap={6} pt={3} width="100%" alignItems="center">
             {NEWS_ACTIVE && bccp === "News" && <News />}
             {bccp === "Bulgaria" && <Bulgaria />}
             {bccp === "Horgos" && <Horgos />}
             {bccp === "Djala" && <Djala />}
             {bccp === "Kelebia" && <Kelebia />}
-          </>
+          </Stack>
         )
           :
           <NoStreamTitle />

@@ -2,8 +2,7 @@ import { CardMedia } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import Title from "./Title";
 import FSButton from "./FSButton";
-import Centered from "../Utils/Centered";
-import { playersCSS } from "./players/styles";
+import { playerCSS } from "./players/styles";
 import ChangeCamButton from "./ChangeCamButton";
 import PlayerWrapper from "./players/PlayerWrapper";
 import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
@@ -40,7 +39,7 @@ function KulataCams() {
   const { isBooleanLSOn: isOn1, switchBooleanLS: switchIsOn1 } = useBooleanLS("cklt");
 
 
-  useEffect(() => {  // Kulata camera
+  useEffect(() => {  // Frame refresh
     const refreshCam = () => {
       if (!isOn1) {
         return;
@@ -59,18 +58,20 @@ function KulataCams() {
 
 
   return (
-    <Centered id="cklt" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-
-      <PlayerWrapper isActive={isOn1}>
-        <CardMedia ref={Kulata} sx={{ ...playersCSS, objectFit: "contain" }} component="img" />
-        <ChangeCamButton streamIndex={streamKulata} onClick={setStreamKulata} indexCount={3} />
-        <FSButton fsElementId="cklt" />
-      </PlayerWrapper>
-
-      <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
-      <Title value={camLabel} />
-
-    </Centered>
+    <PlayerWrapper id="cklt" isActive={isOn1}
+      controls={
+        <>
+          <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
+          <Title value={camLabel} />
+          {isOn1 && (<>
+            <ChangeCamButton streamIndex={streamKulata} onClick={setStreamKulata} indexCount={3} />
+            <FSButton fsElementId="cklt" />
+          </>)}
+        </>
+      }
+    >
+      <CardMedia ref={Kulata} sx={{ ...playerCSS, objectFit: "contain" }} component="img" />
+    </PlayerWrapper>
   );
 }
 

@@ -1,6 +1,6 @@
 import Hls from "hls.js";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { playersCSS } from "./styles";
+import { PropsWithChildren, useCallback, useEffect, useRef, useState } from "react";
+import { playerCSS } from "./styles";
 import PlayerWrapper from "./PlayerWrapper";
 import Centered from "../../Utils/Centered";
 import { isSafari } from "../../Utils/navigator";
@@ -8,13 +8,14 @@ import { useDidUpdateEffect } from "../../Utils/reactHooks";
 import { useDocumentVisibility } from "../../Utils/documentVisibility";
 
 interface IProps {
+  id: string;
   url: string;
   isActive: boolean;
 }
 
 
 
-function BlobPlayer({ url, isActive }: IProps) {
+function BlobPlayer({ id, url, isActive ,children}: PropsWithChildren<IProps>) {
   const hlsRef = useRef<Hls | null>(null);
   const isVisible = useDocumentVisibility();
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -118,14 +119,14 @@ function BlobPlayer({ url, isActive }: IProps) {
 
 
   return (
-    <PlayerWrapper isActive={isActive}>
+    <PlayerWrapper id={id} isActive={isActive}controls={children}>
       <video
         ref={videoRef}
         controls
         controlsList="nofullscreen"
         autoPlay
         style={{
-          ...playersCSS,
+          ...playerCSS,
           display: isCameraOffline ? "none" : "initial"
         }}
       />
@@ -133,7 +134,7 @@ function BlobPlayer({ url, isActive }: IProps) {
       {isCameraOffline && (
         <Centered
           sx={{
-            ...playersCSS,
+            ...playerCSS,
             color: "#ffffff",
             fontSize: { xs: 17, sm: 19 },
             fontWeight: 600,

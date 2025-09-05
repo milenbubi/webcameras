@@ -1,17 +1,28 @@
 import { Box } from "@mui/material";
-import { PropsWithChildren } from "react";
-import { inactivePlayerCSS } from "./styles";
+import { PropsWithChildren, ReactNode } from "react";
+import Centered from "../../Utils/Centered";
+import { inactivePlayerCSS, playerWrapperCSS } from "./styles";
 
 interface IProps {
+  id: string;
   isActive: boolean;
+  controls: ReactNode;
 }
 
 
-function PlayerWrapper({ isActive, children }: PropsWithChildren<IProps>) {
+
+function PlayerWrapper({ id, isActive, controls, children }: PropsWithChildren<IProps>) {
   return (
-    isActive ? children : <Box sx={inactivePlayerCSS} />
+    <Centered id={id} sx={playerWrapperCSS}>
+
+      {isActive ? children : <Box sx={inactivePlayerCSS} />}
+
+      {controls}
+
+    </Centered>
   );
 }
+
 
 
 export default PlayerWrapper;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Title from "../Components/Title";
-import Centered from "../Utils/Centered";
 import FSButton from "../Components/FSButton";
+import RowWrapper from "../Components/RowWrapper";
 import BlobPlayer from "../Components/players/BlobPlayer";
 import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
 import ChangeCamButton from "../Components/ChangeCamButton";
@@ -15,37 +15,35 @@ function Horgos() {
   const { isBooleanLSOn: isOn2, switchBooleanLS: switchIsOn2 } = useBooleanLS("hts");
 
   return (  // Хоргош
-    <Centered gap={6} pt={3} width="100%" flexWrap="wrap">
-
-      <Centered id="hth" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-        <BlobPlayer
-          // url={`https://live.uzivokamere.com/${streamToHUNG === 1 ? "amss_" : ""}horgos2/index.m3u8`}
-          url={streamToHUNG === 1 ? "https://live.uzivokamere.com/amss_horgos2/index.m3u8" : "https://kamere.mup.gov.rs:4443/Horgos/horgos2.m3u8"}  // backup
-          isActive={isOn1}
-        />
+    <RowWrapper>
+      <BlobPlayer
+        id="hth"
+        // url={`https://live.uzivokamere.com/${streamToHUNG === 1 ? "amss_" : ""}horgos2/index.m3u8`}
+        url={streamToHUNG === 1 ? "https://live.uzivokamere.com/amss_horgos2/index.m3u8" : "https://kamere.mup.gov.rs:4443/Horgos/horgos2.m3u8"}  // backup
+        isActive={isOn1}
+      >
         <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
         <Title value="Хоргош - към Унгария" />
         {isOn1 && (<>
           <ChangeCamButton streamIndex={streamToHUNG} sx={{ top: 20 }} onClick={setStreamToHUNG} />
           <FSButton fsElementId="hth" />
         </>)}
-      </Centered>
+      </BlobPlayer>
 
-      <Centered id="hts" sx={{ width: 1, maxHeight: 1, position: "relative", maxWidth: 700 }}>
-        <BlobPlayer
-          // url={`https://live.uzivokamere.com/${streamToSRB === 1 ? "amss_" : ""}horgos1/index.m3u8`}
-          url={streamToSRB === 1 ? "https://live.uzivokamere.com/amss_horgos1/index.m3u8" : "https://kamere.mup.gov.rs:4443/Horgos/horgos1.m3u8"}  // backup
-          isActive={isOn2}
-        />
+      <BlobPlayer
+        id="hts"
+        // url={`https://live.uzivokamere.com/${streamToSRB === 1 ? "amss_" : ""}horgos1/index.m3u8`}
+        url={streamToSRB === 1 ? "https://live.uzivokamere.com/amss_horgos1/index.m3u8" : "https://kamere.mup.gov.rs:4443/Horgos/horgos1.m3u8"}  // backup
+        isActive={isOn2}
+      >
         <LSSwitcher isOn={isOn2} switchIsOn={switchIsOn2} />
         <Title value="Хоргош - към Сърбия" />
         {isOn2 && (<>
           <ChangeCamButton streamIndex={streamToSRB} sx={{ top: 20 }} onClick={setStreamToSRB} />
           <FSButton fsElementId="hts" />
         </>)}
-      </Centered>
-
-    </Centered>
+      </BlobPlayer>
+    </RowWrapper>
   );
 }
 
