@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
-import { playerCSS } from "./styles";
 import PlayerWrapper from "./PlayerWrapper";
+import { playerCSS } from "../../Styles/CSSStyles";
 import { useDocumentVisibility } from "../../Utils/documentVisibility";
 
 interface IProps {

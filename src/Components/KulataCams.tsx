@@ -2,7 +2,7 @@ import { CardMedia } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import Title from "./Title";
 import FSButton from "./FSButton";
-import { playerCSS } from "./players/styles";
+import { playerCSS } from "../Styles/CSSStyles";
 import ChangeCamButton from "./ChangeCamButton";
 import PlayerWrapper from "./players/PlayerWrapper";
 import LSSwitcher, { useBooleanLS } from "../Utils/hooks";

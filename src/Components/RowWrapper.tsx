@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 import Centered from "../Utils/Centered";
-import { rowWrapperCSS } from "./players/styles";
+import { rowWrapperCSS } from "../Styles/CSSStyles";
 
 
 

@@ -1,9 +1,9 @@
 import Hls from "hls.js";
 import { PropsWithChildren, useCallback, useEffect, useRef, useState } from "react";
-import { playerCSS } from "./styles";
 import PlayerWrapper from "./PlayerWrapper";
 import Centered from "../../Utils/Centered";
 import { isSafari } from "../../Utils/navigator";
+import { playerCSS } from "../../Styles/CSSStyles";
 import { useDidUpdateEffect } from "../../Utils/reactHooks";
 import { useDocumentVisibility } from "../../Utils/documentVisibility";
 
@@ -15,7 +15,7 @@ interface IProps {
 
 
 
-function BlobPlayer({ id, url, isActive ,children}: PropsWithChildren<IProps>) {
+function BlobPlayer({ id, url, isActive, children }: PropsWithChildren<IProps>) {
   const hlsRef = useRef<Hls | null>(null);
   const isVisible = useDocumentVisibility();
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -119,7 +119,7 @@ function BlobPlayer({ id, url, isActive ,children}: PropsWithChildren<IProps>) {
 
 
   return (
-    <PlayerWrapper id={id} isActive={isActive}controls={children}>
+    <PlayerWrapper id={id} isActive={isActive} controls={children}>
       <video
         ref={videoRef}
         controls
