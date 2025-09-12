@@ -55,7 +55,7 @@ function KulataCams() {
   return (
     <ImagePlayer id="cklt" isActive={isOn1} url={camUrl}>
       <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
-      <Title value={camLabel} />
+      <Title value={camLabel} updateLabel="на 30s" />
       {isOn1 && (<>
         <ChangeCamButton streamIndex={streamKulata} onClick={setStreamKulata} indexCount={3} />
         <FSButton fsElementId="cklt" />

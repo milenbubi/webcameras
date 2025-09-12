@@ -64,7 +64,7 @@ function Turkiye() {
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${streamKA}.jpg?${date1}`}
         >
           <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
-          <Title value={"Капитан Андреево"} />
+          <Title value={"Капитан Андреево"} updateLabel="през 10 минути" />
           {isOn1 && (<>
             <ChangeCamButton streamIndex={streamKA} onClick={setStreamKA} indexCount={4} />
             <FSButton fsElementId="kpkl" sx={{ bottom: 50 }} />
@@ -77,7 +77,7 @@ function Turkiye() {
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getLesovoSource(streamLesovo)}.jpg?${date2}`}
         >
           <LSSwitcher isOn={isOn2} switchIsOn={switchIsOn2} />
-          <Title value={"Лесово"} />
+          <Title value={"Лесово"} updateLabel="през 10 минути" />
           {isOn2 && (<>
             <ChangeCamButton streamIndex={streamLesovo} onClick={setStreamLesovo} indexCount={3} />
             <FSButton fsElementId="lesv" sx={{ bottom: 50 }} />
@@ -93,7 +93,7 @@ function Turkiye() {
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getMTSource(streamМТ)}.jpg?${date3}`}
         >
           <LSSwitcher isOn={isOn3} switchIsOn={switchIsOn3} />
-          <Title value={"Малко Търново"} />
+          <Title value={"Малко Търново"} updateLabel="през 10 минути" />
           {isOn3 && (<>
             <ChangeCamButton streamIndex={streamМТ} onClick={setStreamMT} indexCount={2} />
             <FSButton fsElementId="mtnv" sx={{ bottom: 50 }} />
@@ -106,7 +106,7 @@ function Turkiye() {
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getCPSource(streamCP)}.jpg?${date4}`}
         >
           <LSSwitcher isOn={isOn4} switchIsOn={switchIsOn4} />
-          <Title value={"Черекьой - Пазаркуле"} />
+          <Title value={"Черекьой - Пазаркуле"} updateLabel="през 10 минути" />
           {isOn4 && (<>
             <ChangeCamButton streamIndex={streamCP} onClick={setStreamCP} indexCount={2} />
             <FSButton fsElementId="chpk" sx={{ bottom: 50 }} />
