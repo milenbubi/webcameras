@@ -4,6 +4,7 @@ import News from "./BCCP/News";
 import Djala from "./BCCP/Djala";
 import Horgos from "./BCCP/Horgos";
 import Kelebia from "./BCCP/Kelebia";
+import Turkiye from "./BCCP/Turkiye";
 import Bulgaria from "./BCCP/Bulgaria";
 import Bottom from "./Components/Bottom";
 import { useStats } from "./Utils/stats";
@@ -40,6 +41,7 @@ function AppEntry() {
             {bccp === "Horgos" && <Horgos />}
             {bccp === "Djala" && <Djala />}
             {bccp === "Kelebia" && <Kelebia />}
+            {bccp === "Turkiye" && <Turkiye />}
           </Stack>
         )
           :

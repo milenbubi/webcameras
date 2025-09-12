@@ -1,10 +1,8 @@
-import { CardMedia } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Title from "./Title";
 import FSButton from "./FSButton";
-import { playerCSS } from "../Styles/CSSStyles";
+import ImagePlayer from "./players/ImagePlayer";
 import ChangeCamButton from "./ChangeCamButton";
-import PlayerWrapper from "./players/PlayerWrapper";
 import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
 
 const getSource = (streamKulata: number) => {
@@ -15,7 +13,6 @@ const getSource = (streamKulata: number) => {
     default: return "01";
   };
 };
-
 
 const getCamLabel = (streamKulata: number) => {
   let distance: string;
@@ -33,21 +30,19 @@ const getCamLabel = (streamKulata: number) => {
 
 
 function KulataCams() {
-  const Kulata = useRef<HTMLImageElement>(null);
   const [camLabel, setCamLabel] = useState("");
+  const [camUrl, setCamUrl] = useState("");
   const [streamKulata, setStreamKulata] = useState(2);
   const { isBooleanLSOn: isOn1, switchBooleanLS: switchIsOn1 } = useBooleanLS("cklt");
 
 
   useEffect(() => {  // Frame refresh
     const refreshCam = () => {
-      if (!isOn1) {
-        return;
+      if (isOn1) {
+        const src = `https://cdn.uab.org/images/cctv/images/cctv/cctv_${getSource(streamKulata)}/cctv.jpg?${Date.now()}`;
+        setCamUrl(src);
+        setCamLabel(getCamLabel(streamKulata));
       }
-
-      const src = `https://cdn.uab.org/images/cctv/images/cctv/cctv_${getSource(streamKulata)}/cctv.jpg?${Date.now()}`;
-      Kulata.current?.setAttribute("src", src);
-      setCamLabel(getCamLabel(streamKulata));
     };
 
     refreshCam();
@@ -58,20 +53,14 @@ function KulataCams() {
 
 
   return (
-    <PlayerWrapper id="cklt" isActive={isOn1}
-      controls={
-        <>
-          <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
-          <Title value={camLabel} />
-          {isOn1 && (<>
-            <ChangeCamButton streamIndex={streamKulata} onClick={setStreamKulata} indexCount={3} />
-            <FSButton fsElementId="cklt" />
-          </>)}
-        </>
-      }
-    >
-      <CardMedia ref={Kulata} sx={{ ...playerCSS, objectFit: "contain" }} component="img" />
-    </PlayerWrapper>
+    <ImagePlayer id="cklt" isActive={isOn1} url={camUrl}>
+      <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
+      <Title value={camLabel} />
+      {isOn1 && (<>
+        <ChangeCamButton streamIndex={streamKulata} onClick={setStreamKulata} indexCount={3} />
+        <FSButton fsElementId="cklt" />
+      </>)}
+    </ImagePlayer>
   );
 }
 

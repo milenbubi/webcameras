@@ -23,7 +23,6 @@ function Bulgaria() {
 
   return (  // България
     <>
-
       {/* Кулата */}
       <RowWrapper>
         <KulataCams />
@@ -84,7 +83,6 @@ function Bulgaria() {
           </>)}
         </BlobPlayer>
       </RowWrapper>
-
     </>
   );
 }

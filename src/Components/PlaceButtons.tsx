@@ -8,7 +8,8 @@ const Buttons: IPlaceButton[] = [
   { place: "Bulgaria", label: "България" },
   { place: "Horgos", label: "Хоргош" },
   { place: "Djala", label: "Ђала" },
-  { place: "Kelebia", label: "Келебия" }
+  { place: "Kelebia", label: "Келебия" },
+  { place: "Turkiye", label: "Турция" }
 ];
 
 interface IProps {

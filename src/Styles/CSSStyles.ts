@@ -30,6 +30,7 @@ export const rowWrapperCSS: CSSProperties = {
 
 export const playerWrapperCSS: CSSProperties = {
   ...commonCSS,
+  ...commonAspectRatioCSS,
   position: "relative",
   maxWidth: 700
 };

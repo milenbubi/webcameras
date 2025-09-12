@@ -1,4 +1,4 @@
-export type Place = "News" | "Bulgaria" | "Horgos" | "Djala" | "Kelebia";
+export type Place = "News" | "Bulgaria" | "Horgos" | "Djala" | "Kelebia" | "Turkiye";
 export const NEWS_ACTIVE = false;
 
 
@@ -26,7 +26,8 @@ export function getPlaceFromUrlOrLS(): Place {
     bulgaria: "Bulgaria",
     horgos: "Horgos",
     djala: "Djala",
-    kelebia: "Kelebia"
+    kelebia: "Kelebia",
+    turkiye: "Turkiye"
   };
 
   const defaultPlace: Place = "Bulgaria";
