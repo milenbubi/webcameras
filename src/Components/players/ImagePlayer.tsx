@@ -23,7 +23,7 @@ function ImagePlayer({ id, url, isActive, stretchToFit, children }: PropsWithChi
     <PlayerWrapper id={id} isActive={isActive} controls={children}>
       {isVisible && (
         <CardMedia
-          src={url}
+          src={url || EMPTY_BASE64_IMAGE}
           sx={{ ...playerCSS, objectFit: stretchToFit ? "cover" : "contain" }} component="img"
           onError={e => e.currentTarget.src = EMPTY_BASE64_IMAGE}
         />

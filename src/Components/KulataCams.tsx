@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Title from "./Title";
 import FSButton from "./FSButton";
 import ImagePlayer from "./players/ImagePlayer";
@@ -15,24 +15,24 @@ const getSource = (streamKulata: number) => {
 };
 
 const getCamLabel = (streamKulata: number) => {
-  let distance: string;
+  let label: string;
 
   switch (streamKulata) {
-    case 1: distance = "700"; break;
-    case 2: distance = "800"; break;
-    case 3: distance = "OMV, 2500"; break;
-    default: distance = "... ";
+    case 1: label = "700 м преди ГКПП"; break;
+    case 2: label = "800 м преди ГКПП"; break;
+    case 3: label = "OMV"; break;
+    default: label = "... ";
   };
 
-  return `Кулата - ${distance}м преди Гърция`;
+  return `Кулата - ${label}`;
 };
 
 
 
 function KulataCams() {
-  const [camLabel, setCamLabel] = useState("");
   const [camUrl, setCamUrl] = useState("");
   const [streamKulata, setStreamKulata] = useState(2);
+  const camLabel = useMemo(() => getCamLabel(streamKulata), [streamKulata]);
   const { isBooleanLSOn: isOn1, switchBooleanLS: switchIsOn1 } = useBooleanLS("cklt");
 
 
@@ -41,7 +41,6 @@ function KulataCams() {
       if (isOn1) {
         const src = `https://cdn.uab.org/images/cctv/images/cctv/cctv_${getSource(streamKulata)}/cctv.jpg?${Date.now()}`;
         setCamUrl(src);
-        setCamLabel(getCamLabel(streamKulata));
       }
     };
 
@@ -55,7 +54,7 @@ function KulataCams() {
   return (
     <ImagePlayer id="cklt" isActive={isOn1} url={camUrl}>
       <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
-      <Title value={camLabel} updateLabel="на 30s" />
+      <Title value={camLabel} updateLabel="през 30s" />
       {isOn1 && (<>
         <ChangeCamButton streamIndex={streamKulata} onClick={setStreamKulata} indexCount={3} />
         <FSButton fsElementId="cklt" />
