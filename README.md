@@ -1,6 +1,6 @@
 # WebCameras
 
-This project showcases online BCCP cameras across Eastern Europe.  
+This project showcases online BCCP web cameras across Eastern Europe.  
 
 - **Frontend:** Built with React and MUI5, using React components and Material UI for styling  
 - **Backend:** PHP scripts handle visit tracking and statistics  
