@@ -1,6 +1,9 @@
 # WebCameras
 
-This project showcases online BCCP web cameras across Eastern Europe.  
+This project showcases live web cameras from border checkpoints across Bulgaria and Southeast Europe.  
+It allows users to monitor real-time traffic, queues, and border conditions at key crossing points.  
+
+## Technologies
 
 - **Frontend:** Built with React and MUI5, using React components and Material UI for styling  
 - **Backend:** PHP scripts handle visit tracking and statistics  
