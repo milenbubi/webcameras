@@ -12,17 +12,17 @@ Frontend uses React components and Material UI for styling. Backend PHP scripts 
 
 ## File Structure
 
-- `/src` – React components and logic
-- `/public` – static files
-- `/README.md` – this file
+- **`/src`** – React components and logic
+- **`/public`** – static files
+- **`/README.md`** – this file
 
 ## Getting Started
 
 - Clone the repository:  
-  -- `git clone <https://github.com/milenbubi/webcameras.git>`
+  -- **`git clone https://github.com/milenbubi/webcameras.git`**
 
 - Install dependencies:
-  -- `yarn install`
+  -- **`yarn install`**
 
 - Start the local development server:  
-  -- `yarn run dev`
+  -- **`yarn run dev`**
