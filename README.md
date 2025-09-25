@@ -21,7 +21,7 @@ Frontend uses React components and Material UI for styling. Backend PHP scripts 
 - Clone the repository:  
   -- **`git clone https://github.com/milenbubi/webcameras.git`**
 
-- Install dependencies:
+- Install dependencies:  
   -- **`yarn install`**
 
 - Start the local development server:  
