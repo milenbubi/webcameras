@@ -15,11 +15,15 @@ This project showcases online BCCP cameras across Eastern Europe.
 
 ## Getting Started
 
-- Clone the repository:  
-  -- **`git clone https://github.com/milenbubi/webcameras.git`**
+```bash
+# Clone the repository
+git clone https://github.com/milenbubi/webcameras.git
 
-- Install dependencies:  
-  -- **`yarn install`**
+# Go into the project directory
+cd webcameras
 
-- Start the local development server:  
-  -- **`yarn run dev`**
+# Install dependencies
+yarn install
+
+# Start the local development server
+yarn run dev
