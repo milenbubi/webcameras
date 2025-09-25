@@ -1,7 +1,10 @@
 # WebCameras
 
-This project displays online cameras, built with **React** and **MUI5**, with PHP scripts for statistics and a MySQL database.  
-Frontend uses React components and Material UI for styling. Backend PHP scripts handle visit tracking and statistics. Database is MySQL, hosted on Hostinger.
+This project shows online BCCP cameras in Eastern Europe.  
+It is built with **React** and **MUI5**, with PHP scripts for statistics and a MySQL database.  
+Frontend uses React components and Material UI for styling.  
+Backend PHP scripts handle visit tracking and statistics.  
+Database is MySQL, hosted on Hostinger.  
 
 ## Technologies
 
