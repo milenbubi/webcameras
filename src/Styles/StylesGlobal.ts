@@ -8,7 +8,7 @@ const globalStyles = {
   body: {
     height: "100%",
     width: "100%",
-    background: "#008080"
+    background: "#6e7984"
   },
   "#Root": {
     height: "100%",
