@@ -38,7 +38,7 @@ function Author() {
 
       <Typography
         sx={{
-          color: "lightblue",
+          color: "#cbe0f4",
           fontWeight: 800,
           fontSize: 15,
           fontStyle: "italic"

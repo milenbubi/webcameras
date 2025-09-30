@@ -29,15 +29,16 @@ function PlaceButtons({ bccp, onChangeBccp }: IProps) {
   return (
     <Stack
       sx={{
-        flexDirection: "row", flexWrap: "wrap", justifyContent: "center", gap: 3,
+        flexDirection: "row", flexWrap: "wrap", justifyContent: "center",
+        gap: { xs: 2, sm: 3 },
         pt: { xs: 0, md: 2 },
         "& button": {
           pb: "4px",
-          width: { xs: 140, sm: 150, md: 160 },
+          width: { xs: 110, md: 160 },
           color: "#ffffff",
           fontWeight: 800,
           fontFamily: "Arial",
-          fontSize: { xs: 14, md: 20 },
+          fontSize: { xs: 12, md: 18 },
           letterSpacing: "3px"
         }
       }}
@@ -67,10 +68,13 @@ function PlaceButtons({ bccp, onChangeBccp }: IProps) {
           variant="contained"
           onClick={() => handleChangeBCCP(place)}
           sx={{
-            opacity: place === bccp ? 1 : 0.6,
-            backgroundColor: colors.blue[900],
+            boxShadow: "none",
+            opacity: place === bccp ? 1 : 0.5,
+            transition: "background 0.2s",
+            background: "#343c44",
             "&:hover": {
-              backgroundColor: colors.blue[800]
+              boxShadow: "none",
+              background: place === bccp ? "#343c44" : "#000000"
             }
           }}
         />
