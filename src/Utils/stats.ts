@@ -5,7 +5,7 @@ import { useEffect } from "react";
 export function useStats(place: string) {
   useEffect(() => {
     if (!window.location.port) {  // Запис на ново посещение
-      fetch(`/php/visit.php?page=${place}`, { method: "GET" })
+      fetch(`/php/visit.php?place=${place}`, { method: "GET" })
         .then(res => res.json())
         // .then(data => console.log("Visit logged:", data))
         .catch(err => { /* console.error(err); */ });
