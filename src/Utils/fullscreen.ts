@@ -1,4 +1,8 @@
-function goFullScreen(elementId: string) {
+/**
+ ** Enter/exit fullscreen mode.
+ * @param htmlElementId  HTML element id.
+ */
+function goFullScreen(htmlElementId: string) {
   if (!document.fullscreenEnabled) {
     return;
   }
@@ -8,7 +12,7 @@ function goFullScreen(elementId: string) {
       .catch(() => { });
   }
   else {  // Enter fullscreen mode
-    const fsElement = document.getElementById(elementId);
+    const fsElement = document.getElementById(htmlElementId);
 
     fsElement?.requestFullscreen()
       .catch(() => { });
