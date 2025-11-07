@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Stack } from "@mui/material";
+import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
 import News from "./BCCP/News";
 import Djala from "./BCCP/Djala";
 import Horgos from "./BCCP/Horgos";
@@ -19,7 +20,7 @@ import { getPlaceFromUrlOrLS, NEWS_ACTIVE } from "./Utils/places";
 function AppEntry() {
   const adminscrollbar = useAdminScrollbar();
   const [bccp, setBccp] = useState(getPlaceFromUrlOrLS);
-  const [isStreaming, setIsStreaming] = useState(localStorage.getItem("streaming") !== "off");
+  const [isStreaming, setIsStreaming] = useState(safeLocalStorage.get("streaming") !== "off");
   useStats(bccp);
 
 

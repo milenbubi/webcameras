@@ -1,3 +1,5 @@
+import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
+
 export type Place = "News" | "Bulgaria" | "Horgos" | "Djala" | "Kelebia" | "Turkiye";
 export const NEWS_ACTIVE = false;
 
@@ -13,10 +15,10 @@ export function getPlaceFromUrlOrLS(): Place {
   let rawPlace = params.get("place");
 
   if (rawPlace) {
-    localStorage.setItem("place", rawPlace);
+    safeLocalStorage.set("place", rawPlace);
   }
   else {
-    rawPlace = localStorage.getItem("place") || "";
+    rawPlace = safeLocalStorage.get("place") || "";
   }
 
   const place = rawPlace.trim().toLowerCase();

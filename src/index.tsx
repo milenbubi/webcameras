@@ -1,7 +1,7 @@
+import "@ffilip/mui-react-utils/styles.css"
 import { Fragment, useEffect } from "react";
 import * as ReactDOM from "react-dom/client";
 import { CssBaseline, GlobalStyles } from "@mui/material";
-import "./Styles/Scrollbar.scss";
 import AppEntry from "./AppEntry";
 import globalStyles from "./Styles/StylesGlobal";
 

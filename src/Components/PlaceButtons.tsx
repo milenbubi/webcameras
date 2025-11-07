@@ -1,4 +1,5 @@
 import { Button, Stack, colors } from "@mui/material";
+import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
 import Centered from "../Utils/Centered";
 import { IPlaceButton, NEWS_ACTIVE, Place } from "../Utils/places";
 
@@ -22,7 +23,7 @@ interface IProps {
 function PlaceButtons({ bccp, onChangeBccp }: IProps) {
   const handleChangeBCCP = (target: Place) => {
     onChangeBccp(target);
-    localStorage.setItem("place", target);
+    safeLocalStorage.set("place", target);
   };
 
 

@@ -1,5 +1,6 @@
 import { Box } from "@mui/material";
 import { useCallback, useState } from "react";
+import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
 import StreamModeSwitch from "../Components/StreamModeSwitch";
 
 interface IProps {
@@ -11,7 +12,7 @@ interface IProps {
 
 export function useBooleanLS(key: string) {
   const [isBooleanLSOn, setIsBooleanLSOn] = useState(() => {
-    const target = localStorage.getItem(key);
+    const target = safeLocalStorage.get(key);
 
     switch (target) {
       case "false": return false;
@@ -21,11 +22,11 @@ export function useBooleanLS(key: string) {
 
 
   const switchBooleanLS = useCallback(() => {
-    const target = localStorage.getItem(key);
+    const target = safeLocalStorage.get(key);
     const newValue = target === "false" ? "true" : "false";
 
     setIsBooleanLSOn(newValue !== "false");
-    localStorage.setItem(key, newValue);
+    safeLocalStorage.set(key, newValue);
   }, []);
 
 
