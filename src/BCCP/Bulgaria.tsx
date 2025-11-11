@@ -1,6 +1,6 @@
 import { useState } from "react";
+import { useIsMUIMobile } from "@ffilip/mui-react-utils/mui";
 import Title from "../Components/Title";
-import { useIsMobile } from "../Utils/theme";
 import FSButton from "../Components/FSButton";
 import KulataCams from "../Components/KulataCams";
 import RowWrapper from "../Components/RowWrapper";
@@ -12,7 +12,7 @@ import IframePlayer from "../Components/players/IframePlayer";
 
 
 function Bulgaria() {
-  const isMobile = useIsMobile();
+  const isMobile = useIsMUIMobile();
   const [streamKalotinaToBG, setStreamKalotinaToBG] = useState(1);
   const [streamKalotinaToSRB, setStreamKalotinaToSRB] = useState(1);
   const { isBooleanLSOn: isOn2, switchBooleanLS: switchIsOn2 } = useBooleanLS("mkrd");

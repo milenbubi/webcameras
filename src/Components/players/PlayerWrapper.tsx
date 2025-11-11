@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { PropsWithChildren, ReactNode } from "react";
-import Centered from "../../Utils/Centered";
+import { Centered } from "@ffilip/mui-react-utils/components";
 import { inactivePlayerCSS, playerWrapperCSS } from "../../Styles/CSSStyles";
 
 interface IProps {

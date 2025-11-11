@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { Button, Typography } from "@mui/material";
-import { isMobile } from "../Utils/navigator";
+import { isMobile } from "@ffilip/chan180-utils/env";
 
 
 

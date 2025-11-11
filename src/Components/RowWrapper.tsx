@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import Centered from "../Utils/Centered";
+import { Centered } from "@ffilip/mui-react-utils/components";
 import { rowWrapperCSS } from "../Styles/CSSStyles";
 
 

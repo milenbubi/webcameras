@@ -1,5 +1,5 @@
 import { CardMedia, Button } from "@mui/material";
-import Centered from "../Utils/Centered";
+import { Centered } from "@ffilip/mui-react-utils/components";
 
 
 
@@ -8,7 +8,7 @@ function BCCPLinks() {
     <Centered rowGap={2} columnGap={0} sx={{ width: 1, flexWrap: "wrap" }}>
 
 
-      {/* Линк към BorderAlarm */}
+      {/* Link to към BorderAlarm */}
       <Button
         sx={{ p: 0, mx: 2 }}
         onClick={() => {
@@ -28,7 +28,7 @@ function BCCPLinks() {
       </Button>
 
 
-      {/* Линк към UzivoKamere */}
+      {/* Link to UzivoKamere */}
       <Button
         sx={{ p: 0, mx: 2 }}
         onClick={() => {
@@ -49,7 +49,7 @@ function BCCPLinks() {
 
 
 
-      {/* Линк към камери на МВР - Сърбия */}
+      {/* Link to Ministry of Interior cameras - Serbia */}
       <Button
         sx={{ p: 0 }}
         onClick={() => {

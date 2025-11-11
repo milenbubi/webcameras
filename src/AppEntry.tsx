@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Stack } from "@mui/material";
+import { useAdminScrollbar } from "@ffilip/mui-react-utils/mui";
 import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
 import News from "./BCCP/News";
 import Djala from "./BCCP/Djala";
@@ -10,7 +11,6 @@ import Bulgaria from "./BCCP/Bulgaria";
 import Bottom from "./Components/Bottom";
 import { useStats } from "./Utils/stats";
 import HiddenH1 from "./Components/HiddenH1";
-import { useAdminScrollbar } from "./Utils/theme";
 import PlaceButtons from "./Components/PlaceButtons";
 import NoStreamTitle from "./Components/NoStreamTitle";
 import { getPlaceFromUrlOrLS, NEWS_ACTIVE } from "./Utils/places";

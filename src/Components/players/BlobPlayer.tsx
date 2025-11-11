@@ -1,6 +1,6 @@
 import { PropsWithChildren, useRef } from "react";
+import { Centered } from "@ffilip/mui-react-utils/components";
 import PlayerWrapper from "./PlayerWrapper";
-import Centered from "../../Utils/Centered";
 import { playerCSS } from "../../Styles/CSSStyles";
 import { useHlsStream } from "./utils/hlsStreamHook";
 

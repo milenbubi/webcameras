@@ -1,8 +1,9 @@
 import { CardMedia } from "@mui/material";
 import { PropsWithChildren } from "react";
+import { useDocumentVisibility } from "@ffilip/mui-react-utils/document";
 import PlayerWrapper from "./PlayerWrapper";
 import { playerCSS } from "../../Styles/CSSStyles";
-import { useDocumentVisibility } from "../../Utils/documentVisibility";
+import { EMPTY_BASE64_IMAGE } from "./utils/constants";
 
 interface IProps {
   id: string;
@@ -10,8 +11,6 @@ interface IProps {
   isActive: boolean;
   stretchToFit?: boolean;
 }
-
-const EMPTY_BASE64_IMAGE = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
 
 
 

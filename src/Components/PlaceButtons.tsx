@@ -1,6 +1,6 @@
 import { Button, Stack, colors } from "@mui/material";
+import { Centered } from "@ffilip/mui-react-utils/components";
 import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
-import Centered from "../Utils/Centered";
 import { IPlaceButton, NEWS_ACTIVE, Place } from "../Utils/places";
 
 const NewsButton: IPlaceButton = { place: "News", label: "News" };

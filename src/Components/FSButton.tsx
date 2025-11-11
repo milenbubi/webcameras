@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
+import { goFullScreen } from "@ffilip/chan180-utils/env";
 import { IconButton, SxProps, Theme } from "@mui/material";
-import { goFullScreen } from "../Utils/fullscreen";
 
 interface IProps {
   fsElementId: string;

@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
+import { useDocumentVisibility } from "@ffilip/mui-react-utils/document";
 import PlayerWrapper from "./PlayerWrapper";
 import { playerCSS } from "../../Styles/CSSStyles";
-import { useDocumentVisibility } from "../../Utils/documentVisibility";
 
 interface IProps {
   id: string;

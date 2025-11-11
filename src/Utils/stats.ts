@@ -41,10 +41,11 @@ export function useStats(place: string) {
       const newbrowserVisitsCount = currentVisits ? (parseInt(currentVisits, 10) || 0) + 1 : 1;
       safeLocalStorage.set(LS_BROWSER_VISITS_KEY, String(newbrowserVisitsCount));
 
-      fetch(`/php/visit.php?place=${place}&browser_visit_count=${newbrowserVisitsCount}`, { method: "GET" })
-        // .then(res => res.json())
-        // .then(data => console.log("Visit logged:", data))
-        .catch(err => { /* console.error(err); */ });
+      fetch(
+        `/php/visit.php?place=${place}&browser_visit_count=${newbrowserVisitsCount}`,
+        { method: "GET" }
+      )
+        .catch(err => { });
     }
     else {   // Fetch stats — for DEV purposes only
       fetch("https://chan180.net/php/first_stats_file.php", { method: "GET" })
