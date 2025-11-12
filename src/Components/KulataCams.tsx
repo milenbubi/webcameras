@@ -3,7 +3,8 @@ import Title from "./Title";
 import FSButton from "./FSButton";
 import ImagePlayer from "./players/ImagePlayer";
 import ChangeCamButton from "./ChangeCamButton";
-import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
+import LSSwitcher from "../Components/LSSwitcher";
+import { useBooleanLS } from "../Utils/booleanLS";
 
 const getSource = (streamKulata: number) => {
   switch (streamKulata) {
@@ -11,7 +12,7 @@ const getSource = (streamKulata: number) => {
     case 2: return "02";
     case 3: return "114";
     default: return "01";
-  };
+  }
 };
 
 const getCamLabel = (streamKulata: number) => {
@@ -22,7 +23,7 @@ const getCamLabel = (streamKulata: number) => {
     case 2: label = "800 м преди ГКПП"; break;
     case 3: label = "OMV"; break;
     default: label = "... ";
-  };
+  }
 
   return `Кулата - ${label}`;
 };

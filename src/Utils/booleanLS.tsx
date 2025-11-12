@@ -1,12 +1,5 @@
-import { Box } from "@mui/material";
 import { useCallback, useState } from "react";
 import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
-import StreamModeSwitch from "../Components/StreamModeSwitch";
-
-interface IProps {
-  isOn: boolean;
-  switchIsOn: VoidFunction;
-}
 
 
 
@@ -32,19 +25,3 @@ export function useBooleanLS(key: string) {
 
   return { isBooleanLSOn, switchBooleanLS };
 }
-
-
-
-function LSSwitcher({ isOn, switchIsOn }: IProps) {
-  return (
-    <Box sx={{ position: "absolute", left: -15, top: -38 }}>
-      <Box sx={{ transform: "scale(0.5)" }}>
-        <StreamModeSwitch isStreaming={isOn !== false} onChange={switchIsOn} doNotPulse />
-      </Box>
-    </Box>
-  );
-}
-
-
-
-export default LSSwitcher;

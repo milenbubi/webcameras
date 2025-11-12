@@ -2,8 +2,9 @@ import { useState } from "react";
 import Title from "../Components/Title";
 import FSButton from "../Components/FSButton";
 import RowWrapper from "../Components/RowWrapper";
+import LSSwitcher from "../Components/LSSwitcher";
 import BlobPlayer from "../Components/players/BlobPlayer";
-import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
+import { useBooleanLS } from "../Utils/booleanLS";
 import ChangeCamButton from "../Components/ChangeCamButton";
 
 

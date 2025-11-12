@@ -20,20 +20,18 @@ const LS_BROWSER_VISITS_KEY = "browservisits";
  *
  * ---
  * ### Local storage key
- * Uses `browservisits` to store the per-browser visit count.
+ * Uses the browservisits key in localStorage to store the per-browser visit count.
  *
  * ---
  * @param {string} place - Logical identifier for the visited page or section (e.g. `"Bulgaria"`, `"Horgos"`, `"Kelebia"`).
  *
  * @example
  * ```ts
- * useStats("Bulgaria");
+ * useRecordVisit("Bulgaria");
  * ```
- *
- * The backend receives:
- * `/php/visit.php?place=Bulgaria&browser_visit_count=3`
+ * Sends `/php/visit.php?place=Bulgaria&browser_visit_count=3`
  */
-export function useStats(place: string) {
+export function useRecordVisit(place: string) {
   useEffect(() => {
     if (!window.location.port) {  // Log a new visit (only in production)
 

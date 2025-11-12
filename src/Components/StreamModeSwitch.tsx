@@ -17,12 +17,10 @@ function StreamModeSwitch({ isStreaming, onChange, doNotPulse }: IProps) {
         "@keyframes pulse": {
           "0%": { transform: "scale(1)" },
           "50%": { transform: "scale(1.2)" },
-          "100%": { transform: "scale(1)" },
+          "100%": { transform: "scale(1)" }
         }
       }}
-      onClick={() => {
-        onChange(!isStreaming);
-      }}
+      onClick={() => onChange(!isStreaming)}
     >
 
       <CardMedia

@@ -2,7 +2,8 @@ import { useMemo, useState } from "react";
 import Title from "../Components/Title";
 import FSButton from "../Components/FSButton";
 import RowWrapper from "../Components/RowWrapper";
-import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
+import LSSwitcher from "../Components/LSSwitcher";
+import { useBooleanLS } from "../Utils/booleanLS";
 import ImagePlayer from "../Components/players/ImagePlayer";
 import ChangeCamButton from "../Components/ChangeCamButton";
 
@@ -18,7 +19,7 @@ const getLesovoSource = (streamIndex: number) => {
     case 2: return "5";
     case 3: return "12";
     default: return "6";
-  };
+  }
 };
 
 const getMTSource = (streamIndex: number) => {
@@ -26,7 +27,7 @@ const getMTSource = (streamIndex: number) => {
     case 1: return "11";
     case 2: return "13";
     default: return "13";
-  };
+  }
 };
 
 const getCPSource = (streamIndex: number) => {
@@ -34,7 +35,7 @@ const getCPSource = (streamIndex: number) => {
     case 1: return "8";
     case 2: return "7";
     default: return "8";
-  };
+  }
 };
 
 

@@ -1,7 +1,11 @@
 import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
 
-export type Place = "News" | "Bulgaria" | "Horgos" | "Djala" | "Kelebia" | "Turkiye";
-export const NEWS_ACTIVE = false;
+
+export const NEWS_ACTIVE = true;
+
+export const PLACES = ["News", "Bulgaria", "Horgos", "Djala", "Kelebia", "Turkiye"] as const;
+
+export type Place = typeof PLACES[number];
 
 
 export interface IPlaceButton {
@@ -10,7 +14,14 @@ export interface IPlaceButton {
 }
 
 
-export function getPlaceFromUrlOrLS(): Place {
+
+export function isPlaceValid(value: unknown): value is Place {
+  return PLACES.includes(value as Place);
+}
+
+
+
+export function getPlaceFromUrlOrLs(): Place {
   const params = new URLSearchParams(window.location.search);
   let rawPlace = params.get("place");
 
@@ -34,4 +45,23 @@ export function getPlaceFromUrlOrLS(): Place {
 
   const defaultPlace: Place = "Bulgaria";
   return placeMap[place] || defaultPlace;
+}
+
+
+export function getPlaceFromUrlOrLS(): Place {
+  const params = new URLSearchParams(window.location.search);
+  let rawPlace = params.get("place");
+
+  if (rawPlace) {
+    safeLocalStorage.set("place", rawPlace);
+  }
+  else {
+    rawPlace = safeLocalStorage.get("place") || "";
+  }
+
+  const normalized = rawPlace.trim().toLowerCase();
+  const defaultPlace: Place = "Bulgaria";
+
+  const candidate = PLACES.find(p => p.toLowerCase() === normalized);
+  return candidate ?? defaultPlace;
 }

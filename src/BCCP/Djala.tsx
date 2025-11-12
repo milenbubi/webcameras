@@ -1,8 +1,9 @@
 import Title from "../Components/Title";
 import FSButton from "../Components/FSButton";
 import RowWrapper from "../Components/RowWrapper";
+import LSSwitcher from "../Components/LSSwitcher";
+import { useBooleanLS } from "../Utils/booleanLS";
 import BlobPlayer from "../Components/players/BlobPlayer";
-import LSSwitcher, { useBooleanLS } from "../Utils/hooks";
 
 
 
