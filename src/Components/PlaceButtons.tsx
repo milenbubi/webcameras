@@ -1,31 +1,29 @@
 import { Button, Stack, colors } from "@mui/material";
 import { MouseEvent, PropsWithChildren } from "react";
 import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
-import { NotEmpty, NullOrUndefined } from "@ffilip/chan180-utils/types";
-import { IPlaceButton, isPlaceValid, NEWS_ACTIVE, Place } from "../Utils/places";
-
-const rawExternalButtons: Array<IPlaceButton | NullOrUndefined> = [
-  NEWS_ACTIVE ? { place: "News", label: "News" } : null
-];
-
-const ExternalButtons = rawExternalButtons.filter(NotEmpty);
-
-const Buttons: IPlaceButton[] = [
-  { place: "Bulgaria", label: "България" },
-  { place: "Horgos", label: "Хоргош" },
-  { place: "Djala", label: "Ђала" },
-  { place: "Kelebia", label: "Келебия" },
-  { place: "Turkiye", label: "Турция" }
-];
+import { IPlaceButton, isPlaceValid, Place, PLACES_CONFIG } from "../Utils/places";
 
 interface IProps {
   bccp: Place;
   onChangeBccp: (target: Place) => void;
 }
 
+const ExternalButtons: IPlaceButton[] = PLACES_CONFIG
+  .filter(p => p.active && p.isExternal)
+  .map(p => ({ place: p.name, label: p.label }));
+
+const Buttons: IPlaceButton[] = PLACES_CONFIG
+  .filter(p => p.active && !p.isExternal)
+  .map(p => ({ place: p.name, label: p.label }));
+
 
 
 function BtnGroupWrapper({ children }: PropsWithChildren) {
+  if (!children) {
+    return null;
+  }
+
+
   return (
     <Stack
       sx={{
@@ -67,7 +65,7 @@ function PlaceButtons({ bccp, onChangeBccp }: IProps) {
   return (
     <Stack sx={{ gap: { xs: 2, sm: 3 }, pt: { xs: 0, md: 2 } }}>
       <BtnGroupWrapper>
-        {ExternalButtons.map(({ place, label }, index) => {
+        {ExternalButtons.length > 0 && ExternalButtons.map(({ place, label }, index) => {
           const isSelected = place === bccp;
 
           return (
@@ -96,7 +94,7 @@ function PlaceButtons({ bccp, onChangeBccp }: IProps) {
 
 
       <BtnGroupWrapper>
-        {Buttons.map(({ place, label }, index) => {
+        {Buttons.length > 0 && Buttons.map(({ place, label }, index) => {
           const isSelected = place === bccp;
 
           return (
@@ -113,7 +111,7 @@ function PlaceButtons({ bccp, onChangeBccp }: IProps) {
                 opacity: isSelected ? 1 : 0.4,
                 background: isSelected ? "#191d21" : "#000000",
                 "&:hover": {
-                  background: isSelected ? "#191d21" : "#000000",
+                  background: isSelected ? "#191d21" : "rgba(0, 0, 0, 0.83)",
                   opacity: isSelected ? 1 : 0.8
                 }
               }}
