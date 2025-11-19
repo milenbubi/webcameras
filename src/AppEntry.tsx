@@ -25,8 +25,7 @@ function AppEntry() {
     <Stack
       sx={{
         gap: 4, py: 2, alignItems: "center", overflowY: "auto",
-        px: { xs: 1, sm: 2 },
-        height: 1
+        px: { xs: 1, sm: 2 }
       }}
     >
 
