@@ -16,14 +16,27 @@ interface IPlaceConfig {
   isExternal: boolean;
 }
 
+const DEFAULT_PLACE_NAME = "Bulgaria";
+
+interface IDefaultPlaceConfig extends IPlaceConfig {
+  name: typeof DEFAULT_PLACE_NAME;
+  active: true; // <--- locked; cannot be modified
+}
+
+interface IRegularPlaceConfig extends IPlaceConfig {
+  name: Exclude<IPlaceConfig["name"], typeof DEFAULT_PLACE_NAME>;
+  active: boolean;
+}
+
+
 export const PLACES_CONFIG = [
-  { name: "News", active: false, component: News, label: "News", isExternal: true },
-  { name: "Bulgaria", active: true, component: Bulgaria, label: "България", isExternal: false },
+  { name: "News", active: !true, component: News, label: "News", isExternal: true },
+  { name: DEFAULT_PLACE_NAME, active: true, component: Bulgaria, label: "България", isExternal: false } satisfies IDefaultPlaceConfig,
   { name: "Horgos", active: true, component: Horgos, label: "Хоргош", isExternal: false },
   { name: "Djala", active: true, component: Djala, label: "Ђала", isExternal: false },
   { name: "Kelebia", active: true, component: Kelebia, label: "Келебия", isExternal: false },
   { name: "Turkiye", active: true, component: Turkiye, label: "Турция", isExternal: false }
-] as const satisfies readonly IPlaceConfig[];
+] as const satisfies readonly (IDefaultPlaceConfig | IRegularPlaceConfig)[];
 
 export type Place = typeof PLACES_CONFIG[number]["name"];
 
@@ -39,16 +52,11 @@ export function isPlaceValid(value: unknown): value is Place {
 }
 
 
-export function isPlaceActive(place: Place): boolean {
-  return PLACES_CONFIG.find(p => p.name === place)?.active ?? false;
-}
-
-
-export function getPlaceFromUrlOrLS(): Place {
+export function resolvePlace(): Place {
   const params = new URLSearchParams(window.location.search);
   let rawPlace = params.get("place");
 
-  if (rawPlace) {
+  if (rawPlace && isPlaceValid(rawPlace)) {
     safeLocalStorage.set("place", rawPlace);
   }
   else {
@@ -56,22 +64,10 @@ export function getPlaceFromUrlOrLS(): Place {
   }
 
   const normalized = rawPlace.trim().toLowerCase();
-  const defaultPlace: Place = "Bulgaria";
 
-  const candidate = PLACES_CONFIG.map(p => p.name).find(p => p.toLowerCase() === normalized);
-  const place = candidate ?? defaultPlace;
+  const placeObj = PLACES_CONFIG.find(p => p.name.toLowerCase() === normalized);
 
-
-  if (isPlaceActive(place)) {
-    return place;
-  }
-
-  const firstActivePlace = PLACES_CONFIG.find(p => p.active)?.name;
-
-  if (firstActivePlace) {
-    return firstActivePlace;
-  }
-  else {
-    throw "There should be at least one active place!";
-  }
+  return placeObj?.active === true
+    ? placeObj.name
+    : DEFAULT_PLACE_NAME
 }

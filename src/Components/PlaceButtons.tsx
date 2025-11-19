@@ -8,12 +8,14 @@ interface IProps {
   onChangeBccp: (target: Place) => void;
 }
 
-const ExternalButtons: IPlaceButton[] = PLACES_CONFIG
-  .filter(p => p.active && p.isExternal)
+const ACTIVE_PLACES = PLACES_CONFIG.filter(p => p.active);
+
+const ExternalButtons: IPlaceButton[] = ACTIVE_PLACES
+  .filter(p => p.isExternal)
   .map(p => ({ place: p.name, label: p.label }));
 
-const Buttons: IPlaceButton[] = PLACES_CONFIG
-  .filter(p => p.active && !p.isExternal)
+const MainButtons: IPlaceButton[] = ACTIVE_PLACES
+  .filter(p => !p.isExternal)
   .map(p => ({ place: p.name, label: p.label }));
 
 
@@ -22,7 +24,6 @@ function BtnGroupWrapper({ children }: PropsWithChildren) {
   if (!children) {
     return null;
   }
-
 
   return (
     <Stack
@@ -47,17 +48,12 @@ function BtnGroupWrapper({ children }: PropsWithChildren) {
 
 
 function PlaceButtons({ bccp, onChangeBccp }: IProps) {
-  const handleChangeBCCP = (target: Place) => {
-    onChangeBccp(target);
-    safeLocalStorage.set("place", target);
-  };
-
-
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    const place = e.currentTarget.dataset.place;
+    const place = e.currentTarget.dataset.place as Place | undefined;
 
-    if (isPlaceValid(place)) {
-      handleChangeBCCP(place);
+    if (place && isPlaceValid(place)) {
+      onChangeBccp(place);
+      safeLocalStorage.set("place", place);
     }
   };
 
@@ -80,7 +76,7 @@ function PlaceButtons({ bccp, onChangeBccp }: IProps) {
               disableElevation
               sx={{
                 color: "#000000",
-                opacity: isSelected ? 1 : 0.4,
+                opacity: isSelected ? 1 : 0.5,
                 backgroundColor: colors.yellow[isSelected ? 600 : 500],
                 "&:hover": {
                   backgroundColor: colors.yellow[isSelected ? 600 : "A700"],
@@ -94,7 +90,7 @@ function PlaceButtons({ bccp, onChangeBccp }: IProps) {
 
 
       <BtnGroupWrapper>
-        {Buttons.length > 0 && Buttons.map(({ place, label }, index) => {
+        {MainButtons.length > 0 && MainButtons.map(({ place, label }, index) => {
           const isSelected = place === bccp;
 
           return (
@@ -118,7 +114,6 @@ function PlaceButtons({ bccp, onChangeBccp }: IProps) {
             />
           );
         })}
-
       </BtnGroupWrapper>
     </Stack>
   );

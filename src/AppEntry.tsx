@@ -4,9 +4,9 @@ import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
 
 import Bottom from "./Components/Bottom";
 import HiddenH1 from "./Components/HiddenH1";
+import { resolvePlace } from "./Utils/places";
 import PlaceButtons from "./Components/PlaceButtons";
 import { useRecordVisit } from "./Utils/recordVisit";
-import { getPlaceFromUrlOrLS } from "./Utils/places";
 import NoStreamTitle from "./Components/NoStreamTitle";
 import StreamingContent from "./Components/StreamingContent";
 import { useClearSearchParams } from "./Utils/clearSearchParams";
@@ -15,7 +15,7 @@ import __BodyScrollbar from "./Components/internals/__BodyScrollbar";
 
 
 function AppEntry() {
-  const [bccp, setBccp] = useState(getPlaceFromUrlOrLS);
+  const [bccp, setBccp] = useState(resolvePlace);
   const [isStreaming, setIsStreaming] = useState(safeLocalStorage.get("streaming") !== "off");
   useRecordVisit(bccp);
   useClearSearchParams();
