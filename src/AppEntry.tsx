@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Stack } from "@mui/material";
-import { useAdminScrollbar } from "@ffilip/mui-react-utils/mui";
 import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
 
 import Bottom from "./Components/Bottom";
@@ -11,11 +10,11 @@ import { getPlaceFromUrlOrLS } from "./Utils/places";
 import NoStreamTitle from "./Components/NoStreamTitle";
 import StreamingContent from "./Components/StreamingContent";
 import { useClearSearchParams } from "./Utils/clearSearchParams";
+import __BodyScrollbar from "./Components/internals/__BodyScrollbar";
 
 
 
 function AppEntry() {
-  const adminscrollbar = useAdminScrollbar();
   const [bccp, setBccp] = useState(getPlaceFromUrlOrLS);
   const [isStreaming, setIsStreaming] = useState(safeLocalStorage.get("streaming") !== "off");
   useRecordVisit(bccp);
@@ -24,14 +23,15 @@ function AppEntry() {
 
   return (
     <Stack
-      className={adminscrollbar}
       sx={{
-        gap: 4, height: 1, py: 2, alignItems: "center", overflowY: "auto",
-        px: { xs: 1, sm: 2 }
+        gap: 4, py: 2, alignItems: "center", overflowY: "auto",
+        px: { xs: 1, sm: 2 },
+        height: 1
       }}
     >
 
       <HiddenH1 />
+      <__BodyScrollbar />
 
       <PlaceButtons bccp={bccp} onChangeBccp={setBccp} />
 
