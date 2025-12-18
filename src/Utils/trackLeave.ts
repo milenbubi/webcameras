@@ -1,33 +1,35 @@
 import { useEffect } from "react";
+import { getSessionValue } from "./visitSession";
 
 
 /**
- * useTrackLeave - React hook to send analytics data when the user leaves the page.
+ * useTrackLeave - React hook to track when a user leaves the page.
  *
- * This hook attaches a listener to the `beforeunload` event and uses `navigator.sendBeacon`
- * to send a POST request containing the current page URL and a timestamp to a backend endpoint.
+ * This hook attaches a listener to the `beforeunload` event and attempts to send analytics
+ * data to a backend endpoint using XHR with query parameters.
  *
  * ⚠️ Limitations & Notes:
- * - Ad blockers or privacy extensions can block the beacon.
- * - `sendBeacon` only sends the **current URL**. It cannot detect where the user navigates next 
- *   (bookmarks, address bar, refresh, external URLs typed manually).
- * - Do NOT rely on `setTimeout`, `fetch`, or asynchronous operations inside `beforeunload`.
+ * - Asynchronous XHR may not always execute reliably during page unload in modern browsers.
+ *   Some browsers may cancel the request if the page is closing too quickly.
+ * - Ad blockers or privacy extensions can block the XHR request.
+ * - This hook only sends the current URL; it cannot detect where the user navigates next
+ *   (e.g., bookmarks, address bar, external URLs typed manually, or page refreshes).
+ * - Please do not rely on additional asynchronous operations (like `setTimeout` or `fetch`)
+ *   inside the `beforeunload` event, as they may not complete before the page unloads.
  */
-export function useTrackLeave() {
+export function useTrackLeave() { 
   useEffect(() => {
     /**
      * leave - callback function for the beforeunload event.
      * 
-     * Collects the current URL and timestamp and sends them via sendBeacon.
+     * Collects the current URL and timestamp and sends to the server.
      */
     const leave = () => {
-      const data = JSON.stringify({
-        url: window.location.href,  // current page URL
-        ts: Date.now()  // timestamp
-      });
-
       // Send analytics to backend endpoint
-      navigator.sendBeacon("https://chan180.net/php/app_leave/on_app_unload.php", data);
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", `https://chan180.net/php/logs/log_request.php?id=${getSessionValue()?.id || ""}`, true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      try { xhr.send(); } catch (e) { /* ignore */ }
     };
 
     // Attach event listener
