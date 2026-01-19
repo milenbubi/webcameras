@@ -50,9 +50,10 @@ export function useRecordVisit(place: string) {
         .catch(err => { });
     }
     else {   // Fetch stats — for DEV purposes only
-      fetch("https://chan180.net/php/first_stats_file.php", { method: "GET" })
+      return;
+      fetch("https://chan180.net/php/dashboard.php", { method: "GET" })
         .then(res => res.json())
-        .then(data => console.log("Site stats:", data))
+        .then(data => console.log("Dashboard data:", data))
         .catch(err => console.error(err));
     }
   }, []);

@@ -58,8 +58,7 @@ function Bulgaria() {
       <RowWrapper>
         <BlobPlayer
           id="kblg"
-          // url={`https://live.uzivokamere.com/${streamKalotinaToBG === 1 ? "amss_" : ""}gradina2/index.m3u8`}
-          url={streamKalotinaToBG === 2 ? "https://live.uzivokamere.com/amss_gradina2/index.m3u8" : "https://kamere.mup.gov.rs:4443/Gradina/gradina2.m3u8"}  // backup
+          url={streamKalotinaToBG === 1 ? "https://kamere.mup.gov.rs:4443/gradina/gradina2.m3u8" : "https://kamere.amss.org.rs/gradina2/gradina2.m3u8"}
           isActive={isOn4}
         >
           <LSSwitcher isOn={isOn4} switchIsOn={switchIsOn4} />
@@ -72,8 +71,7 @@ function Bulgaria() {
 
         <BlobPlayer
           id="ksrb"
-          // url={`https://live.uzivokamere.com/${streamKalotinaToSRB === 1 ? "amss_" : ""}gradina1/index.m3u8`}
-          url={streamKalotinaToSRB === 2 ? "https://live.uzivokamere.com/amss_gradina1/index.m3u8" : "https://kamere.mup.gov.rs:4443/Gradina/gradina1.m3u8"}  // backup
+          url={streamKalotinaToSRB === 1 ? "https://kamere.mup.gov.rs:4443/gradina/gradina1.m3u8" : "https://kamere.amss.org.rs/gradina1/gradina1.m3u8"}
           isActive={isOn5}
         >
           <LSSwitcher isOn={isOn5} switchIsOn={switchIsOn5} />
