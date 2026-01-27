@@ -19,7 +19,7 @@ function Horgos() {
     <RowWrapper>
       <BlobPlayer
         id="hth"
-        url={streamToHUNG === 1 ? "https://kamere.mup.gov.rs:4443/horgos/horgos2.m3u8" : "https://kamere.amss.org.rs/horgos2/horgos2.m3u8"}
+        url={streamToHUNG === 2 ? "https://kamere.mup.gov.rs:4443/horgos/horgos2.m3u8" : "https://kamere.amss.org.rs/horgos2/horgos2.m3u8"}
         isActive={isOn1}
       >
         <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
@@ -32,7 +32,7 @@ function Horgos() {
 
       <BlobPlayer
         id="hts"
-        url={streamToSRB === 1 ? "https://kamere.mup.gov.rs:4443/horgos/horgos1.m3u8" : "https://kamere.amss.org.rs/horgos1/horgos1.m3u8"}
+        url={streamToSRB === 2 ? "https://kamere.mup.gov.rs:4443/horgos/horgos1.m3u8" : "https://kamere.amss.org.rs/horgos1/horgos1.m3u8"}
         isActive={isOn2}
       >
         <LSSwitcher isOn={isOn2} switchIsOn={switchIsOn2} />
