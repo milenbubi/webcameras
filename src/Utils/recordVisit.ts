@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
-import { IVisitResponse, setSessionValue } from "./visitSession";
 
 const LS_BROWSER_VISITS_KEY = "browservisits";
 
@@ -13,13 +12,12 @@ const LS_BROWSER_VISITS_KEY = "browservisits";
  * 1. Increments a browser-local visit counter in `localStorage`.
  * 2. Sends the updated count and `place` identifier to the PHP backend (`visit.php`).
  * 3. The backend response is parsed to a JavaScript object and stored in a singleton using `setSessionValue`.
- * 4. The response is expected to match the `IVisitResponse` interface.
  *
  * ---
  * ### Behavior
  * - Runs **only once** on component mount.
  * - In production (no `window.location.port`), it logs the visit to the backend.
- * - In development mode, it fetches and logs site statistics from the live server for debugging.
+ * - In development mode, it fetches and logs some site statistics from the live server for debugging.
  *
  * ---
  * ### Local storage key
@@ -45,11 +43,9 @@ export function useRecordVisit(place: string) {
         `/php/visit.php?place=${place}&browser_visit_count=${newbrowserVisitsCount}`,
         { method: "GET" }
       )
-        .then(res => res.json() as Promise<IVisitResponse>)
-        .then(setSessionValue)
         .catch(err => { });
     }
-    else {   // Fetch stats — for DEV purposes only
+    else {   // Fetch some stats — for DEV purposes only
       return;
       fetch("https://chan180.net/php/dashboard.php", { method: "GET" })
         .then(res => res.json())
