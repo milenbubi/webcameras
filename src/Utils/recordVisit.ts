@@ -36,18 +36,24 @@ export function useRecordVisit(place: string) {
   useEffect(() => {
     if (!window.location.port) {  // Log a new visit (only in production)
       const currentVisits = safeLocalStorage.get(LS_BROWSER_VISITS_KEY);
-      const newbrowserVisitsCount = currentVisits ? (parseInt(currentVisits, 10) || 0) + 1 : 1;
-      safeLocalStorage.set(LS_BROWSER_VISITS_KEY, String(newbrowserVisitsCount));
+      const newBrowserVisitsCount = currentVisits ? (parseInt(currentVisits, 10) || 0) + 1 : 1;
+      safeLocalStorage.set(LS_BROWSER_VISITS_KEY, String(newBrowserVisitsCount));
 
-      fetch(
-        `/php/visit.php?place=${place}&browser_visit_count=${newbrowserVisitsCount}`,
-        { method: "GET" }
-      )
+      const data = {
+        place,
+        browser_visit_count: newBrowserVisitsCount
+      };
+
+      fetch("/php/visit.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      })
         .catch(err => { });
     }
     else {   // Fetch some stats — for DEV purposes only
       return;
-      fetch("https://chan180.net/php/dashboard.php", { method: "GET" })
+      fetch("https://chan180.net/php/test1.php", { method: "GET" })
         .then(res => res.json())
         .then(data => console.log("Dashboard data:", data))
         .catch(err => console.error(err));
