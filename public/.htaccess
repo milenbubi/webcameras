@@ -1,0 +1,54 @@
+# ==========================================
+#   Client Hints – Accept-CH и Critical-CH
+# ==========================================
+<IfModule mod_headers.c>
+
+    # Пълна версия на браузъра - DEPRECATED
+    # Header set Accept-CH "Sec-CH-UA-Full-Version"
+    # Header set Critical-CH "Sec-CH-UA-Full-Version"         
+    
+    # предоставя информация за всяка отделна марка на браузъра и нейната пълна версия
+    Header set Accept-CH "Sec-CH-UA-Full-Version-List"
+    Header set Critical-CH "Sec-CH-UA-Full-Version-List"     
+
+    # Версия на операционната система
+    Header append Accept-CH "Sec-CH-UA-Platform-Version"
+    Header append Critical-CH "Sec-CH-UA-Platform-Version"      
+    
+    # Архитектура на CPU (x86, ARM и т.н.)
+    Header append Accept-CH "Sec-CH-UA-Arch"
+    Header append Critical-CH "Sec-CH-UA-Arch"                 
+    
+    # Архитектура на браузъра/процеса (32 или 64 бита)
+    # Header append Accept-CH "Sec-CH-UA-Bitness"
+    # Header append Critical-CH "Sec-CH-UA-Bitness"             
+    
+    # Модел на устройството (за мобилни)
+    Header append Accept-CH "Sec-CH-UA-Model"
+    Header append Critical-CH "Sec-CH-UA-Model"                           
+    
+    # Device Pixel Ratio
+    Header append Accept-CH "Sec-CH-DPR"
+    Header append Critical-CH "Sec-CH-DPR"                     
+    
+    # Ширина на viewport в CSS px
+    Header append Accept-CH "Sec-CH-Viewport-Width"
+    Header append Critical-CH "Sec-CH-Viewport-Width"         
+    
+    # Width на екрана
+    # Header append Accept-CH "Sec-CH-Width"
+    # Header append Critical-CH "Sec-CH-Width"                     
+    
+    # Височина на viewport в CSS px
+    Header append Accept-CH "Sec-CH-Viewport-Height"
+    Header append Critical-CH "Sec-CH-Viewport-Height"           
+    
+    # Тип на устройството (Phone, Tablet, Desktop и др.)
+    Header append Accept-CH "Sec-CH-UA-Form-Factors"
+    Header append Critical-CH "Sec-CH-UA-Form-Factors"
+    
+    # RAM на устройството (приблизителна стойност в GB)
+    Header append Accept-CH "Sec-CH-Device-Memory"
+    Header append Critical-CH "Sec-CH-Device-Memory"
+    
+</IfModule>

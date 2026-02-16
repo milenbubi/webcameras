@@ -36,7 +36,7 @@ export function useRecordVisit(place: string) {
   useEffect(() => {
     if (!window.location.port) {  // Log a new visit (only in production)
       const currentVisits = safeLocalStorage.get(LS_BROWSER_VISITS_KEY);
-      const newBrowserVisitsCount = currentVisits ? (parseInt(currentVisits, 10) || 0) + 1 : 1;
+      const newBrowserVisitsCount = (parseInt(currentVisits ?? "", 10) || 0) + 1;
       safeLocalStorage.set(LS_BROWSER_VISITS_KEY, String(newBrowserVisitsCount));
 
       const data = {
@@ -51,7 +51,7 @@ export function useRecordVisit(place: string) {
       })
         .catch(err => { });
     }
-    else {   // Fetch some stats — for DEV purposes only
+    else {  // Fetch some stats — for DEV purposes only
       return;
       fetch("https://chan180.net/php/test1.php", { method: "GET" })
         .then(res => res.json())
