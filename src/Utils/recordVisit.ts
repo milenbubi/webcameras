@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
-
-const LS_BROWSER_VISITS_KEY = "browservisits";
+import { LS_BROWSER_VISITS_KEY } from "./localStorage";
 
 
 

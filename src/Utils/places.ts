@@ -6,6 +6,7 @@ import Horgos from "../BCCP/Horgos";
 import Turkiye from "../BCCP/Turkiye";
 import Kelebia from "../BCCP/Kelebia";
 import Bulgaria from "../BCCP/Bulgaria";
+import { LS_PLACE_KEY } from "./localStorage";
 
 
 interface IPlaceConfig {
@@ -47,27 +48,32 @@ export interface IPlaceButton {
 }
 
 
-export function isPlaceValid(value: unknown): value is Place {
+export function isPlaceValid(value: string | undefined): value is Place {
   return PLACES_CONFIG.some(p => p.name === value);
+}
+
+
+export function getPlaceConfig(value: unknown) {
+  if (typeof value !== "string") {
+    return undefined;
+  }
+
+  const normalized = value.trim().toLowerCase();
+
+  return PLACES_CONFIG.find(p => p.name.toLowerCase() === normalized);
 }
 
 
 export function resolvePlace(): Place {
   const params = new URLSearchParams(window.location.search);
-  let rawPlace = params.get("place");
 
-  if (rawPlace && isPlaceValid(rawPlace)) {
-    safeLocalStorage.set("place", rawPlace);
-  }
-  else {
-    rawPlace = safeLocalStorage.get("place") || "";
-  }
+  const placeFromUrl = getPlaceConfig(params.get(LS_PLACE_KEY));
+  const placeFromStorage = getPlaceConfig(safeLocalStorage.get(LS_PLACE_KEY));
 
-  const normalized = rawPlace.trim().toLowerCase();
+  const activePlace = [placeFromUrl, placeFromStorage].find(p => p?.active);
+  const resolved = activePlace?.name ?? DEFAULT_PLACE_NAME;
 
-  const placeObj = PLACES_CONFIG.find(p => p.name.toLowerCase() === normalized);
+  safeLocalStorage.set(LS_PLACE_KEY, resolved);
 
-  return placeObj?.active === true
-    ? placeObj.name
-    : DEFAULT_PLACE_NAME
+  return resolved;
 }

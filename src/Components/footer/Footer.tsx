@@ -1,8 +1,9 @@
 import { Stack } from "@mui/material";
 import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
-import Author from "../Components/Author";
-import BCCPLinks from "../Components/BCCPLinks";
-import StreamModeSwitch from "../Components/StreamModeSwitch";
+import Author from "./Author";
+import BCCPLinks from "./BCCPLinks";
+import StreamModeSwitch from "../StreamModeSwitch";
+import { LS_APP_STREAMING_KEY } from "../../Utils/localStorage";
 
 interface IProps {
   isStreaming: boolean;
@@ -11,10 +12,10 @@ interface IProps {
 
 
 
-function Bottom({ isStreaming, changeMasterStreaming }: IProps) {
+function Footer({ isStreaming, changeMasterStreaming }: IProps) {
   const handleChangeOnOff = (isOn: boolean) => {
     changeMasterStreaming(isOn);
-    safeLocalStorage.set("streaming", isOn ? "on" : "off");
+    safeLocalStorage.set(LS_APP_STREAMING_KEY, isOn ? "on" : "off");
   };
 
 
@@ -34,4 +35,4 @@ function Bottom({ isStreaming, changeMasterStreaming }: IProps) {
 
 
 
-export default Bottom;
+export default Footer;

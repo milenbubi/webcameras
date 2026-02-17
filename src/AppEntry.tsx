@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Stack } from "@mui/material";
-import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
 
-import Bottom from "./Components/Bottom";
 import HiddenH1 from "./Components/HiddenH1";
 import { resolvePlace } from "./Utils/places";
-import PlaceButtons from "./Components/PlaceButtons";
+import Footer from "./Components/footer/Footer";
 import { useRecordVisit } from "./Utils/recordVisit";
 import NoStreamTitle from "./Components/NoStreamTitle";
+import PlaceButtons from "./Components/buttons/PlaceButtons";
 import StreamingContent from "./Components/StreamingContent";
+import { useInitialStreamStatus } from "./Utils/localStorage";
 import { useClearSearchParams } from "./Utils/clearSearchParams";
 import __BodyScrollbar from "./Components/internals/__BodyScrollbar";
 
@@ -16,7 +16,7 @@ import __BodyScrollbar from "./Components/internals/__BodyScrollbar";
 
 function AppEntry() {
   const [bccp, setBccp] = useState(resolvePlace);
-  const [isStreaming, setIsStreaming] = useState(safeLocalStorage.get("streaming") !== "off");
+  const { isStreaming, setIsStreaming } = useInitialStreamStatus();
   useRecordVisit(bccp);
   useClearSearchParams();
 
@@ -36,7 +36,7 @@ function AppEntry() {
 
       {isStreaming ? <StreamingContent bccp={bccp} /> : <NoStreamTitle />}
 
-      <Bottom isStreaming={isStreaming} changeMasterStreaming={setIsStreaming} />
+      <Footer isStreaming={isStreaming} changeMasterStreaming={setIsStreaming} />
 
     </Stack>
   );
