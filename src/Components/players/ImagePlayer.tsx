@@ -1,9 +1,9 @@
 import { CardMedia } from "@mui/material";
 import { PropsWithChildren } from "react";
+import { EMPTY_BASE64_IMAGE } from "@ffilip/chan180-utils/env";
 import { useDocumentVisibility } from "@ffilip/mui-react-utils/document";
 import PlayerWrapper from "./PlayerWrapper";
 import { playerCSS } from "../../Styles/CSSStyles";
-import { EMPTY_BASE64_IMAGE } from "./utils/constants";
 
 interface IProps {
   id: string;
