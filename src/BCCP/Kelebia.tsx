@@ -1,8 +1,8 @@
 import Title from "../Components/Title";
 import FSButton from "../Components/FSButton";
-import LSToggler from "../Components/LSToggler";
 import RowWrapper from "../Components/RowWrapper";
 import { useBooleanLS } from "../Utils/localStorage";
+import StreamToggler from "../Components/StreamToggler";
 import BlobPlayer from "../Components/players/BlobPlayer";
 
 
@@ -20,7 +20,7 @@ function Kelebia() {
         url="https://kamere.mup.gov.rs:4443/Kelebija/kelebija2.m3u8"  //backup
         isActive={isOn1}
       >
-        <LSToggler isOn={isOn1} onToggle={toggleIsOn1} />
+        <StreamToggler isOn={isOn1} onToggle={toggleIsOn1} />
         <Title value="Келебия - към Унгария" />
         {isOn1 && <FSButton fsElementId="khun" />}
       </BlobPlayer>
@@ -31,7 +31,7 @@ function Kelebia() {
         url="https://kamere.mup.gov.rs:4443/Kelebija/kelebija1.m3u8"  //backup        
         isActive={isOn2}
       >
-        <LSToggler isOn={isOn2} onToggle={toggleIsOn2} />
+        <StreamToggler isOn={isOn2} onToggle={toggleIsOn2} />
         <Title value="Келебия - към Сърбия" />
         {isOn2 && <FSButton fsElementId="ksrb" />}
       </BlobPlayer>

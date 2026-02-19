@@ -1,20 +1,23 @@
 import { Button, CardMedia } from "@mui/material";
 
-interface IProps {
-  isStreaming: boolean;
+export interface ITogglerProps {
+  isOn: boolean;
   onToggle: VoidFunction;
-  doNotPulse?: boolean;
+}
+
+interface IProps extends ITogglerProps {
+  pulseEnabled: boolean;
   width: number;
 }
 
 
 
-function StreamModeToggler({ isStreaming, onToggle, doNotPulse, width }: IProps) {
+function Toggler({ isOn, onToggle, pulseEnabled, width }: IProps) {
   return (
     <Button
       sx={{
         p: 0,
-        animation: (isStreaming || doNotPulse) ? "none" : "pulse 2s linear infinite",
+        animation: pulseEnabled ? "pulse 2s linear infinite" : "none",
         "@keyframes pulse": {
           "0%": { transform: "scale(1)" },
           "50%": { transform: "scale(1.2)" },
@@ -25,7 +28,7 @@ function StreamModeToggler({ isStreaming, onToggle, doNotPulse, width }: IProps)
     >
 
       <CardMedia
-        src={isStreaming ? "/shots/on.png" : "/shots/off.png"}
+        src={isOn ? "/shots/on.png" : "/shots/off.png"}
         component="img"
         sx={{ width }}
         onError={e => { e.currentTarget.style.display = "none"; }}
@@ -37,4 +40,4 @@ function StreamModeToggler({ isStreaming, onToggle, doNotPulse, width }: IProps)
 
 
 
-export default StreamModeToggler;
+export default Toggler;

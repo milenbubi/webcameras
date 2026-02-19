@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
 import Title from "../Components/Title";
 import FSButton from "../Components/FSButton";
-import LSToggler from "../Components/LSToggler";
 import RowWrapper from "../Components/RowWrapper";
 import { useBooleanLS } from "../Utils/localStorage";
+import StreamToggler from "../Components/StreamToggler";
 import ImagePlayer from "../Components/players/ImagePlayer";
 import ChangeCamButton from "../Components/ChangeCamButton";
 
@@ -64,7 +64,7 @@ function Turkiye() {
           id="kpkl" isActive={isOn1} stretchToFit
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${streamKA}.jpg?${date1}`}
         >
-          <LSToggler isOn={isOn1} onToggle={toggleIsOn1} />
+          <StreamToggler isOn={isOn1} onToggle={toggleIsOn1} />
           <Title value={"Капитан Андреево"} updateLabel="през 10 минути" />
           {isOn1 && (<>
             <ChangeCamButton streamIndex={streamKA} onClick={setStreamKA} indexCount={4} />
@@ -77,7 +77,7 @@ function Turkiye() {
           id="lesv" isActive={isOn2} stretchToFit
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getLesovoSource(streamLesovo)}.jpg?${date2}`}
         >
-          <LSToggler isOn={isOn2} onToggle={toggleIsOn2} />
+          <StreamToggler isOn={isOn2} onToggle={toggleIsOn2} />
           <Title value={"Лесово"} updateLabel="през 10 минути" />
           {isOn2 && (<>
             <ChangeCamButton streamIndex={streamLesovo} onClick={setStreamLesovo} indexCount={3} />
@@ -93,7 +93,7 @@ function Turkiye() {
           id="mtnv" isActive={isOn3} stretchToFit
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getMTSource(streamМТ)}.jpg?${date3}`}
         >
-          <LSToggler isOn={isOn3} onToggle={toggleIsOn3} />
+          <StreamToggler isOn={isOn3} onToggle={toggleIsOn3} />
           <Title value={"Малко Търново"} updateLabel="през 10 минути" />
           {isOn3 && (<>
             <ChangeCamButton streamIndex={streamМТ} onClick={setStreamMT} indexCount={2} />
@@ -106,7 +106,7 @@ function Turkiye() {
           id="chpk" isActive={isOn4} stretchToFit
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getCPSource(streamCP)}.jpg?${date4}`}
         >
-          <LSToggler isOn={isOn4} onToggle={toggleIsOn4} />
+          <StreamToggler isOn={isOn4} onToggle={toggleIsOn4} />
           <Title value={"Черекьой - Пазаркуле"} updateLabel="през 10 минути" />
           {isOn4 && (<>
             <ChangeCamButton streamIndex={streamCP} onClick={setStreamCP} indexCount={2} />

@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useIsMUIMobile } from "@ffilip/mui-react-utils/mui";
 import Title from "../Components/Title";
 import FSButton from "../Components/FSButton";
-import LSToggler from "../Components/LSToggler";
 import KulataCams from "../Components/KulataCams";
 import RowWrapper from "../Components/RowWrapper";
 import { useBooleanLS } from "../Utils/localStorage";
+import StreamToggler from "../Components/StreamToggler";
 import BlobPlayer from "../Components/players/BlobPlayer";
 import ChangeCamButton from "../Components/ChangeCamButton";
 import IframePlayer from "../Components/players/IframePlayer";
@@ -37,7 +37,7 @@ function Bulgaria() {
           isActive={isOn2}
           url={`https://www.youtube.com/embed/pnr0lhrqRAc?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}`}
         >
-          <LSToggler isOn={isOn2} onToggle={toggleIsOn2} />
+          <StreamToggler isOn={isOn2} onToggle={toggleIsOn2} />
           <Title value="Маказа - посока Кърджали" />
           {isOn2 && <FSButton fsElementId="mkrd" />}
         </IframePlayer>
@@ -47,7 +47,7 @@ function Bulgaria() {
           isActive={isOn3}
           url={`https://www.youtube.com/embed/YXN19ZEpIkc?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}`}
         >
-          <LSToggler isOn={isOn3} onToggle={toggleIsOn3} />
+          <StreamToggler isOn={isOn3} onToggle={toggleIsOn3} />
           <Title value="Маказа - посока ГКПП" />
           {isOn3 && <FSButton fsElementId="mgkp" />}
         </IframePlayer>
@@ -61,7 +61,7 @@ function Bulgaria() {
           url={streamKalotinaToBG === 1 ? "https://kamere.mup.gov.rs:4443/gradina/gradina2.m3u8" : "https://kamere.amss.org.rs/gradina2/gradina2.m3u8"}
           isActive={isOn4}
         >
-          <LSToggler isOn={isOn4} onToggle={toggleIsOn4} />
+          <StreamToggler isOn={isOn4} onToggle={toggleIsOn4} />
           <Title value="Калотина - посока България" />
           {isOn4 && (<>
             <ChangeCamButton streamIndex={streamKalotinaToBG} onClick={setStreamKalotinaToBG} />
@@ -74,7 +74,7 @@ function Bulgaria() {
           url={streamKalotinaToSRB === 1 ? "https://kamere.mup.gov.rs:4443/gradina/gradina1.m3u8" : "https://kamere.amss.org.rs/gradina1/gradina1.m3u8"}
           isActive={isOn5}
         >
-          <LSToggler isOn={isOn5} onToggle={toggleIsOn5} />
+          <StreamToggler isOn={isOn5} onToggle={toggleIsOn5} />
           <Title value="Калотина - посока Сърбия" />
           {isOn5 && (<>
             <ChangeCamButton streamIndex={streamKalotinaToSRB} onClick={setStreamKalotinaToSRB} />

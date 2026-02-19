@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import Author from "./Author";
 import BCCPLinks from "./BCCPLinks";
-import StreamModeToggler from "../StreamModeToggler";
+import MasterStreamToggler from "./MasterStreamToggler";
 
 interface IProps {
   isStreaming: boolean;
@@ -16,7 +16,7 @@ function Footer({ isStreaming, toggleMasterStreaming }: IProps) {
 
       <Stack direction="row" justifyContent="space-between" sx={{ width: 1, px: 1 }}>
         <Author />
-        <StreamModeToggler isStreaming={isStreaming} onToggle={toggleMasterStreaming} width={80} />
+        <MasterStreamToggler isOn={isStreaming} onToggle={toggleMasterStreaming} />
       </Stack>
 
       <BCCPLinks />
