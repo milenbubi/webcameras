@@ -1,65 +1,51 @@
-import { MouseEvent } from "react";
-import { CardMedia, Button } from "@mui/material";
+import { useMemo } from "react";
 import { openNewTab } from "@ffilip/chan180-utils/env";
 import { Centered } from "@ffilip/mui-react-utils/components";
+import { CardMedia, Button, CardMediaProps, ButtonProps } from "@mui/material";
 
 
 
 function BCCPLinks() {
-  const openLink = (e: MouseEvent<HTMLButtonElement>) => {
-    const url = e.currentTarget.dataset.link;
-    openNewTab(url);
-  };
+  const cardMediaProps = useMemo<CardMediaProps>(() => {
+    return {
+      component: "img",
+      sx: { height: { xs: 24, sm: 46 }, borderRadius: 1 },
+      onError: e => { e.currentTarget.style.display = "none"; },
+    };
+  }, []);
+
+
+  const buttonProps = useMemo<ButtonProps>(() => {
+    return {
+      sx: { p: 0, minWidth: 0 },
+      onClick: e => { openNewTab(e.currentTarget.dataset.link) }
+    };
+  }, []);
 
 
   return (
-    <Centered rowGap={2} columnGap={0} sx={{ width: 1, pt: 2, flexWrap: "wrap" }}>
-
+    <Centered rowGap={2} columnGap={4} sx={{ width: 1, pt: 2, flexWrap: "wrap" }}>
 
       {/* Link to към BorderAlarm */}
-      <Button
-        sx={{ p: 0, mx: 2 }}
-        data-link="https://borderalarm.com/"
-        onClick={openLink}
-      >
-        <CardMedia
-          component="img"
-          src="/shots/borderAlarm.png"
-          sx={{ width: { xs: 120, sm: 200 }, borderRadius: 1 }}
-          onError={e => { e.currentTarget.style.display = "none"; }}
-        />
+      <Button data-link="https://borderalarm.com/" {...buttonProps}>
+        <CardMedia src="/shots/borderAlarm.png" {...cardMediaProps} />
       </Button>
-
 
       {/* Link to UzivoKamere */}
-      <Button
-        sx={{ p: 0, mx: 2 }}
-        data-link="https://uzivokamere.com/granicni-prelazi/"
-        onClick={openLink}
-      >
-        <CardMedia
-          component="img"
-          src="/shots/uzivoKamere.png"
-          sx={{ width: { xs: 120, sm: 200 }, borderRadius: 1 }}
-          onError={e => { e.currentTarget.style.display = "none"; }}
-        />
+      <Button data-link="https://uzivokamere.com/granicni-prelazi/" {...buttonProps}>
+        <CardMedia src="/shots/uzivoKamere.png" {...cardMediaProps} />
       </Button>
-
 
       {/* Link to Ministry of Interior cameras - Serbia */}
-      <Button
-        sx={{ p: 0 }}
-        data-link="https://mup.gov.rs/wps/portal/sr/kamer%D0%B5#!"
-        onClick={openLink}
-      >
-        <CardMedia
-          component="img"
-          src="/shots/mup.png"
-          sx={{ width: { xs: 30, sm: 50 }, borderRadius: 1 }}
-          onError={e => { e.currentTarget.style.display = "none"; }}
-        />
+      <Button data-link="https://mup.gov.rs/wps/portal/sr/kamer%D0%B5#!" {...buttonProps}>
+        <CardMedia src="/shots/mup.png" {...cardMediaProps} />
       </Button>
 
+
+      {/* Link to live Turkish border cameras */}
+      <Button data-link="https://www.canlimobeseizle.com/turkiye-sinir-kapilari-canli-izle" {...buttonProps}>
+        <CardMedia src="/shots/canliMobeseIzle.png" {...cardMediaProps} />
+      </Button>
 
     </Centered>
   );
