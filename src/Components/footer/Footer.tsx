@@ -1,30 +1,22 @@
 import { Stack } from "@mui/material";
-import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
 import Author from "./Author";
 import BCCPLinks from "./BCCPLinks";
-import StreamModeSwitch from "../StreamModeSwitch";
-import { LS_APP_STREAMING_KEY } from "../../Utils/localStorage";
+import StreamModeToggler from "../StreamModeToggler";
 
 interface IProps {
   isStreaming: boolean;
-  changeMasterStreaming: (value: boolean) => void;
+  toggleMasterStreaming: VoidFunction;
 }
 
 
 
-function Footer({ isStreaming, changeMasterStreaming }: IProps) {
-  const handleChangeOnOff = (isOn: boolean) => {
-    changeMasterStreaming(isOn);
-    safeLocalStorage.set(LS_APP_STREAMING_KEY, isOn ? "on" : "off");
-  };
-
-
+function Footer({ isStreaming, toggleMasterStreaming }: IProps) {
   return (
     <Stack sx={{ width: 1, mt: -1 }} gap={2}>
 
       <Stack direction="row" justifyContent="space-between" sx={{ width: 1, px: 1 }}>
         <Author />
-        <StreamModeSwitch isStreaming={isStreaming} onChange={handleChangeOnOff} />
+        <StreamModeToggler isStreaming={isStreaming} onToggle={toggleMasterStreaming} width={80} />
       </Stack>
 
       <BCCPLinks />

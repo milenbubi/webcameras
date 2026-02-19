@@ -1,15 +1,15 @@
 import Title from "../Components/Title";
 import FSButton from "../Components/FSButton";
+import LSToggler from "../Components/LSToggler";
 import RowWrapper from "../Components/RowWrapper";
-import LSSwitcher from "../Components/LSSwitcher";
-import { useBooleanLS } from "../Utils/booleanLS";
+import { useBooleanLS } from "../Utils/localStorage";
 import BlobPlayer from "../Components/players/BlobPlayer";
 
 
 
 function Djala() {
-  const { isBooleanLSOn: isOn1, switchBooleanLS: switchIsOn1 } = useBooleanLS("tth");
-  const { isBooleanLSOn: isOn2, switchBooleanLS: switchIsOn2 } = useBooleanLS("tts");
+  const { isBooleanLSOn: isOn1, toggleBooleanLS: toggleIsOn1 } = useBooleanLS("tth");
+  const { isBooleanLSOn: isOn2, toggleBooleanLS: toggleIsOn2 } = useBooleanLS("tts");
 
 
   return (  // Ђала
@@ -20,7 +20,7 @@ function Djala() {
         url="https://kamere.mup.gov.rs:4443/Djala/djala1.m3u8"  // backup
         isActive={isOn1}
       >
-        <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
+        <LSToggler isOn={isOn1} onToggle={toggleIsOn1} />
         <Title value="Ђала - към Унгария" />
         {isOn1 && <FSButton fsElementId="tth" />}
       </BlobPlayer>
@@ -31,7 +31,7 @@ function Djala() {
         url="https://kamere.mup.gov.rs:4443/Djala/djala2.m3u8"  // backup
         isActive={isOn2}
       >
-        <LSSwitcher isOn={isOn2} switchIsOn={switchIsOn2} />
+        <LSToggler isOn={isOn2} onToggle={toggleIsOn2} />
         <Title value="Ђала - към Сърбия" />
         {isOn2 && <FSButton fsElementId="tts" />}
       </BlobPlayer>

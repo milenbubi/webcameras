@@ -8,7 +8,7 @@ import { useRecordVisit } from "./Utils/recordVisit";
 import NoStreamTitle from "./Components/NoStreamTitle";
 import PlaceButtons from "./Components/buttons/PlaceButtons";
 import StreamingContent from "./Components/StreamingContent";
-import { useInitialStreamStatus } from "./Utils/localStorage";
+import { useMasterStreamStatus } from "./Utils/localStorage";
 import { useClearSearchParams } from "./Utils/clearSearchParams";
 import __BodyScrollbar from "./Components/internals/__BodyScrollbar";
 
@@ -16,7 +16,7 @@ import __BodyScrollbar from "./Components/internals/__BodyScrollbar";
 
 function AppEntry() {
   const [bccp, setBccp] = useState(resolvePlace);
-  const { isStreaming, setIsStreaming } = useInitialStreamStatus();
+  const { isStreaming, toggleStreaming } = useMasterStreamStatus();
   useRecordVisit(bccp);
   useClearSearchParams();
 
@@ -36,7 +36,7 @@ function AppEntry() {
 
       {isStreaming ? <StreamingContent bccp={bccp} /> : <NoStreamTitle />}
 
-      <Footer isStreaming={isStreaming} changeMasterStreaming={setIsStreaming} />
+      <Footer isStreaming={isStreaming} toggleMasterStreaming={toggleStreaming} />
 
     </Stack>
   );

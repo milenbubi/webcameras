@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
 import Title from "../Components/Title";
 import FSButton from "../Components/FSButton";
+import LSToggler from "../Components/LSToggler";
 import RowWrapper from "../Components/RowWrapper";
-import LSSwitcher from "../Components/LSSwitcher";
-import { useBooleanLS } from "../Utils/booleanLS";
+import { useBooleanLS } from "../Utils/localStorage";
 import ImagePlayer from "../Components/players/ImagePlayer";
 import ChangeCamButton from "../Components/ChangeCamButton";
 
@@ -44,10 +44,10 @@ function Turkiye() {
   const [streamLesovo, setStreamLesovo] = useState(1);
   const [streamМТ, setStreamMT] = useState(1);
   const [streamCP, setStreamCP] = useState(1);
-  const { isBooleanLSOn: isOn1, switchBooleanLS: switchIsOn1 } = useBooleanLS("kpkl");
-  const { isBooleanLSOn: isOn2, switchBooleanLS: switchIsOn2 } = useBooleanLS("lesv");
-  const { isBooleanLSOn: isOn3, switchBooleanLS: switchIsOn3 } = useBooleanLS("mtnv");
-  const { isBooleanLSOn: isOn4, switchBooleanLS: switchIsOn4 } = useBooleanLS("chpk");
+  const { isBooleanLSOn: isOn1, toggleBooleanLS: toggleIsOn1 } = useBooleanLS("kpkl");
+  const { isBooleanLSOn: isOn2, toggleBooleanLS: toggleIsOn2 } = useBooleanLS("lesv");
+  const { isBooleanLSOn: isOn3, toggleBooleanLS: toggleIsOn3 } = useBooleanLS("mtnv");
+  const { isBooleanLSOn: isOn4, toggleBooleanLS: toggleIsOn4 } = useBooleanLS("chpk");
 
   // Cache date index
   const date1 = useMemo(() => Date.now(), [streamKA, isOn1]);
@@ -64,7 +64,7 @@ function Turkiye() {
           id="kpkl" isActive={isOn1} stretchToFit
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${streamKA}.jpg?${date1}`}
         >
-          <LSSwitcher isOn={isOn1} switchIsOn={switchIsOn1} />
+          <LSToggler isOn={isOn1} onToggle={toggleIsOn1} />
           <Title value={"Капитан Андреево"} updateLabel="през 10 минути" />
           {isOn1 && (<>
             <ChangeCamButton streamIndex={streamKA} onClick={setStreamKA} indexCount={4} />
@@ -77,7 +77,7 @@ function Turkiye() {
           id="lesv" isActive={isOn2} stretchToFit
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getLesovoSource(streamLesovo)}.jpg?${date2}`}
         >
-          <LSSwitcher isOn={isOn2} switchIsOn={switchIsOn2} />
+          <LSToggler isOn={isOn2} onToggle={toggleIsOn2} />
           <Title value={"Лесово"} updateLabel="през 10 минути" />
           {isOn2 && (<>
             <ChangeCamButton streamIndex={streamLesovo} onClick={setStreamLesovo} indexCount={3} />
@@ -93,7 +93,7 @@ function Turkiye() {
           id="mtnv" isActive={isOn3} stretchToFit
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getMTSource(streamМТ)}.jpg?${date3}`}
         >
-          <LSSwitcher isOn={isOn3} switchIsOn={switchIsOn3} />
+          <LSToggler isOn={isOn3} onToggle={toggleIsOn3} />
           <Title value={"Малко Търново"} updateLabel="през 10 минути" />
           {isOn3 && (<>
             <ChangeCamButton streamIndex={streamМТ} onClick={setStreamMT} indexCount={2} />
@@ -106,7 +106,7 @@ function Turkiye() {
           id="chpk" isActive={isOn4} stretchToFit
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getCPSource(streamCP)}.jpg?${date4}`}
         >
-          <LSSwitcher isOn={isOn4} switchIsOn={switchIsOn4} />
+          <LSToggler isOn={isOn4} onToggle={toggleIsOn4} />
           <Title value={"Черекьой - Пазаркуле"} updateLabel="през 10 минути" />
           {isOn4 && (<>
             <ChangeCamButton streamIndex={streamCP} onClick={setStreamCP} indexCount={2} />

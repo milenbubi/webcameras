@@ -2,13 +2,14 @@ import { Button, CardMedia } from "@mui/material";
 
 interface IProps {
   isStreaming: boolean;
-  onChange: (isOn: boolean) => void;
+  onToggle: VoidFunction;
   doNotPulse?: boolean;
+  width: number;
 }
 
 
 
-function StreamModeSwitch({ isStreaming, onChange, doNotPulse }: IProps) {
+function StreamModeToggler({ isStreaming, onToggle, doNotPulse, width }: IProps) {
   return (
     <Button
       sx={{
@@ -20,13 +21,13 @@ function StreamModeSwitch({ isStreaming, onChange, doNotPulse }: IProps) {
           "100%": { transform: "scale(1)" }
         }
       }}
-      onClick={() => onChange(!isStreaming)}
+      onClick={onToggle}
     >
 
       <CardMedia
         src={isStreaming ? "/shots/on.png" : "/shots/off.png"}
         component="img"
-        sx={{ width: 80 }}
+        sx={{ width }}
         onError={e => { e.currentTarget.style.display = "none"; }}
       />
 
@@ -36,4 +37,4 @@ function StreamModeSwitch({ isStreaming, onChange, doNotPulse }: IProps) {
 
 
 
-export default StreamModeSwitch;
+export default StreamModeToggler;
