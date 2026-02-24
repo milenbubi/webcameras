@@ -1,9 +1,6 @@
 import { useMemo, useState } from "react";
-import Title from "../Components/Title";
-import FSButton from "../Components/FSButton";
 import RowWrapper from "../Components/RowWrapper";
 import { useBooleanLS } from "../Utils/localStorage";
-import StreamToggler from "../Components/StreamToggler";
 import ImagePlayer from "../Components/players/ImagePlayer";
 import ChangeCamButton from "../Components/ChangeCamButton";
 
@@ -41,7 +38,7 @@ const getCPSource = (streamIndex: number) => {
 
 function Turkiye() {
   const [streamKA, setStreamKA] = useState(1);
-  const [streamLesovo, setStreamLesovo] = useState(1);
+  const [streamLS, setStreamLS] = useState(1);
   const [streamМТ, setStreamMT] = useState(1);
   const [streamCP, setStreamCP] = useState(1);
   const { isBooleanLSOn: isOn1, toggleBooleanLS: toggleIsOn1 } = useBooleanLS("kpkl");
@@ -51,7 +48,7 @@ function Turkiye() {
 
   // Cache date index
   const date1 = useMemo(() => Date.now(), [streamKA, isOn1]);
-  const date2 = useMemo(() => Date.now(), [streamLesovo, isOn2]);
+  const date2 = useMemo(() => Date.now(), [streamLS, isOn2]);
   const date3 = useMemo(() => Date.now(), [streamМТ, isOn3]);
   const date4 = useMemo(() => Date.now(), [streamCP, isOn4]);
 
@@ -63,27 +60,23 @@ function Turkiye() {
         <ImagePlayer
           id="kpkl" isActive={isOn1} stretchToFit
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${streamKA}.jpg?${date1}`}
-        >
-          <StreamToggler isOn={isOn1} onToggle={toggleIsOn1} />
-          <Title value={"Капитан Андреево"} updateLabel="през 10 минути" />
-          {isOn1 && (<>
-            <ChangeCamButton streamIndex={streamKA} onClick={setStreamKA} indexCount={4} />
-            <FSButton fsElementId="kpkl" sx={{ bottom: 50 }} />
-          </>)}
-        </ImagePlayer>
+          onToggle={toggleIsOn1}
+          title="Капитан Андреево" updateLabel="през 10 минути"
+          hideChildrenIfInactive
+          fsBtnSx={{ bottom: 50 }}
+          children={<ChangeCamButton streamIndex={streamKA} onClick={setStreamKA} indexCount={4} />}
+        />
 
         {/* Лесово */}
         <ImagePlayer
           id="lesv" isActive={isOn2} stretchToFit
-          url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getLesovoSource(streamLesovo)}.jpg?${date2}`}
-        >
-          <StreamToggler isOn={isOn2} onToggle={toggleIsOn2} />
-          <Title value={"Лесово"} updateLabel="през 10 минути" />
-          {isOn2 && (<>
-            <ChangeCamButton streamIndex={streamLesovo} onClick={setStreamLesovo} indexCount={3} />
-            <FSButton fsElementId="lesv" sx={{ bottom: 50 }} />
-          </>)}
-        </ImagePlayer>
+          url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getLesovoSource(streamLS)}.jpg?${date2}`}
+          onToggle={toggleIsOn2}
+          title="Лесово" updateLabel="през 10 минути"
+          hideChildrenIfInactive
+          fsBtnSx={{ bottom: 50 }}
+          children={<ChangeCamButton streamIndex={streamLS} onClick={setStreamLS} indexCount={3} />}
+        />
       </RowWrapper>
 
 
@@ -92,27 +85,22 @@ function Turkiye() {
         <ImagePlayer
           id="mtnv" isActive={isOn3} stretchToFit
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getMTSource(streamМТ)}.jpg?${date3}`}
-        >
-          <StreamToggler isOn={isOn3} onToggle={toggleIsOn3} />
-          <Title value={"Малко Търново"} updateLabel="през 10 минути" />
-          {isOn3 && (<>
-            <ChangeCamButton streamIndex={streamМТ} onClick={setStreamMT} indexCount={2} />
-            <FSButton fsElementId="mtnv" sx={{ bottom: 50 }} />
-          </>)}
-        </ImagePlayer>
+          onToggle={toggleIsOn3}
+          title="Малко Търново" updateLabel="през 10 минути"
+          hideChildrenIfInactive
+          children={<ChangeCamButton streamIndex={streamМТ} onClick={setStreamMT} indexCount={2} />}
+        />
 
         {/* Черекьой - Пазаркуле */}
         <ImagePlayer
           id="chpk" isActive={isOn4} stretchToFit
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getCPSource(streamCP)}.jpg?${date4}`}
-        >
-          <StreamToggler isOn={isOn4} onToggle={toggleIsOn4} />
-          <Title value={"Черекьой - Пазаркуле"} updateLabel="през 10 минути" />
-          {isOn4 && (<>
-            <ChangeCamButton streamIndex={streamCP} onClick={setStreamCP} indexCount={2} />
-            <FSButton fsElementId="chpk" sx={{ bottom: 50 }} />
-          </>)}
-        </ImagePlayer>
+          onToggle={toggleIsOn4}
+          title="Черекьой - Пазаркуле" updateLabel="през 10 минути"
+          hideChildrenIfInactive
+          fsBtnSx={{ bottom: 50 }}
+          children={<ChangeCamButton streamIndex={streamCP} onClick={setStreamCP} indexCount={2} />}
+        />
       </RowWrapper>
     </>
   );

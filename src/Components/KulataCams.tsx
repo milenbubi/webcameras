@@ -1,7 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-import Title from "./Title";
-import FSButton from "./FSButton";
-import StreamToggler from "./StreamToggler";
 import ImagePlayer from "./players/ImagePlayer";
 import ChangeCamButton from "./ChangeCamButton";
 import { useBooleanLS } from "../Utils/localStorage";
@@ -53,13 +50,13 @@ function KulataCams() {
 
 
   return (
-    <ImagePlayer id="cklt" isActive={isOn1} url={camUrl}>
-      <StreamToggler isOn={isOn1} onToggle={toggleIsOn1} />
-      <Title value={camLabel} updateLabel="през 30s" />
-      {isOn1 && (<>
-        <ChangeCamButton streamIndex={streamKulata} onClick={setStreamKulata} indexCount={3} />
-        <FSButton fsElementId="cklt" />
-      </>)}
+    <ImagePlayer
+      id="cklt" isActive={isOn1}
+      url={camUrl} onToggle={toggleIsOn1}
+      title={camLabel} updateLabel="през 30s"
+      hideChildrenIfInactive
+    >
+      <ChangeCamButton streamIndex={streamKulata} onClick={setStreamKulata} indexCount={3} />
     </ImagePlayer>
   );
 }

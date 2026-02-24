@@ -17,7 +17,7 @@ function PlaceBtnGroupWrapper({ children }: PropsWithChildren) {
         "& button": {
           transition: "opacity 0.3s",
           pb: "4px",
-          width: { xs: 110, md: 160 },
+          minWidth: { xs: 110, md: 160 },
           fontWeight: 800,
           fontFamily: "Arial",
           fontSize: { xs: 12, md: 18 },
