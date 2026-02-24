@@ -1,22 +1,16 @@
-import { PropsWithChildren } from "react";
 import { useDocumentVisibility } from "@ffilip/mui-react-utils/document";
 import PlayerWrapper from "./PlayerWrapper";
+import { IPlayerProps } from "./utils/utils";
 import { playerCSS } from "../../Styles/CSSStyles";
 
-interface IProps {
-  id: string;
-  url: string;
-  isActive: boolean;
-}
 
 
-
-function IframePlayer({ id, url, isActive, children }: PropsWithChildren<IProps>) {
+function IframePlayer({ url, ...props }: IPlayerProps) {
   const isVisible = useDocumentVisibility();
 
 
   return (
-    <PlayerWrapper id={id} isActive={isActive} controls={children}>
+    <PlayerWrapper {...props}>
       <iframe
         src={isVisible ? url : ""}
         style={{ ...playerCSS, border: "none" }}

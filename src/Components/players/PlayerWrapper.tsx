@@ -1,23 +1,30 @@
 import { Box } from "@mui/material";
-import { PropsWithChildren, ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import { Centered } from "@ffilip/mui-react-utils/components";
+import Title from "../Title";
+import FSButton from "../FSButton";
+import StreamToggler from "../StreamToggler";
+import { IPlayerProps } from "./utils/utils";
 import { inactivePlayerCSS, playerWrapperCSS } from "../../Styles/CSSStyles";
 
-interface IProps {
-  id: string;
-  isActive: boolean;
-  controls: ReactNode;
-}
+type IProps = PropsWithChildren<
+  Omit<
+    IPlayerProps,
+    "url" | "stretchToFit"
+  >
+>;
 
 
-
-function PlayerWrapper({ id, isActive, controls, children }: PropsWithChildren<IProps>) {
+function PlayerWrapper({ id, isActive, onToggle, title, imageUpdateLabel, hideSpecialControlsIfInactive, fsBtnSx, specialControls, children }: IProps) {
   return (
     <Centered id={id} sx={playerWrapperCSS}>
 
       {isActive ? children : <Box sx={inactivePlayerCSS} />}
 
-      {controls}
+      <StreamToggler isOn={isActive} onToggle={onToggle} />
+      <Title value={title} imageUpdateLabel={imageUpdateLabel} />
+      {isActive && <FSButton fsElementId={id} sx={fsBtnSx} />}
+      {(isActive || !hideSpecialControlsIfInactive) && specialControls}
 
     </Centered>
   );

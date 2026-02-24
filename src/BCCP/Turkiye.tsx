@@ -61,10 +61,10 @@ function Turkiye() {
           id="kpkl" isActive={isOn1} stretchToFit
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${streamKA}.jpg?${date1}`}
           onToggle={toggleIsOn1}
-          title="Капитан Андреево" updateLabel="през 10 минути"
-          hideChildrenIfInactive
+          title="Капитан Андреево" imageUpdateLabel="през 10 минути"
+          hideSpecialControlsIfInactive
           fsBtnSx={{ bottom: 50 }}
-          children={<ChangeCamButton streamIndex={streamKA} onClick={setStreamKA} indexCount={4} />}
+          specialControls={<ChangeCamButton streamIndex={streamKA} onClick={setStreamKA} indexCount={4} />}
         />
 
         {/* Лесово */}
@@ -72,10 +72,10 @@ function Turkiye() {
           id="lesv" isActive={isOn2} stretchToFit
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getLesovoSource(streamLS)}.jpg?${date2}`}
           onToggle={toggleIsOn2}
-          title="Лесово" updateLabel="през 10 минути"
-          hideChildrenIfInactive
+          title="Лесово" imageUpdateLabel="през 10 минути"
+          hideSpecialControlsIfInactive
           fsBtnSx={{ bottom: 50 }}
-          children={<ChangeCamButton streamIndex={streamLS} onClick={setStreamLS} indexCount={3} />}
+          specialControls={<ChangeCamButton streamIndex={streamLS} onClick={setStreamLS} indexCount={3} />}
         />
       </RowWrapper>
 
@@ -86,9 +86,9 @@ function Turkiye() {
           id="mtnv" isActive={isOn3} stretchToFit
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getMTSource(streamМТ)}.jpg?${date3}`}
           onToggle={toggleIsOn3}
-          title="Малко Търново" updateLabel="през 10 минути"
-          hideChildrenIfInactive
-          children={<ChangeCamButton streamIndex={streamМТ} onClick={setStreamMT} indexCount={2} />}
+          title="Малко Търново" imageUpdateLabel="през 10 минути"
+          hideSpecialControlsIfInactive
+          specialControls={<ChangeCamButton streamIndex={streamМТ} onClick={setStreamMT} indexCount={2} />}
         />
 
         {/* Черекьой - Пазаркуле */}
@@ -96,10 +96,10 @@ function Turkiye() {
           id="chpk" isActive={isOn4} stretchToFit
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getCPSource(streamCP)}.jpg?${date4}`}
           onToggle={toggleIsOn4}
-          title="Черекьой - Пазаркуле" updateLabel="през 10 минути"
-          hideChildrenIfInactive
+          title="Черекьой - Пазаркуле" imageUpdateLabel="през 10 минути"
+          hideSpecialControlsIfInactive
           fsBtnSx={{ bottom: 50 }}
-          children={<ChangeCamButton streamIndex={streamCP} onClick={setStreamCP} indexCount={2} />}
+          specialControls={<ChangeCamButton streamIndex={streamCP} onClick={setStreamCP} indexCount={2} />}
         />
       </RowWrapper>
     </>

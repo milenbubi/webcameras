@@ -1,8 +1,5 @@
-import Title from "../Components/Title";
-import FSButton from "../Components/FSButton";
 import RowWrapper from "../Components/RowWrapper";
 import { useBooleanLS } from "../Utils/localStorage";
-import StreamToggler from "../Components/StreamToggler";
 import BlobPlayer from "../Components/players/BlobPlayer";
 
 
@@ -15,26 +12,20 @@ function Djala() {
   return (  // Ђала
     <RowWrapper>
       <BlobPlayer
-        id="tth"
-        // url="https://live.uzivokamere.com/djala1" 
-        url="https://kamere.mup.gov.rs:4443/Djala/djala1.m3u8"  // backup
-        isActive={isOn1}
-      >
-        <StreamToggler isOn={isOn1} onToggle={toggleIsOn1} />
-        <Title value="Ђала - към Унгария" />
-        {isOn1 && <FSButton fsElementId="tth" />}
-      </BlobPlayer>
+        id="tth" isActive={isOn1}
+        // url="https://live.uzivokamere.com/djala1"  // backup
+        url="https://kamere.mup.gov.rs:4443/Djala/djala1.m3u8"
+        onToggle={toggleIsOn1}
+        title="Ђала - към Унгария"
+      />
 
       <BlobPlayer
-        id="tts"
-        // url="https://live.uzivokamere.com/djala2" 
-        url="https://kamere.mup.gov.rs:4443/Djala/djala2.m3u8"  // backup
-        isActive={isOn2}
-      >
-        <StreamToggler isOn={isOn2} onToggle={toggleIsOn2} />
-        <Title value="Ђала - към Сърбия" />
-        {isOn2 && <FSButton fsElementId="tts" />}
-      </BlobPlayer>
+        id="ттс" isActive={isOn2}
+        // url="https://live.uzivokamere.com/djala2"  // backup
+        url="https://kamere.mup.gov.rs:4443/Djala/djala2.m3u8"
+        onToggle={toggleIsOn2}
+        title="Ђала - към Сърбия"
+      />
     </RowWrapper>
   );
 }

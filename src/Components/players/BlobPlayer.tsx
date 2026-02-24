@@ -1,20 +1,13 @@
-import { PropsWithChildren, useRef } from "react";
 import { Centered } from "@ffilip/mui-react-utils/components";
 import PlayerWrapper from "./PlayerWrapper";
+import { IPlayerProps } from "./utils/utils";
 import { playerCSS } from "../../Styles/CSSStyles";
 import { useHlsStream } from "./utils/hlsStreamHook";
 
-interface IProps {
-  id: string;
-  url: string;
-  isActive: boolean;
-}
 
 
-
-function BlobPlayer({ id, url, isActive, children }: PropsWithChildren<IProps>) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const { isCameraOffline } = useHlsStream(videoRef, url, isActive);
+function BlobPlayer({ url, ...props }: IPlayerProps) {
+  const { videoRef, isCameraOffline } = useHlsStream(url, props.isActive);
 
 
   const videoStyle = {
@@ -24,7 +17,7 @@ function BlobPlayer({ id, url, isActive, children }: PropsWithChildren<IProps>) 
 
 
   return (
-    <PlayerWrapper id={id} isActive={isActive} controls={children}>
+    <PlayerWrapper {...props}>
       <video
         ref={videoRef}
         controls
@@ -42,10 +35,10 @@ function BlobPlayer({ id, url, isActive, children }: PropsWithChildren<IProps>) 
             fontWeight: 600,
             padding: 2
           }}
-        >
-          {"Камерата е временно недостъпна"}
-        </Centered>
+          children={"Камерата е временно недостъпна"}
+        />
       )}
+
     </PlayerWrapper>
   );
 }

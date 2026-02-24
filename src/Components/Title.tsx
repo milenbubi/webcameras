@@ -4,12 +4,12 @@ import { SxProps, Typography } from "@mui/material";
 interface IProps {
   value: string;
   sx?: SxProps<Theme>;
-  updateLabel?: string;
+  imageUpdateLabel?: string;
 }
 
 
 
-function Title({ value, sx, updateLabel }: IProps) {
+function Title({ value, sx, imageUpdateLabel }: IProps) {
   return (
     <Typography
       sx={{
@@ -22,12 +22,15 @@ function Title({ value, sx, updateLabel }: IProps) {
         ...sx
       }}
     >
+
       {value}
-      {updateLabel && (
+
+      {imageUpdateLabel && (
         <Typography sx={{ pl: 2 }} variant="body2" color="text.secondary" component="span">
-          {updateLabel}
+          {imageUpdateLabel}
         </Typography>
       )}
+
     </Typography>
   );
 }

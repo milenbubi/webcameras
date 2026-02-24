@@ -1,11 +1,8 @@
 import { useState } from "react";
 import { useIsMUIMobile } from "@ffilip/mui-react-utils/mui";
-import Title from "../Components/Title";
-import FSButton from "../Components/FSButton";
 import KulataCams from "../Components/KulataCams";
 import RowWrapper from "../Components/RowWrapper";
 import { useBooleanLS } from "../Utils/localStorage";
-import StreamToggler from "../Components/StreamToggler";
 import BlobPlayer from "../Components/players/BlobPlayer";
 import ChangeCamButton from "../Components/ChangeCamButton";
 import IframePlayer from "../Components/players/IframePlayer";
@@ -16,10 +13,10 @@ function Bulgaria() {
   const isMobile = useIsMUIMobile();
   const [streamKalotinaToBG, setStreamKalotinaToBG] = useState(1);
   const [streamKalotinaToSRB, setStreamKalotinaToSRB] = useState(1);
-  const { isBooleanLSOn: isOn2, toggleBooleanLS: toggleIsOn2 } = useBooleanLS("mkrd");
-  const { isBooleanLSOn: isOn3, toggleBooleanLS: toggleIsOn3 } = useBooleanLS("mgkp");
-  const { isBooleanLSOn: isOn4, toggleBooleanLS: toggleIsOn4 } = useBooleanLS("kblg");
-  const { isBooleanLSOn: isOn5, toggleBooleanLS: toggleIsOn5 } = useBooleanLS("ksrb");
+  const { isBooleanLSOn: isOn1, toggleBooleanLS: toggleIsOn1 } = useBooleanLS("mkrd");
+  const { isBooleanLSOn: isOn2, toggleBooleanLS: toggleIsOn2 } = useBooleanLS("mgkp");
+  const { isBooleanLSOn: isOn3, toggleBooleanLS: toggleIsOn3 } = useBooleanLS("kblg");
+  const { isBooleanLSOn: isOn4, toggleBooleanLS: toggleIsOn4 } = useBooleanLS("ksrb");
 
 
   return (  // България
@@ -33,54 +30,40 @@ function Bulgaria() {
       {/* Маказа */}
       <RowWrapper>
         <IframePlayer
-          id="mkrd"
-          isActive={isOn2}
+          id="mkrd" isActive={isOn1}
           url={`https://www.youtube.com/embed/pnr0lhrqRAc?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}`}
-        >
-          <StreamToggler isOn={isOn2} onToggle={toggleIsOn2} />
-          <Title value="Маказа - посока Кърджали" />
-          {isOn2 && <FSButton fsElementId="mkrd" />}
-        </IframePlayer>
+          onToggle={toggleIsOn1}
+          title="Маказа - посока Кърджали"
+        />
 
         <IframePlayer
-          id="mgkp"
-          isActive={isOn3}
+          id="mgkp" isActive={isOn2}
           url={`https://www.youtube.com/embed/YXN19ZEpIkc?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}`}
-        >
-          <StreamToggler isOn={isOn3} onToggle={toggleIsOn3} />
-          <Title value="Маказа - посока ГКПП" />
-          {isOn3 && <FSButton fsElementId="mgkp" />}
-        </IframePlayer>
+          onToggle={toggleIsOn2}
+          title="Маказа - посока ГКПП"
+        />
       </RowWrapper>
 
 
       {/* Калотина */}
       <RowWrapper>
         <BlobPlayer
-          id="kblg"
+          id="kblg" isActive={isOn3}
           url={streamKalotinaToBG === 1 ? "https://kamere.mup.gov.rs:4443/gradina/gradina2.m3u8" : "https://kamere.amss.org.rs/gradina2/gradina2.m3u8"}
-          isActive={isOn4}
-        >
-          <StreamToggler isOn={isOn4} onToggle={toggleIsOn4} />
-          <Title value="Калотина - посока България" />
-          {isOn4 && (<>
-            <ChangeCamButton streamIndex={streamKalotinaToBG} onClick={setStreamKalotinaToBG} />
-            <FSButton fsElementId="kblg" />
-          </>)}
-        </BlobPlayer>
+          onToggle={toggleIsOn3}
+          title="Калотина - посока България"
+          hideSpecialControlsIfInactive
+          specialControls={<ChangeCamButton streamIndex={streamKalotinaToBG} onClick={setStreamKalotinaToBG} />}
+        />
 
         <BlobPlayer
-          id="ksrb"
+          id="ksrb" isActive={isOn4}
           url={streamKalotinaToSRB === 1 ? "https://kamere.mup.gov.rs:4443/gradina/gradina1.m3u8" : "https://kamere.amss.org.rs/gradina1/gradina1.m3u8"}
-          isActive={isOn5}
-        >
-          <StreamToggler isOn={isOn5} onToggle={toggleIsOn5} />
-          <Title value="Калотина - посока Сърбия" />
-          {isOn5 && (<>
-            <ChangeCamButton streamIndex={streamKalotinaToSRB} onClick={setStreamKalotinaToSRB} />
-            <FSButton fsElementId="ksrb" />
-          </>)}
-        </BlobPlayer>
+          onToggle={toggleIsOn4}
+          title="Калотина - посока Сърбия"
+          hideSpecialControlsIfInactive
+          specialControls={<ChangeCamButton streamIndex={streamKalotinaToSRB} onClick={setStreamKalotinaToSRB} />}
+        />
       </RowWrapper>
     </>
   );

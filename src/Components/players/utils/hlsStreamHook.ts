@@ -1,14 +1,15 @@
 import Hls from "hls.js";
 import { isSafari } from "@ffilip/chan180-utils/env";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useDidUpdateEffect } from "@ffilip/mui-react-utils/react";
 import { useDocumentVisibility } from "@ffilip/mui-react-utils/document";
-import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 
 
 
-export function useHlsStream(videoRef: RefObject<HTMLVideoElement>, url: string, isActive: boolean) {
+export function useHlsStream(url: string, isActive: boolean) {
   const hlsRef = useRef<Hls | null>(null);
   const isVisible = useDocumentVisibility();
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [isCameraOffline, setIsCameraOffline] = useState(false);
 
 
@@ -101,5 +102,5 @@ export function useHlsStream(videoRef: RefObject<HTMLVideoElement>, url: string,
   }, [url, isActive]);
 
 
-  return { isCameraOffline };
+  return { videoRef, isCameraOffline };
 }

@@ -1,49 +1,18 @@
-import { PropsWithChildren } from "react";
-import { CardMedia, SxProps, Theme } from "@mui/material";
+import { CardMedia } from "@mui/material";
 import { EMPTY_BASE64_IMAGE } from "@ffilip/chan180-utils/env";
 import { useDocumentVisibility } from "@ffilip/mui-react-utils/document";
-import Title from "../Title";
-import FSButton from "../FSButton";
 import PlayerWrapper from "./PlayerWrapper";
-import StreamToggler from "../StreamToggler";
+import { IPlayerProps } from "./utils/utils";
 import { playerCSS } from "../../Styles/CSSStyles";
 
-interface IProps {
-  id: string;
-  url: string;
-  isActive: boolean;
-  stretchToFit?: boolean;
-  onToggle: VoidFunction;
-  title: string;
-  updateLabel?: string;
-  hideChildrenIfInactive?: boolean;
-  fsBtnSx?: SxProps<Theme>;
-}
 
 
-
-function ImagePlayer({ id, url, isActive, stretchToFit, onToggle, title, updateLabel, children, hideChildrenIfInactive, fsBtnSx }: PropsWithChildren<IProps>) {
+function ImagePlayer({ url, stretchToFit, ...props }: IPlayerProps) {
   const isVisible = useDocumentVisibility();
 
 
   return (
-    <PlayerWrapper
-      id={id}
-      isActive={isActive}
-      controls={
-        <>
-          <StreamToggler isOn={isActive} onToggle={onToggle} />
-          <Title value={title} updateLabel={updateLabel} />
-          {isActive && (
-            <>
-              <FSButton fsElementId={id} sx={fsBtnSx} />
-              {hideChildrenIfInactive && children}
-            </>
-          )}
-          {!hideChildrenIfInactive && children}
-        </>
-      }
-    >
+    <PlayerWrapper {...props}>
 
       {isVisible && (
         <CardMedia
