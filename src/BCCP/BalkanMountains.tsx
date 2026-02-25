@@ -25,7 +25,7 @@ function BalkanMountains() {
     };
 
     refreshCam();
-    const id = setInterval(refreshCam, 1000);
+    const id = setInterval(refreshCam, 5000);
 
     return () => clearInterval(id);
   }, [isVisible, hasActiveStream]);
@@ -38,7 +38,7 @@ function BalkanMountains() {
         <ImagePlayer
           onToggle={toggleIsOn1}
           id="mzlt" isActive={isOn1}
-          title="Хижа Мазалат" imageUpdateLabel="през 1s"
+          title="Хижа Мазалат" imageUpdateLabel="през 5s"
           url={time ? `https://cams.pladi.bg/mazalat.jpg?t=${time}` : ""}
         />
 
@@ -46,7 +46,7 @@ function BalkanMountains() {
         <ImagePlayer
           onToggle={toggleIsOn2}
           id="hraj" isActive={isOn2}
-          title="Хижа Рай" imageUpdateLabel="през 1s"
+          title="Хижа Рай" imageUpdateLabel="през 5s"
           url={time ? `https://cams.pladi.bg/ray.jpg?t=${time}` : ""}
         />
       </RowWrapper>
@@ -57,7 +57,7 @@ function BalkanMountains() {
         <ImagePlayer
           onToggle={toggleIsOn3}
           id="orgn" isActive={isOn3}
-          title="Заслон Орлово гнездо" imageUpdateLabel="през 1s"
+          title="Заслон Орлово гнездо" imageUpdateLabel="през 5s"
           url={time ? `https://cams.pladi.bg/orlovognezdo.jpg?t=${time}` : ""}
         />
 
@@ -65,7 +65,7 @@ function BalkanMountains() {
         <ImagePlayer
           onToggle={toggleIsOn4}
           id="drmn" isActive={isOn4}
-          title="Хижа Дерменка" imageUpdateLabel="през 1s"
+          title="Хижа Дерменка" imageUpdateLabel="през 5s"
           url={time ? `https://cams.pladi.bg/dermenka.jpg?t=${time}` : ""}
         />
       </RowWrapper>
