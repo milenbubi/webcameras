@@ -413,10 +413,10 @@
   dependencies:
     big.js "^7.0.1"
 
-"@ffilip/chan180-utils@^3.4.9":
-  version "3.4.9"
-  resolved "https://registry.yarnpkg.com/@ffilip/chan180-utils/-/chan180-utils-3.4.9.tgz#39a988d5cf52619cb8973431565225e7c317c103"
-  integrity sha512-MWkoXq83k1WKovPa9HyVAcLTXpKLMngysfDmGw4KizPmjklf9XssjDHzoIccGUesLgU47h/37saUAvgXZwX2fA==
+"@ffilip/chan180-utils@^3.4.11":
+  version "3.4.11"
+  resolved "https://registry.yarnpkg.com/@ffilip/chan180-utils/-/chan180-utils-3.4.11.tgz#f20ec53f2768b7b0baf8b759d6fb7b122f33dad3"
+  integrity sha512-yogrZPe3IKM5dnjSfSemchlarSEmI2TjY+q9e8ZbU6afnZ4r/Z5r/zaCvtEMP1HcMR2fDM27BN4F3sDC6M57fw==
   dependencies:
     big.js "^7.0.1"
 

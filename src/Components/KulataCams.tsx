@@ -35,17 +35,22 @@ function KulataCams() {
 
 
   useEffect(() => {  // Frame refresh
+    if (!isOn1) {
+      setCamUrl("");
+      return;
+    }
+
     const refreshCam = () => {
-      if (isOn1) {
-        const src = `https://cdn.uab.org/images/cctv/images/cctv/cctv_${getSource(streamKulata)}/cctv.jpg?${Date.now()}`;
-        setCamUrl(src);
-      }
+      const src = `https://cdn.uab.org/images/cctv/images/cctv/cctv_${getSource(streamKulata)}/cctv.jpg?t=${Date.now()}`;
+      setCamUrl(src);
     };
 
     refreshCam();
     const interval = setInterval(refreshCam, 30000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+    }
   }, [streamKulata, isOn1]);
 
 

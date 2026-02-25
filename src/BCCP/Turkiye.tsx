@@ -4,11 +4,13 @@ import { useBooleanLS } from "../Utils/localStorage";
 import ImagePlayer from "../Components/players/ImagePlayer";
 import ChangeCamButton from "../Components/ChangeCamButton";
 
-//  https://www.canlimobeseizle.com/wp-content/uploads/custom-images/resim1.jpg?
-// Капъкуле - от 1 до 4. "?" е задължителен, за да има актуално време
+// https://www.canlimobeseizle.com/wp-content/uploads/custom-images/resim1.jpg?0123456789
+// This URL includes a query parameter (?0123456789) to prevent 
+// browser caching and ensure the image is always fetched freshly from the server, 
+// rather than served from the browser or intermediary cache.
 
-// https://www.canlimobeseizle.com/turkiye-sinir-kapilari-canli-izle/
-// Камери от всички турски ГКПП
+// https://www.canlimobeseizle.com/turkiye-sinir-kapilari-canli-izle
+// Cameras from all Turkish border checkpoints.
 
 const getLesovoSource = (streamIndex: number) => {
   switch (streamIndex) {
@@ -39,7 +41,7 @@ const getCPSource = (streamIndex: number) => {
 function Turkiye() {
   const [streamKA, setStreamKA] = useState(1);
   const [streamLS, setStreamLS] = useState(1);
-  const [streamМТ, setStreamMT] = useState(1);
+  const [streamMT, setStreamMT] = useState(1);
   const [streamCP, setStreamCP] = useState(1);
   const { isBooleanLSOn: isOn1, toggleBooleanLS: toggleIsOn1 } = useBooleanLS("kpkl");
   const { isBooleanLSOn: isOn2, toggleBooleanLS: toggleIsOn2 } = useBooleanLS("lesv");
@@ -49,7 +51,7 @@ function Turkiye() {
   // Cache date index
   const date1 = useMemo(() => Date.now(), [streamKA, isOn1]);
   const date2 = useMemo(() => Date.now(), [streamLS, isOn2]);
-  const date3 = useMemo(() => Date.now(), [streamМТ, isOn3]);
+  const date3 = useMemo(() => Date.now(), [streamMT, isOn3]);
   const date4 = useMemo(() => Date.now(), [streamCP, isOn4]);
 
 
@@ -59,7 +61,7 @@ function Turkiye() {
         {/* Капитан Андреево */}
         <ImagePlayer
           id="kpkl" isActive={isOn1} stretchToFit
-          url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${streamKA}.jpg?${date1}`}
+          url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${streamKA}.jpg?t=${date1}`}
           onToggle={toggleIsOn1}
           title="Капитан Андреево" imageUpdateLabel="през 10 минути"
           hideSpecialControlsIfInactive
@@ -70,7 +72,7 @@ function Turkiye() {
         {/* Лесово */}
         <ImagePlayer
           id="lesv" isActive={isOn2} stretchToFit
-          url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getLesovoSource(streamLS)}.jpg?${date2}`}
+          url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getLesovoSource(streamLS)}.jpg?t=${date2}`}
           onToggle={toggleIsOn2}
           title="Лесово" imageUpdateLabel="през 10 минути"
           hideSpecialControlsIfInactive
@@ -84,17 +86,17 @@ function Turkiye() {
         {/* Малко Търново */}
         <ImagePlayer
           id="mtnv" isActive={isOn3} stretchToFit
-          url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getMTSource(streamМТ)}.jpg?${date3}`}
+          url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getMTSource(streamMT)}.jpg?t=${date3}`}
           onToggle={toggleIsOn3}
           title="Малко Търново" imageUpdateLabel="през 10 минути"
           hideSpecialControlsIfInactive
-          specialControls={<ChangeCamButton streamIndex={streamМТ} onClick={setStreamMT} indexCount={2} />}
+          specialControls={<ChangeCamButton streamIndex={streamMT} onClick={setStreamMT} indexCount={2} />}
         />
 
         {/* Черекьой - Пазаркуле */}
         <ImagePlayer
           id="chpk" isActive={isOn4} stretchToFit
-          url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getCPSource(streamCP)}.jpg?${date4}`}
+          url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getCPSource(streamCP)}.jpg?t=${date4}`}
           onToggle={toggleIsOn4}
           title="Черекьой - Пазаркуле" imageUpdateLabel="през 10 минути"
           hideSpecialControlsIfInactive

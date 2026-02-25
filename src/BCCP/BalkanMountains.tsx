@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useDocumentVisibility } from "@ffilip/mui-react-utils";
+import { useDocumentVisibility } from "@ffilip/mui-react-utils/document";
 import RowWrapper from "../Components/RowWrapper";
 import { useBooleanLS } from "../Utils/localStorage";
+import VasilLevskiHut from "../Components/VasilLevskiHut";
 import ImagePlayer from "../Components/players/ImagePlayer";
 
 
@@ -11,10 +12,12 @@ function BalkanMountains() {
   const isVisible = useDocumentVisibility();
   const { isBooleanLSOn: isOn1, toggleBooleanLS: toggleIsOn1 } = useBooleanLS("mzlt");
   const { isBooleanLSOn: isOn2, toggleBooleanLS: toggleIsOn2 } = useBooleanLS("hraj");
-  const { isBooleanLSOn: isOn3, toggleBooleanLS: toggleIsOn3 } = useBooleanLS("orgn");
+  // const { isBooleanLSOn: isOn3, toggleBooleanLS: toggleIsOn3 } = useBooleanLS("orgn");
   const { isBooleanLSOn: isOn4, toggleBooleanLS: toggleIsOn4 } = useBooleanLS("drmn");
+  const { isBooleanLSOn: isOn5, toggleBooleanLS: toggleIsOn5 } = useBooleanLS("wejn");
+  const { isBooleanLSOn: isOn7, toggleBooleanLS: toggleIsOn7 } = useBooleanLS("tyja");
 
-  const hasActiveStream = isOn1 || isOn2 || isOn3 || isOn4;
+  const hasActiveStream = isOn1 || isOn2 || /* isOn3 || */ isOn4 || isOn5 || isOn7;
 
 
   useEffect(() => {
@@ -54,12 +57,12 @@ function BalkanMountains() {
 
       <RowWrapper>
         {/* Орлово гнездо */}
-        <ImagePlayer
+        {/* <ImagePlayer
           onToggle={toggleIsOn3}
           id="orgn" isActive={isOn3}
           title="Заслон Орлово гнездо" imageUpdateLabel="през 5s"
           url={time ? `https://cams.pladi.bg/orlovognezdo.jpg?t=${time}` : ""}
-        />
+        /> */}
 
         {/* Дерменка */}
         <ImagePlayer
@@ -67,6 +70,28 @@ function BalkanMountains() {
           id="drmn" isActive={isOn4}
           title="Хижа Дерменка" imageUpdateLabel="през 5s"
           url={time ? `https://cams.pladi.bg/dermenka.jpg?t=${time}` : ""}
+        />
+
+        {/* Вежен */}
+        <ImagePlayer
+          onToggle={toggleIsOn5}
+          id="wejn" isActive={isOn5}
+          title="Хижа Вежен" imageUpdateLabel="през 5s"
+          url={time ? `https://cams.pladi.bg/vejen.jpg?t=${time}` : ""}
+        />
+      </RowWrapper>
+
+
+      <RowWrapper>
+        {/* Васил Левски */}
+        <VasilLevskiHut />
+
+        {/* Тъжа */}
+        <ImagePlayer
+          onToggle={toggleIsOn7}
+          id="tyja" isActive={isOn7}
+          title="Хижа Тъжа" imageUpdateLabel="през 5s"
+          url={time ? `https://cams.pladi.bg/taja.jpg?t=${time}` : ""}
         />
       </RowWrapper>
     </>

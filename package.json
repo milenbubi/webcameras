@@ -14,7 +14,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@ffilip/chan180-utils": "^3.4.9",
+    "@ffilip/chan180-utils": "^3.4.11",
     "@ffilip/mui-react-utils": "^2.4.3",
     "@mui/material": "^5.15.21",
     "hls.js": "^1.6.15",
