@@ -43,7 +43,7 @@ function VasilLevskiHut() {
     }
 
     fetchImage();
-    const intervalId = setInterval(fetchImage, 5000);
+    const intervalId = setInterval(fetchImage, 30000);
 
     return () => {
       clearInterval(intervalId);
@@ -58,7 +58,7 @@ function VasilLevskiHut() {
     <ImagePlayer
       onToggle={toggleIsOn1}
       id="vslv" isActive={isOn1}
-      title="Хижа Васил Левски" imageUpdateLabel="през 5s"
+      title="Хижа Васил Левски" imageUpdateLabel="през 30s"
       url={blobUrl}
       hideSpecialControlsIfInactive
       specialControls={<TimeLabel date={lastModified} sx={{ bottom: 25 }} />}
