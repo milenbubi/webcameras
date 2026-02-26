@@ -36,7 +36,6 @@ function KulataCams() {
 
   useEffect(() => {  // Frame refresh
     if (!isOn1) {
-      setCamUrl("");
       return;
     }
 
@@ -50,6 +49,7 @@ function KulataCams() {
 
     return () => {
       clearInterval(interval);
+      setCamUrl("");
     }
   }, [streamKulata, isOn1]);
 

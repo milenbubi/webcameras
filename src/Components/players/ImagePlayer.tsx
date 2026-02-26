@@ -16,8 +16,9 @@ function ImagePlayer({ url, stretchToFit, ...props }: IPlayerProps) {
 
       {isVisible && (
         <CardMedia
-          src={url || EMPTY_BASE64_IMAGE}
-          sx={{ ...playerCSS, objectFit: stretchToFit ? "cover" : "contain" }} component="img"
+          component="img"
+          image={url || EMPTY_BASE64_IMAGE}
+          sx={{ ...playerCSS, objectFit: stretchToFit ? "cover" : "contain" }}
           onError={e => e.currentTarget.src = EMPTY_BASE64_IMAGE}
         />
       )}

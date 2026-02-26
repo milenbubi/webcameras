@@ -28,7 +28,7 @@ function BalkanMountains() {
     };
 
     refreshCam();
-    const id = setInterval(refreshCam, 5000);
+    const id = setInterval(refreshCam, 30000);
 
     return () => clearInterval(id);
   }, [isVisible, hasActiveStream]);
@@ -41,7 +41,7 @@ function BalkanMountains() {
         <ImagePlayer
           onToggle={toggleIsOn1}
           id="mzlt" isActive={isOn1}
-          title="Хижа Мазалат" imageUpdateLabel="през 5s"
+          title="Хижа Мазалат" imageUpdateLabel="през 30 секунди"
           url={time ? `https://cams.pladi.bg/mazalat.jpg?t=${time}` : ""}
         />
 
@@ -49,7 +49,7 @@ function BalkanMountains() {
         <ImagePlayer
           onToggle={toggleIsOn2}
           id="hraj" isActive={isOn2}
-          title="Хижа Рай" imageUpdateLabel="през 5s"
+          title="Хижа Рай" imageUpdateLabel="през 30 секунди"
           url={time ? `https://cams.pladi.bg/ray.jpg?t=${time}` : ""}
         />
       </RowWrapper>
@@ -60,7 +60,7 @@ function BalkanMountains() {
         {/* <ImagePlayer
           onToggle={toggleIsOn3}
           id="orgn" isActive={isOn3}
-          title="Заслон Орлово гнездо" imageUpdateLabel="през 5s"
+          title="Заслон Орлово гнездо" imageUpdateLabel="през 30 секунди"
           url={time ? `https://cams.pladi.bg/orlovognezdo.jpg?t=${time}` : ""}
         /> */}
 
@@ -68,7 +68,7 @@ function BalkanMountains() {
         <ImagePlayer
           onToggle={toggleIsOn4}
           id="drmn" isActive={isOn4}
-          title="Хижа Дерменка" imageUpdateLabel="през 5s"
+          title="Хижа Дерменка" imageUpdateLabel="през 30 секунди"
           url={time ? `https://cams.pladi.bg/dermenka.jpg?t=${time}` : ""}
         />
 
@@ -76,7 +76,7 @@ function BalkanMountains() {
         <ImagePlayer
           onToggle={toggleIsOn5}
           id="wejn" isActive={isOn5}
-          title="Хижа Вежен" imageUpdateLabel="през 5s"
+          title="Хижа Вежен" imageUpdateLabel="през 30 секунди"
           url={time ? `https://cams.pladi.bg/vejen.jpg?t=${time}` : ""}
         />
       </RowWrapper>
@@ -90,7 +90,7 @@ function BalkanMountains() {
         <ImagePlayer
           onToggle={toggleIsOn7}
           id="tyja" isActive={isOn7}
-          title="Хижа Тъжа" imageUpdateLabel="през 5s"
+          title="Хижа Тъжа" imageUpdateLabel="през 30 секунди"
           url={time ? `https://cams.pladi.bg/taja.jpg?t=${time}` : ""}
         />
       </RowWrapper>

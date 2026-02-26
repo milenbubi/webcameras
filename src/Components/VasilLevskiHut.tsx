@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useDocumentVisibility } from "@ffilip/mui-react-utils";
+import { useLatestRequestGuard } from "@ffilip/mui-react-utils/react";
 import TimeLabel from "./TimeLabel";
 import ImagePlayer from "./players/ImagePlayer";
 import { useBooleanLS } from "../Utils/localStorage";
@@ -6,39 +8,43 @@ import { useBooleanLS } from "../Utils/localStorage";
 
 
 function VasilLevskiHut() {
+  const imageUrlRef = useRef("");
+  const isVisible = useDocumentVisibility();
   const [blobUrl, setBlobUrl] = useState("");
+  const { register, isOutdated } = useLatestRequestGuard();
   const [lastModified, setLastModified] = useState<string | null>(null);
   const { isBooleanLSOn: isOn1, toggleBooleanLS: toggleIsOn1 } = useBooleanLS("vslv");
 
 
   useEffect(() => {
-    if (!isOn1) {
+    if (!isOn1 || !isVisible) {
       return;
     }
 
     async function fetchImage() {
       const src = `https://meter.ac/gs/nodes/N124/snap.jpg?t=${Date.now()}`;
+      const requestId = register();
 
       try {
         const res = await fetch(src);
+
+        if (isOutdated(requestId)) {  // Abort, if there is a new request
+          return;
+        }
+
         const blob = await res.blob();
         const newBlobUrl = URL.createObjectURL(blob);
 
+        URL.revokeObjectURL(imageUrlRef.current);
+        imageUrlRef.current = newBlobUrl;
         setLastModified(res.headers.get("Last-Modified"));
-
-        setBlobUrl(prev => {
-          URL.revokeObjectURL(prev);
-          return newBlobUrl;
-        });
-
+        setBlobUrl(newBlobUrl);
       }
       catch (err) {
+        URL.revokeObjectURL(imageUrlRef.current);
+        imageUrlRef.current = "";
         setLastModified(null);
-
-        setBlobUrl(prev => {
-          URL.revokeObjectURL(prev);
-          return "";
-        });
+        setBlobUrl("");
       }
     }
 
@@ -47,11 +53,12 @@ function VasilLevskiHut() {
 
     return () => {
       clearInterval(intervalId);
-      URL.revokeObjectURL(blobUrl);
+      URL.revokeObjectURL(imageUrlRef.current);
+      imageUrlRef.current = "";
       setLastModified(null);
       setBlobUrl("");
     };
-  }, [isOn1]);
+  }, [isOn1, isVisible]);
 
 
   return (
