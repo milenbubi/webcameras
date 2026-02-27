@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { safeLocalStorage } from "@ffilip/chan180-utils";
+import { isDevEnv } from "./constants";
 import { LS_BROWSER_VISITS_KEY } from "./localStorage";
 
 
@@ -33,7 +34,7 @@ import { LS_BROWSER_VISITS_KEY } from "./localStorage";
  */
 export function useRecordVisit(place: string) {
   useEffect(() => {
-    if (!window.location.port) {  // Log a new visit (only in production)
+    if (!isDevEnv) {  // Log a new visit (only in production)
       const currentVisits = safeLocalStorage.get(LS_BROWSER_VISITS_KEY);
       const newBrowserVisitsCount = (parseInt(currentVisits ?? "", 10) || 0) + 1;
       safeLocalStorage.set(LS_BROWSER_VISITS_KEY, String(newBrowserVisitsCount));

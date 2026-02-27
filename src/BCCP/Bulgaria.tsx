@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { useIsMUIMobile } from "@ffilip/mui-react-utils";
+import { isDevEnv } from "../Utils/constants";
 import KulataCams from "../Components/KulataCams";
 import RowWrapper from "../Components/RowWrapper";
 import { useBooleanLS } from "../Utils/localStorage";
 import BlobPlayer from "../Components/players/BlobPlayer";
 import ChangeCamButton from "../Components/ChangeCamButton";
 import IframePlayer from "../Components/players/IframePlayer";
-
-const isDev = !!window.location.port;
 
 
 
@@ -24,7 +23,7 @@ function Bulgaria() {
   return (  // България
     <>
       {/* Кулата */}
-      {isDev && (
+      {isDevEnv && (
         <RowWrapper>
           <KulataCams />
         </RowWrapper>

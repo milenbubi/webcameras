@@ -5,6 +5,7 @@ import Djala from "../BCCP/Djala";
 import Horgos from "../BCCP/Horgos";
 import Turkiye from "../BCCP/Turkiye";
 import Kelebia from "../BCCP/Kelebia";
+import { isDevEnv } from "./constants";
 import Bulgaria from "../BCCP/Bulgaria";
 import { LS_PLACE_KEY } from "./localStorage";
 import BalkanMountains from "../BCCP/BalkanMountains";
@@ -38,7 +39,7 @@ export const PLACES_CONFIG = [
   { name: "Horgos", active: true, component: Horgos, label: "Хоргош", isExternal: false },
   { name: "Djala", active: true, component: Djala, label: "Ђала", isExternal: false },
   { name: "Kelebia", active: true, component: Kelebia, label: "Келебия", isExternal: false },
-  { name: "Turkiye", active: !!window.location.port, component: Turkiye, label: "Турция", isExternal: false }
+  { name: "Turkiye", active: isDevEnv, component: Turkiye, label: "Турция", isExternal: false }
 ] as const satisfies readonly (IDefaultPlaceConfig | IRegularPlaceConfig)[];
 
 export type Place = typeof PLACES_CONFIG[number]["name"];
