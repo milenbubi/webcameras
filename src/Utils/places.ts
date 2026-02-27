@@ -38,7 +38,7 @@ export const PLACES_CONFIG = [
   { name: "Horgos", active: true, component: Horgos, label: "Хоргош", isExternal: false },
   { name: "Djala", active: true, component: Djala, label: "Ђала", isExternal: false },
   { name: "Kelebia", active: true, component: Kelebia, label: "Келебия", isExternal: false },
-  { name: "Turkiye", active: true, component: Turkiye, label: "Турция", isExternal: false }
+  { name: "Turkiye", active: !!window.location.port, component: Turkiye, label: "Турция", isExternal: false }
 ] as const satisfies readonly (IDefaultPlaceConfig | IRegularPlaceConfig)[];
 
 export type Place = typeof PLACES_CONFIG[number]["name"];

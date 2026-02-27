@@ -7,6 +7,8 @@ import BlobPlayer from "../Components/players/BlobPlayer";
 import ChangeCamButton from "../Components/ChangeCamButton";
 import IframePlayer from "../Components/players/IframePlayer";
 
+const isDev = !!window.location.port;
+
 
 
 function Bulgaria() {
@@ -22,9 +24,11 @@ function Bulgaria() {
   return (  // България
     <>
       {/* Кулата */}
-      <RowWrapper>
-        <KulataCams />
-      </RowWrapper>
+      {isDev && (
+        <RowWrapper>
+          <KulataCams />
+        </RowWrapper>
+      )}
 
 
       {/* Маказа */}
