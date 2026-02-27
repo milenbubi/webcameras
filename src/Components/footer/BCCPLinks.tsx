@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { openNewTab } from "@ffilip/chan180-utils/env";
-import { Centered } from "@ffilip/mui-react-utils/components";
+import { Centered } from "@ffilip/mui-react-utils";
+import { openNewTab } from "@ffilip/chan180-utils";
 import { CardMedia, Button, CardMediaProps, ButtonProps } from "@mui/material";
 
 

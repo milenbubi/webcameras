@@ -1,0 +1,1 @@
+export const isDevEnv = !!window.location.port;

@@ -1,5 +1,5 @@
 import { Stack } from "@mui/material";
-import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
+import { safeLocalStorage } from "@ffilip/chan180-utils";
 import PlaceSingleButton from "./PlaceSingleButton";
 import { LS_PLACE_KEY } from "../../Utils/localStorage";
 import PlaceBtnGroupWrapper from "./PlaceBtnGroupWrapper";

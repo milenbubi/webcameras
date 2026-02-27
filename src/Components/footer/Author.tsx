@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { Button, Typography } from "@mui/material";
-import { openFacebookProfile } from "@ffilip/chan180-utils/env";
+import { openFacebookProfile } from "@ffilip/chan180-utils";
 
 
 

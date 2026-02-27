@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useIsMUIMobile } from "@ffilip/mui-react-utils/mui";
+import { useIsMUIMobile } from "@ffilip/mui-react-utils";
 import KulataCams from "../Components/KulataCams";
 import RowWrapper from "../Components/RowWrapper";
 import { useBooleanLS } from "../Utils/localStorage";

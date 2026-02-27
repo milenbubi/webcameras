@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
+import { safeLocalStorage } from "@ffilip/chan180-utils";
 
 type StreamStatus = "on" | "off";
 type BooleanStatus = "true" | "false";

@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { PropsWithChildren } from "react";
-import { Centered } from "@ffilip/mui-react-utils/components";
+import { Centered } from "@ffilip/mui-react-utils";
 import Title from "../Title";
 import FSButton from "../FSButton";
 import StreamToggler from "../StreamToggler";

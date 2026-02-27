@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDocumentVisibility } from "@ffilip/mui-react-utils/document";
+import { useDocumentVisibility } from "@ffilip/mui-react-utils";
 import RowWrapper from "../Components/RowWrapper";
 import { useBooleanLS } from "../Utils/localStorage";
 import VasilLevskiHut from "../Components/VasilLevskiHut";

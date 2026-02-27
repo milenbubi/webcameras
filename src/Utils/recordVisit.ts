@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
+import { safeLocalStorage } from "@ffilip/chan180-utils";
 import { LS_BROWSER_VISITS_KEY } from "./localStorage";
 
 

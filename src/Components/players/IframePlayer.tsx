@@ -1,4 +1,4 @@
-import { useDocumentVisibility } from "@ffilip/mui-react-utils/document";
+import { useDocumentVisibility } from "@ffilip/mui-react-utils";
 import PlayerWrapper from "./PlayerWrapper";
 import { IPlayerProps } from "./utils/utils";
 import { playerCSS } from "../../Styles/CSSStyles";

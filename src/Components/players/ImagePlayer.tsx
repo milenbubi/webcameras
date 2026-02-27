@@ -1,6 +1,6 @@
 import { CardMedia } from "@mui/material";
-import { EMPTY_BASE64_IMAGE } from "@ffilip/chan180-utils/env";
-import { useDocumentVisibility } from "@ffilip/mui-react-utils/document";
+import { EMPTY_BASE64_IMAGE } from "@ffilip/chan180-utils";
+import { useDocumentVisibility } from "@ffilip/mui-react-utils";
 import PlayerWrapper from "./PlayerWrapper";
 import { IPlayerProps } from "./utils/utils";
 import { playerCSS } from "../../Styles/CSSStyles";

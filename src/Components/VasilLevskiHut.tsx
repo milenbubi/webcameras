@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useDocumentVisibility } from "@ffilip/mui-react-utils";
-import { useLatestRequestGuard } from "@ffilip/mui-react-utils/react";
+import { useDocumentVisibility ,useLatestRequestGuard} from "@ffilip/mui-react-utils";
 import TimeLabel from "./TimeLabel";
 import ImagePlayer from "./players/ImagePlayer";
 import { useBooleanLS } from "../Utils/localStorage";

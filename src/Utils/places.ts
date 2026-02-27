@@ -1,5 +1,5 @@
 import { ComponentType } from "react";
-import { safeLocalStorage } from "@ffilip/chan180-utils/helpers";
+import { safeLocalStorage } from "@ffilip/chan180-utils";
 import News from "../BCCP/News";
 import Djala from "../BCCP/Djala";
 import Horgos from "../BCCP/Horgos";

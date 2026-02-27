@@ -1,8 +1,7 @@
 import Hls from "hls.js";
-import { isSafari } from "@ffilip/chan180-utils/env";
+import { isSafari } from "@ffilip/chan180-utils";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useDidUpdateEffect } from "@ffilip/mui-react-utils/react";
-import { useDocumentVisibility } from "@ffilip/mui-react-utils/document";
+import { useDidUpdateEffect, useDocumentVisibility } from "@ffilip/mui-react-utils";
 
 
 

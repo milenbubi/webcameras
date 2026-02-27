@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { SxProps, Theme, Typography } from "@mui/material";
-import { formatUTCDateToLocalDateString, DateSource } from "@ffilip/chan180-utils/time";
+import { formatUTCDateToLocalDateString, DateSource } from "@ffilip/chan180-utils";
 
 interface IProps {
   date: DateSource;
