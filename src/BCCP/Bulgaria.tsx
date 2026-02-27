@@ -31,14 +31,14 @@ function Bulgaria() {
       <RowWrapper>
         <IframePlayer
           id="mkrd" isActive={isOn1}
-          url={`https://www.youtube.com/embed/pnr0lhrqRAc?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}`}
+          url={`https://www.youtube.com/embed/ztW62j3-jl8?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}`}
           onToggle={toggleIsOn1}
           title="Маказа - посока Кърджали"
         />
 
         <IframePlayer
           id="mgkp" isActive={isOn2}
-          url={`https://www.youtube.com/embed/YXN19ZEpIkc?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}`}
+          url={`https://www.youtube.com/embed/mLtxlaGgGfo?autoplay=1&mute=1&controls=${isMobile ? 0 : 1}`}
           onToggle={toggleIsOn2}
           title="Маказа - посока ГКПП"
         />
