@@ -68,7 +68,7 @@ function VasilLevskiHut() {
       title="Хижа Васил Левски" imageUpdateLabel="през 30s"
       url={blobUrl}
       hideSpecialControlsIfInactive
-      specialControls={<TimeLabel date={lastModified} sx={{ bottom: 25 }} />}
+      specialControls={<TimeLabel date={lastModified} sx={{ top: 25 }} />}
     />
   );
 }

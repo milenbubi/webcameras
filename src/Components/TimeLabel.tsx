@@ -5,12 +5,11 @@ import { formatUTCDateToLocalDateString, DateSource } from "@ffilip/chan180-util
 interface IProps {
   date: DateSource;
   sx?: SxProps<Theme>;
-  color?: string;
 }
 
 
 
-function TimeLabel({ date, sx, color = "#f3f051ff" }: IProps) {
+function TimeLabel({ date, sx }: IProps) {
   const dateLabel = useMemo(() => {
     const formattedDate = formatUTCDateToLocalDateString({
       source: date,
@@ -25,12 +24,12 @@ function TimeLabel({ date, sx, color = "#f3f051ff" }: IProps) {
 
   return (
     <Typography
-      variant="h6"
       sx={{
-        color,
+        color: "#f3f051ff",
         position: "absolute",
-        bottom: 0,
+        top: 10,
         left: 10,
+        fontSize: { xs: 10, sm: 14 },
         ...sx
       }}
       children={dateLabel}
