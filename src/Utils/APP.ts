@@ -49,7 +49,7 @@ class AppConfig {
     this.AUTH_CODE = null;
     return code || undefined;
   }
-  
+
 
   private setAuthCode(): string | null {
     return this.SEARCH_PARAMS["i"] || null;
@@ -60,13 +60,7 @@ class AppConfig {
   }
 
   private parseUrlSearch(): QueryParams {
-    const search = window.location.search;
-
-    if (!search?.trim) {
-      return {};
-    }
-
-    const params = new URLSearchParams(search);
+    const params = new URLSearchParams(window.location.search);
     const result: QueryParams = {};
 
     for (const [key, value] of params.entries()) {
