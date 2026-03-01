@@ -1,45 +1,35 @@
 import { useEffect } from "react";
-import { safeLocalStorage } from "@ffilip/chan180-utils";
 import APP from "./APP";
-import { LS_BROWSER_VISITS_KEY } from "./localStorage";
 
 
 
 /**
  * React hook for logging and tracking site visits.
  *
- * This hook automatically:
- * 1. Increments a browser-local visit counter in `localStorage`.
- * 2. Sends the updated count and the current `place` (from `APP.getInitialPlace()`) to the PHP backend (`visit.php`).
- * 3. In development mode, optionally fetches some stats from a live server for debugging.
+ * This hook automatically sends the visit data to the PHP backend (`visit.php`):
+ *    - `place` from `APP.getInitialPlace()`
+ *    - `browser_visit_count` from `APP.getBrowserVisits()`
+ *    - optional `authCode` from `APP.getAuthCode()`
  *
  * ---
  * ### Behavior
  * - Runs **only once** on component mount.
- * - Uses `APP.getInitialPlace()` to determine the logical place identifier.
  * - Production: logs the visit to the backend.
- * - Development: skips logging (or fetches stats for testing).
- *
- * ---
- * ### Local storage key
- * Uses the browser visits key (`LS_BROWSER_VISITS_KEY`) in `localStorage` to store the per-browser visit count.
+ * - Development: skips logging and optionally fetches stats for testing.
  *
  * @example
  * ```ts
  * useRecordVisit();
  * ```
- * Sends `/php/visit.php?place=Bulgaria&browser_visit_count=3`
+ * Sends `/php/visit.php` with JSON body like:
+ * `{ "place": "Bulgaria", "browser_visit_count": 3, "authCode": "123abc" }`
  */
 export function useRecordVisit() {
   useEffect(() => {
     if (!APP.IS_DEV_MODE) {  // Log a new visit (only in production)
-      const currentVisits = safeLocalStorage.get(LS_BROWSER_VISITS_KEY);
-      const newBrowserVisitsCount = (parseInt(currentVisits ?? "", 10) || 0) + 1;
-      safeLocalStorage.set(LS_BROWSER_VISITS_KEY, String(newBrowserVisitsCount));
-
       const data = {
         place: APP.getInitialPlace(),
-        browser_visit_count: newBrowserVisitsCount,
+        browser_visit_count: APP.getBrowserVisits(),
         authCode: APP.getAuthCode()
       };
 
