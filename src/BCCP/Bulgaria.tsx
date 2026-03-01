@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useIsMUIMobile } from "@ffilip/mui-react-utils";
-import { isDevEnv } from "../Utils/constants";
+import APP from "../Utils/APP";
 import KulataCams from "../Components/KulataCams";
 import RowWrapper from "../Components/RowWrapper";
 import { useBooleanLS } from "../Utils/localStorage";
@@ -23,7 +23,7 @@ function Bulgaria() {
   return (  // България
     <>
       {/* Кулата */}
-      {isDevEnv && (
+      {APP.IS_DEV_MODE && (
         <RowWrapper>
           <KulataCams />
         </RowWrapper>

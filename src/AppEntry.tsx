@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Stack } from "@mui/material";
 
+import APP from "./Utils/APP";
 import HiddenH1 from "./Components/HiddenH1";
-import { resolvePlace } from "./Utils/places";
 import Footer from "./Components/footer/Footer";
 import { useRecordVisit } from "./Utils/recordVisit";
 import NoStreamTitle from "./Components/NoStreamTitle";
@@ -15,9 +15,9 @@ import __BodyScrollbar from "./Components/internals/__BodyScrollbar";
 
 
 function AppEntry() {
-  const [bccp, setBccp] = useState(resolvePlace);
+  const [bccp, setBccp] = useState(APP.getInitialPlace());
   const { isStreaming, toggleStreaming } = useMasterStreamStatus();
-  useRecordVisit(bccp);
+  useRecordVisit();
   useClearSearchParams();
 
 
