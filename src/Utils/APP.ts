@@ -26,7 +26,7 @@ type QueryParams = Record<string, string>;
  * import APP from "./APP";
  * const place = APP.getInitialPlace();
  * const visits = APP.getBrowserVisits();
- * const authCode = APP.getAuthCode();
+ * const authCode = APP.consumeAuthCode();
  * ```
  *
  * ---
@@ -40,19 +40,19 @@ type QueryParams = Record<string, string>;
  * ### Key Methods
  * - `getInitialPlace(): Place` – Returns the logical place for the current session.
  * - `getBrowserVisits(): number` – Returns the number of visits for this browser (incremented automatically on init).
- * - `getAuthCode(): string | undefined` – Returns the one-time auth code, if present.
+ * - `consumeAuthCode(): string | undefined` – Returns the one-time auth code, if present.
  */
 class AppConfig {
   private static instance: AppConfig;
 
-  private SEARCH_PARAMS: QueryParams;
+  private QUERY_PARAMS: QueryParams;
   private PLACE: Place;
   private AUTH_CODE: string | null;
   private BROWSER_VISITS: number;
   public readonly IS_DEV_MODE: boolean;
 
   private constructor() {
-    this.SEARCH_PARAMS = this.parseUrlSearch();
+    this.QUERY_PARAMS = this.parseQueryParams();
     this.PLACE = this.setPlace();
     this.AUTH_CODE = this.setAuthCode();
     this.BROWSER_VISITS = this.incrementBrowserVisits();
@@ -74,7 +74,7 @@ class AppConfig {
     return this.PLACE;
   }
 
-  public getAuthCode(): string | undefined {
+  public consumeAuthCode(): string | undefined {
     const code = this.AUTH_CODE;
     this.AUTH_CODE = null;
     return code || undefined;
@@ -88,11 +88,13 @@ class AppConfig {
   /* ==================== PRIVATE METHODS ==================== */
 
   private setAuthCode(): string | null {
-    return this.SEARCH_PARAMS["i"] || null;
+    const { i, ...rest } = this.QUERY_PARAMS;
+    this.QUERY_PARAMS = rest;
+    return i ?? null;
   }
 
   private setPlace(): Place {
-    return resolvePlace(this.SEARCH_PARAMS[LS_PLACE_KEY]);
+    return resolvePlace(this.QUERY_PARAMS[LS_PLACE_KEY]);
   }
 
   private incrementBrowserVisits() {
@@ -103,7 +105,7 @@ class AppConfig {
     return newBrowserVisitsCount;
   }
 
-  private parseUrlSearch(): QueryParams {
+  private parseQueryParams(): QueryParams {
     const params = new URLSearchParams(window.location.search);
     const result: QueryParams = {};
 

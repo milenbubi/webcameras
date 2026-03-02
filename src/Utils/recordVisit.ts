@@ -8,8 +8,8 @@ import APP from "./APP";
  *
  * This hook automatically sends the visit data to the PHP backend (`visit.php`):
  *    - `place` from `APP.getInitialPlace()`
- *    - `browser_visit_count` from `APP.getBrowserVisits()`
- *    - optional `authCode` from `APP.getAuthCode()`
+ *    - `browserVisitCount` from `APP.getBrowserVisits()`
+ *    - `authCode` ( optional )  from `APP.getAuthCode()`
  *
  * ---
  * ### Behavior
@@ -22,15 +22,15 @@ import APP from "./APP";
  * useRecordVisit();
  * ```
  * Sends `/php/visit.php` with JSON body like:
- * `{ "place": "Bulgaria", "browser_visit_count": 3, "authCode": "123abc" }`
+ * `{ "place": "Bulgaria", "browserVisitCount": 3, "authCode": "123abc" }`
  */
 export function useRecordVisit() {
   useEffect(() => {
     if (!APP.IS_DEV_MODE) {  // Log a new visit (only in production)
       const data = {
         place: APP.getInitialPlace(),
-        browser_visit_count: APP.getBrowserVisits(),
-        authCode: APP.getAuthCode()
+        browserVisitCount: APP.getBrowserVisits(),
+        authCode: APP.consumeAuthCode()
       };
 
       fetch("/php/visit.php", {
