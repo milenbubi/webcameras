@@ -406,10 +406,17 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.21.5.tgz#acad351d582d157bb145535db2a6ff53dd514b5c"
   integrity sha512-tQd/1efJuzPC6rCFwEvLtci/xNFcTZknmXs98FYDfGE4wP9ClFV98nyKrzJKVPMhdDnjzLhdUyMX4PsQAPjwIw==
 
-"@ffilip/chan180-utils@^3.0.1", "@ffilip/chan180-utils@^3.4.17":
+"@ffilip/chan180-utils@^3.0.1":
   version "3.4.17"
   resolved "https://registry.yarnpkg.com/@ffilip/chan180-utils/-/chan180-utils-3.4.17.tgz#ca6c06c59bb0f045cf0f29a84be4819d0070772d"
   integrity sha512-dZIUV9laMkASwINvGtPEcRwVY3ysf+HBAzwsRWmYCGgLJBduxojg2z9HCjjC+729iYMqMJQ44AsE0mBZekzv3w==
+  dependencies:
+    big.js "^7.0.1"
+
+"@ffilip/chan180-utils@^3.4.19":
+  version "3.4.19"
+  resolved "https://registry.yarnpkg.com/@ffilip/chan180-utils/-/chan180-utils-3.4.19.tgz#cf386f69e23702529700ffccb24067a27beed0e7"
+  integrity sha512-61Er5C8iWjAJ3HKo3IgB5jlDYJrhj2YkAFhnVpYHyGBnAjK7qYTh3g7kBKBeS9Rv6OfF7zUlTX5HoXZwIPbqdQ==
   dependencies:
     big.js "^7.0.1"
 

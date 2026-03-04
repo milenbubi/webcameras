@@ -1,4 +1,4 @@
-import { safeLocalStorage } from "@ffilip/chan180-utils";
+import { isNumeric, safeLocalStorage } from "@ffilip/chan180-utils";
 import { Place, resolvePlace } from "./places";
 import { LS_BROWSER_VISITS_KEY, LS_PLACE_KEY } from "./localStorage";
 
@@ -96,16 +96,20 @@ class AppConfig {
     return resolvePlace(params[LS_PLACE_KEY]);
   }
 
+
   private incrementBrowserVisits(): number {
     const raw = safeLocalStorage.get(LS_BROWSER_VISITS_KEY);
-    const current = Number(raw);
-    const isValidInteger = Number.isInteger(current) && current > 0;
+    let next = 1;
 
-    const next = isValidInteger ? current + 1 : 1;
+    // Increment only if stored value is a valid non-negative integer
+    if (isNumeric(raw, { isInteger: true, notNegative: true })) {
+      next = Number(raw) + 1;
+    }
 
     safeLocalStorage.set(LS_BROWSER_VISITS_KEY, String(next));
     return next;
   }
+
 
   private parseQueryParams(): QueryParams {
     const params = new URLSearchParams(window.location.search);
