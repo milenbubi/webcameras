@@ -97,14 +97,14 @@ class AppConfig {
   }
 
   private incrementBrowserVisits(): number {
-    const currentVisits = safeLocalStorage.get(LS_BROWSER_VISITS_KEY);
+    const raw = safeLocalStorage.get(LS_BROWSER_VISITS_KEY);
+    const current = Number(raw);
+    const isValidInteger = Number.isInteger(current) && current > 0;
 
-    const parsed = parseInt(currentVisits ?? "", 10);
-    const newBrowserVisitsCount = Math.max(1, (isNaN(parsed) ? 0 : parsed) + 1);
+    const next = isValidInteger ? current + 1 : 1;
 
-    safeLocalStorage.set(LS_BROWSER_VISITS_KEY, String(newBrowserVisitsCount));
-
-    return newBrowserVisitsCount;
+    safeLocalStorage.set(LS_BROWSER_VISITS_KEY, String(next));
+    return next;
   }
 
   private parseQueryParams(): QueryParams {
