@@ -5,80 +5,72 @@ import { useBooleanLS } from "../Utils/localStorage";
 import VasilLevskiHut from "../Components/VasilLevskiHut";
 import ImagePlayer from "../Components/players/ImagePlayer";
 
+interface IEntityProps {
+  id: string;
+  title: string;
+  url: string;
+}
 
 
-function BalkanMountains() {
-  const [time, setTime] = useState(0);
+
+function HutEntity({ id, title, url }: IEntityProps) {
+  const [camUrl, setCamUrl] = useState("");
   const isVisible = useDocumentVisibility();
-  const { isBooleanLSOn: isOn1, toggleBooleanLS: toggleIsOn1 } = useBooleanLS("mzlt");
-  const { isBooleanLSOn: isOn2, toggleBooleanLS: toggleIsOn2 } = useBooleanLS("hraj");
-  // const { isBooleanLSOn: isOn3, toggleBooleanLS: toggleIsOn3 } = useBooleanLS("orgn");
-  const { isBooleanLSOn: isOn4, toggleBooleanLS: toggleIsOn4 } = useBooleanLS("drmn");
-  const { isBooleanLSOn: isOn5, toggleBooleanLS: toggleIsOn5 } = useBooleanLS("wejn");
-  const { isBooleanLSOn: isOn7, toggleBooleanLS: toggleIsOn7 } = useBooleanLS("tyja");
-
-  const hasActiveStream = isOn1 || isOn2 || /* isOn3 || */ isOn4 || isOn5 || isOn7;
+  const { isBooleanLSOn: isOn1, toggleBooleanLS: toggleIsOn1 } = useBooleanLS(id);
 
 
   useEffect(() => {
-    if (!isVisible || !hasActiveStream) return;
+    if (!isOn1 || !isVisible) {
+      return;
+    }
 
     const refreshCam = () => {
-      setTime(Date.now());
+      setCamUrl(`${url}?t=${Date.now()}`);
     };
 
     refreshCam();
     const id = setInterval(refreshCam, 30000);
 
-    return () => clearInterval(id);
-  }, [isVisible, hasActiveStream]);
+    return () => {
+      clearInterval(id);
+      setCamUrl("");
+    }
+  }, [isVisible, isOn1]);
 
 
+  return (
+    <ImagePlayer
+      onToggle={toggleIsOn1}
+      id={id} isActive={isOn1}
+      title={title} imageUpdateLabel="през 30 секунди"
+      url={camUrl}
+    />
+  );
+}
+
+
+
+function BalkanMountains() {
   return (  // Стара Планина
     <>
       <RowWrapper>
         {/* Мазалат */}
-        <ImagePlayer
-          onToggle={toggleIsOn1}
-          id="mzlt" isActive={isOn1}
-          title="Хижа Мазалат" imageUpdateLabel="през 30 секунди"
-          url={time ? `https://cams.pladi.bg/mazalat.jpg?t=${time}` : ""}
-        />
+        <HutEntity id="mzlt" title="Хижа Мазалат" url="https://cams.pladi.bg/mazalat.jpg" />
 
         {/* Рай */}
-        <ImagePlayer
-          onToggle={toggleIsOn2}
-          id="hraj" isActive={isOn2}
-          title="Хижа Рай" imageUpdateLabel="през 30 секунди"
-          url={time ? `https://cams.pladi.bg/ray.jpg?t=${time}` : ""}
-        />
+        <HutEntity id="hraj" title="Хижа Рай" url="https://cams.pladi.bg/ray.jpg" />
       </RowWrapper>
 
 
       <RowWrapper>
         {/* Орлово гнездо */}
-        {/* <ImagePlayer
-          onToggle={toggleIsOn3}
-          id="orgn" isActive={isOn3}
-          title="Заслон Орлово гнездо" imageUpdateLabel="през 30 секунди"
-          url={time ? `https://cams.pladi.bg/orlovognezdo.jpg?t=${time}` : ""}
-        /> */}
+        {/* <HutEntity id="orgn" title="Заслон Орлово гнездо" url="https://cams.pladi.bg/orlovognezdo.jpg" /> */}
 
         {/* Дерменка */}
-        <ImagePlayer
-          onToggle={toggleIsOn4}
-          id="drmn" isActive={isOn4}
-          title="Хижа Дерменка" imageUpdateLabel="през 30 секунди"
-          url={time ? `https://cams.pladi.bg/dermenka.jpg?t=${time}` : ""}
-        />
+        <HutEntity id="drmn" title="Хижа Дерменка" url="https://cams.pladi.bg/dermenka.jpg" />
 
         {/* Вежен */}
-        <ImagePlayer
-          onToggle={toggleIsOn5}
-          id="wejn" isActive={isOn5}
-          title="Хижа Вежен" imageUpdateLabel="през 30 секунди"
-          url={time ? `https://cams.pladi.bg/vejen.jpg?t=${time}` : ""}
-        />
+        <HutEntity id="wejn" title="Хижа Вежен" url="https://cams.pladi.bg/vejen.jpg" />
       </RowWrapper>
 
 
@@ -87,12 +79,7 @@ function BalkanMountains() {
         <VasilLevskiHut />
 
         {/* Тъжа */}
-        <ImagePlayer
-          onToggle={toggleIsOn7}
-          id="tyja" isActive={isOn7}
-          title="Хижа Тъжа" imageUpdateLabel="през 30 секунди"
-          url={time ? `https://cams.pladi.bg/taja.jpg?t=${time}` : ""}
-        />
+        <HutEntity id="tyja" title="Хижа Тъжа" url="https://cams.pladi.bg/taja.jpg" />
       </RowWrapper>
     </>
   );
