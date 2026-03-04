@@ -4,7 +4,7 @@ import { useBooleanLS } from "../Utils/localStorage";
 import ImagePlayer from "../Components/players/ImagePlayer";
 import ChangeCamButton from "../Components/ChangeCamButton";
 
-// https://www.canlimobeseizle.com/wp-content/uploads/custom-images/resim1.jpg?0123456789
+// https://www.canlimobeseizle.com/wp-content/uploads/custom-images/resim1.jpg?t=0123456789
 // This URL includes a query parameter (?0123456789) to prevent 
 // browser caching and ensure the image is always fetched freshly from the server, 
 // rather than served from the browser or intermediary cache.

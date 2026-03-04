@@ -17,7 +17,8 @@ type QueryParams = Record<string, string>;
  * 1. Global constants and configuration (e.g., development mode).
  * 2. Logical "place" resolution from URL or localStorage.
  * 3. Browser-local visit count tracking.
- * 4. Optional authentication codes from URL query parameters.
+ * 4. Optional authentication code from URL query parameters.
+ * 5. Dynamic access to other URL query parameters.
  *
  * ---
  * ### Usage
@@ -45,16 +46,16 @@ type QueryParams = Record<string, string>;
 class AppConfig {
   private static instance: AppConfig;
 
-  private QUERY_PARAMS: QueryParams;
   private PLACE: Place;
   private AUTH_CODE: string | null;
   private BROWSER_VISITS: number;
   public readonly IS_DEV_MODE: boolean;
 
   private constructor() {
-    this.QUERY_PARAMS = this.parseQueryParams();
-    this.PLACE = this.setPlace();
-    this.AUTH_CODE = this.setAuthCode();
+    const queryParams = this.parseQueryParams();
+
+    this.PLACE = this.setPlace(queryParams);
+    this.AUTH_CODE = this.setAuthCode(queryParams);
     this.BROWSER_VISITS = this.incrementBrowserVisits();
     this.IS_DEV_MODE = import.meta.env.DEV;
   }
@@ -87,19 +88,20 @@ class AppConfig {
 
   /* ==================== PRIVATE METHODS ==================== */
 
-  private setAuthCode(): string | null {
-    const { i, ...rest } = this.QUERY_PARAMS;
-    this.QUERY_PARAMS = rest;
-    return i ?? null;
+  private setAuthCode(params: QueryParams): string | null {
+    return params["i"] ?? null;
   }
 
-  private setPlace(): Place {
-    return resolvePlace(this.QUERY_PARAMS[LS_PLACE_KEY]);
+  private setPlace(params: QueryParams): Place {
+    return resolvePlace(params[LS_PLACE_KEY]);
   }
 
-  private incrementBrowserVisits() {
+  private incrementBrowserVisits(): number {
     const currentVisits = safeLocalStorage.get(LS_BROWSER_VISITS_KEY);
-    const newBrowserVisitsCount = (parseInt(currentVisits ?? "", 10) || 0) + 1;
+
+    const parsed = parseInt(currentVisits ?? "", 10);
+    const newBrowserVisitsCount = Math.max(1, (isNaN(parsed) ? 0 : parsed) + 1);
+
     safeLocalStorage.set(LS_BROWSER_VISITS_KEY, String(newBrowserVisitsCount));
 
     return newBrowserVisitsCount;
