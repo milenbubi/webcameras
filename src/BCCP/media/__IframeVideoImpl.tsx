@@ -34,7 +34,7 @@ function addYoutubeControls(url: string, isMobile: boolean, muted: boolean) {
 
 
 
-function IframeVideoImpl({ id, title, url, muted = false }: IProps) {
+function __IframeVideoImpl({ id, title, url, muted = false }: IProps) {
   const isMobile = useIsMUIMobile();
   const { isBooleanLSOn, toggleBooleanLS } = useBooleanLS(id);
   const finalUrl = useMemo(() => addYoutubeControls(url, isMobile, muted), [url, isMobile, muted]);
@@ -52,4 +52,4 @@ function IframeVideoImpl({ id, title, url, muted = false }: IProps) {
 
 
 
-export default IframeVideoImpl;
+export { __IframeVideoImpl };

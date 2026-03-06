@@ -15,7 +15,7 @@ interface IProps {
 
 
 
-function SwitchableBlobVideoImpl({ id, title, urlComposer, camCount, fsBtnSx, chCamBtnSx }: IProps) {
+function __SwitchableBlobVideoImpl({ id, title, urlComposer, camCount, fsBtnSx, chCamBtnSx }: IProps) {
   const [streamIndex, setStreamIndex] = useState(1);
   const url = useMemo(() => urlComposer(streamIndex), [streamIndex]);
   const { isBooleanLSOn: isOn1, toggleBooleanLS: toggleIsOn1 } = useBooleanLS(id);
@@ -35,4 +35,4 @@ function SwitchableBlobVideoImpl({ id, title, urlComposer, camCount, fsBtnSx, ch
 
 
 
-export default SwitchableBlobVideoImpl;
+export { __SwitchableBlobVideoImpl };

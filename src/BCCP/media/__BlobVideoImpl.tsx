@@ -9,7 +9,7 @@ interface IProps {
 
 
 
-function BlobVideoImpl({ id, title, url }: IProps) {
+function __BlobVideoImpl({ id, title, url }: IProps) {
   const { isBooleanLSOn, toggleBooleanLS } = useBooleanLS(id);
 
 
@@ -25,4 +25,4 @@ function BlobVideoImpl({ id, title, url }: IProps) {
 
 
 
-export default BlobVideoImpl;
+export { __BlobVideoImpl };

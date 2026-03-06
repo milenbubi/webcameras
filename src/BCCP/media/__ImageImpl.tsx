@@ -1,6 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDocumentVisibility } from "@ffilip/mui-react-utils";
 import { useBooleanLS } from "../../Utils/localStorage";
+import { useRefreshInfo } from "./tools/useRefreshInfo";
+import { updateCamUrlWithTimestamp } from "./tools/helpers";
 import ImagePlayer from "../../Components/players/ImagePlayer";
 
 interface IProps {
@@ -14,22 +16,11 @@ interface IProps {
 
 
 
-function ImageImpl({ id, title, url, refreshSeconds = 30, showUpdateInMinutes, stretchToFit }: IProps) {
+function __ImageImpl({ id, title, url, stretchToFit, ...refreshProps }: IProps) {
   const [camUrl, setCamUrl] = useState("");
   const isVisible = useDocumentVisibility();
   const { isBooleanLSOn, toggleBooleanLS } = useBooleanLS(id);
-  const normalizedRefreshSeconds = useMemo(() => Math.max(1, Math.round(refreshSeconds)), [refreshSeconds]);
-
-
-  const updateLabel = useMemo(() => {
-    if (showUpdateInMinutes) {
-      const minutes = Math.max(1, Math.round(normalizedRefreshSeconds / 60));
-      return `през ${minutes} ${minutes === 1 ? "минута" : "минути"}`;
-    }
-    else {
-      return `през ${normalizedRefreshSeconds} ${normalizedRefreshSeconds === 1 ? "секунда" : "секунди"}`;
-    }
-  }, [normalizedRefreshSeconds, showUpdateInMinutes]);
+  const { normalizedRefreshSeconds, updateLabel } = useRefreshInfo(refreshProps);
 
 
   useEffect(() => {
@@ -37,11 +28,7 @@ function ImageImpl({ id, title, url, refreshSeconds = 30, showUpdateInMinutes, s
       return;
     }
 
-    const refreshCam = () => {
-      const urlObj = new URL(url);
-      urlObj.searchParams.set("t", Date.now().toString());
-      setCamUrl(urlObj.toString());
-    };
+    const refreshCam = () => updateCamUrlWithTimestamp({ url, setCamUrl });
 
     refreshCam();
     const id = setInterval(refreshCam, normalizedRefreshSeconds * 1000);
@@ -66,4 +53,4 @@ function ImageImpl({ id, title, url, refreshSeconds = 30, showUpdateInMinutes, s
 
 
 
-export default ImageImpl;
+export { __ImageImpl };
