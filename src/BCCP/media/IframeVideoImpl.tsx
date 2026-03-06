@@ -7,10 +7,11 @@ interface IProps {
   id: string;
   title: string;
   url: string;
+  muted?: boolean;
 }
 
 
-function addYoutubeControls(url: string, isMobile: boolean) {
+function addYoutubeControls(url: string, isMobile: boolean, muted: boolean) {
   const isYoutube =
     url.includes("youtube.com") ||
     url.includes("youtu.be") ||
@@ -24,7 +25,7 @@ function addYoutubeControls(url: string, isMobile: boolean) {
 
   return `${url}${separator}` +
     `autoplay=1` +
-    `&mute=0` +
+    `&mute=${muted ? 1 : 0}` +
     `&controls=${isMobile ? 0 : 1}` +
     `&rel=0` +
     `&modestbranding=1` +
@@ -33,10 +34,10 @@ function addYoutubeControls(url: string, isMobile: boolean) {
 
 
 
-function IframeVideoImpl({ id, title, url }: IProps) {
+function IframeVideoImpl({ id, title, url, muted = false }: IProps) {
   const isMobile = useIsMUIMobile();
   const { isBooleanLSOn, toggleBooleanLS } = useBooleanLS(id);
-  const finalUrl = useMemo(() => addYoutubeControls(url, isMobile), [url, isMobile]);
+  const finalUrl = useMemo(() => addYoutubeControls(url, isMobile, muted), [url, isMobile, muted]);
 
 
   return (
