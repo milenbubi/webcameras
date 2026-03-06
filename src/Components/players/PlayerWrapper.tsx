@@ -15,7 +15,7 @@ type IProps = PropsWithChildren<
 >;
 
 
-function PlayerWrapper({ id, isActive, onToggle, title, imageUpdateLabel, hideSpecialControlsIfInactive, fsBtnSx, specialControls, children }: IProps) {
+function PlayerWrapper({ id, isActive, onToggle, title, imageUpdateLabel, fsBtnSx, specialControls, children }: IProps) {
   return (
     <Centered id={id} sx={playerWrapperCSS}>
 
@@ -24,7 +24,7 @@ function PlayerWrapper({ id, isActive, onToggle, title, imageUpdateLabel, hideSp
       <StreamToggler isOn={isActive} onToggle={onToggle} />
       <Title value={title} imageUpdateLabel={imageUpdateLabel} />
       {isActive && <FSButton fsElementId={id} sx={fsBtnSx} />}
-      {(isActive || !hideSpecialControlsIfInactive) && specialControls}
+      {isActive && specialControls}
 
     </Centered>
   );

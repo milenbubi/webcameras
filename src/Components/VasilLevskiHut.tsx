@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useDocumentVisibility ,useLatestRequestGuard} from "@ffilip/mui-react-utils";
+import { useDocumentVisibility, useLatestRequestGuard } from "@ffilip/mui-react-utils";
 import TimeLabel from "./TimeLabel";
 import ImagePlayer from "./players/ImagePlayer";
 import { useBooleanLS } from "../Utils/localStorage";
@@ -66,7 +66,6 @@ function VasilLevskiHut() {
       id="vslv" isActive={isOn1}
       title="Хижа Васил Левски" imageUpdateLabel="през 30s"
       url={blobUrl}
-      hideSpecialControlsIfInactive
       specialControls={<TimeLabel date={lastModified} sx={{ top: 25 }} />}
     />
   );

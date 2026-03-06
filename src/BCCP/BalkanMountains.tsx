@@ -1,52 +1,6 @@
-import { useEffect, useState } from "react";
-import { useDocumentVisibility } from "@ffilip/mui-react-utils";
+import { Media } from "./media/Media";
 import RowWrapper from "../Components/RowWrapper";
-import { useBooleanLS } from "../Utils/localStorage";
 import VasilLevskiHut from "../Components/VasilLevskiHut";
-import ImagePlayer from "../Components/players/ImagePlayer";
-
-interface IEntityProps {
-  id: string;
-  title: string;
-  url: string;
-}
-
-
-
-function HutEntity({ id, title, url }: IEntityProps) {
-  const [camUrl, setCamUrl] = useState("");
-  const isVisible = useDocumentVisibility();
-  const { isBooleanLSOn: isOn1, toggleBooleanLS: toggleIsOn1 } = useBooleanLS(id);
-
-
-  useEffect(() => {
-    if (!isOn1 || !isVisible) {
-      return;
-    }
-
-    const refreshCam = () => {
-      setCamUrl(`${url}?t=${Date.now()}`);
-    };
-
-    refreshCam();
-    const id = setInterval(refreshCam, 30000);
-
-    return () => {
-      clearInterval(id);
-      setCamUrl("");
-    }
-  }, [isVisible, isOn1]);
-
-
-  return (
-    <ImagePlayer
-      onToggle={toggleIsOn1}
-      id={id} isActive={isOn1}
-      title={title} imageUpdateLabel="през 30 секунди"
-      url={camUrl}
-    />
-  );
-}
 
 
 
@@ -55,10 +9,10 @@ function BalkanMountains() {
     <>
       <RowWrapper>
         {/* Мазалат */}
-        <HutEntity id="mzlt" title="Хижа Мазалат" url="https://cams.pladi.bg/mazalat.jpg" />
+        <Media.Image id="mzlt" title="Хижа Мазалат" url="https://cams.pladi.bg/mazalat.jpg" />
 
         {/* Рай */}
-        <HutEntity id="hraj" title="Хижа Рай" url="https://cams.pladi.bg/ray.jpg" />
+        <Media.Image id="hraj" title="Хижа Рай" url="https://cams.pladi.bg/ray.jpg" />
       </RowWrapper>
 
 
@@ -67,10 +21,10 @@ function BalkanMountains() {
         {/* <HutEntity id="orgn" title="Заслон Орлово гнездо" url="https://cams.pladi.bg/orlovognezdo.jpg" /> */}
 
         {/* Дерменка */}
-        <HutEntity id="drmn" title="Хижа Дерменка" url="https://cams.pladi.bg/dermenka.jpg" />
+        <Media.Image id="drmn" title="Хижа Дерменка" url="https://cams.pladi.bg/dermenka.jpg" />
 
         {/* Вежен */}
-        <HutEntity id="wejn" title="Хижа Вежен" url="https://cams.pladi.bg/vejen.jpg" />
+        <Media.Image id="wejn" title="Хижа Вежен" url="https://cams.pladi.bg/vejen.jpg" />
       </RowWrapper>
 
 
@@ -79,7 +33,25 @@ function BalkanMountains() {
         <VasilLevskiHut />
 
         {/* Тъжа */}
-        <HutEntity id="tyja" title="Хижа Тъжа" url="https://cams.pladi.bg/taja.jpg" />
+        <Media.Image id="tyja" title="Хижа Тъжа" url="https://cams.pladi.bg/taja.jpg" />
+      </RowWrapper>
+
+
+      <RowWrapper>
+        {/* Заслон Ботев */}
+        <Media.Image id="zsbt" title="Заслон Ботев" url="https://cams.pladi.bg/zaslon.jpg" />
+
+        {/* Триглав */}
+        <Media.Image id="trgl" title="Хижа Триглав" url="https://cams.pladi.bg/triglav.jpg" />
+      </RowWrapper>
+
+
+      <RowWrapper>
+        {/* Плевен */}
+        <Media.Image id="plvn" title="Хижа Плевен" url="https://cams.pladi.bg/pleven.jpg" />
+
+        {/* Чумерна */}
+        <Media.BlobVideo id="chmr" url="https://lon.rtsp.me/eYrqm9hJ32qPZ-GV6Ki9CQ/1772721693/hls/ErrH8sb3.m3u8" title="Хижа Чумерна" />
       </RowWrapper>
     </>
   );

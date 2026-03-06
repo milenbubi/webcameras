@@ -59,8 +59,7 @@ function KulataCams() {
       id="cklt" isActive={isOn1}
       url={camUrl} onToggle={toggleIsOn1}
       title={camLabel} imageUpdateLabel="през 30s"
-      hideSpecialControlsIfInactive
-      specialControls={<ChangeCamButton streamIndex={streamKulata} onClick={setStreamKulata} indexCount={3} />}
+      specialControls={<ChangeCamButton camIndex={streamKulata} onClick={setStreamKulata} camCount={3} />}
     />
   );
 }

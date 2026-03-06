@@ -1,22 +1,21 @@
-import { IconButton, SxProps, Theme } from "@mui/material";
+import { IconButton } from "@mui/material";
+import { isNumeric } from "@ffilip/chan180-utils";
+import { SX } from "../Utils/types/types";
 
 interface IProps {
   onClick: (streamIndex: number) => void;
-  streamIndex: number;
-  sx?: SxProps<Theme>;
-  indexCount?: number;
+  camIndex: number;
+  sx?: SX;
+  camCount: number;
 }
 
 
 
-function ChangeCamButton({ onClick, streamIndex, sx, indexCount = 2 }: IProps) {
+function ChangeCamButton({ onClick, camIndex, sx, camCount }: IProps) {
   const handleClick = () => {
-    if (indexCount) {
-      const newIndex = streamIndex + 1;
-      onClick(newIndex > indexCount ? 1 : newIndex);
-    }
-    else {
-      onClick(streamIndex === 1 ? 2 : 1);
+    if (isNumeric(camCount, { isInteger: true, notNegative: true }) && camCount > 0) {
+      const newIndex = camIndex + 1;
+      onClick(newIndex > camCount ? 1 : newIndex);
     }
   };
 
@@ -37,7 +36,7 @@ function ChangeCamButton({ onClick, streamIndex, sx, indexCount = 2 }: IProps) {
       }}
       onClick={handleClick}
     >
-      {streamIndex}
+      {camIndex}
     </IconButton>
   );
 }

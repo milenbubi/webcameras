@@ -6,6 +6,7 @@ import Horgos from "../BCCP/Horgos";
 import Turkiye from "../BCCP/Turkiye";
 import Kelebia from "../BCCP/Kelebia";
 import Bulgaria from "../BCCP/Bulgaria";
+import SouthEast from "../BCCP/SouthEast";
 import { LS_PLACE_KEY } from "./localStorage";
 import BalkanMountains from "../BCCP/BalkanMountains";
 
@@ -34,6 +35,7 @@ interface IRegularPlaceConfig extends IPlaceConfig {
 export const PLACES_CONFIG = [
   { name: "News", active: !true, component: News, label: "News", isExternal: true },
   { name: "BalkanMountains", active: true, component: BalkanMountains, label: "Стара Планина", isExternal: true },
+  { name: "SouthEast", active: true, component: SouthEast, label: "Югоизток", isExternal: true },
   { name: DEFAULT_PLACE_NAME, active: true, component: Bulgaria, label: "България", isExternal: false } satisfies IDefaultPlaceConfig,
   { name: "Horgos", active: true, component: Horgos, label: "Хоргош", isExternal: false },
   { name: "Djala", active: true, component: Djala, label: "Ђала", isExternal: false },

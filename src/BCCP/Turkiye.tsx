@@ -64,9 +64,8 @@ function Turkiye() {
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${streamKA}.jpg?t=${date1}`}
           onToggle={toggleIsOn1}
           title="Капитан Андреево" imageUpdateLabel="през 10 минути"
-          hideSpecialControlsIfInactive
           fsBtnSx={{ bottom: 50 }}
-          specialControls={<ChangeCamButton streamIndex={streamKA} onClick={setStreamKA} indexCount={4} />}
+          specialControls={<ChangeCamButton camIndex={streamKA} onClick={setStreamKA} camCount={4} />}
         />
 
         {/* Лесово */}
@@ -75,9 +74,8 @@ function Turkiye() {
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getLesovoSource(streamLS)}.jpg?t=${date2}`}
           onToggle={toggleIsOn2}
           title="Лесово" imageUpdateLabel="през 10 минути"
-          hideSpecialControlsIfInactive
           fsBtnSx={{ bottom: 50 }}
-          specialControls={<ChangeCamButton streamIndex={streamLS} onClick={setStreamLS} indexCount={3} />}
+          specialControls={<ChangeCamButton camIndex={streamLS} onClick={setStreamLS} camCount={3} />}
         />
       </RowWrapper>
 
@@ -89,8 +87,7 @@ function Turkiye() {
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getMTSource(streamMT)}.jpg?t=${date3}`}
           onToggle={toggleIsOn3}
           title="Малко Търново" imageUpdateLabel="през 10 минути"
-          hideSpecialControlsIfInactive
-          specialControls={<ChangeCamButton streamIndex={streamMT} onClick={setStreamMT} indexCount={2} />}
+          specialControls={<ChangeCamButton camIndex={streamMT} onClick={setStreamMT} camCount={2} />}
         />
 
         {/* Черекьой - Пазаркуле */}
@@ -99,9 +96,8 @@ function Turkiye() {
           url={`https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getCPSource(streamCP)}.jpg?t=${date4}`}
           onToggle={toggleIsOn4}
           title="Черекьой - Пазаркуле" imageUpdateLabel="през 10 минути"
-          hideSpecialControlsIfInactive
           fsBtnSx={{ bottom: 50 }}
-          specialControls={<ChangeCamButton streamIndex={streamCP} onClick={setStreamCP} indexCount={2} />}
+          specialControls={<ChangeCamButton camIndex={streamCP} onClick={setStreamCP} camCount={2} />}
         />
       </RowWrapper>
     </>

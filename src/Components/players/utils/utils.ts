@@ -11,7 +11,6 @@ export interface IPlayerProps {
   onToggle: VoidFunction;
   title: string;
   imageUpdateLabel?: string;
-  hideSpecialControlsIfInactive?: boolean;
   fsBtnSx?: SxProps<Theme>;
   specialControls?: ReactNode;
 }
