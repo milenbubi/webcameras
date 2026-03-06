@@ -2,22 +2,29 @@ import { useEffect, useMemo, useState } from "react";
 import { useDocumentVisibility } from "@ffilip/mui-react-utils";
 import { useBooleanLS } from "../../Utils/localStorage";
 import ImagePlayer from "../../Components/players/ImagePlayer";
+import ChangeCamButton from "../../Components/ChangeCamButton";
+import { SX } from "../../Utils/types/types";
 
 interface IProps {
   id: string;
   title: string;
-  url: string;
+  camCount: number;
   refreshSeconds?: number;
   showUpdateInMinutes?: boolean;
+  urlComposer: (streamIndex: number) => string;
   stretchToFit?: boolean;
+  fsBtnSx?: SX;
 }
 
 
 
-function ImageImpl({ id, title, url, refreshSeconds = 30, showUpdateInMinutes, stretchToFit }: IProps) {
+function SwitchableImageImpl({ id, title, camCount, refreshSeconds = 30, showUpdateInMinutes, urlComposer, stretchToFit, fsBtnSx }: IProps) {
   const [camUrl, setCamUrl] = useState("");
   const isVisible = useDocumentVisibility();
+  const [streamIndex, setStreamIndex] = useState(1);
+
   const { isBooleanLSOn, toggleBooleanLS } = useBooleanLS(id);
+  const url = useMemo(() => urlComposer(streamIndex), [streamIndex]);
   const normalizedRefreshSeconds = useMemo(() => Math.max(1, Math.round(refreshSeconds)), [refreshSeconds]);
 
 
@@ -60,10 +67,12 @@ function ImageImpl({ id, title, url, refreshSeconds = 30, showUpdateInMinutes, s
       title={title} imageUpdateLabel={updateLabel}
       url={camUrl}
       stretchToFit={stretchToFit}
+      fsBtnSx={fsBtnSx}
+      specialControls={<ChangeCamButton camIndex={streamIndex} onClick={setStreamIndex} camCount={camCount} />}
     />
   );
 }
 
 
 
-export default ImageImpl;
+export default SwitchableImageImpl;
