@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { SX } from "../../Utils/types/types";
+import { SX } from "@ffilip/mui-react-utils";
 import { useBooleanLS } from "../../Utils/localStorage";
 import BlobPlayer from "../../Components/players/BlobPlayer";
 import ChangeCamButton from "../../Components/ChangeCamButton";

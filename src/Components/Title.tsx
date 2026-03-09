@@ -1,9 +1,9 @@
-import { Theme } from "@emotion/react";
-import { SxProps, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
+import { SX } from "@ffilip/mui-react-utils";
 
 interface IProps {
   value: string;
-  sx?: SxProps<Theme>;
+  sx?: SX;
   imageUpdateLabel?: string;
 }
 

@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 
+
 interface IProps {
   refreshSeconds?: number;
   showUpdateInMinutes?: boolean;
@@ -25,5 +26,5 @@ export function useRefreshInfo({ refreshSeconds = 30, showUpdateInMinutes }: IPr
   }, [normalizedRefreshSeconds, showUpdateInMinutes]);
 
 
-  return { normalizedRefreshSeconds, updateLabel };
+  return { normalizedRefreshMS: normalizedRefreshSeconds * 1000, updateLabel };
 }

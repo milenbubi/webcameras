@@ -20,7 +20,7 @@ function __ImageImpl({ id, title, url, stretchToFit, ...refreshProps }: IProps) 
   const [camUrl, setCamUrl] = useState("");
   const isVisible = useDocumentVisibility();
   const { isBooleanLSOn, toggleBooleanLS } = useBooleanLS(id);
-  const { normalizedRefreshSeconds, updateLabel } = useRefreshInfo(refreshProps);
+  const { normalizedRefreshMS, updateLabel } = useRefreshInfo(refreshProps);
 
 
   useEffect(() => {
@@ -31,13 +31,13 @@ function __ImageImpl({ id, title, url, stretchToFit, ...refreshProps }: IProps) 
     const refreshCam = () => updateCamUrlWithTimestamp({ url, setCamUrl });
 
     refreshCam();
-    const id = setInterval(refreshCam, normalizedRefreshSeconds * 1000);
+    const id = setInterval(refreshCam, normalizedRefreshMS);
 
     return () => {
       clearInterval(id);
       setCamUrl("");
     }
-  }, [isVisible, isBooleanLSOn, normalizedRefreshSeconds, url]);
+  }, [isVisible, isBooleanLSOn, normalizedRefreshMS, url]);
 
 
   return (

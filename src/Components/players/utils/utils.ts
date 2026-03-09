@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { SxProps, Theme } from "@mui/material";
+import { SX } from "@ffilip/mui-react-utils";
 
 
 
@@ -11,6 +11,6 @@ export interface IPlayerProps {
   onToggle: VoidFunction;
   title: string;
   imageUpdateLabel?: string;
-  fsBtnSx?: SxProps<Theme>;
+  fsBtnSx?: SX;
   specialControls?: ReactNode;
 }

@@ -29,7 +29,7 @@ function SouthEast() {
       <RowWrapper>
         <Media.SwitchableBlobVideo
           id="dgrd"
-          urlComposer={index => `http://office.dimitrovgrad.ddns.bulsat.com:82/livecam/media/${getDgrdSource(index)}/output.m3u8`}
+          urlComposer={index => `https://chan180.net/php/cam.php?cam=http://office.dimitrovgrad.ddns.bulsat.com:82/livecam/media/${getDgrdSource(index)}/output.m3u8`}
           title="Димитровград"
           camCount={5}
         />

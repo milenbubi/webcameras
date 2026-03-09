@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { useDocumentVisibility } from "@ffilip/mui-react-utils";
-import { SX } from "../../Utils/types/types";
+import { SX, useDocumentVisibility } from "@ffilip/mui-react-utils";
 import { useBooleanLS } from "../../Utils/localStorage";
 import { useRefreshInfo } from "./tools/useRefreshInfo";
 import { updateCamUrlWithTimestamp } from "./tools/helpers";
@@ -9,7 +8,7 @@ import ChangeCamButton from "../../Components/ChangeCamButton";
 
 interface IProps {
   id: string;
-  title: string;
+  title: string | ((streamIndex: number) => string);
   camCount: number;
   refreshSeconds?: number;
   showUpdateInMinutes?: boolean;
@@ -27,7 +26,11 @@ function __SwitchableImageImpl({ id, title, camCount, urlComposer, stretchToFit,
 
   const { isBooleanLSOn, toggleBooleanLS } = useBooleanLS(id);
   const url = useMemo(() => urlComposer(streamIndex), [streamIndex]);
-  const { normalizedRefreshSeconds, updateLabel } = useRefreshInfo(refreshProps);
+  const { normalizedRefreshMS, updateLabel } = useRefreshInfo(refreshProps);
+
+  const finalTitle = useMemo(() => {
+    return typeof title === "function" ? title(streamIndex) : title;
+  }, [title, streamIndex]);
 
 
   useEffect(() => {
@@ -38,20 +41,20 @@ function __SwitchableImageImpl({ id, title, camCount, urlComposer, stretchToFit,
     const refreshCam = () => updateCamUrlWithTimestamp({ url, setCamUrl });
 
     refreshCam();
-    const id = setInterval(refreshCam, normalizedRefreshSeconds * 1000);
+    const id = setInterval(refreshCam, normalizedRefreshMS);
 
     return () => {
       clearInterval(id);
       setCamUrl("");
     }
-  }, [isVisible, isBooleanLSOn, normalizedRefreshSeconds, url]);
+  }, [isVisible, isBooleanLSOn, normalizedRefreshMS, url]);
 
 
   return (
     <ImagePlayer
       onToggle={toggleBooleanLS}
       id={id} isActive={isBooleanLSOn}
-      title={title} imageUpdateLabel={updateLabel}
+      title={finalTitle} imageUpdateLabel={updateLabel}
       url={camUrl}
       stretchToFit={stretchToFit}
       fsBtnSx={fsBtnSx}

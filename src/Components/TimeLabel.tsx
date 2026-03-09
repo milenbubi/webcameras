@@ -1,10 +1,11 @@
 import { useMemo } from "react";
-import { SxProps, Theme, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
+import { SX } from "@ffilip/mui-react-utils";
 import { formatUTCDateToLocalDateString, DateSource } from "@ffilip/chan180-utils";
 
 interface IProps {
   date: DateSource;
-  sx?: SxProps<Theme>;
+  sx?: SX;
 }
 
 

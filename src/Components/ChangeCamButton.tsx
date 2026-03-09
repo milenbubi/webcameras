@@ -1,6 +1,6 @@
 import { IconButton } from "@mui/material";
+import { SX } from "@ffilip/mui-react-utils";
 import { isNumeric } from "@ffilip/chan180-utils";
-import { SX } from "../Utils/types/types";
 
 interface IProps {
   onClick: (streamIndex: number) => void;
