@@ -1,33 +1,37 @@
 import { Media } from "./media/Media";
 import RowWrapper from "../Components/RowWrapper";
+import { Cams, getCam, getCamCount } from "./utils/cams";
 
 // https://www.canlimobeseizle.com/turkiye-sinir-kapilari-canli-izle
 // Cameras from all Turkish border checkpoints.
 
-const getLesovoSource = (streamIndex: number) => {
-  switch (streamIndex) {
-    case 1: return "6";
-    case 2: return "5";
-    case 3: return "12";
-    default: return "6";
-  }
+const kaCams: Cams = {
+  1: { source: "1" },
+  2: { source: "2" },
+  3: { source: "3" },
+  4: { source: "4" }
 };
 
-const getMTSource = (streamIndex: number) => {
-  switch (streamIndex) {
-    case 1: return "11";
-    case 2: return "13";
-    default: return "13";
-  }
+const lesovoCams: Cams = {
+  1: { source: "6" },
+  2: { source: "5" },
+  3: { source: "12" }
 };
 
-const getCPSource = (streamIndex: number) => {
-  switch (streamIndex) {
-    case 1: return "8";
-    case 2: return "7";
-    default: return "8";
-  }
+const mtCams: Cams = {
+  1: { source: "11" },
+  2: { source: "13" }
 };
+
+const cpCams: Cams = {
+  1: { source: "8" },
+  2: { source: "7" }
+};
+
+function getCamUrl(cams: Cams, index: number) {
+  const source = getCam(cams, index).source;
+  return `https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${source}.jpg`;
+}
 
 
 function Turkiye() {
@@ -37,8 +41,8 @@ function Turkiye() {
         {/* Капитан Андреево */}
         <Media.SwitchableImageImpl
           id="kpkl" stretchToFit
-          urlComposer={index => `https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${index}.jpg`}
-          title="Капитан Андреево" camCount={4}
+          urlComposer={index => getCamUrl(kaCams, index)}
+          title="Капитан Андреево" camCount={getCamCount(kaCams)}
           refreshSeconds={600} showUpdateInMinutes
           fsBtnSx={{ bottom: 45 }}
         />
@@ -46,8 +50,8 @@ function Turkiye() {
         {/* Лесово */}
         <Media.SwitchableImageImpl
           id="lesv" stretchToFit
-          urlComposer={index => `https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getLesovoSource(index)}.jpg`}
-          title="Лесово" camCount={3}
+          urlComposer={index => getCamUrl(lesovoCams, index)}
+          title="Лесово" camCount={getCamCount(lesovoCams)}
           refreshSeconds={600} showUpdateInMinutes
           fsBtnSx={{ bottom: 45 }}
         />
@@ -58,8 +62,8 @@ function Turkiye() {
         {/* Малко Търново */}
         <Media.SwitchableImageImpl
           id="mtnv" stretchToFit
-          urlComposer={index => `https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getMTSource(index)}.jpg`}
-          title="Малко Търново" camCount={2}
+          urlComposer={index => getCamUrl(mtCams, index)}
+          title="Малко Търново" camCount={getCamCount(mtCams)}
           refreshSeconds={600} showUpdateInMinutes
           fsBtnSx={{ bottom: 45 }}
         />
@@ -67,8 +71,8 @@ function Turkiye() {
         {/* Черекьой - Пазаркуле */}
         <Media.SwitchableImageImpl
           id="chpk" stretchToFit
-          urlComposer={index => `https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${getCPSource(index)}.jpg`}
-          title="Черекьой - Пазаркуле" camCount={2}
+          urlComposer={index => getCamUrl(cpCams, index)}
+          title="Черекьой - Пазаркуле" camCount={getCamCount(cpCams)}
           refreshSeconds={600} showUpdateInMinutes
           fsBtnSx={{ bottom: 45 }}
         />

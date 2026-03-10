@@ -1,6 +1,6 @@
 import { Media } from "./media/Media";
 import RowWrapper from "../Components/RowWrapper";
-import VasilLevskiHut from "../Components/VasilLevskiHut";
+import VasilLevskiHut from "./customCams/VasilLevskiHut";
 
 
 

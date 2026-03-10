@@ -6,7 +6,7 @@ import ChangeCamButton from "../../Components/ChangeCamButton";
 
 interface IProps {
   id: string;
-  title: string;
+  title: string | ((streamIndex: number) => string);
   urlComposer: (streamIndex: number) => string;
   camCount: number;
   fsBtnSx?: SX;
@@ -20,13 +20,17 @@ function __SwitchableBlobVideoImpl({ id, title, urlComposer, camCount, fsBtnSx, 
   const url = useMemo(() => urlComposer(streamIndex), [streamIndex]);
   const { isBooleanLSOn: isOn1, toggleBooleanLS: toggleIsOn1 } = useBooleanLS(id);
 
+  const finalTitle = useMemo(() => {
+    return typeof title === "function" ? title(streamIndex) : title;
+  }, [title, streamIndex]);
+
 
   return (
     <BlobPlayer
       id={id} isActive={isOn1}
       url={url}
       onToggle={toggleIsOn1}
-      title={title}
+      title={finalTitle}
       fsBtnSx={fsBtnSx}
       specialControls={<ChangeCamButton camIndex={streamIndex} onClick={setStreamIndex} camCount={camCount} sx={chCamBtnSx} />}
     />

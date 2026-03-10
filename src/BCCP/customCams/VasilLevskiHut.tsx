@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useDocumentVisibility, useLatestRequestGuard } from "@ffilip/mui-react-utils";
-import TimeLabel from "./TimeLabel";
-import ImagePlayer from "./players/ImagePlayer";
-import { useBooleanLS } from "../Utils/localStorage";
+import TimeLabel from "../../Components/TimeLabel";
+import { useBooleanLS } from "../../Utils/localStorage";
+import ImagePlayer from "../../Components/players/ImagePlayer";
 
 
 

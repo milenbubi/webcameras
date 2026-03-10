@@ -1,25 +1,39 @@
 import { Media } from "./media/Media";
 import RowWrapper from "../Components/RowWrapper";
+import { Cams, composeCamLabel, getCam, getCamCount } from "./utils/cams";
 
-const getDgrdSource = (streamIndex: number) => {
-  switch (streamIndex) {
-    case 1: return "krastovishte-3-mart-1";
-    case 2: return "kula-pazar";
-    case 3: return "park-marica";
-    case 4: return "usm";
-    case 5: return "kragovo";
-    default: return "";
-  }
+const dgrCams: Cams = {
+  1: { source: "krastovishte-3-mart-1", label: 'кино "Химик"' },
+  2: { source: "kula-pazar", label: "кула към пазара" },
+  3: { source: "park-marica", label: "парк Марица" },
+  4: { source: "usm", label: "към Хасково" },
+  5: { source: "kragovo", label: "кръгово" }
 };
 
-const getHaskSource = (streamIndex: number) => {
-  switch (streamIndex) {
-    case 1: return 1;
-    case 2: return 5;
-    case 3: return 2;
-    default: return "";
-  }
+const haskCams: Cams = {
+  1: { source: "1", label: "часовникова кула" },
+  2: { source: "5", label: 'вход от АМ "Марица"' },
+  3: { source: "2", label: 'бул. "Съединение"' }
 };
+
+
+function getCamUrlDgr(streamIndex: number) {
+  const source = getCam(dgrCams, streamIndex).source;
+  return `https://chan180.net/php/cam.php?cam=http://office.dimitrovgrad.ddns.bulsat.com:82/livecam/media/${source}/output.m3u8`
+}
+
+function getCamLabelDgr(streamIndex: number) {
+  return composeCamLabel("Димитровград", dgrCams, streamIndex);
+}
+
+function getCamUrlHask(streamIndex: number) {
+  const source = getCam(haskCams, streamIndex).source;
+  return `https://haskovo.net/tvs/cam${source}.m3u8`;
+}
+
+function getCamLabelHask(streamIndex: number) {
+  return composeCamLabel("Хасково", haskCams, streamIndex);
+}
 
 
 
@@ -29,16 +43,16 @@ function SouthEast() {
       <RowWrapper>
         <Media.SwitchableBlobVideo
           id="dgrd"
-          urlComposer={index => `https://chan180.net/php/cam.php?cam=http://office.dimitrovgrad.ddns.bulsat.com:82/livecam/media/${getDgrdSource(index)}/output.m3u8`}
-          title="Димитровград"
-          camCount={5}
+          urlComposer={getCamUrlDgr}
+          title={getCamLabelDgr}
+          camCount={getCamCount(dgrCams)}
         />
 
         <Media.SwitchableBlobVideo
           id="hask"
-          urlComposer={index => `https://haskovo.net/tvs/cam${getHaskSource(index)}.m3u8`}
-          title="Хасково"
-          camCount={3}
+          urlComposer={getCamUrlHask}
+          title={getCamLabelHask}
+          camCount={getCamCount(haskCams)}
         />
       </RowWrapper>
     </>
