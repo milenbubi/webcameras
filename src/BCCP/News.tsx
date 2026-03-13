@@ -7,7 +7,8 @@ const ytCams: Cams = {
   2: { source: "pykpO5kQJ98", label: "Euronews" },
   3: { source: "YDvsBbKfLPA", label: "Sky News" },
   4: { source: "iEpJwprxDdk", label: "Bloomberg Business News" },
-  5: { source: "Ap-UM1O9RBU", label: "FRANCE 24" }
+  5: { source: "Ap-UM1O9RBU", label: "FRANCE 24" },
+  6: { source: "gCNeDWCI0vo", label: "Al Jazeera English" }
 };
 
 
