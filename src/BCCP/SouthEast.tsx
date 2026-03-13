@@ -14,7 +14,7 @@ const haskCams: Cams = {
   1: { source: "1", label: "часовникова кула" },
   2: { source: "2", label: 'бул. "Съединение"' },
   3: { source: "5", label: 'вход от АМ "Марица"' },
-  4: { source: "6", label: "изход към Кърджали" },
+  4: { source: "6", label: "изход към Кърджали" }
 };
 
 

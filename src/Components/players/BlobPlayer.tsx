@@ -23,6 +23,9 @@ function BlobPlayer({ url, ...props }: IPlayerProps) {
         controls
         controlsList="nofullscreen"
         autoPlay
+        preload="none"
+        muted
+        playsInline
         style={videoStyle}
       />
 

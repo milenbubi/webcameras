@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { SX, useDocumentVisibility } from "@ffilip/mui-react-utils";
+import { useFinalTitle } from "./tools/useFinalTitle";
 import { useBooleanLS } from "../../Utils/localStorage";
 import { useRefreshInfo } from "./tools/useRefreshInfo";
 import { updateCamUrlWithTimestamp } from "./tools/helpers";
@@ -25,12 +26,9 @@ function __SwitchableImageImpl({ id, title, camCount, urlComposer, stretchToFit,
   const [streamIndex, setStreamIndex] = useState(1);
 
   const { isBooleanLSOn, toggleBooleanLS } = useBooleanLS(id);
+  const { finalTitle } = useFinalTitle({ title, streamIndex });
   const url = useMemo(() => urlComposer(streamIndex), [streamIndex]);
   const { normalizedRefreshMS, updateLabel } = useRefreshInfo(refreshProps);
-
-  const finalTitle = useMemo(() => {
-    return typeof title === "function" ? title(streamIndex) : title;
-  }, [title, streamIndex]);
 
 
   useEffect(() => {
@@ -58,7 +56,13 @@ function __SwitchableImageImpl({ id, title, camCount, urlComposer, stretchToFit,
       url={camUrl}
       stretchToFit={stretchToFit}
       fsBtnSx={fsBtnSx}
-      specialControls={<ChangeCamButton camIndex={streamIndex} onClick={setStreamIndex} camCount={camCount} />}
+      specialControls={
+        <ChangeCamButton
+          camIndex={streamIndex}
+          onClick={setStreamIndex}
+          camCount={camCount}
+        />
+      }
     />
   );
 }

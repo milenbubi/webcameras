@@ -18,6 +18,11 @@ export function composeCamLabel(name: string, cams: Cams, index: number) {
 }
 
 
+export function getCamLabel(cams: Cams, streamIndex: number) {
+  return getCam(cams, streamIndex).label || "";
+}
+
+
 export function getCamCount(cams: Cams) {
   return Object.keys(cams).length;
 }

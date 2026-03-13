@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 
-
 interface IProps {
   refreshSeconds?: number;
   showUpdateInMinutes?: boolean;

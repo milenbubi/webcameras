@@ -20,7 +20,6 @@ export function useHlsStream(url: string, isActive: boolean) {
     if (isSafari  /* videoRef.current.canPlayType("application/vnd.apple.mpegurl") */) {
       videoRef.current.src = url;
       videoRef.current.load();
-      videoRef.current.muted = true;
       videoRef.current.play().catch(() => { });
     }
     else if (Hls.isSupported()) {
@@ -34,7 +33,6 @@ export function useHlsStream(url: string, isActive: boolean) {
 
       hlsRef.current.on(Hls.Events.MANIFEST_PARSED, () => {
         if (videoRef.current) {
-          videoRef.current.muted = true;
           videoRef.current.play().catch(() => { });
         }
       });
