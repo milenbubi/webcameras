@@ -9,6 +9,7 @@ interface IProps {
   id: string;
   title: string | ((streamIndex: number) => string);
   urlComposer: (streamIndex: number) => string;
+  withSound?: boolean;
   camCount: number;
   fsBtnSx?: SX;
   chCamBtnSx?: SX;
@@ -16,7 +17,7 @@ interface IProps {
 
 
 
-function __SwitchableBlobVideoImpl({ id, title, urlComposer, camCount, fsBtnSx, chCamBtnSx }: IProps) {
+function __SwitchableBlobVideoImpl({ id, title, urlComposer, withSound, camCount, fsBtnSx, chCamBtnSx }: IProps) {
   const [streamIndex, setStreamIndex] = useState(1);
   const { isBooleanLSOn, toggleBooleanLS } = useBooleanLS(id);
   const { finalTitle } = useFinalTitle({ title, streamIndex });
@@ -29,6 +30,7 @@ function __SwitchableBlobVideoImpl({ id, title, urlComposer, camCount, fsBtnSx, 
       url={url}
       onToggle={toggleBooleanLS}
       title={finalTitle}
+      withSound={withSound}
       fsBtnSx={fsBtnSx}
       specialControls={
         <ChangeCamButton

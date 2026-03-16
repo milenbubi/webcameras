@@ -6,13 +6,13 @@ interface IProps {
   id: string;
   title: string;
   url: string;
-  muted?: boolean;
+  withSound?: boolean;
 }
 
 
 
-function __IframeVideoImpl({ id, title, url, muted }: IProps) {
-  const { finalUrl } = useAddYTControlsToUrl({ url, muted });
+function __IframeVideoImpl({ id, title, url, withSound }: IProps) {
+  const { finalUrl } = useAddYTControlsToUrl({ url, withSound });
   const { isBooleanLSOn, toggleBooleanLS } = useBooleanLS(id);
 
 

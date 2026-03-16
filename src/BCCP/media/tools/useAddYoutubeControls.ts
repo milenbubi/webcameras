@@ -2,18 +2,18 @@ import { useMemo } from "react";
 
 interface IUrlProps {
   url: string;
-  muted?: boolean;
+  withSound?: boolean;
 }
 
 interface IUrlComposerProps {
   urlComposer: (streamIndex: number) => string;
   streamIndex: number;
-  muted?: boolean;
+  withSound?: boolean;
 }
 
 
 
-function useYTUrl({ url, muted }: IUrlProps) {
+function useYTUrl({ url, withSound }: IUrlProps) {
   const finalUrl = useMemo(() => {
     const isYoutube =
       url.includes("youtube.com") ||
@@ -28,13 +28,13 @@ function useYTUrl({ url, muted }: IUrlProps) {
 
     return `${url}${separator}` +
       `autoplay=1` +
-      `&mute=${muted ? 1 : 0}` +
+      `&mute=${withSound ? 0 : 1}` +
       `&controls=1` +
       `&rel=0` +
       `&modestbranding=1` +
       `&fs=0` +
       `&playsinline=1`;
-  }, [url, muted]);
+  }, [url, withSound]);
 
 
   return finalUrl;
@@ -42,15 +42,15 @@ function useYTUrl({ url, muted }: IUrlProps) {
 
 
 
-export function useAddYTControlsToUrl({ url, muted }: IUrlProps) {
-  const finalUrl = useYTUrl({ url, muted });
+export function useAddYTControlsToUrl({ url, withSound }: IUrlProps) {
+  const finalUrl = useYTUrl({ url, withSound });
   return { finalUrl };
 };
 
 
 
-export function useAddYTControlsToUrlComposer({ urlComposer, streamIndex = 1, muted }: IUrlComposerProps) {
+export function useAddYTControlsToUrlComposer({ urlComposer, streamIndex = 1, withSound }: IUrlComposerProps) {
   const url = useMemo(() => urlComposer(streamIndex), [streamIndex]);
-  const finalUrl = useYTUrl({ url, muted });
+  const finalUrl = useYTUrl({ url, withSound });
   return { finalUrl };
 };

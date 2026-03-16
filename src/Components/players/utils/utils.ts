@@ -13,4 +13,5 @@ export interface IPlayerProps {
   imageUpdateLabel?: string;
   fsBtnSx?: SX;
   specialControls?: ReactNode;
+  withSound?: boolean;
 }

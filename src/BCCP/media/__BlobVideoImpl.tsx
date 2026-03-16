@@ -5,11 +5,12 @@ interface IProps {
   id: string;
   title: string;
   url: string;
+  withSound?: boolean;
 }
 
 
 
-function __BlobVideoImpl({ id, title, url }: IProps) {
+function __BlobVideoImpl({ id, title, url, withSound }: IProps) {
   const { isBooleanLSOn, toggleBooleanLS } = useBooleanLS(id);
 
 
@@ -19,6 +20,7 @@ function __BlobVideoImpl({ id, title, url }: IProps) {
       url={url}
       onToggle={toggleBooleanLS}
       title={title}
+      withSound={withSound}
     />
   );
 }

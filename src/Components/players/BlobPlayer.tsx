@@ -6,7 +6,7 @@ import { useHlsStream } from "./utils/hlsStreamHook";
 
 
 
-function BlobPlayer({ url, ...props }: IPlayerProps) {
+function BlobPlayer({ url, withSound, ...props }: IPlayerProps) {
   const { videoRef, isCameraOffline } = useHlsStream(url, props.isActive);
 
 
@@ -24,7 +24,7 @@ function BlobPlayer({ url, ...props }: IPlayerProps) {
         controlsList="nofullscreen"
         autoPlay
         preload="none"
-        muted
+        muted={!withSound}
         playsInline
         style={videoStyle}
       />

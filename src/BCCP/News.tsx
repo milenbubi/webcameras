@@ -31,6 +31,7 @@ function News() {
         id="ecns"
         url="https://tagesschau.akamaized.net/hls/live/2020115/tagesschau/tagesschau_1/master.m3u8"
         title="Tagesschau"
+        withSound
       />
 
       {/* YouTube news media */}
@@ -39,6 +40,7 @@ function News() {
         urlComposer={getCamUrlYT}
         title={getCamLabelYT}
         camCount={getCamCount(ytCams)}
+        withSound
       />
     </RowWrapper>
   );

@@ -13,16 +13,16 @@ interface IProps {
   camCount: number;
   fsBtnSx?: SX;
   chCamBtnSx?: SX;
-  muted?: boolean;
+  withSound?: boolean;
 }
 
 
 
-function __SwitchableIframeVideoImpl({ id, title, urlComposer, camCount, fsBtnSx, chCamBtnSx, muted }: IProps) {
+function __SwitchableIframeVideoImpl({ id, title, urlComposer, camCount, fsBtnSx, chCamBtnSx, withSound }: IProps) {
   const [streamIndex, setStreamIndex] = useState(1);
   const { isBooleanLSOn, toggleBooleanLS } = useBooleanLS(id);
   const { finalTitle } = useFinalTitle({ title, streamIndex });
-  const { finalUrl } = useAddYTControlsToUrlComposer({ urlComposer, streamIndex, muted });
+  const { finalUrl } = useAddYTControlsToUrlComposer({ urlComposer, streamIndex, withSound });
 
 
   return (
