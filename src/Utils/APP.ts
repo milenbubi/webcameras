@@ -101,12 +101,16 @@ class AppConfig {
     const raw = safeLocalStorage.get(LS_BROWSER_VISITS_KEY);
     let next = 1;
 
-    // Increment only if stored value is a valid non-negative integer
+    // Increment only if stored value is a valid non-negative integer 
     if (isNumeric(raw, { isInteger: true, notNegative: true })) {
       next = Number(raw) + 1;
     }
 
-    safeLocalStorage.set(LS_BROWSER_VISITS_KEY, String(next));
+    // Save the new value to localStorage only if user has not attempted to authorize
+    if (!this.AUTH_CODE) {
+      safeLocalStorage.set(LS_BROWSER_VISITS_KEY, String(next));
+    }
+
     return next;
   }
 
