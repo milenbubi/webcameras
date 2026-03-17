@@ -1,6 +1,6 @@
 import { Media } from "./media/Media";
 import RowWrapper from "../Components/RowWrapper";
-import { Cams, getCam, getCamCount, getCamLabel } from "./utils/cams";
+import { Cams, getCamCount, getCamLabel, getCamSource } from "./utils/cams";
 
 const ytCams: Cams = {
   1: { source: "LuKwFajn37U", label: "Deutsche Welle" },
@@ -13,8 +13,7 @@ const ytCams: Cams = {
 
 
 function getCamUrlYT(streamIndex: number) {
-  const source = getCam(ytCams, streamIndex).source;
-  return `https://www.youtube.com/embed/${source}`;
+  return `https://www.youtube.com/embed/${getCamSource(ytCams, streamIndex)}`;
 }
 
 function getCamLabelYT(streamIndex: number) {

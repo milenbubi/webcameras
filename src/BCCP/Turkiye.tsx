@@ -1,6 +1,6 @@
 import { Media } from "./media/Media";
 import RowWrapper from "../Components/RowWrapper";
-import { Cams, getCam, getCamCount } from "./utils/cams";
+import { Cams, getCamCount, getCamSource } from "./utils/cams";
 
 // https://www.canlimobeseizle.com/turkiye-sinir-kapilari-canli-izle
 // Cameras from all Turkish border checkpoints.
@@ -29,7 +29,7 @@ const cpCams: Cams = {
 };
 
 function getCamUrl(cams: Cams, index: number) {
-  const source = getCam(cams, index).source;
+  const source = getCamSource(cams, index);
   return `https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${source}.jpg`;
 }
 

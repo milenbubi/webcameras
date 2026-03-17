@@ -1,5 +1,5 @@
 import { Media } from "../media/Media";
-import { Cams, getCam, getCamCount } from "../utils/cams";
+import { Cams, getCamCount, getCamSource } from "../utils/cams";
 
 const kkbCams: Cams = {
   1: { source: "https://kamere.mup.gov.rs:4443/gradina/gradina2.m3u8" },
@@ -18,14 +18,14 @@ function Kalotina() {
     <>
       <Media.SwitchableBlobVideo
         id="kblg"
-        urlComposer={index => getCam(kkbCams, index).source}
+        urlComposer={index => getCamSource(kkbCams, index)}
         title="Калотина - посока България"
         camCount={getCamCount(kkbCams)}
       />
 
       <Media.SwitchableBlobVideo
         id="ksrb"
-        urlComposer={index => getCam(kksCams, index).source}
+        urlComposer={index => getCamSource(kksCams, index)}
         title="Калотина - посока Сърбия"
         camCount={getCamCount(kksCams)}
       />

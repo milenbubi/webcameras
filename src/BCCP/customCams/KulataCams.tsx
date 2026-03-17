@@ -1,5 +1,5 @@
 import { Media } from "../media/Media";
-import { Cams, composeCamLabel, getCam, getCamCount } from "../utils/cams";
+import { Cams, composeCamLabel, getCamCount, getCamSource } from "../utils/cams";
 
 const cams: Cams = {
   1: { source: "01", label: "700 м преди ГКПП" },
@@ -9,7 +9,7 @@ const cams: Cams = {
 
 
 function getCamUrl(streamIndex: number) {
-  const source = getCam(cams, streamIndex).source;
+  const source = getCamSource(cams, streamIndex);
   return `https://cdn.uab.org/images/cctv/images/cctv/cctv_${source}/cctv.jpg?`;
 }
 

@@ -13,13 +13,18 @@ export function getCam(cams: Cams, index: number) {
 
 
 export function composeCamLabel(name: string, cams: Cams, index: number) {
-  const camLabel = getCam(cams, index).label;
+  const camLabel = getCamLabel(cams, index);
   return camLabel ? `${name} - ${camLabel}` : name;
 }
 
 
 export function getCamLabel(cams: Cams, streamIndex: number) {
   return getCam(cams, streamIndex).label || "";
+}
+
+
+export function getCamSource(cams: Cams, streamIndex: number) {
+  return getCam(cams, streamIndex).source;
 }
 
 
