@@ -36,7 +36,7 @@ interface IRegularPlaceConfig extends IPlaceConfig {
 
 export const PLACES_CONFIG = [
   { name: "WorldNews", active: true, component: WorldNews, label: "World News", isExternal: true },
-  { name: "RussianTV", active: ENV.IS_DEV_MODE, component: RussianNews, label: "Russian News", isExternal: true },
+  { name: "RussianTV", active: true, component: RussianNews, label: "Russian News", isExternal: true },
   { name: "BalkanMountains", active: true, component: BalkanMountains, label: "Стара Планина", isExternal: true },
   { name: "SouthEast", active: true, component: SouthEast, label: "Югоизток", isExternal: true },
   { name: DEFAULT_PLACE_NAME, active: true, component: Bulgaria, label: "България", isExternal: false } satisfies IDefaultPlaceConfig,
