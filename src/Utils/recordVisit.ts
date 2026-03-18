@@ -34,7 +34,7 @@ export function useRecordVisit() {
         authCode: APP.consumeAuthCode()
       };
 
-      fetch("/php/visit.php", {
+      fetch(ENV.LOG_VISIT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
@@ -43,7 +43,7 @@ export function useRecordVisit() {
     }
     else {  // Dev-only: optionally fetch dashboard stats
       return;
-      fetch("https://chan180.net/php/dashboard.php", { method: "GET" })
+      fetch(ENV.API_URL + "/php/dashboard.php", { method: "GET" })
         .then(res => res.json())
         .then(data => console.log("Dashboard data:", data))
         .catch(err => console.error(err));

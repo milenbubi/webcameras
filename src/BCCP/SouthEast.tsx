@@ -1,6 +1,6 @@
 import { Media } from "./media/Media";
 import RowWrapper from "../Components/RowWrapper";
-import { Cams, composeCamLabel, getCamCount, getCamSource } from "./utils/cams";
+import { Cams, composeCamLabel, getCamCount, getCamSource, getProxiedUrl } from "./utils/cams";
 
 const dgrCams: Cams = {
   1: { source: "krastovishte-3-mart-1", label: 'кино "Химик"' },
@@ -20,7 +20,7 @@ const haskCams: Cams = {
 
 function getCamUrlDgr(streamIndex: number) {
   const source = getCamSource(dgrCams, streamIndex);
-  return `https://chan180.net/php/cam.php?cam=http://office.dimitrovgrad.ddns.bulsat.com:82/livecam/media/${source}/output.m3u8`
+  return getProxiedUrl(`http://office.dimitrovgrad.ddns.bulsat.com:82/livecam/media/${source}/output.m3u8`);
 }
 
 function getCamLabelDgr(streamIndex: number) {

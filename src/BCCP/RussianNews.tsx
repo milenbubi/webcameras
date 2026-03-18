@@ -1,5 +1,5 @@
 import { Media } from "./media/Media";
-import { getProxyUrl } from "./utils/cams";
+import { getProxiedUrl } from "./utils/cams";
 import RowWrapper from "../Components/RowWrapper";
 
 
@@ -19,7 +19,7 @@ function RussianNews() {
         {/* "Россия 1 */}
         <Media.BlobVideo
           id="rss1"
-          url={getProxyUrl("https://vgtrkregion-reg.cdnvideo.ru/vgtrk/0/russia1-hd/1080p.m3u8")}
+          url={getProxiedUrl("https://vgtrkregion-reg.cdnvideo.ru/vgtrk/0/russia1-hd/1080p.m3u8")}
           title="Россия 1"
           withSound
         />
@@ -38,7 +38,7 @@ function RussianNews() {
         {/* НТВ */}
         <Media.BlobVideo
           id="ntvr"
-          url={getProxyUrl("https://river-4-432.rtbcdn.ru/stream/genetta-316.m9.rutube.ru/L9Jmcu53xo5MmgWDUBXZvg/1774368970/c37cd74192c6bc3d6cd6077c0c4fd686/1080p_stream.m3u8")}
+          url={getProxiedUrl("https://river-4-432.rtbcdn.ru/stream/genetta-316.m9.rutube.ru/L9Jmcu53xo5MmgWDUBXZvg/1774368970/c37cd74192c6bc3d6cd6077c0c4fd686/1080p_stream.m3u8")}
           title={"НТВ"}
           withSound
         />

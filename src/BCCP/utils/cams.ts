@@ -1,3 +1,5 @@
+import { ENV } from "../../Utils/env";
+
 export type Cam = {
   source: string;
   label?: string;
@@ -33,6 +35,6 @@ export function getCamCount(cams: Cams) {
 }
 
 
-export function getProxyUrl(url: string) {
-  return "https://chan180.net/php/cam.php?cam=" + (url || "");
+export function getProxiedUrl(url: string) {
+  return ENV.HLS_PROXY_URL + (url || "");
 }
