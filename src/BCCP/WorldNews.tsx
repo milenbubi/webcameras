@@ -22,7 +22,7 @@ function getCamLabelYT(streamIndex: number) {
 
 
 
-function News() {
+function WorldNews() {
   return (  // News
     <RowWrapper>
       {/* Tagesschau */}
@@ -47,4 +47,4 @@ function News() {
 
 
 
-export default News;
+export default WorldNews;

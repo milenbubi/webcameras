@@ -18,16 +18,21 @@ export function composeCamLabel(name: string, cams: Cams, index: number) {
 }
 
 
-export function getCamLabel(cams: Cams, streamIndex: number) {
-  return getCam(cams, streamIndex).label || "";
-}
-
-
 export function getCamSource(cams: Cams, streamIndex: number) {
   return getCam(cams, streamIndex).source;
 }
 
 
+export function getCamLabel(cams: Cams, streamIndex: number) {
+  return getCam(cams, streamIndex).label || "";
+}
+
+
 export function getCamCount(cams: Cams) {
   return Object.keys(cams).length;
+}
+
+
+export function getProxyUrl(url: string) {
+  return "https://chan180.net/php/cam.php?cam=" + (url || "");
 }

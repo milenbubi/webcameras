@@ -1,4 +1,4 @@
-import APP from "../Utils/APP";
+import { ENV } from "../Utils/env";
 import { Media } from "./media/Media";
 import Kalotina from "./customCams/Kalotina";
 import KulataCams from "./customCams/KulataCams";
@@ -10,7 +10,7 @@ function Bulgaria() {
   return (  // България
     <>
       {/* Кулата */}
-      {APP.IS_DEV_MODE && (
+      {ENV.IS_DEV_MODE && (
         <RowWrapper>
           <KulataCams />
         </RowWrapper>

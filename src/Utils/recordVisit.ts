@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import APP from "./APP";
+import { ENV } from "./env";
 
 
 
@@ -26,7 +27,7 @@ import APP from "./APP";
  */
 export function useRecordVisit() {
   useEffect(() => {
-    if (!APP.IS_DEV_MODE) {  // Log a new visit (only in production)
+    if (!ENV.IS_DEV_MODE) {  // Log a new visit (only in production)
       const data = {
         place: APP.getInitialPlace(),
         browserVisitCount: APP.getBrowserVisits(),

@@ -38,7 +38,7 @@ function BlobPlayer({ url, withSound, ...props }: IPlayerProps) {
             fontWeight: 600,
             padding: 2
           }}
-          children={"Камерата е временно недостъпна"}
+          children="Камерата е временно недостъпна"
         />
       )}
 

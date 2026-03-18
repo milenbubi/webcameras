@@ -14,7 +14,7 @@ type QueryParams = Record<string, string>;
  * Singleton class for global app configuration and visit tracking.
  *
  * This class manages:
- * 1. Global constants and configuration (e.g., development mode).
+ * 1. Global constants and configuration.
  * 2. Logical "place" resolution from URL or localStorage.
  * 3. Browser-local visit count tracking.
  * 4. Optional authentication code from URL query parameters.
@@ -49,7 +49,6 @@ class AppConfig {
   private PLACE: Place;
   private AUTH_CODE: string | null;
   private BROWSER_VISITS: number;
-  public readonly IS_DEV_MODE: boolean;
 
   private constructor() {
     const queryParams = this.parseQueryParams();
@@ -57,7 +56,6 @@ class AppConfig {
     this.PLACE = this.setPlace(queryParams);
     this.AUTH_CODE = this.setAuthCode(queryParams);
     this.BROWSER_VISITS = this.incrementBrowserVisits();
-    this.IS_DEV_MODE = import.meta.env.DEV;
   }
 
 

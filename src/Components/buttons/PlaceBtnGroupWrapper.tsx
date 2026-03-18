@@ -16,12 +16,12 @@ function PlaceBtnGroupWrapper({ children }: PropsWithChildren) {
         gap: { xs: 2, sm: 3 },
         "& button": {
           transition: "opacity 0.3s",
-          pb: "4px",
-          minWidth: { xs: 110, md: 160 },
+          pt: "5px", pb: { xs: "3px", md: "2px" },
+          minWidth: { xs: 100, md: 160 },
           fontWeight: 800,
           fontFamily: "Arial",
-          fontSize: { xs: 12, md: 18 },
-          letterSpacing: "3px"
+          fontSize: { xs: 12, md: 17 },
+          letterSpacing: { xs: "2px", md: "3px" }
         }
       }}
     >
