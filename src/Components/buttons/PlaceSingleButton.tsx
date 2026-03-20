@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { yellow } from "@mui/material/colors";
-import { Button, SxProps } from "@mui/material";
+import { blueGrey, yellow } from "@mui/material/colors";
+import { Button, colors, SxProps } from "@mui/material";
 import { IPlaceButton, Place } from "../../Utils/places";
 
 interface IProps {
@@ -18,9 +18,9 @@ function PlaceSingleButton({ button, onClick, isExternal, isSelected }: IProps) 
       return {
         color: "#000000",
         opacity: isSelected ? 1 : 0.5,
-        backgroundColor: yellow[isSelected ? 600 : 500],
+        backgroundColor: blueGrey[isSelected ? 100 : 50],
         "&:hover": {
-          backgroundColor: yellow[isSelected ? 600 : "A700"],
+          backgroundColor: blueGrey[isSelected ? 100 : 50],
           opacity: isSelected ? 1 : 0.8
         }
       }
