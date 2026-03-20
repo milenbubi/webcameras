@@ -1,4 +1,6 @@
+import { ENV } from "../Utils/env";
 import { Media } from "./media/Media";
+import { getProxiedUrl } from "./utils/cams";
 import RowWrapper from "../Components/RowWrapper";
 import VasilLevskiHut from "./customCams/VasilLevskiHut";
 
@@ -8,18 +10,25 @@ function BalkanMountains() {
   return (  // Стара Планина
     <>
       <RowWrapper>
-        {/* Мазалат */}
-        <Media.Image id="mzlt" title="Хижа Мазалат" url="https://cams.pladi.bg/mazalat.jpg" />
+        {/* Добрила */}
+        <Media.BlobVideo id="dbrl" url={getProxiedUrl("https://dobrila.darkpsy.space/secure-stream/index.m3u8")} title="Хижа Добрила" />
 
         {/* Рай */}
         <Media.Image id="hraj" title="Хижа Рай" url="https://cams.pladi.bg/ray.jpg" />
       </RowWrapper>
 
+      {ENV.IS_DEV_MODE && (
+        <RowWrapper>
+          {/* Мазалат */}
+          <Media.Image id="mzlt" title="Хижа Мазалат" url="https://cams.pladi.bg/mazalat.jpg" />
+
+          {/* Орлово гнездо */}
+          <Media.Image id="orgn" title="Заслон Орлово гнездо" url="https://cams.pladi.bg/orlovognezdo.jpg" />
+        </RowWrapper>
+      )}
+
 
       <RowWrapper>
-        {/* Орлово гнездо */}
-        {/* <HutEntity id="orgn" title="Заслон Орлово гнездо" url="https://cams.pladi.bg/orlovognezdo.jpg" /> */}
-
         {/* Дерменка */}
         <Media.Image id="drmn" title="Хижа Дерменка" url="https://cams.pladi.bg/dermenka.jpg" />
 
