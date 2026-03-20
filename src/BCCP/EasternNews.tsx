@@ -4,8 +4,8 @@ import RowWrapper from "../Components/RowWrapper";
 
 
 
-function RussianNews() {
-  return (  // Russian news
+function EasternNews() {
+  return (  // Eastern news
     <>
       <RowWrapper>
         {/* 1 Канал */}
@@ -31,7 +31,7 @@ function RussianNews() {
         <Media.BlobVideo
           id="rs24"
           url="https://gtrk-volga.ru/media/hr24/stream1.m3u8"
-          title={"Россия 24"}
+          title="Россия 24"
           withSound
         />
 
@@ -39,7 +39,26 @@ function RussianNews() {
         <Media.BlobVideo
           id="ntvr"
           url={getProxiedUrl("https://river-4-432.rtbcdn.ru/stream/genetta-316.m9.rutube.ru/L9Jmcu53xo5MmgWDUBXZvg/1774368970/c37cd74192c6bc3d6cd6077c0c4fd686/1080p_stream.m3u8")}
-          title={"НТВ"}
+          title="НТВ"
+          withSound
+        />
+      </RowWrapper>
+
+
+      <RowWrapper>
+        {/* Press TV Iran */}
+        <Media.BlobVideo
+          id="ptvi"
+          url="https://live.presstv.ir/hls/presstv_5_482/index.m3u8"
+          title="Press TV Iran"
+          withSound
+        />
+
+        {/* TRT World */}
+        <Media.BlobVideo
+          id="trtw"
+          url="https://tv-trtworld.medya.trt.com.tr/master_360.m3u8"
+          title="TRT World"
           withSound
         />
       </RowWrapper>
@@ -49,4 +68,4 @@ function RussianNews() {
 
 
 
-export default RussianNews;
+export default EasternNews;

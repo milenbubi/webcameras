@@ -17,13 +17,13 @@ function getCamUrlYT(streamIndex: number) {
 }
 
 function getCamLabelYT(streamIndex: number) {
-  return getCamLabel(ytCams, streamIndex);
+  return getCamLabel(ytCams, streamIndex) + `   - ${streamIndex} / ${getCamCount(ytCams)} -`;
 }
 
 
 
-function WorldNews() {
-  return (  // World news
+function WesternNews() {
+  return (  // Western news
     <RowWrapper>
       {/* Tagesschau */}
       <Media.BlobVideo
@@ -47,4 +47,4 @@ function WorldNews() {
 
 
 
-export default WorldNews;
+export default WesternNews;

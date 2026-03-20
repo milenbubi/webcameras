@@ -38,8 +38,8 @@ function getCamLabelHask(streamIndex: number) {
 
 
 
-function SouthEast() {
-  return (  // Югоизточна България
+function Trakia() {
+  return (  // Тракия
     <RowWrapper>
       <Media.SwitchableBlobVideo
         id="dgrd"
@@ -60,4 +60,4 @@ function SouthEast() {
 
 
 
-export default SouthEast;
+export default Trakia;

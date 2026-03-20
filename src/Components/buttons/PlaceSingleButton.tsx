@@ -27,7 +27,7 @@ function PlaceSingleButton({ button, onClick, isExternal, isSelected }: IProps) 
     }
     else {
       return {
-        opacity: isSelected ? 1 : 0.4,
+        opacity: isSelected ? 1 : 0.5,
         background: isSelected ? "#191d21" : "#000000",
         "&:hover": {
           background: isSelected ? "#191d21" : "rgba(0, 0, 0, 0.83)",

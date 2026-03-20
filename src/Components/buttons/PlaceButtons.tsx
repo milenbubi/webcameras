@@ -36,7 +36,7 @@ function PlaceButtons({ bccp, onChangeBccp }: IProps) {
       <PlaceBtnGroupWrapper>
         {ExternalButtons.length > 0 && ExternalButtons.map((button, index) => (
           <PlaceSingleButton
-            key={index}
+            key={button.place}
             button={button}
             onClick={handleClick}
             isSelected={button.place === bccp}
@@ -48,7 +48,7 @@ function PlaceButtons({ bccp, onChangeBccp }: IProps) {
       <PlaceBtnGroupWrapper>
         {MainButtons.length > 0 && MainButtons.map((button, index) => (
           <PlaceSingleButton
-            key={index}
+            key={button.place}
             button={button}
             onClick={handleClick}
             isSelected={button.place === bccp}

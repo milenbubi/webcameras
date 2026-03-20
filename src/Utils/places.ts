@@ -3,12 +3,12 @@ import { safeLocalStorage } from "@ffilip/chan180-utils";
 import { ENV } from "./env";
 import Djala from "../BCCP/Djala";
 import Horgos from "../BCCP/Horgos";
+import Trakia from "../BCCP/Trakia";
 import Turkiye from "../BCCP/Turkiye";
 import Kelebia from "../BCCP/Kelebia";
 import Bulgaria from "../BCCP/Bulgaria";
-import SouthEast from "../BCCP/SouthEast";
-import WorldNews from "../BCCP/WorldNews";
-import RussianNews from "../BCCP/RussianNews";
+import WesternNews from "../BCCP/WesternNews";
+import EasternNews from "../BCCP/EasternNews";
 import { LS_PLACE_KEY } from "./localStorage";
 import BalkanMountains from "../BCCP/BalkanMountains";
 
@@ -35,10 +35,10 @@ interface IRegularPlaceConfig extends IPlaceConfig {
 
 
 export const PLACES_CONFIG = [
-  { name: "WorldNews", active: true, component: WorldNews, label: "World News", isExternal: true },
-  { name: "RussianTV", active: true, component: RussianNews, label: "Russian News", isExternal: true },
+  { name: "WesternNews", active: true, component: WesternNews, label: "Western  News", isExternal: true },
+  { name: "EasternNews", active: true, component: EasternNews, label: "Eastern News", isExternal: true },
   { name: "BalkanMountains", active: true, component: BalkanMountains, label: "Стара Планина", isExternal: true },
-  { name: "SouthEast", active: true, component: SouthEast, label: "Югоизток", isExternal: true },
+  { name: "Trakia", active: true, component: Trakia, label: "Тракия", isExternal: true },
   { name: DEFAULT_PLACE_NAME, active: true, component: Bulgaria, label: "България", isExternal: false } satisfies IDefaultPlaceConfig,
   { name: "Horgos", active: true, component: Horgos, label: "Хоргош", isExternal: false },
   { name: "Djala", active: true, component: Djala, label: "Ђала", isExternal: false },

@@ -15,6 +15,7 @@ function Title({ value, sx, imageUpdateLabel }: IProps) {
       sx={{
         color: "#ffffff",
         fontWeight: 500,
+        whiteSpace: "pre-wrap",
         position: "absolute",
         left: 61,
         top: -30,

@@ -21,7 +21,7 @@ function PlaceBtnGroupWrapper({ children }: PropsWithChildren) {
           fontWeight: 800,
           fontFamily: "Arial",
           fontSize: { xs: 12, md: 17 },
-          letterSpacing: { xs: "2px", md: "3px" }
+          letterSpacing: { xs: "1px", md: "3px" }
         }
       }}
     >
