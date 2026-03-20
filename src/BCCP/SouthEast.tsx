@@ -40,23 +40,21 @@ function getCamLabelHask(streamIndex: number) {
 
 function SouthEast() {
   return (  // Югоизточна България
-    <>
-      <RowWrapper>
-        <Media.SwitchableBlobVideo
-          id="dgrd"
-          urlComposer={getCamUrlDgr}
-          title={getCamLabelDgr}
-          camCount={getCamCount(dgrCams)}
-        />
+    <RowWrapper>
+      <Media.SwitchableBlobVideo
+        id="dgrd"
+        urlComposer={getCamUrlDgr}
+        title={getCamLabelDgr}
+        camCount={getCamCount(dgrCams)}
+      />
 
-        <Media.SwitchableBlobVideo
-          id="hask"
-          urlComposer={getCamUrlHask}
-          title={getCamLabelHask}
-          camCount={getCamCount(haskCams)}
-        />
-      </RowWrapper>
-    </>
+      <Media.SwitchableBlobVideo
+        id="hask"
+        urlComposer={getCamUrlHask}
+        title={getCamLabelHask}
+        camCount={getCamCount(haskCams)}
+      />
+    </RowWrapper>
   );
 }
 
