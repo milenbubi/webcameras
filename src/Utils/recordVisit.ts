@@ -22,7 +22,7 @@ import { ENV } from "./env";
  * ```ts
  * useRecordVisit();
  * ```
- * Sends `/php/visit.php` with JSON body like:
+ * Sends visit data with JSON body like:
  * `{ "place": "Bulgaria", "browserVisitCount": 3, "authCode": "123abc" }`
  */
 export function useRecordVisit() {
@@ -43,7 +43,7 @@ export function useRecordVisit() {
     }
     else {  // Dev-only: optionally fetch dashboard stats
       return;
-      fetch(ENV.API_URL + "/php/dashboard.php", { method: "GET" })
+      fetch(ENV.DASHBOARD_STATS_PATH, { method: "GET" })
         .then(res => res.json())
         .then(data => console.log("Dashboard data:", data))
         .catch(err => console.error(err));

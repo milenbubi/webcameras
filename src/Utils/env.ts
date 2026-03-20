@@ -1,9 +1,16 @@
-const API_BASE = import.meta.env.VITE_API_URL || "";
+const {
+  VITE_API_URL = "",
+  VITE_LOG_VISIT_PATH = "",
+  VITE_HLS_PROXY_PATH = "",
+  DEV,
+  VITE_DASHBOARD_STATS_PATH = ""
+} = import.meta.env;
 
 
 export const ENV = {
-  IS_DEV_MODE: import.meta.env.DEV,
-  API_URL: API_BASE,
-  LOG_VISIT_URL: API_BASE + (import.meta.env.VITE_LOG_VISIT_URL || ""),
-  HLS_PROXY_URL: API_BASE + (import.meta.env.VITE_HLS_PROXY_URL || "")
+  IS_DEV_MODE: DEV,
+  API_URL: VITE_API_URL,
+  LOG_VISIT_URL: VITE_API_URL + VITE_LOG_VISIT_PATH,
+  HLS_PROXY_URL: VITE_API_URL + VITE_HLS_PROXY_PATH,
+  DASHBOARD_STATS_PATH: VITE_API_URL + VITE_DASHBOARD_STATS_PATH
 } as const;

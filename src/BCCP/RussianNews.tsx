@@ -5,7 +5,7 @@ import RowWrapper from "../Components/RowWrapper";
 
 
 function RussianNews() {
-  return (  // Russian News
+  return (  // Russian news
     <>
       <RowWrapper>
         {/* 1 Канал */}

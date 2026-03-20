@@ -23,7 +23,7 @@ function getCamLabelYT(streamIndex: number) {
 
 
 function WorldNews() {
-  return (  // News
+  return (  // World news
     <RowWrapper>
       {/* Tagesschau */}
       <Media.BlobVideo
