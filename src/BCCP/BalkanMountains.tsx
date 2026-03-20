@@ -61,7 +61,7 @@ function BalkanMountains() {
         <Media.Image id="plvn" title="Хижа Плевен" url="https://cams.pladi.bg/pleven.jpg" refreshSeconds={1} />
 
         {/* Чумерна */}
-        <Media.BlobVideo id="chmr" url="https://lon.rtsp.me/eYrqm9hJ32qPZ-GV6Ki9CQ/1772721693/hls/ErrH8sb3.m3u8" title="Хижа Чумерна" />
+        <Media.BlobVideo id="chmr" url={getProxiedUrl("https://lon.rtsp.me/eYrqm9hJ32qPZ-GV6Ki9CQ/1772721693/hls/ErrH8sb3.m3u8")} title="Хижа Чумерна" />
       </RowWrapper>
     </>
   );

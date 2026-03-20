@@ -16,7 +16,8 @@ function __BlobVideoImpl({ id, title, url, withSound }: IProps) {
 
   return (
     <BlobPlayer
-      id={id} isActive={isBooleanLSOn}
+      id={id}
+      isActive={isBooleanLSOn}
       url={url}
       onToggle={toggleBooleanLS}
       title={title}
