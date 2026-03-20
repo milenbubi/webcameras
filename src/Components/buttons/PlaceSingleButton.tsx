@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { blueGrey, yellow } from "@mui/material/colors";
-import { Button, colors, SxProps } from "@mui/material";
+import { blueGrey } from "@mui/material/colors";
+import { Button, SxProps } from "@mui/material";
 import { IPlaceButton, Place } from "../../Utils/places";
 
 interface IProps {
