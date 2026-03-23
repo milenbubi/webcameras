@@ -1,6 +1,7 @@
 import { ENV } from "../Utils/env";
 import { Media } from "./media/Media";
 import Kalotina from "./customCams/Kalotina";
+import { getProxiedUrl } from "./utils/cams";
 import KulataCams from "./customCams/KulataCams";
 import RowWrapper from "../Components/RowWrapper";
 
@@ -39,11 +40,11 @@ function Bulgaria() {
       </RowWrapper>
 
 
-      {/* <RowWrapper>
+      <RowWrapper>
         <Media.BlobVideo
           // Дунав мост 1 
           id="rsdm"
-          url={"http://s19.r145.nbis.net:8081/or-bul-cam3/tracks-v1/index.fmp4.m3u8"}
+          url={getProxiedUrl("http://s19.r145.nbis.net:8081/or-bul-cam3/tracks-v1/index.fmp4.m3u8")}
           title="Русе - към Дунав Мост"
         />
 
@@ -53,7 +54,7 @@ function Bulgaria() {
           url="https://streaming1.neotel.net.mk/stream/deve_bair.m3u8"
           title="Деве Баир - към България"
         />
-      </RowWrapper> */}
+      </RowWrapper>
     </>
   );
 }
