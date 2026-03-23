@@ -2,7 +2,6 @@ import { ENV } from "../Utils/env";
 import { Media } from "./media/Media";
 import { getProxiedUrl } from "./utils/cams";
 import RowWrapper from "../Components/RowWrapper";
-import VasilLevskiHut from "./customCams/VasilLevskiHut";
 
 
 
@@ -46,7 +45,7 @@ function BalkanMountains() {
 
       <RowWrapper>
         {/* Васил Левски */}
-        <VasilLevskiHut />
+        <Media.TimedImage id="vslvvski" title="Хижа Васил Левски" url="https://meter.ac/gs/nodes/N124/snap.jpg" refreshSeconds={30} />
 
         {/* Тъжа */}
         <Media.Image id="tyja" title="Хижа Тъжа" url="https://cams.pladi.bg/taja.jpg" refreshSeconds={5} />

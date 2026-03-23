@@ -9,9 +9,9 @@ interface IProps {
   id: string;
   title: string;
   url: string;
+  stretchToFit?: boolean;
   refreshSeconds?: number;
   showUpdateInMinutes?: boolean;
-  stretchToFit?: boolean;
 }
 
 
@@ -43,8 +43,10 @@ function __ImageImpl({ id, title, url, stretchToFit, ...refreshProps }: IProps) 
   return (
     <ImagePlayer
       onToggle={toggleBooleanLS}
-      id={id} isActive={isBooleanLSOn}
-      title={title} imageUpdateLabel={updateLabel}
+      id={id}
+      isActive={isBooleanLSOn}
+      title={title}
+      imageUpdateLabel={updateLabel}
       url={camUrl}
       stretchToFit={stretchToFit}
     />

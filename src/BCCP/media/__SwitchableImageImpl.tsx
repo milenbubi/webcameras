@@ -51,8 +51,10 @@ function __SwitchableImageImpl({ id, title, camCount, urlComposer, stretchToFit,
   return (
     <ImagePlayer
       onToggle={toggleBooleanLS}
-      id={id} isActive={isBooleanLSOn}
-      title={finalTitle} imageUpdateLabel={updateLabel}
+      id={id}
+      isActive={isBooleanLSOn}
+      title={finalTitle}
+      imageUpdateLabel={updateLabel}
       url={camUrl}
       stretchToFit={stretchToFit}
       fsBtnSx={fsBtnSx}

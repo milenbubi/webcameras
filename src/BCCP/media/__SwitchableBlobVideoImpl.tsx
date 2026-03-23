@@ -26,7 +26,8 @@ function __SwitchableBlobVideoImpl({ id, title, urlComposer, withSound, camCount
 
   return (
     <BlobPlayer
-      id={id} isActive={isBooleanLSOn}
+      id={id}
+      isActive={isBooleanLSOn}
       url={url}
       onToggle={toggleBooleanLS}
       title={finalTitle}

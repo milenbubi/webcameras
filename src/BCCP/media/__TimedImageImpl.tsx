@@ -3,25 +3,34 @@ import { useDocumentVisibility, useLatestRequestGuard } from "@ffilip/mui-react-
 import TimeLabel from "../../Components/TimeLabel";
 import { useBooleanLS } from "../../Utils/localStorage";
 import ImagePlayer from "../../Components/players/ImagePlayer";
+import { useRefreshInfo } from "./tools/useRefreshInfo";
 
+interface IProps {
+  id: string;
+  title: string;
+  url: string;
+  stretchToFit?: boolean;
+  refreshSeconds?: number;
+  showUpdateInMinutes?: boolean;
+}
 
-
-function VasilLevskiHut() {
+function __TimedImageImpl({ id, title, url, stretchToFit, ...refreshProps }: IProps) {
   const imageUrlRef = useRef("");
   const isVisible = useDocumentVisibility();
   const [blobUrl, setBlobUrl] = useState("");
   const { register, isOutdated } = useLatestRequestGuard();
+  const { isBooleanLSOn, toggleBooleanLS } = useBooleanLS(id);
   const [lastModified, setLastModified] = useState<string | null>(null);
-  const { isBooleanLSOn: isOn1, toggleBooleanLS: toggleIsOn1 } = useBooleanLS("vslv");
+  const { normalizedRefreshMS, updateLabel } = useRefreshInfo(refreshProps);
 
 
   useEffect(() => {
-    if (!isOn1 || !isVisible) {
+    if (!isBooleanLSOn || !isVisible) {
       return;
     }
 
     async function fetchImage() {
-      const src = `https://meter.ac/gs/nodes/N124/snap.jpg?t=${Date.now()}`;
+      const src = `${url}?t=${Date.now()}`;
       const requestId = register();
 
       try {
@@ -48,7 +57,7 @@ function VasilLevskiHut() {
     }
 
     fetchImage();
-    const intervalId = setInterval(fetchImage, 30000);
+    const intervalId = setInterval(fetchImage, normalizedRefreshMS);
 
     return () => {
       clearInterval(intervalId);
@@ -57,14 +66,16 @@ function VasilLevskiHut() {
       setLastModified(null);
       setBlobUrl("");
     };
-  }, [isOn1, isVisible]);
+  }, [isBooleanLSOn, isVisible, normalizedRefreshMS, url]);
 
 
   return (
     <ImagePlayer
-      onToggle={toggleIsOn1}
-      id="vslv" isActive={isOn1}
-      title="Хижа Васил Левски" imageUpdateLabel="през 30s"
+      onToggle={toggleBooleanLS}
+      id={id}
+      isActive={isBooleanLSOn}
+      title={title}
+      imageUpdateLabel={updateLabel}
       url={blobUrl}
       specialControls={<TimeLabel date={lastModified} sx={{ top: 25 }} />}
     />
@@ -73,4 +84,4 @@ function VasilLevskiHut() {
 
 
 
-export default VasilLevskiHut;
+export { __TimedImageImpl };
