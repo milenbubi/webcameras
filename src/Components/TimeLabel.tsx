@@ -16,7 +16,7 @@ function TimeLabel({ date, sx }: IProps) {
       source: date,
       unit: "camStyle",
       returnEmptyInsteadOfNA: true
-    })
+    });
 
     return formattedDate;
   }, [date]);

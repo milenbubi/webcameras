@@ -2,31 +2,40 @@ import { useEffect, useRef, useState } from "react";
 import { useDocumentVisibility, useLatestRequestGuard } from "@ffilip/mui-react-utils";
 import TimeLabel from "../../Components/TimeLabel";
 import { useBooleanLS } from "../../Utils/localStorage";
-import ImagePlayer from "../../Components/players/ImagePlayer";
 import { useRefreshInfo } from "./tools/useRefreshInfo";
+import ImagePlayer from "../../Components/players/ImagePlayer";
 
 interface IProps {
   id: string;
   title: string;
   url: string;
   stretchToFit?: boolean;
-  refreshSeconds?: number;
+  refreshSeconds: number;
   showUpdateInMinutes?: boolean;
 }
+
+
 
 function __TimedImageImpl({ id, title, url, stretchToFit, ...refreshProps }: IProps) {
   const imageUrlRef = useRef("");
   const isVisible = useDocumentVisibility();
   const [blobUrl, setBlobUrl] = useState("");
+  const lastModified = useRef<string | null>(null);
   const { register, isOutdated } = useLatestRequestGuard();
   const { isBooleanLSOn, toggleBooleanLS } = useBooleanLS(id);
-  const [lastModified, setLastModified] = useState<string | null>(null);
   const { normalizedRefreshMS, updateLabel } = useRefreshInfo(refreshProps);
 
 
   useEffect(() => {
     if (!isBooleanLSOn || !isVisible) {
       return;
+    }
+
+    function resetImage() {
+      URL.revokeObjectURL(imageUrlRef.current);
+      imageUrlRef.current = "";
+      lastModified.current = null;
+      setBlobUrl("");
     }
 
     async function fetchImage() {
@@ -40,19 +49,22 @@ function __TimedImageImpl({ id, title, url, stretchToFit, ...refreshProps }: IPr
           return;
         }
 
+        const newLastModified = res.headers.get("Last-Modified");
+
+        if (newLastModified && newLastModified === lastModified.current) {  // Skip update if image hasn’t changed
+          return;
+        }
+
         const blob = await res.blob();
         const newBlobUrl = URL.createObjectURL(blob);
 
         URL.revokeObjectURL(imageUrlRef.current);
         imageUrlRef.current = newBlobUrl;
-        setLastModified(res.headers.get("Last-Modified"));
+        lastModified.current = newLastModified;
         setBlobUrl(newBlobUrl);
       }
       catch (err) {
-        URL.revokeObjectURL(imageUrlRef.current);
-        imageUrlRef.current = "";
-        setLastModified(null);
-        setBlobUrl("");
+        resetImage();
       }
     }
 
@@ -61,10 +73,7 @@ function __TimedImageImpl({ id, title, url, stretchToFit, ...refreshProps }: IPr
 
     return () => {
       clearInterval(intervalId);
-      URL.revokeObjectURL(imageUrlRef.current);
-      imageUrlRef.current = "";
-      setLastModified(null);
-      setBlobUrl("");
+      resetImage();
     };
   }, [isBooleanLSOn, isVisible, normalizedRefreshMS, url]);
 
@@ -77,11 +86,11 @@ function __TimedImageImpl({ id, title, url, stretchToFit, ...refreshProps }: IPr
       title={title}
       imageUpdateLabel={updateLabel}
       url={blobUrl}
-      specialControls={<TimeLabel date={lastModified} sx={{ top: 25 }} />}
+      specialControls={<TimeLabel date={lastModified.current} sx={{ top: 25 }} />}
     />
   );
 }
 
 
 
-export { __TimedImageImpl };
+export { __TimedImageImpl };  

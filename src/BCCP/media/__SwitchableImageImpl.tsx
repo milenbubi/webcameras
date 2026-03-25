@@ -11,7 +11,7 @@ interface IProps {
   id: string;
   title: string | ((streamIndex: number) => string);
   camCount: number;
-  refreshSeconds?: number;
+  refreshSeconds: number;
   showUpdateInMinutes?: boolean;
   urlComposer: (streamIndex: number) => string;
   stretchToFit?: boolean;

@@ -11,7 +11,7 @@ function BalkanMountains() {
       {ENV.IS_DEV_MODE && (
         <>
           {/* Орлово гнездо */}
-          <Media.Image id="orgn" title="Заслон Орлово гнездо" url="https://cams.pladi.bg/orlovognezdo.jpg" />
+          <Media.Image id="orgn" title="Заслон Орлово гнездо" url="https://cams.pladi.bg/orlovognezdo.jpg" refreshSeconds={30} />
         </>
       )}
 
@@ -45,7 +45,7 @@ function BalkanMountains() {
 
       <RowWrapper>
         {/* Васил Левски */}
-        <Media.TimedImage id="vslvvski" title="Хижа Васил Левски" url="https://meter.ac/gs/nodes/N124/snap.jpg" refreshSeconds={30} />
+        <Media.TimedImage id="vslv" title="Хижа Васил Левски" url="https://meter.ac/gs/nodes/N124/snap.jpg" refreshSeconds={30} />
 
         {/* Тъжа */}
         <Media.Image id="tyja" title="Хижа Тъжа" url="https://cams.pladi.bg/taja.jpg" refreshSeconds={5} />

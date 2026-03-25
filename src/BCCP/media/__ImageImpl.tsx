@@ -10,7 +10,7 @@ interface IProps {
   title: string;
   url: string;
   stretchToFit?: boolean;
-  refreshSeconds?: number;
+  refreshSeconds: number;
   showUpdateInMinutes?: boolean;
 }
 

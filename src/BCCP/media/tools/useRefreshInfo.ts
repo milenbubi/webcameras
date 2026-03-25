@@ -1,17 +1,23 @@
 import { useMemo } from "react";
 
 interface IProps {
-  refreshSeconds?: number;
+  refreshSeconds: number;
   showUpdateInMinutes?: boolean;
 }
 
 
 
-export function useRefreshInfo({ refreshSeconds = 30, showUpdateInMinutes }: IProps) {
-  const normalizedRefreshSeconds = useMemo(
-    () => Math.max(1, Math.round(refreshSeconds)),
-    [refreshSeconds]
-  );
+export function useRefreshInfo({ refreshSeconds, showUpdateInMinutes }: IProps) {
+  const safeRefreshSeconds = refreshSeconds ?? 30;
+
+
+  // Memoize the normalized refresh interval in seconds.
+  // Ensures a minimum of 1 second for the refresh interval.
+  // Falls back to a default of 30 seconds if the input is null, undefined, or non-numeric.
+  const normalizedRefreshSeconds = useMemo(() => {
+    const n = Math.round(Number(safeRefreshSeconds));
+    return Math.max(1, isNaN(n) ? 30 : n);
+  }, [safeRefreshSeconds]);
 
 
   const updateLabel = useMemo(() => {
