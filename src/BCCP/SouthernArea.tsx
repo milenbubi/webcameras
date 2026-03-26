@@ -38,26 +38,43 @@ function getCamLabelHask(streamIndex: number) {
 
 
 
-function Trakia() {
-  return (  // Тракия
-    <RowWrapper>
-      <Media.SwitchableBlobVideo
-        id="dgrd"
-        urlComposer={getCamUrlDgr}
-        title={getCamLabelDgr}
-        camCount={getCamCount(dgrCams)}
-      />
+function SouthernArea() {
+  return (  // Южен регион
+    <>
+      <RowWrapper>
+        <Media.SwitchableBlobVideo
+          id="dgrd"
+          urlComposer={getCamUrlDgr}
+          title={getCamLabelDgr}
+          camCount={getCamCount(dgrCams)}
+        />
 
-      <Media.SwitchableBlobVideo
-        id="hask"
-        urlComposer={getCamUrlHask}
-        title={getCamLabelHask}
-        camCount={getCamCount(haskCams)}
-      />
-    </RowWrapper>
+        <Media.SwitchableBlobVideo
+          id="hask"
+          urlComposer={getCamUrlHask}
+          title={getCamLabelHask}
+          camCount={getCamCount(haskCams)}
+        />
+      </RowWrapper>
+
+
+      <RowWrapper>
+        <Media.BlobVideo
+          id="mmlg"
+          url="https://frn.rtsp.me/H-V2tE79jT9Ucr1tf_buLw/1774534350/hls/zQ3neeGn.m3u8"
+          title="Момчилград"
+        />
+
+        <Media.IframeVideo
+          id="ardn"
+          url="https://cloud.pavlin.info/streams/stream.html?src=camera5"
+          title="Ардино"
+        />
+      </RowWrapper>
+    </>
   );
 }
 
 
 
-export default Trakia;
+export default SouthernArea;
