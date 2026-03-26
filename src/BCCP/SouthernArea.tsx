@@ -59,9 +59,14 @@ function SouthernArea() {
 
 
       <RowWrapper>
-        <Media.BlobVideo
+        {/* <Media.BlobVideo
           id="mmlg"
           url="https://frn.rtsp.me/H-V2tE79jT9Ucr1tf_buLw/1774534350/hls/zQ3neeGn.m3u8"
+          title="Момчилград"
+        /> */}
+        <Media.IframeVideo
+          id="mmlg"
+          url="https://rtsp.me/embed/zQ3neeGn"
           title="Момчилград"
         />
 
