@@ -18,7 +18,8 @@ function __IframeVideoImpl({ id, title, url, withSound }: IProps) {
 
   return (
     <IframePlayer
-      id={id} isActive={isBooleanLSOn}
+      id={id}
+      isActive={isBooleanLSOn}
       url={finalUrl}
       onToggle={toggleBooleanLS}
       title={title}

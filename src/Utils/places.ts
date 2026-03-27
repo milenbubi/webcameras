@@ -6,10 +6,10 @@ import Horgos from "../BCCP/Horgos";
 import Turkiye from "../BCCP/Turkiye";
 import Kelebia from "../BCCP/Kelebia";
 import Bulgaria from "../BCCP/Bulgaria";
+import SouthArea from "../BCCP/SouthArea";
 import WesternNews from "../BCCP/WesternNews";
 import EasternNews from "../BCCP/EasternNews";
 import { LS_PLACE_KEY } from "./localStorage";
-import SouthernArea from "../BCCP/SouthernArea";
 import BalkanMountains from "../BCCP/BalkanMountains";
 
 
@@ -38,7 +38,7 @@ export const PLACES_CONFIG = [
   { name: "WesternNews", active: true, component: WesternNews, label: "Western  News", isExternal: true },
   { name: "EasternNews", active: true, component: EasternNews, label: "Eastern News", isExternal: true },
   { name: "BalkanMountains", active: true, component: BalkanMountains, label: "Стара Планина", isExternal: true },
-  { name: "SouthernArea", active: true, component: SouthernArea, label: "Южен регион", isExternal: true },
+  { name: "SouthArea", active: true, component: SouthArea, label: "Южен регион", isExternal: true },
   { name: DEFAULT_PLACE_NAME, active: true, component: Bulgaria, label: "България", isExternal: false } satisfies IDefaultPlaceConfig,
   { name: "Horgos", active: true, component: Horgos, label: "Хоргош", isExternal: false },
   { name: "Djala", active: true, component: Djala, label: "Ђала", isExternal: false },

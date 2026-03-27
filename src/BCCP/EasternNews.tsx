@@ -35,11 +35,11 @@ function EasternNews() {
           withSound
         />
 
-        {/* НТВ */}
-        <Media.BlobVideo
-          id="ntvr"
-          url={getProxiedUrl("https://river-6-601.rtbcdn.ru/stream/genetta-316.m9.rutube.ru/YgnN15pkYYl1xeTkldFv4A/1775127103/c37cd74192c6bc3d6cd6077c0c4fd686/1080p_stream.m3u8")}
-          title="НТВ"
+        {/* CGTN */}
+        <Media.IframeVideo
+          id="cgtn"
+          url="https://www.youtube.com/embed/BOy2xDU1LC8"
+          title="CGTN"
           withSound
         />
       </RowWrapper>
