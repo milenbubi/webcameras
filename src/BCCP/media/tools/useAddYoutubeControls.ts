@@ -15,31 +15,28 @@ interface IUrlComposerProps {
 
 function useYTUrl({ url, withSound }: IUrlProps) {
   const finalUrl = useMemo(() => {
-    const isYoutube =
-      url.includes("youtube.com") ||
-      url.includes("youtu.be") ||
-      url.includes("youtube-nocookie.com");
+    const isYoutube = /youtube\.com|youtu\.be|youtube-nocookie\.com/.test(url);
 
     if (!isYoutube) {
       return url;
     }
 
-    const separator = url.includes("?") ? "&" : "?";
+    const u = new URL(url);
 
-    return `${url}${separator}` +
-      `autoplay=1` +
-      `&mute=${withSound ? 0 : 1}` +
-      `&controls=1` +
-      `&rel=0` +
-      `&modestbranding=1` +
-      `&fs=0` +
-      `&playsinline=1`;
+    u.searchParams.set("autoplay", "1");
+    u.searchParams.set("mute", withSound ? "0" : "1");
+    u.searchParams.set("controls", "1");
+    u.searchParams.set("rel", "0");
+    u.searchParams.set("modestbranding", "1");
+    u.searchParams.set("fs", "0");
+    u.searchParams.set("playsinline", "1");
+
+    return u.toString();
   }, [url, withSound]);
 
 
   return finalUrl;
-};
-
+}
 
 
 export function useAddYTControlsToUrl({ url, withSound }: IUrlProps) {
