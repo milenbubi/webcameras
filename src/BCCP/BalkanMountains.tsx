@@ -1,4 +1,3 @@
-import { ENV } from "../Utils/env";
 import { Media } from "./media/Media";
 import { getProxiedUrl } from "./utils/cams";
 import RowWrapper from "../Components/RowWrapper";
@@ -8,12 +7,13 @@ import RowWrapper from "../Components/RowWrapper";
 function BalkanMountains() {
   return (  // Стара Планина
     <>
-      {ENV.IS_DEV_MODE && (
-        <>
-          {/* Орлово гнездо */}
-          <Media.Image id="orgn" title="Заслон Орлово гнездо" url="https://cams.pladi.bg/orlovognezdo.jpg" refreshSeconds={30} />
-        </>
-      )}
+      <RowWrapper>
+        {/* Орлово гнездо */}
+        <Media.Image id="orgn" title="Заслон Орлово гнездо" url="https://cams.pladi.bg/orlovognezdo.jpg" refreshSeconds={2} />
+
+        {/* Бузлуджа */}
+        <Media.BlobVideo id="bzldj" url={"https://huts.bg/video/dd7789e1-d2af-4c1b-b66e-ee2378f1ded3_output_0.m3u8"} title="Хижа Бузлуджа" />
+      </RowWrapper>
 
 
       <RowWrapper>
