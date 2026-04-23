@@ -19,12 +19,21 @@ function PlayerWrapper({ id, isActive, onToggle, title, imageUpdateLabel, fsBtnS
   return (
     <Centered id={id} sx={playerWrapperCSS}>
 
-      {isActive ? children : <Box sx={inactivePlayerCSS} />}
-
+      {/* Controls layer */}
       <StreamToggler isOn={isActive} onToggle={onToggle} />
       <Title value={title} imageUpdateLabel={imageUpdateLabel} />
-      {isActive && <FSButton fsElementId={id} sx={fsBtnSx} />}
-      {isActive && specialControls}
+
+      {/* Player layer */}
+      {isActive ? children : null}
+      {!isActive && <Box sx={inactivePlayerCSS} />}
+
+      {/* Active-only layer */}
+      {isActive && (
+        <>
+          <FSButton fsElementId={id} sx={fsBtnSx} />
+          {specialControls}
+        </>
+      )}
 
     </Centered>
   );

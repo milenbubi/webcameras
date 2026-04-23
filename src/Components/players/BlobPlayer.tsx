@@ -7,7 +7,7 @@ import { useHlsStream } from "./utils/hlsStreamHook";
 
 
 function BlobPlayer({ url, withSound, ...props }: IPlayerProps) {
-  const { videoRef, isCameraOffline } = useHlsStream(url, props.isActive);
+  const { setVideoRef, isCameraOffline } = useHlsStream(url, props.isActive);
 
 
   const videoStyle = {
@@ -19,7 +19,7 @@ function BlobPlayer({ url, withSound, ...props }: IPlayerProps) {
   return (
     <PlayerWrapper {...props}>
       <video
-        ref={videoRef}
+        ref={setVideoRef}
         controls
         controlsList="nofullscreen"
         autoPlay
