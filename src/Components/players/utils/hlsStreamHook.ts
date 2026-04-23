@@ -15,12 +15,11 @@ export function useHlsStream(url: string, isActive: boolean) {
 
   const startStream = () => {
     const currentStream = ++streamId.current;
+    stopStream();
 
     if (!videoRef.current) {
       return;
     }
-
-    stopStream();
 
     if (isIOS && videoRef.current.canPlayType("application/vnd.apple.mpegurl")) {
       videoRef.current.src = url;
