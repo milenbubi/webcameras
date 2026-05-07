@@ -1,0 +1,51 @@
+import { Centered } from "@ffilip/mui-react-utils";
+import PlayerWrapper from "./PlayerWrapper";
+import { IPlayerProps } from "./utils/utils";
+import { playerCSS } from "../../Styles/CSSStyles";
+import { useDashStream } from "./utils/dashStreamHook";
+
+
+
+function DashPlayer({ url, withSound, ...props }: IPlayerProps) {
+  const { setVideoRef, isCameraOffline } = useDashStream(url, props.isActive);
+
+
+  const videoStyle = {
+    ...playerCSS,
+    display: isCameraOffline ? "none" : "initial"
+  };
+
+
+  return (
+    <PlayerWrapper {...props}>
+      <video
+        ref={setVideoRef}
+        controls
+        controlsList="nofullscreen"
+        autoPlay
+        preload="auto"
+        muted={!withSound}
+        playsInline
+        style={videoStyle}
+      />
+
+      {isCameraOffline && (
+        <Centered
+          sx={{
+            ...playerCSS,
+            color: "#ffffff",
+            fontSize: { xs: 17, sm: 19 },
+            fontWeight: 600,
+            padding: 2
+          }}
+          children="Камерата е временно недостъпна"
+        />
+      )}
+
+    </PlayerWrapper>
+  );
+}
+
+
+
+export default DashPlayer;

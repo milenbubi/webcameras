@@ -1,6 +1,6 @@
 import { Media } from "./media/Media";
 import RowWrapper from "../Components/RowWrapper";
-import { Cams, composeCamLabel, getCamCount, getCamSource, getProxiedUrl } from "./utils/cams";
+import { Cams, composeCamLabel, getCamCount, getCamSource, getProxiedM3U8 } from "./utils/cams";
 
 const dgrCams: Cams = {
   1: { source: "krastovishte-3-mart-1", label: 'кино "Химик"' },
@@ -20,7 +20,7 @@ const haskCams: Cams = {
 
 function getCamUrlDgr(streamIndex: number) {
   const source = getCamSource(dgrCams, streamIndex);
-  return getProxiedUrl(`http://office.dimitrovgrad.ddns.bulsat.com:82/livecam/media/${source}/output.m3u8`);
+  return getProxiedM3U8(`http://office.dimitrovgrad.ddns.bulsat.com:82/livecam/media/${source}/output.m3u8`);
 }
 
 function getCamLabelDgr(streamIndex: number) {
@@ -29,7 +29,7 @@ function getCamLabelDgr(streamIndex: number) {
 
 function getCamUrlHask(streamIndex: number) {
   const source = getCamSource(haskCams, streamIndex);
-  return getProxiedUrl(`https://haskovo.net/tvs/cam${source}.m3u8`);
+  return getProxiedM3U8(`https://haskovo.net/tvs/cam${source}.m3u8`);
 }
 
 function getCamLabelHask(streamIndex: number) {

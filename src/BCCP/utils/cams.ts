@@ -35,6 +35,11 @@ export function getCamCount(cams: Cams) {
 }
 
 
-export function getProxiedUrl(url: string) {
+export function getProxiedM3U8(url: string) {
   return ENV.HLS_PROXY_URL + (url || "");
+}
+
+
+export function getProxiedMPD(url: string) {
+  return ENV.DASH_PROXY_URL + (encodeURIComponent(url) || "");
 }

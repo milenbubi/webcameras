@@ -1,5 +1,5 @@
 import { Media } from "./media/Media";
-import { getProxiedUrl } from "./utils/cams";
+import { getProxiedM3U8 } from "./utils/cams";
 import RowWrapper from "../Components/RowWrapper";
 
 
@@ -30,7 +30,7 @@ function BalkanMountains() {
         <Media.Image id="plvn" title="Хижа Плевен" url="https://cams.pladi.bg/pleven.jpg" refreshSeconds={7} />
 
         {/* Добрила */}
-        <Media.BlobVideo id="dbrl" url={getProxiedUrl("https://dobrila.darkpsy.space/secure-stream/index.m3u8")} title="Хижа Добрила" />
+        <Media.BlobVideo id="dbrl" url={getProxiedM3U8("https://dobrila.darkpsy.space/secure-stream/index.m3u8")} title="Хижа Добрила" />
       </RowWrapper>
 
 
@@ -66,7 +66,7 @@ function BalkanMountains() {
         <Media.Image id="bjnc" title="Боженци" url="https://home-solutions.bg/cams/bojenci.jpg" refreshSeconds={5} />
 
         {/* Чумерна */}
-        <Media.BlobVideo id="chmr" url={getProxiedUrl("https://lon.rtsp.me/eYrqm9hJ32qPZ-GV6Ki9CQ/1772721693/hls/ErrH8sb3.m3u8")} title="Хижа Чумерна" />
+        <Media.BlobVideo id="chmr" url={getProxiedM3U8("https://lon.rtsp.me/eYrqm9hJ32qPZ-GV6Ki9CQ/1772721693/hls/ErrH8sb3.m3u8")} title="Хижа Чумерна" />
       </RowWrapper>
     </>
   );

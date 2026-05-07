@@ -1,5 +1,6 @@
 import { __ImageImpl } from "./__ImageImpl";
 import { __BlobVideoImpl } from "./__BlobVideoImpl";
+import { __DashVideoImpl } from "./__DashVideoImpl";
 import { __TimedImageImpl } from "./__TimedImageImpl";
 import { __IframeVideoImpl } from "./__IframeVideoImpl";
 import { __SwitchableImageImpl } from "./__SwitchableImageImpl";
@@ -11,6 +12,7 @@ import { __SwitchableIframeVideoImpl } from "./__SwitchableIframeVideoImpl";
 export const Media = {
   Image: __ImageImpl,
   BlobVideo: __BlobVideoImpl,
+  DashVideo: __DashVideoImpl,
   TimedImage: __TimedImageImpl,
   IframeVideo: __IframeVideoImpl,
   SwitchableImageImpl: __SwitchableImageImpl,
