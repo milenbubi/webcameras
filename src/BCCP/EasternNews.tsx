@@ -1,6 +1,6 @@
 import { Media } from "./media/Media";
+import { getProxiedM3U8 } from "./utils/cams";
 import RowWrapper from "../Components/RowWrapper";
-import { getProxiedMPD, getProxiedM3U8 } from "./utils/cams";
 
 
 
@@ -8,12 +8,10 @@ function EasternNews() {
   return (  // Eastern news
     <>
       <RowWrapper>
-        {/* 1 Канал */}
-        <Media.DashVideo
+        <Media.IframeVideo
           id="1kan"
-          url={getProxiedMPD(`https://edge3.1internet.tv/dash-live2/streams/1tv-dvr/1tvdash.mpd?e=${Math.floor(Date.now() / 1000)}`)}
+          url="https://ok.ru/videoembed/1115050286838?autoplay=1"
           title="1 Канал"
-          withSound
         />
 
         {/* "Россия 1 */}

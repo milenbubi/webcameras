@@ -5,7 +5,6 @@ interface ImportMetaEnv {
   readonly VITE_API_URL: string;
   readonly VITE_LOG_VISIT_PATH: string;
   readonly VITE_HLS_PROXY_PATH: string;
-  readonly VITE_DASH_PROXY_PATH: string;
   readonly VITE_DASHBOARD_STATS_PATH: string;
 }
 
