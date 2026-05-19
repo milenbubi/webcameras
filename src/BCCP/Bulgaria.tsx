@@ -1,4 +1,3 @@
-import { ENV } from "../Utils/env";
 import { Media } from "./media/Media";
 import Kalotina from "./customCams/Kalotina";
 import { getProxiedM3U8 } from "./utils/cams";
@@ -11,11 +10,9 @@ function Bulgaria() {
   return (  // България
     <>
       {/* Кулата */}
-      {ENV.IS_DEV_MODE && (
-        <RowWrapper>
-          <KulataCams />
-        </RowWrapper>
-      )}
+      <RowWrapper>
+        <KulataCams />
+      </RowWrapper>
 
 
       {/* Маказа */}
