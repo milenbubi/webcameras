@@ -29,7 +29,7 @@ function getCamLabelDgr(streamIndex: number) {
 
 function getCamUrlHask(streamIndex: number) {
   const source = getCamSource(haskCams, streamIndex);
-  return getProxiedM3U8(`https://haskovo.net/tvs/cam${source}.m3u8`);
+  return `https://haskovo.net/tvs/cam${source}.m3u8`;
   // return `http://195.24.89.20/tvs/cam${source}.m3u8`;
 }
 
