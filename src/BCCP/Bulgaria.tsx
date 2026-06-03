@@ -1,6 +1,6 @@
 import { Media } from "./media/Media";
+import Kulata from "./customCams/Kulata";
 import Kalotina from "./customCams/Kalotina";
-import KulataCams from "./customCams/KulataCams";
 import RowWrapper from "../Components/RowWrapper";
 import DunavBridge1 from "./customCams/DunavBridge1";
 
@@ -11,7 +11,7 @@ function Bulgaria() {
     <>
       {/* Кулата */}
       <RowWrapper>
-        <KulataCams />
+        <Kulata />
       </RowWrapper>
 
 
