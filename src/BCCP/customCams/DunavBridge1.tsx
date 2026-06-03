@@ -22,7 +22,7 @@ function getCamLabel(streamIndex: number) {
 function DunavBridge1() {
   return (  // Дунав мост 1
     <Media.SwitchableBlobVideo
-      id="dgrd"
+      id="dmrs"
       urlComposer={getCamUrl}
       title={getCamLabel}
       camCount={getCamCount(cams)}
