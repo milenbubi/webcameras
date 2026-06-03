@@ -1,8 +1,8 @@
 import { Media } from "./media/Media";
 import Kalotina from "./customCams/Kalotina";
-import { getProxiedM3U8 } from "./utils/cams";
 import KulataCams from "./customCams/KulataCams";
 import RowWrapper from "../Components/RowWrapper";
+import DunavBridge1 from "./customCams/DunavBridge1";
 
 
 
@@ -38,12 +38,8 @@ function Bulgaria() {
 
 
       <RowWrapper>
-        <Media.BlobVideo
-          // Дунав мост 1 
-          id="rsdm"
-          url={getProxiedM3U8("http://s19.r145.nbis.net:8081/or-bul-cam3/tracks-v1/index.fmp4.m3u8")}
-          title="Русе - към Дунав Мост"
-        />
+        {/* Дунав мост 1 */}
+        <DunavBridge1 />
 
         <Media.BlobVideo
           // Деве Баир

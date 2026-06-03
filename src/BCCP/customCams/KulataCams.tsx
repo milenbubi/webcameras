@@ -20,7 +20,7 @@ function getCamLabel(streamIndex: number) {
 
 
 function KulataCams() {
-  return (
+  return (  // Кулата
     <Media.SwitchableImageImpl
       id="cklt"
       urlComposer={getCamUrl}
