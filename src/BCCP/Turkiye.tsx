@@ -3,7 +3,7 @@ import RowWrapper from "../Components/RowWrapper";
 import { Cams, getCamCount, getCamSource } from "./utils/cams";
 
 // https://www.canlimobeseizle.com/turkiye-sinir-kapilari-canli-izle
-// https://mobesekamerasi.com/sinir-kapilari/turkiye-sinir-kapisi/
+// https://mobesekamerasi.com/sinir-kapilari/turkiye-sinir-kapisi
 // Cameras from all Turkish border checkpoints.
 
 const kaCams: Cams = {

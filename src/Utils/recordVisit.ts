@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import APP from "./APP";
-import { ENV } from "./env";
+import { ENV } from "./config/env";
 
 
 
@@ -42,8 +42,8 @@ export function useRecordVisit() {
         .catch(err => { });
     }
     else {  // Dev-only: optionally fetch dashboard stats
-      return;
-      fetch(ENV.DASHBOARD_STATS_PATH, { method: "GET" })
+      // return;
+      fetch(ENV.DASHBOARD_STATS_URL, { method: "GET" })
         .then(res => res.json())
         .then(data => console.log("Dashboard data:", data))
         .catch(err => console.error(err));

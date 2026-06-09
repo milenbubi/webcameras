@@ -1,4 +1,4 @@
-import { ENV } from "../../Utils/env";
+import { ENV } from "../../Utils/config/env";
 
 export type Cam = {
   source: string;
@@ -36,5 +36,7 @@ export function getCamCount(cams: Cams) {
 
 
 export function getProxiedM3U8(url: string) {
-  return ENV.HLS_PROXY_URL + (url || "");
+  if (!url) return "";
+
+  return `${ENV.HLS_PROXY_URL}?url=${encodeURIComponent(url)}`;
 }
