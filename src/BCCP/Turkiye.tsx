@@ -3,35 +3,37 @@ import RowWrapper from "../Components/RowWrapper";
 import { Cams, getCamCount, getCamSource } from "./utils/cams";
 
 // https://www.canlimobeseizle.com/turkiye-sinir-kapilari-canli-izle
+// https://mobesekamerasi.com/sinir-kapilari/turkiye-sinir-kapisi/
 // Cameras from all Turkish border checkpoints.
 
 const kaCams: Cams = {
-  1: { source: "1" },
-  2: { source: "2" },
-  3: { source: "3" },
-  4: { source: "4" }
+  1: { source: "kapikule1" },
+  2: { source: "kapikule4" },
+  3: { source: "kapikule3" },
+  4: { source: "kapikule2" }
 };
 
 const lesovoCams: Cams = {
-  1: { source: "6" },
-  2: { source: "5" },
-  3: { source: "12" }
+  1: { source: "hamzabeyli1" },
+  2: { source: "hamzabeyli2" },
+  3: { source: "hamzabeyli3" }
 };
 
 const mtCams: Cams = {
-  1: { source: "11" },
-  2: { source: "13" }
+  1: { source: "derekoy1" },
+  2: { source: "derekoy2" }
 };
 
 const cpCams: Cams = {
-  1: { source: "8" },
-  2: { source: "7" }
+  2: { source: "pazarkule2" },
+  1: { source: "pazarkule1" }
 };
 
 function getCamUrl(cams: Cams, index: number) {
   const source = getCamSource(cams, index);
-  return `https://canlimobeseizle.com/wp-content/uploads/custom-images/resim${source}.jpg`;
+  return `https://mobesekamerasi.com/?mobese_camera=${source}`;
 }
+
 
 
 function Turkiye() {
@@ -49,7 +51,7 @@ function Turkiye() {
 
         {/* Лесово */}
         <Media.SwitchableImageImpl
-          id="lesv" stretchToFit
+          id="lesv"
           urlComposer={index => getCamUrl(lesovoCams, index)}
           title="Лесово" camCount={getCamCount(lesovoCams)}
           refreshSeconds={600} showUpdateInMinutes
@@ -61,7 +63,7 @@ function Turkiye() {
       <RowWrapper>
         {/* Малко Търново */}
         <Media.SwitchableImageImpl
-          id="mtnv" stretchToFit
+          id="mtnv"
           urlComposer={index => getCamUrl(mtCams, index)}
           title="Малко Търново" camCount={getCamCount(mtCams)}
           refreshSeconds={600} showUpdateInMinutes

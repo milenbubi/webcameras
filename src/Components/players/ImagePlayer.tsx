@@ -9,9 +9,9 @@ import { useEffect, useMemo, useState } from "react";
 
 
 function ImagePlayer({ url, stretchToFit, ...props }: IPlayerProps) {
-  const isVisible = useDocumentVisibility();
-  const [retry, setRetry] = useState(0);
   const oldRef = usePrevious(url);
+  const [retry, setRetry] = useState(0);
+  const isVisible = useDocumentVisibility();
 
 
   useEffect(() => {
