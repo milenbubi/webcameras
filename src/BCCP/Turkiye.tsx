@@ -42,7 +42,7 @@ function Turkiye() {
       <RowWrapper>
         {/* Капитан Андреево */}
         <Media.SwitchableImageImpl
-          id="kpkl" stretchToFit
+          id="kpkl"
           urlComposer={index => getCamUrl(kaCams, index)}
           title="Капитан Андреево" camCount={getCamCount(kaCams)}
           refreshSeconds={600} showUpdateInMinutes
@@ -72,7 +72,7 @@ function Turkiye() {
 
         {/* Черекьой - Пазаркуле */}
         <Media.SwitchableImageImpl
-          id="chpk" stretchToFit
+          id="chpk"
           urlComposer={index => getCamUrl(cpCams, index)}
           title="Черекьой - Пазаркуле" camCount={getCamCount(cpCams)}
           refreshSeconds={600} showUpdateInMinutes

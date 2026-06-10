@@ -35,6 +35,12 @@ function ImagePlayer({ url, stretchToFit, ...props }: IPlayerProps) {
   }, [url, retry]);
 
 
+  // TODO remove
+  if (isVisible !== true && (isVisible as any) !== false) {
+    console.log(`.   ${isVisible}   .`);
+  }
+
+
   return (
     <PlayerWrapper {...props}>
 
@@ -42,7 +48,7 @@ function ImagePlayer({ url, stretchToFit, ...props }: IPlayerProps) {
         <CardMedia
           component="img"
           image={finalUrl}
-          sx={{ ...playerCSS, objectFit: stretchToFit ? "cover" : "contain" }}
+          sx={{ ...playerCSS, objectFit: stretchToFit ? "cover" : "fill" }}
           onError={e => {
             if (retry > 5) {
               e.currentTarget.src = EMPTY_BASE64_IMAGE;

@@ -42,7 +42,7 @@ export function useRecordVisit() {
         .catch(err => { });
     }
     else {  // Dev-only: optionally fetch dashboard stats
-      // return;
+      return;
       fetch(ENV.DASHBOARD_STATS_URL, { method: "GET" })
         .then(res => res.json())
         .then(data => console.log("Dashboard data:", data))
