@@ -1,5 +1,6 @@
 import { ComponentType } from "react";
 import { safeLocalStorage } from "@ffilip/chan180-utils";
+import Aton from "../BCCP/Aton";
 import Djala from "../BCCP/Djala";
 import Horgos from "../BCCP/Horgos";
 import Turkiye from "../BCCP/Turkiye";
@@ -42,7 +43,8 @@ export const PLACES_CONFIG = [
   { name: "Horgos", active: true, component: Horgos, label: "Хоргош", isExternal: false },
   { name: "Djala", active: true, component: Djala, label: "Ђала", isExternal: false },
   { name: "Kelebia", active: true, component: Kelebia, label: "Келебия", isExternal: false },
-  { name: "Turkiye", active: true, component: Turkiye, label: "Турция", isExternal: false }
+  { name: "Turkiye", active: true, component: Turkiye, label: "Турция", isExternal: false },
+  { name: "Aton", active: true, component: Aton, label: "Атон", isExternal: false }
 ] as const satisfies readonly (IDefaultPlaceConfig | IRegularPlaceConfig)[];
 
 export type Place = typeof PLACES_CONFIG[number]["name"];
