@@ -40,3 +40,15 @@ export function getProxiedM3U8(url: string) {
 
   return `${ENV.HLS_PROXY_URL}?url=${encodeURIComponent(url)}`;
 }
+
+
+export async function resolveStreamSource(pageUrl: string): Promise<string> {
+  const res = await fetch(`${ENV.HLS_RESOLVE_STREAMURL_URL}?url=${encodeURIComponent(pageUrl)}`);
+  const data = await res.json();
+
+  if (!data?.success) {
+    return ".";
+  }
+
+  return data.m3u8;
+}

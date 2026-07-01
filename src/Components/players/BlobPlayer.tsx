@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { Centered } from "@ffilip/mui-react-utils";
 import PlayerWrapper from "./PlayerWrapper";
 import { IPlayerProps } from "./utils/utils";
@@ -14,6 +15,15 @@ function BlobPlayer({ url, withSound, ...props }: IPlayerProps) {
     ...playerCSS,
     display: isCameraOffline ? "none" : "initial"
   };
+
+
+  if (!url) {
+    return (
+      <PlayerWrapper {...props}>
+        <Box sx={playerCSS} />
+      </PlayerWrapper>
+    );
+  }
 
 
   return (
