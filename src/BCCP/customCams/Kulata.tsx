@@ -3,7 +3,7 @@ import { Cams, composeCamLabel, getCamCount, getCamSource } from "../utils/cams"
 
 const cams: Cams = {
   // 0: { source: "01", label: "700 м преди ГКПП" },
-  1: { source: "02", label: "800 м преди ГКПП" },
+  1: { source: "02", label: "преди ГКПП" },
   2: { source: "114", label: "OMV" }
 };
 

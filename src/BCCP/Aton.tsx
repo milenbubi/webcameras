@@ -18,14 +18,13 @@ function Aton() {
   }, []);
 
 
-  return (  // Амуляни
+  return (  // Атон
     <>
       <RowWrapper>
         {/* Ферибот Трипити */}
         <Media.BlobVideo
           id="fbtr"
           title="Порт Трипити"
-          // url={getProxiedM3U8("https://pluto13.cybex.gr/hls/mc153342334659561726.m3u8")}
           url={getProxiedM3U8(tripiti)}
         />
 
@@ -40,10 +39,10 @@ function Aton() {
 
 
       <RowWrapper>
-        {/* Уранополи */}
+        {/* Ферибот Уранополи */}
         <Media.BlobVideo
           id="urnp"
-          title="Уранополи"
+          title="Порт Уранополи"
           url={getProxiedM3U8("https://pluto13.cybex.gr/hls/mc154cx936045.m3u8")}
         />
       </RowWrapper>
