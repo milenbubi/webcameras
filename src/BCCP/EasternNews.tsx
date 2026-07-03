@@ -1,4 +1,5 @@
 import { Media } from "./media/Media";
+import { ENV } from "../Utils/config/env";
 import { getProxiedM3U8 } from "./utils/cams";
 import RowWrapper from "../Components/RowWrapper";
 
@@ -28,7 +29,8 @@ function EasternNews() {
         {/* Россия 24 */}
         <Media.BlobVideo
           id="rs24"
-          url="https://gtrk-volga.ru/media/hr24/stream1.m3u8"
+          // url="https://gtrk-volga.ru/media/hr24/stream1.m3u8"
+          url="https://streaming.televizor-24-tochka.ru/live/30-req_offset_28000000-req_window_0-1k_v5.m3u8"
           title="Россия 24"
           withSound
         />
@@ -45,12 +47,14 @@ function EasternNews() {
 
       <RowWrapper>
         {/* Press TV Iran */}
-        <Media.BlobVideo
-          id="ptvi"
-          url="https://live.presstv.ir/hls/presstv_5_482/index.m3u8"
-          title="Press TV Iran"
-          withSound
-        />
+        {ENV.IS_DEV_MODE && (
+          <Media.BlobVideo
+            id="ptvi"
+            url="https://live.presstv.ir/hls/presstv_5_482/index.m3u8"
+            title="Press TV Iran"
+            withSound
+          />
+        )}
 
         {/* TRT World */}
         <Media.BlobVideo
