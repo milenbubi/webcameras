@@ -15,8 +15,9 @@ import __BodyScrollbar from "./Components/internals/__BodyScrollbar";
 
 
 function AppEntry() {
-  const [bccp, setBccp] = useState(APP.getInitialPlace());
+  const [place, setPlace] = useState(APP.getInitialPlace());
   const { isStreaming, toggleStreaming } = useMasterStreamStatus();
+  
   useRecordVisit();
   useClearSearchParams();
 
@@ -32,9 +33,9 @@ function AppEntry() {
       <HiddenH1 />
       <__BodyScrollbar />
 
-      <PlaceButtons bccp={bccp} onChangeBccp={setBccp} />
+      <PlaceButtons place={place} onChangePlace={setPlace} />
 
-      {isStreaming ? <StreamingContent bccp={bccp} /> : <NoStreamTitle />}
+      {isStreaming ? <StreamingContent place={place} /> : <NoStreamTitle />}
 
       <Footer isStreaming={isStreaming} toggleMasterStreaming={toggleStreaming} />
 

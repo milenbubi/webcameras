@@ -3,11 +3,12 @@ import { safeLocalStorage } from "@ffilip/chan180-utils";
 import PlaceSingleButton from "./PlaceSingleButton";
 import { LS_PLACE_KEY } from "../../Utils/localStorage";
 import PlaceBtnGroupWrapper from "./PlaceBtnGroupWrapper";
+import { recordPlaceChange } from "../../BCCP/utils/cams";
 import { IPlaceButton, isPlaceValid, Place, PLACES_CONFIG } from "../../Utils/places";
 
 interface IProps {
-  bccp: Place;
-  onChangeBccp: (target: Place) => void;
+  place: Place;
+  onChangePlace: (newPlace: Place) => void;
 }
 
 const ACTIVE_PLACES = PLACES_CONFIG.filter(p => p.active);
@@ -22,10 +23,11 @@ const MainButtons: IPlaceButton[] = ACTIVE_PLACES
 
 
 
-function PlaceButtons({ bccp, onChangeBccp }: IProps) {
+function PlaceButtons({ place, onChangePlace }: IProps) {
   const handleClick = (newPlace: Place) => {
-    if (isPlaceValid(newPlace)) {
-      onChangeBccp(newPlace);
+    if (isPlaceValid(newPlace) && newPlace !== place) {
+      onChangePlace(newPlace);
+      recordPlaceChange(newPlace);
       safeLocalStorage.set(LS_PLACE_KEY, newPlace);
     }
   };
@@ -39,7 +41,7 @@ function PlaceButtons({ bccp, onChangeBccp }: IProps) {
             key={button.place}
             button={button}
             onClick={handleClick}
-            isSelected={button.place === bccp}
+            isSelected={button.place === place}
             isExternal
           />
         ))}
@@ -51,7 +53,7 @@ function PlaceButtons({ bccp, onChangeBccp }: IProps) {
             key={button.place}
             button={button}
             onClick={handleClick}
-            isSelected={button.place === bccp}
+            isSelected={button.place === place}
             isExternal={false}
           />
         ))}

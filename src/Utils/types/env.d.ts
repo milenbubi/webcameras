@@ -6,6 +6,8 @@ interface ImportMetaEnv {
   readonly VITE_LOG_VISIT_PATH: string;
   readonly VITE_HLS_PROXY_PATH: string;
   readonly VITE_DASHBOARD_STATS_PATH: string;
+  readonly VITE_HLS_RESOLVE_STREAMURL_PATH: string;
+  readonly VITE_RECORD_PLACE_CHANGE_PATH: string;
 }
 
 

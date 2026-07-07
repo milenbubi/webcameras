@@ -1,3 +1,5 @@
+import APP from "../../Utils/APP";
+import { Place } from "../../Utils/places";
 import { ENV } from "../../Utils/config/env";
 
 export type Cam = {
@@ -51,4 +53,18 @@ export async function resolveStreamSource(pageUrl: string): Promise<string> {
   }
 
   return data.m3u8;
+}
+
+
+export async function recordPlaceChange(place: Place) {
+  const data = {
+    visitToken: APP.getVisitToken(),
+    place: place.trim()
+  };
+
+  fetch(ENV.RECORD_PLACE_CHANGE_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
 }

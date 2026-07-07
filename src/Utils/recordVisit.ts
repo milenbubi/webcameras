@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import APP from "./APP";
 import { ENV } from "./config/env";
+import { IRecordVisitResponse } from "./types/types";
 
 
 
@@ -39,6 +40,8 @@ export function useRecordVisit() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
       })
+        .then<IRecordVisitResponse>(res => res.json())
+        .then(data => data?.visitToken && APP.setVisitToken(data.visitToken))
         .catch(err => { });
     }
     else {  // Dev-only: optionally fetch dashboard stats

@@ -3,7 +3,7 @@ import { Stack } from "@mui/material";
 import { Place, PLACES_CONFIG } from "../Utils/places";
 
 interface IProps {
-  bccp: Place;
+  place: Place;
 }
 
 const views = PLACES_CONFIG.reduce((prev, curr) => {
@@ -13,10 +13,10 @@ const views = PLACES_CONFIG.reduce((prev, curr) => {
 
 
 
-function StreamingContent({ bccp }: IProps) {
+function StreamingContent({ place }: IProps) {
   return (
     <Stack sx={{ gap: 6, pt: 3, width: 1, alignItems: "center" }}>
-      {views[bccp]}
+      {views[place]}
     </Stack>
   );
 }

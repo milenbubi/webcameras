@@ -42,6 +42,7 @@ type QueryParams = Record<string, string>;
  * - `getInitialPlace(): Place` – Returns the logical place for the current session.
  * - `getBrowserVisits(): number` – Returns the number of visits for this browser (incremented automatically on init).
  * - `consumeAuthCode(): string | undefined` – Returns the one-time auth code, if present.
+ * - `getVisitToken(): string | null` – Returns the visit token, if present.
  */
 class AppConfig {
   private static instance: AppConfig;
@@ -49,6 +50,7 @@ class AppConfig {
   private PLACE: Place;
   private AUTH_CODE: string | null;
   private BROWSER_VISITS: number;
+  private VISIT_TOKEN: string | null
 
   private constructor() {
     const queryParams = this.parseQueryParams();
@@ -56,6 +58,7 @@ class AppConfig {
     this.PLACE = this.setPlace(queryParams);
     this.AUTH_CODE = this.setAuthCode(queryParams);
     this.BROWSER_VISITS = this.incrementBrowserVisits();
+    this.VISIT_TOKEN = null;
   }
 
 
@@ -81,6 +84,16 @@ class AppConfig {
 
   public getBrowserVisits(): number {
     return this.BROWSER_VISITS;
+  }
+
+  public setVisitToken(token: string): void {
+    if (typeof token === "string" && token.trim() !== "") {
+      this.VISIT_TOKEN = token;
+    }
+  }
+
+  public getVisitToken() {
+    return this.VISIT_TOKEN;
   }
 
 
