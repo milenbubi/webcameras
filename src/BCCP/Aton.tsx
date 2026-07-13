@@ -32,7 +32,7 @@ function Aton() {
         <Media.Image
           id="fbam"
           title="Порт Амуляни"
-          url="https://www.meteology.gr/cam/ammouliani3/"
+          url="https://www.meteology.gr/cam/ammouliani3"
           refreshSeconds={10}
         />
       </RowWrapper>
@@ -44,6 +44,14 @@ function Aton() {
           id="urnp"
           title="Порт Уранополи"
           url={getProxiedM3U8("https://pluto13.cybex.gr/hls/mc154cx936045.m3u8")}
+        />
+
+        {/* Амуляни, към връх Атон */}
+        <Media.Image
+          id="amwa"
+          title="Амуляни - връх Атон"
+          url="https://www.meteology.gr/cam/ammouliani2"
+          refreshSeconds={30}
         />
       </RowWrapper>
     </>
