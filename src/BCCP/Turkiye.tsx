@@ -1,37 +1,37 @@
+import { Cam } from "./utils/cams";
 import { Media } from "./media/Media";
 import RowWrapper from "../Components/RowWrapper";
-import { Cams, getCamCount, getCamSource } from "./utils/cams";
 
 // https://www.canlimobeseizle.com/turkiye-sinir-kapilari-canli-izle
 // https://mobesekamerasi.com/sinir-kapilari/turkiye-sinir-kapisi
+// https://trakya.iscoz.com/kapikule/yolcugiris.jpg
 // Cameras from all Turkish border checkpoints.
 
-const kaCams: Cams = {
-  1: { source: "kapikule1" },
-  2: { source: "kapikule4" },
-  3: { source: "kapikule3" },
-  4: { source: "kapikule2" }
-};
+const kaCams: Cam[] = [
+  { source: "yolcugiris", label: "Вход към Турция" },
+  { source: "edirnekapi", label: "Изход към Турция" },
+  { source: "yolcucikis", label: "Вход към България" },
+  { source: "yolcucikis1", label: "Изход към България" }
+];
 
-const lesovoCams: Cams = {
-  1: { source: "hamzabeyli1" },
-  2: { source: "hamzabeyli2" },
-  3: { source: "hamzabeyli3" }
-};
+const lesovoCams: Cam[] = [
+  { source: "yolcugiris", label: "Вход към Турция" },
+  { source: "turkiyeyolu", label: "Изход към Турция" },
+  { source: "yolcucikis", label: "Вход към България" }
+];
 
-const mtCams: Cams = {
-  1: { source: "derekoy1" },
-  2: { source: "derekoy2" }
-};
+const mtCams: Cam[] = [
+  { source: "turkiyekapi", label: "Вход към Турция" },
+  { source: "hudutkapi", label: "Вход към България" }
+];
 
-const cpCams: Cams = {
-  2: { source: "pazarkule2" },
-  1: { source: "pazarkule1" }
-};
+const cpCams: Cam[] = [
+  { source: "yolcugiris", label: "Вход към Турция" },
+  { source: "yolcucikis", label: "Изход към Турция" }
+];
 
-function getCamUrl(cams: Cams, index: number) {
-  const source = getCamSource(cams, index);
-  return `https://mobesekamerasi.com/?mobese_camera=${source}`;
+function getCamUrl(prefix: string, source: string) {
+  return `https://trakya.iscoz.com/${prefix}/${source}.jpg`;
 }
 
 
@@ -39,44 +39,40 @@ function getCamUrl(cams: Cams, index: number) {
 function Turkiye() {
   return (  // Турция
     <>
-      <RowWrapper>
+      <RowWrapper sx={{ alignItems: "stretch", rowGap: 9, mb: 3 }}>
         {/* Капитан Андреево */}
-        <Media.SwitchableImageImpl
-          id="kpkl"
-          urlComposer={index => getCamUrl(kaCams, index)}
-          title="Капитан Андреево" camCount={getCamCount(kaCams)}
+        <Media.CameraLauncher
+          cams={kaCams}
+          urlComposer={source => getCamUrl("kapikule", source)}
+          title="Капитан Андреево"
           refreshSeconds={600} showUpdateInMinutes
-          fsBtnSx={{ bottom: 45 }}
         />
 
         {/* Лесово */}
-        <Media.SwitchableImageImpl
-          id="lesv"
-          urlComposer={index => getCamUrl(lesovoCams, index)}
-          title="Лесово" camCount={getCamCount(lesovoCams)}
+        <Media.CameraLauncher
+          cams={lesovoCams}
+          urlComposer={source => getCamUrl("hamzabeyli", source)}
+          title="Лесово - Хамзабейли"
           refreshSeconds={600} showUpdateInMinutes
-          fsBtnSx={{ bottom: 45 }}
         />
       </RowWrapper>
 
 
-      <RowWrapper>
+      <RowWrapper sx={{ alignItems: "stretch", rowGap: 9 }}>
         {/* Малко Търново */}
-        <Media.SwitchableImageImpl
-          id="mtnv"
-          urlComposer={index => getCamUrl(mtCams, index)}
-          title="Малко Търново" camCount={getCamCount(mtCams)}
+        <Media.CameraLauncher
+          cams={mtCams}
+          urlComposer={source => getCamUrl("derekoy", source)}
+          title="Малко Търново - Дерекьой"
           refreshSeconds={600} showUpdateInMinutes
-          fsBtnSx={{ bottom: 45 }}
         />
 
         {/* Черекьой - Пазаркуле */}
-        <Media.SwitchableImageImpl
-          id="chpk"
-          urlComposer={index => getCamUrl(cpCams, index)}
-          title="Черекьой - Пазаркуле" camCount={getCamCount(cpCams)}
+        <Media.CameraLauncher
+          cams={cpCams}
+          urlComposer={source => getCamUrl("pazarkule", source)}
+          title="Черекьой - Пазаркуле"
           refreshSeconds={600} showUpdateInMinutes
-          fsBtnSx={{ bottom: 45 }}
         />
       </RowWrapper>
     </>

@@ -28,7 +28,10 @@ function __ImageImpl({ id, title, url, stretchToFit, ...refreshProps }: IProps) 
       return;
     }
 
-    const refreshCam = () => updateCamUrlWithTimestamp({ url, setCamUrl });
+    const refreshCam = () => {
+      const timedUrl = updateCamUrlWithTimestamp(url);
+      setCamUrl(timedUrl);
+    }
 
     refreshCam();
     const intervalId = setInterval(refreshCam, normalizedRefreshMS);

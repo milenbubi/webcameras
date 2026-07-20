@@ -57,6 +57,10 @@ export async function resolveStreamSource(pageUrl: string): Promise<string> {
 
 
 export async function recordPlaceChange(place: Place) {
+  if (ENV.IS_DEV_MODE) {
+    return;
+  }
+
   const data = {
     visitToken: APP.getVisitToken(),
     place: place.trim()

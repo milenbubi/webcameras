@@ -2,14 +2,16 @@ import { ComponentType } from "react";
 import { safeLocalStorage } from "@ffilip/chan180-utils";
 import Aton from "../BCCP/Aton";
 import Djala from "../BCCP/Djala";
+import { ENV } from "./config/env";
 import Horgos from "../BCCP/Horgos";
-import Turkiye from "../BCCP/Turkiye";
 import Kelebia from "../BCCP/Kelebia";
+import Turkiye from "../BCCP/Turkiye";
 import Bulgaria from "../BCCP/Bulgaria";
 import SouthArea from "../BCCP/SouthArea";
 import WesternNews from "../BCCP/WesternNews";
 import EasternNews from "../BCCP/EasternNews";
 import { LS_PLACE_KEY } from "./localStorage";
+import Turkiye_old from "../BCCP/Turkiye_old";
 import BalkanMountains from "../BCCP/BalkanMountains";
 
 
@@ -43,6 +45,7 @@ export const PLACES_CONFIG = [
   { name: "Horgos", active: true, component: Horgos, label: "Хоргош", isExternal: false },
   { name: "Djala", active: true, component: Djala, label: "Ђала", isExternal: false },
   { name: "Kelebia", active: true, component: Kelebia, label: "Келебия", isExternal: false },
+  { name: "Turkiye_old", active: ENV.IS_DEV_MODE, component: Turkiye_old, label: "Турция - старо", isExternal: false },
   { name: "Turkiye", active: true, component: Turkiye, label: "Турция", isExternal: false },
   { name: "Aton", active: true, component: Aton, label: "Атон", isExternal: false }
 ] as const satisfies readonly (IDefaultPlaceConfig | IRegularPlaceConfig)[];

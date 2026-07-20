@@ -36,7 +36,10 @@ function __SwitchableImageImpl({ id, title, camCount, urlComposer, stretchToFit,
       return;
     }
 
-    const refreshCam = () => updateCamUrlWithTimestamp({ url, setCamUrl });
+    const refreshCam = () => {
+      const timedUrl = updateCamUrlWithTimestamp(url);
+      setCamUrl(timedUrl);
+    }
 
     refreshCam();
     const intervalId = setInterval(refreshCam, normalizedRefreshMS);

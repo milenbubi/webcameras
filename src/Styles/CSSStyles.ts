@@ -19,7 +19,8 @@ export const playerCSS: CSSProperties = {
 export const inactivePlayerCSS: CSSProperties = {
   ...commonCSS,
   ...commonAspectRatioCSS,
-  border: "2px solid #ffffff"
+  border: "2px solid #ffffff",
+  borderRadius: "4px"
 };
 
 export const rowWrapperCSS: CSSProperties = {
@@ -33,4 +34,10 @@ export const playerWrapperCSS: CSSProperties = {
   ...commonAspectRatioCSS,
   position: "relative",
   maxWidth: 700
+};
+
+export const CamLauncherCSS: CSSProperties = {
+  ...commonCSS,
+  maxWidth: 700,
+  position: "relative"
 };

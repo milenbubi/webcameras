@@ -21,7 +21,7 @@ function getCamLabel(streamIndex: number) {
 
 function Kulata() {
   return (  // Кулата
-    <Media.SwitchableImageImpl
+    <Media.SwitchableImage
       id="cklt"
       urlComposer={getCamUrl}
       title={getCamLabel}

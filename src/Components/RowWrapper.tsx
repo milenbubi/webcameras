@@ -1,12 +1,16 @@
 import { PropsWithChildren } from "react";
-import { Centered } from "@ffilip/mui-react-utils";
+import { Centered, SX } from "@ffilip/mui-react-utils";
 import { rowWrapperCSS } from "../Styles/CSSStyles";
 
+interface IProps {
+  sx?: SX;
+}
 
 
-function RowWrapper({ children }: PropsWithChildren) {
+
+function RowWrapper({ sx, children }: PropsWithChildren<IProps>) {
   return (
-    <Centered sx={rowWrapperCSS}>
+    <Centered sx={{ ...rowWrapperCSS, ...sx }}>
       {children}
     </Centered>
   );
