@@ -42,7 +42,7 @@ function __CameraLauncherImpl({ title, cams, urlComposer, ...refreshProps }: IPr
           gap: 2, width: "100%", height: "100%",
           border: "2px solid #cecece",
           borderRadius: "4px", py: { xs: 2, md: 2.5 },
-          px: { xs: 1, sm: 2, md: 12 }
+          px: { xs: 2, md: 6, lg: 12 }
         }}
       >
         {
