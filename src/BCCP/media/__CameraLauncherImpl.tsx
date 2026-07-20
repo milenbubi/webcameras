@@ -62,7 +62,7 @@ function __CameraLauncherImpl({ title, cams, urlComposer, ...refreshProps }: IPr
                     py: "11px",
                     color: "#000000",
                     backgroundImage: "linear-gradient(#e5e5e5, #888888)",
-                    fontWeight: 600,
+                    fontWeight: 800,
                     "&:hover": {
                       backgroundImage: "linear-gradient(#999999, #e5e5e5)"
                     }
