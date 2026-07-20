@@ -35,12 +35,6 @@ function ImagePlayer({ url, stretchToFit, ...props }: IPlayerProps) {
   }, [url, retry]);
 
 
-  // TODO remove
-  if (isVisible !== true && (isVisible as any) !== false) {
-    console.log(`.   ${isVisible}   .`);
-  }
-
-
   return (
     <PlayerWrapper {...props}>
 

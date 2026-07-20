@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Stack } from "@mui/material";
+import { useDocumentVisibility } from "@ffilip/mui-react-utils";
 
 import APP from "./Utils/APP";
 import HiddenH1 from "./Components/HiddenH1";
@@ -17,10 +18,10 @@ import __BodyScrollbar from "./Components/internals/__BodyScrollbar";
 function AppEntry() {
   const [place, setPlace] = useState(APP.getInitialPlace());
   const { isStreaming, toggleStreaming } = useMasterStreamStatus();
-  
+
   useRecordVisit();
   useClearSearchParams();
-
+  useDocumentVisibility()
 
   return (
     <Stack
