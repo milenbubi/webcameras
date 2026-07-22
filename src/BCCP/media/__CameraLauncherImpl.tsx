@@ -33,7 +33,6 @@ function __CameraLauncherImpl({ title, cams, urlComposer, ...refreshProps }: IPr
 
 
   return (
-
     <Centered sx={{ ...CamLauncherCSS }}>
       <Title value={title} imageUpdateLabel={updateLabel} sx={{ left: 10 }} />
 
@@ -75,7 +74,6 @@ function __CameraLauncherImpl({ title, cams, urlComposer, ...refreshProps }: IPr
         }
       </Stack>
     </Centered>
-
   );
 }
 

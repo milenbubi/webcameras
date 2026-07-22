@@ -2,11 +2,6 @@ import { Media } from "./media/Media";
 import RowWrapper from "../Components/RowWrapper";
 import { Cams, getCamCount, getCamSource } from "./utils/cams";
 
-// https://www.canlimobeseizle.com/turkiye-sinir-kapilari-canli-izle
-// https://mobesekamerasi.com/sinir-kapilari/turkiye-sinir-kapisi
-// https://trakya.iscoz.com/kapikule/yolcugiris.jpg
-// Cameras from all Turkish border checkpoints.
-
 const kaCams: Cams = {
   1: { source: "kapikule1" },
   2: { source: "kapikule4" },

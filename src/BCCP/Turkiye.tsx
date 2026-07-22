@@ -26,7 +26,7 @@ const mtCams: Cam[] = [
 ];
 
 const cpCams: Cam[] = [
-  { source: "yolcugiris", label: "Вход към Турция" },
+  { source: "yolcugiris", label: "Изход към Гърция" },
   { source: "yolcucikis", label: "Изход към Турция" }
 ];
 
@@ -45,7 +45,7 @@ function Turkiye() {
           cams={kaCams}
           urlComposer={source => getCamUrl("kapikule", source)}
           title="Капитан Андреево"
-          refreshSeconds={600} showUpdateInMinutes
+          refreshSeconds={720} showUpdateInMinutes
         />
 
         {/* Лесово */}
@@ -53,7 +53,7 @@ function Turkiye() {
           cams={lesovoCams}
           urlComposer={source => getCamUrl("hamzabeyli", source)}
           title="Лесово - Хамзабейли"
-          refreshSeconds={600} showUpdateInMinutes
+          refreshSeconds={720} showUpdateInMinutes
         />
       </RowWrapper>
 
@@ -64,7 +64,7 @@ function Turkiye() {
           cams={mtCams}
           urlComposer={source => getCamUrl("derekoy", source)}
           title="Малко Търново - Дерекьой"
-          refreshSeconds={600} showUpdateInMinutes
+          refreshSeconds={720} showUpdateInMinutes
         />
 
         {/* Черекьой - Пазаркуле */}
@@ -72,7 +72,7 @@ function Turkiye() {
           cams={cpCams}
           urlComposer={source => getCamUrl("pazarkule", source)}
           title="Черекьой - Пазаркуле"
-          refreshSeconds={600} showUpdateInMinutes
+          refreshSeconds={720} showUpdateInMinutes
         />
       </RowWrapper>
     </>
