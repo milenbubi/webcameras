@@ -21,7 +21,7 @@ function AppEntry() {
 
   useRecordVisit();
   useClearSearchParams();
-  useDocumentVisibility()
+  useDocumentVisibility();
 
   return (
     <Stack

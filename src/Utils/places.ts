@@ -13,6 +13,7 @@ import EasternNews from "../BCCP/EasternNews";
 import { LS_PLACE_KEY } from "./localStorage";
 import Turkiye_old from "../BCCP/Turkiye_old";
 import BalkanMountains from "../BCCP/BalkanMountains";
+import BajakovoBatrovci from "../BCCP/BajakovoBatrovci";
 
 
 interface IPlaceConfig {
@@ -47,7 +48,8 @@ export const PLACES_CONFIG = [
   { name: "Kelebia", active: true, component: Kelebia, label: "Келебия", isExternal: false },
   { name: "Turkiye_old", active: ENV.IS_DEV_MODE, component: Turkiye_old, label: "Турция - старо", isExternal: false },
   { name: "Turkiye", active: true, component: Turkiye, label: "Турция", isExternal: false },
-  { name: "Aton", active: true, component: Aton, label: "Атон", isExternal: false }
+  { name: "Aton", active: true, component: Aton, label: "Атон", isExternal: false },
+  { name: "BajakovoBatrovci", active: true, component: BajakovoBatrovci, label: "Баяково - Батровци", isExternal: false }
 ] as const satisfies readonly (IDefaultPlaceConfig | IRegularPlaceConfig)[];
 
 export type Place = typeof PLACES_CONFIG[number]["name"];

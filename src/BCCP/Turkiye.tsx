@@ -1,3 +1,5 @@
+import { useDocumentVisibility } from "@ffilip/mui-react-utils";
+
 import { Cam } from "./utils/cams";
 import { Media } from "./media/Media";
 import RowWrapper from "../Components/RowWrapper";
@@ -37,6 +39,9 @@ function getCamUrl(prefix: string, source: string) {
 
 
 function Turkiye() {
+  useDocumentVisibility();
+
+
   return (  // Турция
     <>
       <RowWrapper sx={{ alignItems: "stretch", rowGap: 9, mb: 3 }}>
