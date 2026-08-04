@@ -1,7 +1,7 @@
 {
   "name": "web-cameras",
   "author": "PCC",
-  "version": "13.14.0",
+  "version": "13.15.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -15,7 +15,7 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@ffilip/chan180-utils": "^3.4.20",
-    "@ffilip/mui-react-utils": "^2.6.9",
+    "@ffilip/mui-react-utils": "^2.6.10",
     "@mui/material": "^5.15.21",
     "hls.js": "^1.6.15",
     "react": "^18.3.1",
