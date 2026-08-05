@@ -16,11 +16,12 @@ interface IProps {
   urlComposer: (streamIndex: number) => string;
   stretchToFit?: boolean;
   fsBtnSx?: SX;
+  chCamBtnSx?: SX;
 }
 
 
 
-function __SwitchableImageImpl({ id, title, camCount, urlComposer, stretchToFit, fsBtnSx, ...refreshProps }: IProps) {
+function __SwitchableImageImpl({ id, title, camCount, urlComposer, stretchToFit, fsBtnSx, chCamBtnSx, ...refreshProps }: IProps) {
   const [camUrl, setCamUrl] = useState("");
   const isVisible = useDocumentVisibility();
   const [streamIndex, setStreamIndex] = useState(1);
@@ -66,6 +67,7 @@ function __SwitchableImageImpl({ id, title, camCount, urlComposer, stretchToFit,
           camIndex={streamIndex}
           onClick={setStreamIndex}
           camCount={camCount}
+          sx={chCamBtnSx}
         />
       }
     />

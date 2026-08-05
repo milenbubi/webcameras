@@ -39,6 +39,7 @@ function BajakovoBatrovci() {
           urlComposer={index => getBjCamUrl(bjToSrbCams, index)}
           title="Баяково - към Сърбия"
           camCount={getCamCount(bjToSrbCams)}
+          chCamBtnSx={{ top: 20 }}
           refreshSeconds={15}
         />
 
