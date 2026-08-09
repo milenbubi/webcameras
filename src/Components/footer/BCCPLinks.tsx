@@ -47,6 +47,12 @@ function BCCPLinks() {
         <CardMedia src="/shots/canliMobeseIzle.png" {...cardMediaProps} />
       </Button>
 
+      {/* {/* Link to Croatian Automobile Club (HAK) - road conditions and traffic cameras */}
+      <Button data-link="https://www.hak.hr/info/stanje-na-cestama?lang=en#traffic-flow-and-road-conditions" {...buttonProps}>
+        <CardMedia src="/shots/hak.png"   {...cardMediaProps}
+          sx={{ height: { xs: 16, sm: 30 } }} />
+      </Button>
+
     </Centered>
   );
 }
