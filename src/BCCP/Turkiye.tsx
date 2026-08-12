@@ -1,13 +1,10 @@
-import { useDocumentVisibility } from "@ffilip/mui-react-utils";
-
 import { Cam } from "./utils/cams";
 import { Media } from "./media/Media";
 import RowWrapper from "../Components/RowWrapper";
 
+// Cameras from all Turkish border checkpoints.
 // https://www.canlimobeseizle.com/turkiye-sinir-kapilari-canli-izle
 // https://mobesekamerasi.com/sinir-kapilari/turkiye-sinir-kapisi
-// https://trakya.iscoz.com/kapikule/yolcugiris.jpg
-// Cameras from all Turkish border checkpoints.
 
 const kaCams: Cam[] = [
   { source: "yolcugiris", label: "Вход към Турция" },
@@ -39,9 +36,6 @@ function getCamUrl(prefix: string, source: string) {
 
 
 function Turkiye() {
-  useDocumentVisibility();
-
-
   return (  // Турция
     <>
       <RowWrapper sx={{ alignItems: "stretch", rowGap: 9, mb: 3 }}>

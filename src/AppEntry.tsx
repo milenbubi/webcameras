@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Stack } from "@mui/material";
-import { useDocumentVisibility } from "@ffilip/mui-react-utils";
 
 import APP from "./Utils/APP";
 import HiddenH1 from "./Components/HiddenH1";
@@ -21,7 +20,7 @@ function AppEntry() {
 
   useRecordVisit();
   useClearSearchParams();
-  useDocumentVisibility();
+
 
   return (
     <Stack
