@@ -1,5 +1,4 @@
 import { Media } from "./media/Media";
-import { ENV } from "../Utils/config/env";
 import { getProxiedM3U8 } from "./utils/cams";
 import RowWrapper from "../Components/RowWrapper";
 
@@ -29,8 +28,8 @@ function EasternNews() {
         {/* Россия 24 */}
         <Media.BlobVideo
           id="rs24"
-          // url="https://gtrk-volga.ru/media/hr24/stream1.m3u8"
-          url="https://streaming.televizor-24-tochka.ru/live/30-req_offset_28000000-req_window_0-1k_v5.m3u8"
+          //  url={getProxiedM3U8("https://gtrk-volga.ru/media/hr24/stream1.m3u8")}
+          url={getProxiedM3U8("https://streaming.televizor-24-tochka.ru/live/30-req_offset_28000000-req_window_0-1k_v5.m3u8")}
           title="Россия 24"
           withSound
         />
@@ -38,7 +37,7 @@ function EasternNews() {
         {/* CGTN */}
         <Media.IframeVideo
           id="cgtn"
-          url="https://www.youtube.com/embed/BOy2xDU1LC8"
+          url="https://www.youtube.com/embed/0i7n3r01L2U"
           title="CGTN"
           withSound
         />
@@ -47,14 +46,12 @@ function EasternNews() {
 
       <RowWrapper>
         {/* Press TV Iran */}
-        {ENV.IS_DEV_MODE && (
-          <Media.BlobVideo
-            id="ptvi"
-            url="https://live.presstv.ir/hls/presstv_5_482/index.m3u8"
-            title="Press TV Iran"
-            withSound
-          />
-        )}
+        <Media.BlobVideo
+          id="ptvi"
+          url="https://1a-1791.com/live/41ac4fe/slot-10/7q4a-e5c0/chunklist.m3u8"
+          title="Press TV Iran"
+          withSound
+        />
 
         {/* TRT World */}
         <Media.BlobVideo
