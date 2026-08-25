@@ -19,7 +19,6 @@ function PlaceSingleButton({ button, onClick, isExternal, isSelected }: IProps) 
         color: "#000000",
         opacity: isSelected ? 1 : 0.5,
         backgroundColor: blueGrey[isSelected ? 100 : 50],
-        height:35,
         "&:hover": {
           backgroundColor: blueGrey[isSelected ? 100 : 50],
           opacity: isSelected ? 1 : 0.8
