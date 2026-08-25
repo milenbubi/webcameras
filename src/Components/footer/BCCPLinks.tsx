@@ -1,57 +1,68 @@
-import { useMemo } from "react";
-import { Centered } from "@ffilip/mui-react-utils";
-import { openNewTab } from "@ffilip/chan180-utils";
-import { CardMedia, Button, CardMediaProps, ButtonProps } from "@mui/material";
+import { CardMedia, Link } from "@mui/material";
+import { Centered, SX } from "@ffilip/mui-react-utils";
+
+interface IImageLinkProps {
+  href: string;
+  src: string;
+  imgSx?: SX;
+}
+
+
+
+const ImageLink = ({ href, src, imgSx }: IImageLinkProps) => {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      underline="none"
+    >
+      <CardMedia
+        src={src}
+        component="img"
+        sx={{ height: { xs: 24, sm: 46 }, borderRadius: 1, ...imgSx }}
+        onError={e => e.currentTarget.style.display = "none"}
+      />
+    </Link>
+  );
+};
 
 
 
 function BCCPLinks() {
-  const cardMediaProps = useMemo<CardMediaProps>(() => {
-    return {
-      component: "img",
-      sx: { height: { xs: 24, sm: 46 }, borderRadius: 1 },
-      onError: e => { e.currentTarget.style.display = "none"; },
-    };
-  }, []);
-
-
-  const buttonProps = useMemo<ButtonProps>(() => {
-    return {
-      sx: { p: 0, minWidth: 0 },
-      onClick: e => { openNewTab(e.currentTarget.dataset.link) }
-    };
-  }, []);
-
-
   return (
     <Centered rowGap={2} columnGap={4} sx={{ width: 1, pt: 2, flexWrap: "wrap" }}>
 
       {/* Link to към BorderAlarm */}
-      <Button data-link="https://borderalarm.com/" {...buttonProps}>
-        <CardMedia src="/shots/borderAlarm.png" {...cardMediaProps} />
-      </Button>
+      <ImageLink
+        href="https://borderalarm.com/"
+        src="/shots/borderAlarm.png"
+      />
 
       {/* Link to UzivoKamere */}
-      <Button data-link="https://uzivokamere.com/granicni-prelazi/" {...buttonProps}>
-        <CardMedia src="/shots/uzivoKamere.png" {...cardMediaProps} />
-      </Button>
+      <ImageLink
+        href="https://uzivokamere.com/granicni-prelazi"
+        src="/shots/uzivoKamere.png"
+      />
 
       {/* Link to Ministry of Interior cameras - Serbia */}
-      <Button data-link="https://mup.gov.rs/wps/portal/sr/kamer%D0%B5#!" {...buttonProps}>
-        <CardMedia src="/shots/mup.png" {...cardMediaProps} />
-      </Button>
-
+      <ImageLink
+        href="https://mup.gov.rs/wps/portal/sr/kamer%D0%B5#!"
+        src="/shots/mup.png"
+      />
 
       {/* Link to live Turkish border cameras */}
-      <Button data-link="https://www.canlimobeseizle.com/turkiye-sinir-kapilari-canli-izle" {...buttonProps}>
-        <CardMedia src="/shots/canliMobeseIzle.png" {...cardMediaProps} />
-      </Button>
+      <ImageLink
+        href="https://www.canlimobeseizle.com/turkiye-sinir-kapilari-canli-izle"
+        src="/shots/canliMobeseIzle.png"
+      />
 
       {/* Link to Croatian Automobile Club (HAK) - road conditions and traffic cameras  */}
-      <Button data-link="https://www.hak.hr/info/stanje-na-cestama?lang=en#traffic-flow-and-road-conditions" {...buttonProps}>
-        <CardMedia src="/shots/hak.png"   {...cardMediaProps}
-          sx={{ height: { xs: 16, sm: 30 } }} />
-      </Button>
+      <ImageLink
+        href="https://www.hak.hr/info/stanje-na-cestama?lang=en#traffic-flow-and-road-conditions"
+        src="/shots/hak.png"
+        imgSx={{ height: { xs: 16, sm: 30 } }}
+      />
 
     </Centered>
   );

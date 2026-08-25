@@ -42,6 +42,7 @@ function SouthArea() {
   return (  // Южен регион
     <>
       <RowWrapper>
+        {/* Димитровград */}
         <Media.SwitchableBlobVideo
           id="dgrd"
           urlComposer={getCamUrlDgr}
@@ -49,6 +50,7 @@ function SouthArea() {
           camCount={getCamCount(dgrCams)}
         />
 
+        {/* Хасково */}
         <Media.SwitchableBlobVideo
           id="hask"
           urlComposer={getCamUrlHask}
@@ -59,12 +61,14 @@ function SouthArea() {
 
 
       <RowWrapper>
+        {/* Момчилград */}
         <Media.IframeVideo
           id="mmlg"
           url="https://rtsp.me/embed/zQ3neeGn"
           title="Момчилград"
         />
 
+        {/* Ардино */}
         <Media.IframeVideo
           id="ardn"
           url="https://cloud.pavlin.info/streams/stream.html?src=camera5"

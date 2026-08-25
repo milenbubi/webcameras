@@ -1,6 +1,6 @@
 import { MouseEvent } from "react";
 import { Centered } from "@ffilip/mui-react-utils";
-import { Box, Button, Link, Stack } from "@mui/material";
+import { Button, Link, Stack } from "@mui/material";
 
 import { Cam } from "../utils/cams";
 import Title from "../../Components/Title";
