@@ -21,7 +21,8 @@ function EasternNews() {
         {/* "Россия 1 */}
         <Media.BlobVideo
           id="rss1"
-          url={getProxiedM3U8("https://vgtrkregion-reg.cdnvideo.ru/vgtrk/0/russia1-hd/1080p.m3u8")}
+          // url={getProxiedM3U8("https://live.smotrim.ru/vgtrk/0/russia1-hd/792000_576p.m3u8")}
+          url={getProxiedM3U8("https://live.smotrim.ru/vgtrk/0/russia1-hd/1080p.m3u8")}
           title="Россия 1"
           withSound
         />
@@ -52,7 +53,7 @@ function EasternNews() {
         {/* Press TV Iran */}
         <Media.BlobVideo
           id="ptvi"
-          url="https://1a-1791.com/live/41ac4fe/slot-10/7q4a-e5c0/chunklist.m3u8"
+          url="https://live.presstv.co.uk/hls/presstv.m3u8"
           title="Press TV Iran"
           withSound
         />
