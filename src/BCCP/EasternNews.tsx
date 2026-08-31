@@ -8,7 +8,7 @@ import { Typography } from "@mui/material";
 function EasternNews() {
   return (  // Eastern news
     <>
-      <Typography variant="h6" align="center" sx={{ fontWeight: 1000, px: { xs: 1, sm: 2, md: 5, lg: 15 } }}>
+      <Typography variant="h6" align="center" sx={{ fontWeight: 1000, lineHeight: "30px", px: { xs: 1, sm: 2, md: 5, lg: 15 } }}>
         {"ВАЖНО! Достъпът до някои от тези излъчвания може да бъде ограничаван или прекъсван поради геополитически и регулаторни мерки."}
       </Typography>
       <RowWrapper>

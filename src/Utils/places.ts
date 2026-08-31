@@ -2,7 +2,6 @@ import { ComponentType } from "react";
 import { safeLocalStorage } from "@ffilip/chan180-utils";
 import Aton from "../BCCP/Aton";
 import Djala from "../BCCP/Djala";
-import { ENV } from "./config/env";
 import Horgos from "../BCCP/Horgos";
 import Kelebia from "../BCCP/Kelebia";
 import Turkiye from "../BCCP/Turkiye";
@@ -47,7 +46,7 @@ export const PLACES_CONFIG = [
   { name: "Horgos", active: true, component: Horgos, label: "Хоргош", isExternal: false },
   { name: "Djala", active: true, component: Djala, label: "Ђала", isExternal: false },
   { name: "Kelebia", active: true, component: Kelebia, label: "Келебия", isExternal: false },
-  { name: "Turkiye_old", active: ENV.IS_DEV_MODE, component: Turkiye_old, label: "Турция - старо", isExternal: false },
+  { name: "Turkiye_old", active: false, component: Turkiye_old, label: "Турция - старо", isExternal: false },
   { name: "Turkiye", active: true, component: Turkiye, label: "Турция", isExternal: false },
   { name: "Aton", active: false, component: Aton, label: "Атон", isExternal: false },
   { name: "BajakovoBatrovci", active: true, component: BajakovoBatrovci, label: "Баяково - Батровци", isExternal: false },
