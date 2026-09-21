@@ -5,7 +5,7 @@ import { Cams, getCamCount, getCamLabel, getCamSource } from "./utils/cams";
 const ytCams: Cams = {
   1: { source: "LuKwFajn37U", label: "Deutsche Welle" },
   2: { source: "pykpO5kQJ98", label: "Euronews" },
-  3: { source: "YDvsBbKfLPA", label: "Sky News" },
+  3: { source: "xDWQ3LkccY8", label: "Sky News" },
   4: { source: "QB5BNdBFujE", label: "Bloomberg Business News" },
   5: { source: "HvZt-nh9sGg", label: "FRANCE 24" },
   6: { source: "gCNeDWCI0vo", label: "Al Jazeera English" }
