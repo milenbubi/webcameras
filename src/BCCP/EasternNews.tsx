@@ -1,7 +1,17 @@
 import { Media } from "./media/Media";
-import { getProxiedM3U8 } from "./utils/cams";
-import RowWrapper from "../Components/RowWrapper";
 import { Typography } from "@mui/material";
+import RowWrapper from "../Components/RowWrapper";
+import { Cams, getCamCount, getCamSource, getProxiedM3U8 } from "./utils/cams";
+
+const k1Cams: Cams = {
+  1: { source: "https://ok.ru/videoembed/1115050286838?autoplay=1" },
+  2: { source: "https://connect.ok.ru/dk?st.cmd=WidgetContent&st.content=https%3A%2F%2Fok.ru%2Flive%2F1115050286838" }
+};
+
+
+function getCamUrlK1(streamIndex: number) {
+  return getCamSource(k1Cams, streamIndex);
+}
 
 
 
@@ -11,11 +21,23 @@ function EasternNews() {
       <Typography variant="h6" align="center" sx={{ maxWidth: 1300, fontWeight: 1000, lineHeight: "30px", px: { xs: 1, sm: 2, md: 5, lg: 15 } }}>
         {"ВАЖНО! Достъпът до някои от тези излъчвания може да бъде ограничаван или прекъсван поради геополитически и регулаторни мерки."}
       </Typography>
+
+
       <RowWrapper>
-        <Media.IframeVideo
+        {/* Канал 1 */}
+        {/* <Media.IframeVideo
           id="1kan"
-          url="https://ok.ru/videoembed/1115050286838?autoplay=1"
+          // url="https://ok.ru/videoembed/1115050286838?autoplay=1"
+          url="https://connect.ok.ru/dk?st.cmd=WidgetContent&st.content=https%3A%2F%2Fok.ru%2Flive%2F1115050286838"
           title="1 Канал"
+          withSound
+        /> */}
+        <Media.SwitchableIframeVideo
+          id="1kan"
+          urlComposer={getCamUrlK1}
+          title="1 Канал"
+          camCount={getCamCount(k1Cams)}
+          withSound
         />
 
         {/* "Россия 1 */}
