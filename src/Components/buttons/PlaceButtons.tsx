@@ -34,7 +34,7 @@ function PlaceButtons({ place, onChangePlace }: IProps) {
 
 
   return (
-    <Stack sx={{ gap: { xs: 2, sm: 3 }, pt: { xs: 0, md: 2 } }}>
+    <Stack sx={{ gap: { xs: 2, md: 3 }, pt: { xs: 0, md: 2 } }}>
       <PlaceBtnGroupWrapper>
         {ExternalButtons.length > 0 && ExternalButtons.map((button, index) => (
           <PlaceSingleButton

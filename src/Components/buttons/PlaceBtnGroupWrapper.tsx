@@ -13,7 +13,7 @@ function PlaceBtnGroupWrapper({ children }: PropsWithChildren) {
     <Stack
       sx={{
         flexDirection: "row", flexWrap: "wrap", justifyContent: "center",
-        gap: { xs: 2, sm: 3 },
+        gap: { xs: 1.5, md: 3 },
         "& button": {
           transition: "opacity 0.3s",
           pt: "5px", pb: { xs: "3px", md: "2px" },
