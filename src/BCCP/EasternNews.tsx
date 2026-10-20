@@ -1,17 +1,17 @@
-import { Media } from "./media/Media";
 import { Typography } from "@mui/material";
+import { Media } from "./media/Media";
+import { getProxiedM3U8 } from "./utils/cams";
 import RowWrapper from "../Components/RowWrapper";
-import { Cams, getCamCount, getCamSource, getProxiedM3U8 } from "./utils/cams";
 
-const k1Cams: Cams = {
-  1: { source: "https://ok.ru/videoembed/1115050286838?autoplay=1" },
-  2: { source: "https://connect.ok.ru/dk?st.cmd=WidgetContent&st.content=https%3A%2F%2Fok.ru%2Flive%2F1115050286838" }
-};
+// const k1Cams: Cams = {
+//   1: { source: "https://ok.ru/videoembed/1115050286838?autoplay=1" },
+//   2: { source: "https://connect.ok.ru/dk?st.cmd=WidgetContent&st.content=https%3A%2F%2Fok.ru%2Flive%2F1115050286838" }
+// };
 
 
-function getCamUrlK1(streamIndex: number) {
-  return getCamSource(k1Cams, streamIndex);
-}
+// function getCamUrlK1(streamIndex: number) {
+//   return getCamSource(k1Cams, streamIndex);
+// }
 
 
 
@@ -24,19 +24,32 @@ function EasternNews() {
 
 
       <RowWrapper>
+        {/* Россия 24 */}
+        <Media.BlobVideo
+          id="rs24"
+          url="https://gtrk-volga.ru/media/hr24/stream1.m3u8"
+          //url={getProxiedM3U8("https://streaming.televizor-24-tochka.ru/live/30-req_offset_28000000-req_window_0-1k_v5.m3u8")}
+          title="Россия 24"
+          withSound
+        />
+
+        {/* Россия-РТР */}
+        <Media.BlobVideo
+          id="rsrtr"
+          url="https://stream.smotrim.ru/hls/planeta_rtr_asia/playlist_4.m3u8"
+          title="Россия РТР"
+          withSound
+        />
+      </RowWrapper>
+
+
+      <RowWrapper>
         {/* Канал 1 */}
-        {/* <Media.IframeVideo
+        <Media.IframeVideo
           id="1kan"
           // url="https://ok.ru/videoembed/1115050286838?autoplay=1"
           url="https://connect.ok.ru/dk?st.cmd=WidgetContent&st.content=https%3A%2F%2Fok.ru%2Flive%2F1115050286838"
           title="1 Канал"
-          withSound
-        /> */}
-        <Media.SwitchableIframeVideo
-          id="1kan"
-          urlComposer={getCamUrlK1}
-          title="1 Канал"
-          camCount={getCamCount(k1Cams)}
           withSound
         />
 
@@ -52,15 +65,6 @@ function EasternNews() {
 
 
       <RowWrapper>
-        {/* Россия 24 */}
-        <Media.BlobVideo
-          id="rs24"
-          //  url={getProxiedM3U8("https://gtrk-volga.ru/media/hr24/stream1.m3u8")}
-          url={getProxiedM3U8("https://streaming.televizor-24-tochka.ru/live/30-req_offset_28000000-req_window_0-1k_v5.m3u8")}
-          title="Россия 24"
-          withSound
-        />
-
         {/* CGTN */}
         <Media.IframeVideo
           id="cgtn"
@@ -68,10 +72,7 @@ function EasternNews() {
           title="CGTN"
           withSound
         />
-      </RowWrapper>
 
-
-      <RowWrapper>
         {/* Press TV Iran */}
         <Media.BlobVideo
           id="ptvi"
@@ -79,7 +80,10 @@ function EasternNews() {
           title="Press TV Iran"
           withSound
         />
+      </RowWrapper>
 
+
+      <RowWrapper>
         {/* TRT World */}
         <Media.BlobVideo
           id="trtw"
