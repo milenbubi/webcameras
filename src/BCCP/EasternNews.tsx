@@ -33,11 +33,19 @@ function EasternNews() {
           withSound
         />
 
-        {/* Россия-РТР */}
-        <Media.BlobVideo
-          id="rsrtr"
+        {/*Планета РТР */}
+        {/* <Media.BlobVideo
+          id="plrpr"
           url="https://stream.smotrim.ru/hls/planeta_rtr_asia/playlist_4.m3u8"
           title="Россия РТР"
+          withSound
+        /> */}
+
+        {/*Планета РТР */}
+        <Media.IframeVideo
+          id="plrpr"
+          url="https://ok.ru/videoembed/15481764388463?autoplay=1"
+          title="Планета РТР"
           withSound
         />
       </RowWrapper>
