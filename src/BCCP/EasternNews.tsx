@@ -3,24 +3,16 @@ import { Media } from "./media/Media";
 import { getProxiedM3U8 } from "./utils/cams";
 import RowWrapper from "../Components/RowWrapper";
 
-// const k1Cams: Cams = {
-//   1: { source: "https://ok.ru/videoembed/1115050286838?autoplay=1" },
-//   2: { source: "https://connect.ok.ru/dk?st.cmd=WidgetContent&st.content=https%3A%2F%2Fok.ru%2Flive%2F1115050286838" }
-// };
-
-
-// function getCamUrlK1(streamIndex: number) {
-//   return getCamSource(k1Cams, streamIndex);
-// }
-
 
 
 function EasternNews() {
   return (  // Eastern news
     <>
-      <Typography variant="h6" align="center" sx={{ maxWidth: 1300, fontWeight: 1000, lineHeight: "30px", px: { xs: 1, sm: 2, md: 5, lg: 15 } }}>
-        {"ВАЖНО! Достъпът до някои от тези излъчвания може да бъде ограничаван или прекъсван поради геополитически и регулаторни мерки."}
-      </Typography>
+      <Typography
+        variant="h6" align="center" fontWeight={1000} lineHeight="30px"
+        sx={{ maxWidth: 1200, px: { xs: 1, sm: 2, md: 5 } }}
+        children={"ВАЖНО! Достъпът до някои от тези излъчвания може да бъде ограничаван или прекъсван поради геополитически и регулаторни мерки."}
+      />
 
 
       <RowWrapper>
@@ -33,19 +25,12 @@ function EasternNews() {
           withSound
         />
 
-        {/*Планета РТР */}
-        {/* <Media.BlobVideo
-          id="plrpr"
-          url="https://stream.smotrim.ru/hls/planeta_rtr_asia/playlist_4.m3u8"
-          title="Россия РТР"
-          withSound
-        /> */}
-
-        {/*Планета РТР */}
-        <Media.IframeVideo
-          id="plrpr"
-          url="https://ok.ru/videoembed/15481764388463?autoplay=1"
-          title="Планета РТР"
+        {/* "Россия 1 */}
+        <Media.BlobVideo
+          id="rss1"
+          // url={getProxiedM3U8("https://live.smotrim.ru/vgtrk/0/russia1-hd/792000_576p.m3u8")}
+          url={getProxiedM3U8("https://live.smotrim.ru/vgtrk/0/russia1-hd/1080p.m3u8")}
+          title="Россия 1"
           withSound
         />
       </RowWrapper>
@@ -61,12 +46,12 @@ function EasternNews() {
           withSound
         />
 
-        {/* "Россия 1 */}
+        {/*Россия РТР */}
         <Media.BlobVideo
-          id="rss1"
-          // url={getProxiedM3U8("https://live.smotrim.ru/vgtrk/0/russia1-hd/792000_576p.m3u8")}
-          url={getProxiedM3U8("https://live.smotrim.ru/vgtrk/0/russia1-hd/1080p.m3u8")}
-          title="Россия 1"
+          id="rsrtr"
+          url="https://streaming.thestream.cyou/live/211-req_offset_28000000-req_window_0-2k_v5.m3u8"
+          // url="https://streaming.thestream.cyou/live/211.m3u8"
+          title="Россия РТР"
           withSound
         />
       </RowWrapper>
