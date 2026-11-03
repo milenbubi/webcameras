@@ -40,11 +40,12 @@ function EasternNews() {
         {/* Канал 1 */}
         <Media.IframeVideo
           id="1kan"
-          // url="https://ok.ru/videoembed/1115050286838?autoplay=1"
-          url="https://connect.ok.ru/dk?st.cmd=WidgetContent&st.content=https%3A%2F%2Fok.ru%2Flive%2F1115050286838"
+          url="https://ok.ru/videoembed/16745842417379?autoplay=1"
+          // url="https://connect.ok.ru/dk?st.cmd=WidgetContent&st.content=https%3A%2F%2Fok.ru%2Flive%2F1115050286838"
           title="1 Канал"
           withSound
         />
+
 
         {/*Россия РТР */}
         <Media.BlobVideo
