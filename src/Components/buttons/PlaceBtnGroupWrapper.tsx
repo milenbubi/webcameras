@@ -1,5 +1,6 @@
 import { Stack } from "@mui/material";
 import { PropsWithChildren } from "react";
+import { placeBtnWrapperStyle } from "../../Styles/placeButtonStyles";
 
 
 
@@ -10,22 +11,7 @@ function PlaceBtnGroupWrapper({ children }: PropsWithChildren) {
 
 
   return (
-    <Stack
-      sx={{
-        flexDirection: "row", flexWrap: "wrap", justifyContent: "center",
-        gap: { xs: 1.5, md: 3 },
-        "& button": {
-          transition: "opacity 0.3s",
-          pt: "5px", pb: { xs: "3px", md: "3px" },
-          minWidth: { xs: 100, md: 160 },
-          fontWeight: 800,
-          fontFamily: "Arial",
-          fontSize: { xs: 12, md: 16 },
-          letterSpacing: { xs: "1px", md: "2px" },
-          height: { xs: 27, md: 33 }
-        }
-      }}
-    >
+    <Stack sx={placeBtnWrapperStyle}>
       {children}
     </Stack>
   );

@@ -1,7 +1,6 @@
-import { useMemo } from "react";
-import { blueGrey } from "@mui/material/colors";
-import { Button, SxProps } from "@mui/material";
+import { Button } from "@mui/material";
 import { IPlaceButton, Place } from "../../Utils/places";
+import { placeButtonCustomStyle } from "../../Styles/placeButtonStyles";
 
 interface IProps {
   button: IPlaceButton;
@@ -13,29 +12,9 @@ interface IProps {
 
 
 function PlaceSingleButton({ button, onClick, isExternal, isSelected }: IProps) {
-  const buttonSX = useMemo<SxProps>(() => {
-    if (isExternal) {
-      return {
-        color: "#000000",
-        opacity: isSelected ? 1 : 0.5,
-        backgroundColor: blueGrey[isSelected ? 100 : 50],
-        "&:hover": {
-          backgroundColor: blueGrey[isSelected ? 100 : 50],
-          opacity: isSelected ? 1 : 0.8
-        }
-      }
-    }
-    else {
-      return {
-        opacity: isSelected ? 1 : 0.5,
-        background: isSelected ? "#191d21" : "#000000",
-        "&:hover": {
-          background: isSelected ? "#191d21" : "rgba(0, 0, 0, 0.83)",
-          opacity: isSelected ? 1 : 0.8
-        }
-      }
-    }
-  }, [isSelected]);
+  const buttonSX = placeButtonCustomStyle
+  [isExternal ? "external" : "internal"]
+  [isSelected ? "selected" : "unselected"];
 
 
   return (
