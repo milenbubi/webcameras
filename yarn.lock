@@ -413,18 +413,18 @@
   dependencies:
     big.js "^7.0.1"
 
-"@ffilip/mui-react-utils@^2.6.10":
-  version "2.6.10"
-  resolved "https://registry.yarnpkg.com/@ffilip/mui-react-utils/-/mui-react-utils-2.6.10.tgz#77d8b3b50b895e91fb5edb12f2a6e73a1fbbca4a"
-  integrity sha512-Ej5PUHD8reJMthaYyu/Ji0dENNnAjmu4pen/or+uff+li+uqUuqwwyRZlpAeWt7kjV7jH5tQ6pdJboQ1N62c/Q==
+"@ffilip/mui-react-utils@^2.6.11":
+  version "2.6.11"
+  resolved "https://registry.yarnpkg.com/@ffilip/mui-react-utils/-/mui-react-utils-2.6.11.tgz#60f6b32f2688d406a1558fea7915e93415e1d484"
+  integrity sha512-kDVYINOCAIblro32GCVtCHP26FvDgjXC0Gs7fzDoYMhxQ8WH/pJ2XCUVx/ue2yBo8WJI+TufQX6X7Prl0wIHaQ==
   dependencies:
     "@ffilip/chan180-utils" "^3.0.1"
     "@iconify/react" "^6.0.2"
 
 "@iconify/react@^6.0.2":
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-6.0.2.tgz#b6d9bd0e13f9cb85b3a7fddbc70bbf71f5da1d33"
-  integrity sha512-SMmC2sactfpJD427WJEDN6PMyznTFMhByK9yLW0gOTtnjzzbsi/Ke/XqsumsavFPwNiXs8jSiYeZTmLCLwO+Fg==
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-6.0.4.tgz#f69bf710027e3e61eba8fb86de57821d67883ddc"
+  integrity sha512-7nKd1eF52E1QGIl46eDWfMNPuTQHUxsXoK2Evgtu5jr386jCWTuWFLHM9vfsTNbUcKp+uq6ao+3skNUalDhH/w==
   dependencies:
     "@iconify/types" "^2.0.0"
 

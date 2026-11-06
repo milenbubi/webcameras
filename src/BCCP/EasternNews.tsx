@@ -9,7 +9,7 @@ function EasternNews() {
   return (  // Eastern news
     <>
       <Typography
-        variant="h6" align="center" fontWeight={1000} lineHeight="30px"
+        variant="h6" align="center" fontWeight={1000} lineHeight="30px" color="#ffffff"
         sx={{ maxWidth: 1200, px: { xs: 1, sm: 2, md: 5 } }}
         children={"ВАЖНО! Достъпът до някои от тези излъчвания може да бъде ограничаван или прекъсван поради геополитически и регулаторни мерки."}
       />
