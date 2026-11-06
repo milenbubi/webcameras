@@ -1,6 +1,7 @@
 import { Cam } from "./utils/cams";
 import { Media } from "./media/Media";
 import RowWrapper from "../Components/RowWrapper";
+import TurkiyeNotice from "../Components/TurkiyeNotice";
 
 // Cameras from all Turkish border checkpoints.
 // https://www.canlimobeseizle.com/turkiye-sinir-kapilari-canli-izle
@@ -38,6 +39,9 @@ function getCamUrl(prefix: string, source: string) {
 function Turkiye() {
   return (  // Турция
     <>
+      <TurkiyeNotice />
+
+
       <RowWrapper sx={{ alignItems: "stretch", rowGap: 9, mb: 3 }}>
         {/* Капитан Андреево */}
         <Media.CameraLauncher
