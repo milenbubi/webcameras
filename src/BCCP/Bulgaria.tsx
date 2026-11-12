@@ -1,5 +1,6 @@
 import { Media } from "./media/Media";
 import Kulata from "./customCams/Kulata";
+import { ENV } from "../Utils/config/env";
 import Kalotina from "./customCams/Kalotina";
 import RowWrapper from "../Components/RowWrapper";
 import DunavBridge1 from "./customCams/DunavBridge1";
@@ -16,19 +17,21 @@ function Bulgaria() {
 
 
       {/* Маказа */}
-      <RowWrapper>
-        <Media.IframeVideo
-          id="mkrd"
-          url="https://www.youtube.com/embed/ztW62j3-jl8"
-          title="Маказа - посока Кърджали"
-        />
+      {ENV.IS_DEV_MODE && (
+        <RowWrapper>
+          <Media.IframeVideo
+            id="mkrd"
+            url="https://www.youtube.com/embed/ztW62j3-jl8"
+            title="Маказа - посока Кърджали"
+          />
 
-        <Media.IframeVideo
-          id="mgkp"
-          url="https://www.youtube.com/embed/mLtxlaGgGfo?"
-          title="Маказа - посока ГКПП"
-        />
-      </RowWrapper>
+          <Media.IframeVideo
+            id="mgkp"
+            url="https://www.youtube.com/embed/mLtxlaGgGfo?"
+            title="Маказа - посока ГКПП"
+          />
+        </RowWrapper>
+      )}
 
 
       {/* Калотина */}
