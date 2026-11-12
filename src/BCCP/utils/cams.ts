@@ -44,6 +44,13 @@ export function getProxiedM3U8(url: string) {
 }
 
 
+export function getProxiedImg(url: string, referer: string) {
+  if (!url || !referer) return "";
+
+  return `${ENV.IMAGE_PROXY_URL}?url=${encodeURIComponent(url)}&referer=${encodeURIComponent(referer)}}`;
+}
+
+
 export async function resolveStreamSource(pageUrl: string): Promise<string> {
   const res = await fetch(`${ENV.HLS_RESOLVE_STREAMURL_URL}?url=${encodeURIComponent(pageUrl)}`);
   const data = await res.json();
