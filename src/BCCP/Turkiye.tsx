@@ -1,7 +1,7 @@
 import { Cam } from "./utils/cams";
 import { Media } from "./media/Media";
 import RowWrapper from "../Components/RowWrapper";
-import TurkiyeNotice from "../Components/TurkiyeNotice";
+import TurkiyeNotice from "../Components/notices/TurkiyeNotice";
 
 // Cameras from all Turkish border checkpoints.
 // https://www.canlimobeseizle.com/turkiye-sinir-kapilari-canli-izle

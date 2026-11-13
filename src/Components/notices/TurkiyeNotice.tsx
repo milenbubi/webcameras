@@ -32,15 +32,15 @@ function TurkiyeNotice() {
 
 
   return (
-    <Box sx={{ mb: 4, color: "#ffffff" }}>
+    <Box sx={{ mb: 2, color: "#ffffff" }}>
       <Typography
         variant="h6"
-        sx={{ mb: 2, ...fontStyle }}
+        sx={{ mb: 1, ...fontStyle }}
         children={"ВАЖНО!"}
       />
       <Typography
         variant="subtitle1"
-        sx={{ mb: 2, ...fontStyle, ...layoutStyle }}
+        sx={{ mb: 1, ...fontStyle, ...layoutStyle }}
         children={"Според Министерството на търговията на Турция, камерите на граничните пунктове работят в сезонен режим."}
       />
       <Typography
