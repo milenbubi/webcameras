@@ -4,12 +4,16 @@ import { ENV } from "../Utils/config/env";
 import Kalotina from "./customCams/Kalotina";
 import RowWrapper from "../Components/RowWrapper";
 import DunavBridge1 from "./customCams/DunavBridge1";
+import MakazaNotice from "../Components/MakazaNotice";
 
 
 
 function Bulgaria() {
   return (  // България
     <>
+      <MakazaNotice />
+
+
       {/* Кулата */}
       <RowWrapper>
         <Kulata />
