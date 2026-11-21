@@ -11,12 +11,16 @@ const dgrCams: Cams = {
 };
 
 const haskCams: Cams = {
-  1: { source: "1", label: "часовникова кула" },
-  2: { source: "2", label: 'бул. "Съединение"' },
-  3: { source: "5", label: 'вход от АМ "Марица"' },
-  4: { source: "6", label: "изход към Кърджали" },
-  // 5: { source: "8", label: "" }
+  1: { source: "12", label: "часовникова кула" },
+  2: { source: "02", label: 'бул. "Съединение"' },
+  3: { source: "04", label: 'вход от АМ "Марица"' },
+  // 4: { source: "6", label: "изход към Кърджали" },
+  4: { source: "14", label: "обреден дом" }
 };
+
+
+// https://haskovo.net/cam/cam_e009/video.m3u8  - Асеновград, автомобилен мост
+// https://haskovo.net/cam/cam_e007/video.m3u8  - Димитровград, кула
 
 
 function getCamUrlDgr(streamIndex: number) {
@@ -30,7 +34,8 @@ function getCamLabelDgr(streamIndex: number) {
 
 function getCamUrlHask(streamIndex: number) {
   const source = getCamSource(haskCams, streamIndex);
-  return `https://haskovo.net/tvs/cam${source}.m3u8`;
+  return getProxiedM3U8(`https://haskovo.net/cam/cam_e0${source}/video.m3u8`);
+  // return `https://haskovo.net/tvs/cam${source}.m3u8`;
 }
 
 function getCamLabelHask(streamIndex: number) {
@@ -39,8 +44,8 @@ function getCamLabelHask(streamIndex: number) {
 
 
 
-function SouthArea() {
-  return (  // Южен регион
+function Trakia() {
+  return (  // Тракия, Южен регион
     <>
       <RowWrapper>
         {/* Димитровград */}
@@ -51,12 +56,31 @@ function SouthArea() {
           camCount={getCamCount(dgrCams)}
         />
 
+        {/* Първомай */}
+        <Media.BlobVideo
+          id="prwm"
+          url={getProxiedM3U8("https://haskovo.net/cam/cam_e008/video.m3u8")}
+          title="Първомай, кв.Дебър"
+          withSound
+        />
+      </RowWrapper>
+
+
+      <RowWrapper>
         {/* Хасково */}
         <Media.SwitchableBlobVideo
           id="hask"
           urlComposer={getCamUrlHask}
           title={getCamLabelHask}
           camCount={getCamCount(haskCams)}
+        />
+
+        {/* Свиленград */}
+        <Media.BlobVideo
+          id="swgr"
+          url={getProxiedM3U8("https://haskovo.net/cam/cam_e011/video.m3u8")}
+          title="Свиленград"
+          withSound
         />
       </RowWrapper>
 
@@ -82,4 +106,4 @@ function SouthArea() {
 
 
 
-export default SouthArea;
+export default Trakia;
