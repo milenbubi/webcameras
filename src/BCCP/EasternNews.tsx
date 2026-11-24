@@ -15,8 +15,9 @@ function EasternNews() {
         {/* Россия 24 */}
         <Media.BlobVideo
           id="rs24"
-          url="https://gtrk-volga.ru/media/hr24/stream1.m3u8"
-          //url={getProxiedM3U8("https://streaming.televizor-24-tochka.ru/live/30-req_offset_28000000-req_window_0-1k_v5.m3u8")}
+          // url="https://gtrk-volga.ru/media/hr24/stream1.m3u8"
+          // url={getProxiedM3U8("https://streaming.televizor-24-tochka.ru/live/30-req_offset_28000000-req_window_0-1k_v5.m3u8")}
+          url={getProxiedM3U8("https://live.smotrim.ru/vgtrk/0/russia24-hd/2081200_576p.m3u8")}
           title="Россия 24"
           withSound
         />
@@ -25,7 +26,8 @@ function EasternNews() {
         <Media.BlobVideo
           id="rss1"
           // url={getProxiedM3U8("https://live.smotrim.ru/vgtrk/0/russia1-hd/792000_576p.m3u8")}
-          url={getProxiedM3U8("https://live.smotrim.ru/vgtrk/0/russia1-hd/1080p.m3u8")}
+          // url={getProxiedM3U8("https://live.smotrim.ru/vgtrk/0/russia1-hd/1080p.m3u8")}
+          url="https://gtrk-volga.ru/media/hr1/stream1.m3u8"
           title="Россия 1"
           withSound
         />
@@ -37,7 +39,7 @@ function EasternNews() {
         <Media.IframeVideo
           id="1kan"
           url="https://ok.ru/videoembed/17803677670918?autoplay=1"
-          // url="https://connect.ok.ru/dk?st.cmd=WidgetContent&st.content=https%3A%2F%2Fok.ru%2Flive%2F1115050286838"
+          // url="https://connect.ok.ru/dk?st.cmd=WidgetContent&st.content=https%3A%2F%2Fok.ru%2Flive%2F17803677670918"
           title="1 Канал"
           withSound
         />
