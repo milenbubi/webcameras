@@ -3,7 +3,7 @@ import RowWrapper from "../Components/RowWrapper";
 import { Cams, composeCamLabel, getCamCount, getCamSource, getProxiedM3U8 } from "./utils/cams";
 
 const dgrCams: Cams = {
-  1: { source: "krastovishte-3-mart-1", label: 'кино "Химик"' },
+  1: { source: "krastovishte-3-mart-1", label: 'кино "Химик"', },
   2: { source: "kula-pazar", label: "кула към пазара" },
   3: { source: "park-marica", label: "парк Марица" },
   4: { source: "usm", label: "към Хасково" },
@@ -12,15 +12,32 @@ const dgrCams: Cams = {
 
 const haskCams: Cams = {
   1: { source: "12", label: "часовникова кула" },
-  2: { source: "02", label: 'бул. "Съединение"' },
+  2: { source: "14", label: "обреден дом" },
   3: { source: "04", label: 'вход от АМ "Марица"' },
-  // 4: { source: "6", label: "изход към Кърджали" },
-  4: { source: "14", label: "обреден дом" }
+  4: { source: "28", label: "изход към Кърджали" },
+  5: { source: "02", label: 'бул. "Съединение"' },
+  6: { source: "20", label: "уличка" }
 };
 
 
-// https://haskovo.net/cam/cam_e009/video.m3u8  - Асеновград, автомобилен мост
-// https://haskovo.net/cam/cam_e007/video.m3u8  - Димитровград, кула
+const etvCams: Cams = {
+  1: { source: "05", label: "Смолян" },
+  2: { source: "07", label: "Димитровград" },
+  3: { source: "32", label: "Харманли" },
+  4: { source: "33", label: "Смолян, табелата с мечето" },
+  5: { source: "19", label: "Дълбок Извор" },
+  6: { source: "30", label: "Кърджали" },
+  7: { source: "11", label: "Свиленград" },
+  8: { source: "23", label: "Симеоновград" },
+  9: { source: "09", label: "Асеновград" },
+  10: { source: "13", label: "Любимец" },
+  11: { source: "27", label: "Капитан Андреево" }
+};
+
+// https://haskovo.net/cam/cam_e006/video.m3u8  - Харманли, Т маркет
+// https://haskovo.net/cam/cam_e010/video.m3u8  - Може би Пловдив?
+// https://haskovo.net/cam/cam_e029/video.m3u8  - Някакъв път?
+// https://haskovo.net/cam/cam_e031/video.m3u8  - Площадче с големи ели
 
 
 function getCamUrlDgr(streamIndex: number) {
@@ -42,6 +59,14 @@ function getCamLabelHask(streamIndex: number) {
   return composeCamLabel("Хасково", haskCams, streamIndex);
 }
 
+function getCamUrlEtv(streamIndex: number) {
+  const source = getCamSource(etvCams, streamIndex);
+  return getProxiedM3U8(`https://haskovo.net/cam/cam_e0${source}/video.m3u8`);
+}
+
+function getCamLabelEtv(streamIndex: number) {
+  return composeCamLabel("eTV", etvCams, streamIndex);
+}
 
 
 function Trakia() {
@@ -75,12 +100,12 @@ function Trakia() {
           camCount={getCamCount(haskCams)}
         />
 
-        {/* Свиленград */}
-        <Media.BlobVideo
-          id="swgr"
-          url={getProxiedM3U8("https://haskovo.net/cam/cam_e011/video.m3u8")}
-          title="Свиленград"
-          withSound
+        {/* eTV камери */}
+        <Media.SwitchableBlobVideo
+          id="etv"
+          urlComposer={getCamUrlEtv}
+          title={getCamLabelEtv}
+          camCount={getCamCount(etvCams)}
         />
       </RowWrapper>
 
