@@ -72,7 +72,7 @@ function BalkanMountains() {
         <Media.Image id="bjnc" title="Боженци" url="https://home-solutions.bg/cams/bojenci.jpg" refreshSeconds={5} />
 
         {/* Чумерна */}
-        <Media.BlobVideo id="chmr" url={("https://lon.rtsp.me/eYrqm9hJ32qPZ-GV6Ki9CQ/1772721693/hls/ErrH8sb3.m3u8")} title="Хижа Чумерна" />
+        <Media.IframeVideo id="chmr" url="https://rtsp.me/embed/EY3HUqcVz0yDaTKL" title="Хижа Чумерна" />
       </RowWrapper>
     </>
   );
